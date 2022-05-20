@@ -1,0 +1,169 @@
+# vim: ft=yaml.ansible
+---
+
+- hosts: local
+  tasks:
+
+    - name: enable ntp
+      become: true
+      ansible.builtin.shell:
+        executable: /bin/bash
+        cmd: |
+          set -Eeuo pipefail
+          if timedatectl status | grep -Eq 'NTP.+inactive'
+          then
+            timedatectl set-ntp true
+            echo 'set-ntp-success'
+          fi
+      register: set_ntp_result
+      changed_when: '"set-ntp-success" in set_ntp_result.stdout'
+
+    - name: apply pacman.conf
+      become: true
+      ansible.builtin.template:
+        src: 'templates/pacman.conf.j2'
+        dest: '/etc/pacman.conf'
+        mode: '644'
+
+    - name: apply paru.conf
+      become: true
+      ansible.builtin.template:
+        src: 'templates/paru.conf.j2'
+        dest: '/etc/paru.conf'
+        mode: '644'
+
+    - name: apply reflector.conf
+      become: true
+      ansible.builtin.template:
+        src: 'templates/reflector.conf.j2'
+        dest: '/etc/xdg/reflector/reflector.conf'
+        mode: '644'
+
+    - name: get mirrorlist file stat
+      ansible.builtin.stat:
+        path: /etc/pacman.d/mirrorlist
+      register:
+        pacman_mirrorlist_stat
+
+    - name: update mirrorlist
+      become: true
+      ansible.builtin.systemd:
+        name: 'reflector'
+        daemon_reload: true
+        enabled: false
+        state: restarted
+      when: 'ansible_facts.date_time.epoch | float - pacman_mirrorlist_stat.stat.mtime > 24 * 3600'
+
+    - name: enable reflector timer
+      become: true
+      ansible.builtin.systemd:
+        name: 'reflector.timer'
+        daemon_reload: true
+        enabled: true
+
+    - name: install packages
+      become: true
+      ansible.builtin.pacman:
+        executable: paru
+        name:
+          - openssh
+          - tmux
+            # pipewire
+          - pipewire
+          - lib32-pipewire
+          - wireplumber
+          - pipewire-alsa
+          - pipewire-pulse
+          - pipewire-jack
+          - lib32-pipewire-jack
+            # bluetooth
+          - bluez
+            # intel graphics
+          - mesa
+          - lib32-mesa
+          - vulkan-intel
+            # power management
+          - upower
+            # - tlp
+            # sway
+          - sway
+          - xorg-xwayland
+          - swayidle
+          - swaylock
+          - mako
+          - grim
+          - slurp
+          - i3status-rust
+          - wofi
+          - xdg-desktop-portal-wlr
+            # applications
+          - alacritty
+            # utils
+          - ripgrep
+          - lsd
+          - fd
+          - jq
+          - fzf
+          - zoxide
+          - vivid
+            # chezmoi (replace with ansible?)
+          - chezmoi
+        update_cache: true
+
+    - name: apply ssh_config
+      become: true
+      ansible.builtin.template:
+        src: 'templates/ssh_config.j2'
+        dest: '/etc/ssh/ssh_config'
+        mode: '644'
+
+    - name: ssh agent systemd service file
+      become: true
+      ansible.builtin.template:
+        src: 'templates/systemd/user/ssh-agent.service.j2'
+        dest: '/etc/systemd/user/ssh-agent.service'
+        mode: '644'
+
+    - name: start ssh agent service
+      ansible.builtin.systemd:
+        name: 'ssh-agent'
+        daemon_reload: true
+        enabled: true
+        state: started
+        scope: user
+
+    # todo: ssh key
+    - name: create user ssh dir
+      ansible.builtin.file:
+        path: '{{ "~/.ssh" | expanduser }}'
+        state: directory
+        mode: '700'
+
+    - name: copy ssh key
+      ansible.builtin.copy:
+        src: 'files/{{ item.path }}'
+        dest: '{{ ["~/.ssh", item.path] | path_join | expanduser }}'
+        mode: '{{ item.mode }}'
+      with_items:
+        - path: 'id_ed25519'
+          mode: '400'
+        - path: 'id_ed25519.pub'
+          mode: '444'
+
+    - name: apply profile.d
+      become: true
+      ansible.builtin.template:
+        src: '{{ item }}'
+        dest: '/etc/profile.d/{{ item | basename | splitext | first }}'
+        mode: '644'
+      loop: '{{ "templates/profile.d/*.j2" | fileglob }}'
+
+    - name: apply sudoers.d
+      become: true
+      ansible.builtin.template:
+        src: '{{ item }}'
+        dest: '/etc/sudoers.d/{{ item | basename | splitext | first }}'
+        mode: '644'
+      loop: '{{ "templates/sudoers.d/*.j2" | fileglob }}'
+
+          # todo: configure tmux
