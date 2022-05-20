@@ -4,6 +4,23 @@
 - hosts: local
   tasks:
 
+    - name: aur builder user
+      become: true
+      ansible.builtin.user:
+        name: aur_build
+        system: true
+        shell: /usr/bin/nologin
+        home: /var/lib/aur_build
+        create_home: true
+
+    - name: add ansible user to sudoers
+      become: true
+      community.general.sudoers:
+        name: aur_build
+        user: aur_build
+        nopassword: true
+        commands: ALL
+
     - name: enable ntp
       become: true
       ansible.builtin.shell:
@@ -23,13 +40,6 @@
       ansible.builtin.template:
         src: 'templates/pacman.conf.j2'
         dest: '/etc/pacman.conf'
-        mode: '644'
-
-    - name: apply paru.conf
-      become: true
-      ansible.builtin.template:
-        src: 'templates/paru.conf.j2'
-        dest: '/etc/paru.conf'
         mode: '644'
 
     - name: apply reflector.conf
@@ -61,9 +71,23 @@
         daemon_reload: true
         enabled: true
 
+    - name: install paru
+      become: true
+      become_user: aur_build
+      kewlfft.aur.aur:
+        use: makepkg
+        name: paru-bin
+
+    - name: apply paru.conf
+      become: true
+      ansible.builtin.template:
+        src: 'templates/paru.conf.j2'
+        dest: '/etc/paru.conf'
+        mode: '644'
+
     - name: install packages
       become: true
-      become_user: archconfig
+      become_user: aur_build
       kewlfft.aur.aur:
         use: paru
         name:
@@ -165,7 +189,6 @@
         state: started
         scope: user
 
-    # todo: ssh key
     - name: create user ssh dir
       ansible.builtin.file:
         path: '{{ "~/.ssh" | expanduser }}'
