@@ -63,8 +63,9 @@
 
     - name: install packages
       become: true
-      ansible.builtin.pacman:
-        executable: paru
+      become_user: archconfig
+      kewlfft.aur.aur:
+        use: paru
         name:
           - openssh
           - tmux
@@ -76,6 +77,7 @@
           - pipewire-pulse
           - pipewire-jack
           - lib32-pipewire-jack
+          - pulsemixer
             # bluetooth
           - bluez
             # intel graphics
@@ -98,6 +100,9 @@
           - xdg-desktop-portal-wlr
             # applications
           - alacritty
+          - imv
+          - mpv
+          - yt-dlp
             # utils
           - ripgrep
           - lsd
@@ -106,8 +111,16 @@
           - fzf
           - zoxide
           - vivid
+          - bat
+          - imagemagick
+          - ffmpeg
             # chezmoi (replace with ansible?)
           - chezmoi
+            # fonts
+          - ttf-fira-code
+          - noto-fonts
+          - ttf-nerd-fonts-symbols
+          - ttf-twemoji
         update_cache: true
 
     - name: apply ssh_config
@@ -165,5 +178,16 @@
         dest: '/etc/sudoers.d/{{ item | basename | splitext | first }}'
         mode: '644'
       loop: '{{ "templates/sudoers.d/*.j2" | fileglob }}'
+
+    - name: copy desktop background image
+      ansible.builtin.copy:
+        src: 'files/bg.jpg'
+        dest: '{{ "~/.config/sway/bg.jpg" | expanduser }}'
+        mode: '644'
+
+    - name: create blurred background image
+      ansible.builtin.command:
+        cmd: 'convert ~/.config/sway/bg.jpg -blur 0x50 -virtual-pixel edge ~/.config/sway/bg-blurred.jpg'
+        creates: '{{ "~/.config/sway/bg-blurred.jpg" | expanduser }}'
 
           # todo: configure tmux
