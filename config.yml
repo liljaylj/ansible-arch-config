@@ -69,6 +69,11 @@
         name:
           - openssh
           - tmux
+            # display manager
+          - ly
+            # package management
+          - fwupd
+          - pkgfile
             # pipewire
           - pipewire
           - lib32-pipewire
@@ -84,6 +89,7 @@
           - mesa
           - lib32-mesa
           - vulkan-intel
+          - intel-media-sdk
             # power management
           - upower
             # - tlp
@@ -114,6 +120,13 @@
           - bat
           - imagemagick
           - ffmpeg
+            #
+          - udisks2
+          - dmraid
+          - lvm2
+          - mdadm
+          - dmidecode
+          - acpi
             # chezmoi (replace with ansible?)
           - chezmoi
             # fonts
@@ -122,6 +135,13 @@
           - ttf-nerd-fonts-symbols
           - ttf-twemoji
         update_cache: true
+
+    - name: enable ly display manager
+      become: true
+      ansible.builtin.systemd:
+        name: 'ly'
+        daemon_reload: true
+        enabled: true
 
     - name: apply ssh_config
       become: true
