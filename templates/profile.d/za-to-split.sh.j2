@@ -1,0 +1,206 @@
+# XDG dirs
+# Systemwide
+prepend_envvar XDG_DATA_DIRS '/usr/share'
+prepend_envvar XDG_DATA_DIRS '/usr/local/share'
+export XDG_DATA_DIRS
+prepend_envvar XDG_CONFIG_DIRS '/etc/xdg'
+export XDG_CONFIG_DIRS
+# User specific
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+# Create XDG dirs
+mkdir -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME"
+
+# PATH
+prepend_envvar PATH "$XDG_CONFIG_HOME/composer/vendor/bin"
+prepend_envvar PATH "$HOME/.gem/ruby/3.0.0/bin"
+prepend_envvar PATH "$HOME/.yarn/bin"
+prepend_envvar PATH "$HOME/Android/Sdk/tools/bin"
+prepend_envvar PATH "$HOME/Android/Sdk/emulator"
+prepend_envvar PATH "$HOME/go/bin"
+prepend_envvar PATH "$HOME/.dotnet/tools"
+prepend_envvar PATH "$HOME/Flutter/bin"
+prepend_envvar PATH "$HOME/.krew/bin"
+prepend_envvar PATH "$XDG_DATA_HOME/npm/bin"
+prepend_envvar PATH "$XDG_DATA_HOME/cargo/bin"
+prepend_envvar PATH "$HOME/.local/bin"
+export PATH
+
+# Editor
+export VISUAL=nvim
+export EDITOR=nvim
+export SUDO_EDITOR=nvim
+
+# Pager
+export PAGER=less
+
+# Less syntax highlight
+export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+export LESS=" -Ri "
+
+# Man pager
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
+# Terminal
+export TERMINAL=alacritty
+
+# Browser
+export BROWSER=firefox
+
+# XDG override
+export ZDOTDIR=$XDG_CONFIG_HOME/zsh
+
+# GOPATH
+prepend_envvar GOPATH "$HOME/go"
+prepend_envvar GOPATH "$HOME/Development/go"
+export GOPATH
+
+# Firefox
+export MOZ_WEBRENDER=1
+export MOZ_ACCELERATED=1
+export MOZ_USE_XINPUT2=1
+
+# Qt
+export QT_QPA_PLATFORMTHEME=qt5ct
+# export QT_STYLE_OVERRIDE=kvantum
+
+# Java
+if [ -e /etc/alternatives/java_sdk ]
+then
+    # Fedora
+    export JAVA_HOME=/etc/alternatives/java_sdk
+elif [ -e /usr/lib/jvm/default ]
+then
+    # Arch Linux
+    export JAVA_HOME=/usr/lib/jvm/default
+fi
+
+# SSH agent
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+# Less history file
+export LESSHISTFILE="$XDG_CACHE_HOME/lesshst"
+
+# Default diff program for pacdiff
+export DIFFPROG=delta
+
+# NodeJS
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
+
+# NPM
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+
+# Readline
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+
+# Gtk
+export GTK_RC_FILES="$XDG_CONFIG_HOME/gtk-1.0/gtkrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export GTK_THEME=Materia-dark-compact
+# ...questionable way to configure gtk settings
+# TODO: fix gsettings-setup not found. configure in playbook
+# gsettings-setup
+
+# Cursor theme
+export XCURSOR_THEME=capitaine-cursors
+
+# Gibo git boilerplates
+export GIBO_BOILERPLATES="$XDG_CACHE_HOME/gitignore-boilerplates"
+
+# Deepgit
+export DEEPGIT_JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+
+# IntelliJ IDEA
+export IDEA_JDK=/usr/lib/jvm/jre-jetbrains
+
+# SBT options
+export SBT_OPTS="-Xms512M -Xmx4G -Xss2M -XX:MaxMetaspaceSize=4G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled"
+
+# Rustup
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+
+# Cargo
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+
+# Make flags
+export MAKEFLAGS="-j$(($(nproc) - 2))"
+
+# Rust compile flags
+export RUSTFLAGS="-C target-cpu=native"
+
+# Debuginfod URLs
+export DEBUGINFOD_URLS='https://debuginfod.archlinux.org/'
+
+# XWayland keyboard config
+export XKB_DEFAULT_LAYOUT='us,kz(ruskaz)'
+export XKB_DEFAULT_OPTIONS='grp:alt_caps_toggle,compose:sclk,lv3:ralt_switch'
+
+# OpenAL software sound drivers (Telegram, Minecraft)
+export ALSOFT_DRIVERS='pulse,pipewire'
+
+# QMK home
+export QMK_HOME="$HOME/Development/github.com/liljaylj/qmk_firmware"
+
+# TODO: fix kube-configs not found
+# kube config
+# KUBECONFIG="$(kube-configs)"
+# export KUBECONFIG
+
+# sv4git config
+export SV4GIT_HOME="$XDG_CONFIG_HOME/sv4git"
+
+# ytt tasks repo
+export YTT_HOME="$XDG_DATA_HOME/ytt"
+export YTT_REPO='liljaylj/yttasks'
+
+# FZF default arguments
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'"
+
+# Vagrant
+# TODO: install `vagrant plugin install vagrant-libvirt`!
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+# Libvirt
+export LIBVIRT_DEFAULT_URI='qemu:///system'
+
+# psql
+mkdir -p "$XDG_CONFIG_HOME/pg"
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+
+#
+# Import from file(s)
+set -a
+
+# User dirs
+if [ -e "$XDG_CONFIG_HOME/user-dirs.dirs" ]
+then
+    source "$XDG_CONFIG_HOME/user-dirs.dirs"
+    grep -Eo '^[^#=]+' "$XDG_CONFIG_HOME/user-dirs.dirs" | xargs systemctl --user import-environment
+fi
+
+# TODO: divide gui and vconsole options in profile.d
+# Source host dependent profile(s)
+if [ -d "$XDG_CONFIG_HOME/profile.d" ] && [ -r "$XDG_CONFIG_HOME/profile.d" ]
+then
+    while read -r f
+    do
+        source "$f"
+    done < <(find -L "$XDG_CONFIG_HOME/profile.d" -mindepth 1 -maxdepth 1 -type f)
+fi
+
+set +a
+# End Import from file(s)
+#
+
+# Is running under WSL
+grep -iq 'microsoft' /proc/sys/kernel/osrelease && export IS_WSL=1
+
+# Import environment to systemctl user session
+import_env PATH XDG_DATA_DIRS XDG_CONFIG_DIRS XDG_CONFIG_HOME XDG_CACHE_HOME XDG_DATA_HOME ZDOTDIR JAVA_HOME \
+    GTK_RC_FILES GTK2_RC_FILES GTK_THEME QT_QPA_PLATFORMTHEME XCURSOR_THEME LIBVIRT_DEFAULT_URI
