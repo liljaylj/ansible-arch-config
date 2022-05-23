@@ -4,20 +4,20 @@
 - hosts: local
   tasks:
 
-    - name: aur builder user
+    - name: archconfig user
       become: true
       ansible.builtin.user:
-        name: aur_build
+        name: '{{ archconfig.user.name | default("archconfig") }}'
         system: true
         shell: /usr/bin/nologin
-        home: /var/lib/aur_build
+        home: '{{ archconfig.user.home | default("/var/lib/archconfig") }}'
         create_home: true
 
-    - name: add ansible user to sudoers
+    - name: add archconfig user to sudoers
       become: true
       community.general.sudoers:
-        name: aur_build
-        user: aur_build
+        name: archconfig
+        user: '{{ archconfig.user.name | default("archconfig") }}'
         nopassword: true
         commands: ALL
 
@@ -73,7 +73,7 @@
 
     - name: install paru
       become: true
-      become_user: aur_build
+      become_user: '{{ archconfig.user.name | default("archconfig") }}'
       kewlfft.aur.aur:
         use: makepkg
         name: paru-bin
