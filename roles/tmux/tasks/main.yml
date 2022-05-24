@@ -9,6 +9,7 @@
     packages: tmux
 
 - name: apply tmux.conf
+  become: true
   ansible.builtin.template:
     src: 'tmux/tmux.conf.j2'
     dest: '/etc/tmux.conf'
