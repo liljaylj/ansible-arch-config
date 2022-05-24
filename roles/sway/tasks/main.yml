@@ -11,28 +11,32 @@
       - xorg-xwayland
       - swayidle
       - swaylock
+      - swaybg
       - mako
       - grim
       - slurp
       - i3status-rust
       - wofi
+      - kanshi
+      - wl-clipboard
+      - wl-clipboard-x11
       - xdg-desktop-portal-wlr
         # dependency to blur background image
       - imagemagick
 
-- name: create user config dir
+- name: create sway data dir
   ansible.builtin.file:
-    path: '{{ xdg.home.config }}/sway'
+    path: '{{ xdg.home.data }}/sway'
     state: directory
     mode: '755'
 
 - name: copy desktop background image
   ansible.builtin.copy:
     src: 'bg.jpg'
-    dest: '{{ xdg.home.config }}/sway/bg.jpg'
+    dest: '{{ xdg.home.data }}/sway/bg.jpg'
     mode: '644'
 
 - name: create blurred background image
   ansible.builtin.command:
-    cmd: 'convert {{ xdg.home.config }}/sway/bg.jpg -blur 0x50 -virtual-pixel edge {{ xdg.home.config }}/sway/bg-blurred.jpg'
-    creates: '{{ xdg.home.config }}/sway/bg-blurred.jpg'
+    cmd: 'convert {{ xdg.home.data }}/sway/bg.jpg -blur 0x50 -virtual-pixel edge {{ xdg.home.data }}/sway/bg-blurred.jpg'
+    creates: '{{ xdg.home.data }}/sway/bg-blurred.jpg'
