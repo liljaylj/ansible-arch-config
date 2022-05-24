@@ -22,7 +22,7 @@ HoldPkg     = pacman glibc
 Architecture = auto
 
 # Pacman won't upgrade packages listed in IgnorePkg and members of IgnoreGroup
-IgnorePkg = acpi_call acpi_call-lts linux linux-headers linux-lts linux-lts-headers linux-zen linux-zen-headers btrfs-progs cryptsetup device-mapper dmraid lvm2 mdadm mkinitcpio mkinitcpio-busybox systemd avr-gcc ostree
+IgnorePkg = {{ pacman_ignore_pkg | default([]) | join(' ') }}
 #IgnoreGroup =
 
 #NoUpgrade   =

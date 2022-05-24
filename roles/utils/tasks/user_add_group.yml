@@ -1,0 +1,9 @@
+# vim: ft=yaml.ansible
+---
+
+- name: 'add user to {{ new_groups }} groups'
+  become: true
+  ansible.builtin.user:
+    append: true
+    name: '{{ ansible_env.SUDO_USER | default(ansible_env.USER) }}' 
+    groups: '{{ new_groups }}'

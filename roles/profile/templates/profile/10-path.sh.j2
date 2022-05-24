@@ -1,0 +1,2 @@
+# PATH
+export PATH="{{ profile.path_pre | default([]) | union(['/usr/local/sbin', '/usr/local/bin', '/usr/bin']) | union(profile.path_post | default([])) | join(':') }}"

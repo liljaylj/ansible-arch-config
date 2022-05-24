@@ -1,0 +1,10 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install gui apps
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: '{{ apps.gui | default([]) }}'
+  when: apps.gui is defined

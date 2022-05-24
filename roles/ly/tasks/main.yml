@@ -1,0 +1,23 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install ly display manager
+  ansible.builtin.import_role: 
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: ly
+
+- name: apply ly config
+  become: true
+  ansible.builtin.template:
+    src: 'ly/config.ini.j2'
+    dest: '/etc/ly/config.ini'
+    mode: '755'
+
+- name: enable ly display manager
+  become: true
+  ansible.builtin.systemd:
+    name: 'ly'
+    daemon_reload: true
+    enabled: '{{ ly is defined and ly is truthy }}'

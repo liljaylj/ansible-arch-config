@@ -1,0 +1,22 @@
+# vim: ft=yaml.ansible
+---
+
+- name: apply profile.d
+  become: true
+  ansible.builtin.template:
+    src: '{{ item }}'
+    dest: '/etc/profile.d/{{ item | basename | splitext | first }}'
+    mode: '644'
+  with_items:
+    - profile/00-utils.sh.j2
+    - profile/10-path.sh.j2
+    - profile/10-xdg.sh.j2
+    - profile/za-to-split.sh.j2
+    - profile/zz-cleanup.sh.j2
+
+- name: create xdg home dirs
+  ansible.builtin.file:
+    path: '{{ item | expandvars }}'
+    state: directory
+    mode: '755'
+  loop: '{{ xdg.home.values() }}'

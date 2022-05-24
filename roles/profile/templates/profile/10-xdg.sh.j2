@@ -1,0 +1,9 @@
+# XDG dirs
+# Systemwide
+export XDG_DATA_DIRS="{{ xdg.data_dirs | join(':') }}"
+export XDG_CONFIG_DIRS="{{ xdg.config_dirs | join(':') }}"
+# User specific
+export XDG_CONFIG_HOME="{{ xdg.home.config }}"
+export XDG_CACHE_HOME="{{ xdg.home.cache }}"
+export XDG_DATA_HOME="{{ xdg.home.data }}"
+export XDG_STATE_HOME="{{ xdg.home.state }}"

@@ -1,0 +1,26 @@
+# vim: ft=yaml.ansible
+---
+
+- name: set vconsole keyboard layout
+  ansible.builtin.lineinfile:
+    regexp: '^[ #]*KEYMAP='
+    line: 'KEYMAP={{ vconsole.keymap | default("us") }}'
+    dest: '/etc/vconsole.conf'
+    create: true
+    mode: '644'
+
+- name: install terminus font
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: terminus-font
+
+- name: set vconsole font
+  ansible.builtin.lineinfile:
+    regexp: '^[ #]*FONT='
+    line: 'FONT={{ vconsole.font }}'
+    dest: '/etc/vconsole.conf'
+    create: true
+    mode: '644'
+  when: vconsole.font is defined

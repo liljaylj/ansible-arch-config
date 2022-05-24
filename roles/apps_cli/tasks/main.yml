@@ -1,0 +1,10 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install cli apps
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: '{{ apps.cli | default([]) }}'
+  when: apps.cli is defined

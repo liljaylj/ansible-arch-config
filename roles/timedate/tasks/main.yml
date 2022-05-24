@@ -1,0 +1,30 @@
+# vim: ft=yaml.ansible
+---
+
+- name: enable ntp
+  become: true
+  ansible.builtin.shell:
+    executable: /bin/bash
+    cmd: |
+      set -Eeuo pipefail
+      if timedatectl status | grep -Eq 'NTP.+inactive'
+      then
+        timedatectl set-ntp true
+        echo 'set-ntp-success'
+      fi
+  register: set_ntp_result
+  changed_when: '"set-ntp-success" in set_ntp_result.stdout'
+
+- name: 'set time zone to {{ timezone | default("UTC") }}'
+  become: true
+  ansible.builtin.file:
+    src: '{{ ["/usr/share/zoneinfo", timezone | default("UTC")] | path_join }}'
+    dest: '/etc/localtime'
+    state: link
+  register: timezone_result
+
+- name: adjust clock to hardware clock
+  become: true
+  ansible.builtin.command:
+    cmd: 'hwclock --systohc'
+  when: timezone_result.changed
