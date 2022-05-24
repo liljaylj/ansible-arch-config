@@ -35,8 +35,9 @@
     src: 'bg.jpg'
     dest: '{{ xdg.home.data }}/sway/bg.jpg'
     mode: '644'
+  register: sway_bg_result
 
 - name: create blurred background image
   ansible.builtin.command:
     cmd: 'convert {{ xdg.home.data }}/sway/bg.jpg -blur 0x50 -virtual-pixel edge {{ xdg.home.data }}/sway/bg-blurred.jpg'
-    creates: '{{ xdg.home.data }}/sway/bg-blurred.jpg'
+  when: sway_bg_result.changed
