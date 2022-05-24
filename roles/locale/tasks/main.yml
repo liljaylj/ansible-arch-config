@@ -1,0 +1,25 @@
+# vim: ft=yaml.ansible
+---
+
+- name: set locales
+  become: true
+  ansible.builtin.copy:
+    content: "{{ locales | default(['en_US.UTF-8 UTF-8']) | join('\n') }}\n"
+    dest: '/etc/locale.gen'
+    mode: '644'
+  register: locales_result
+
+- name: locale gen
+  become: true
+  ansible.builtin.command:
+    cmd: 'locale-gen'
+  when: locales_result.changed
+
+- name: set locale lang
+  become: true
+  ansible.builtin.lineinfile:
+    regexp: '^[ #]*LANG='
+    line: "LANG={{ locales | default(['en_US.UTF-8 UTF-8']) | first | trim | split | first }}\n"
+    dest: '/etc/locale.conf'
+    create: true
+    mode: '644'

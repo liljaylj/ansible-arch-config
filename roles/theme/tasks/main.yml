@@ -1,0 +1,17 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install theme, cursors and icons
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+        # materia theme
+      - kvantum-theme-materia
+      - materia-gtk-theme
+      - materia-kde
+        # capitaine cursors
+      - capitaine-cursors
+        # icon theme
+      - papirus-icon-theme

@@ -1,0 +1,25 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install bluetooth packages
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - bluez
+      - bluez-utils
+
+- name: apply bluetooth config
+  become: true
+  ansible.builtin.template:
+    src: 'bluetooth/bluetooth-main.conf.j2'
+    dest: '/etc/bluetooth/main.conf'
+    mode: '644'
+
+- name: enable bluetooth service
+  become: true
+  ansible.builtin.systemd:
+    name: bluetooth.service
+    enabled: true
+    state: started

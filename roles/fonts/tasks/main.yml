@@ -1,0 +1,13 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install noto, fira-code, nerd and twemoji fonts
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - ttf-fira-code
+      - noto-fonts
+      - ttf-nerd-fonts-symbols
+      - ttf-twemoji

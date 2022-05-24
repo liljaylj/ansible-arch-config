@@ -1,0 +1,22 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install pipewire and dependencies
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - pipewire
+      - wireplumber
+      - pipewire-alsa
+      - pipewire-pulse
+      - pipewire-jack
+      - pipewire-v4l2
+        # TODO: - pipewire-x11-bell
+        # TODO: - pipewire-zeroconf
+      - gst-plugin-pipewire
+      - lib32-pipewire
+      - lib32-pipewire-jack
+      - lib32-pipewire-v4l2
+      - pulsemixer

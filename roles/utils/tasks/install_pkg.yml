@@ -1,0 +1,17 @@
+# vim: ft=yaml.ansible
+---
+
+- name: update package database
+  become: true
+  ansible.builtin.pacman:
+    update_cache: '{{ update_cache | default(false) }}'
+  when: update_cache is truthy
+
+- name: install packages
+  become: true
+  become_user: '{{ archconfig.user.name | default("archconfig") }}'
+  ansible.builtin.command:
+    argv: '{{ (sync_argv | default(["paru", "--noconfirm", "--noprogressbar", "--needed", "--sync"])) + ([packages | mandatory] | flatten) }}'
+    strip_empty_ends: true
+  register: paru_result
+  changed_when: "'there is nothing to do' is not in (paru_result.stdout_lines | last)"

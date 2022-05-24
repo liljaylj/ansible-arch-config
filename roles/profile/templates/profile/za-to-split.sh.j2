@@ -1,37 +1,8 @@
-# XDG dirs
-# Systemwide
-prepend_envvar XDG_DATA_DIRS '/usr/share'
-prepend_envvar XDG_DATA_DIRS '/usr/local/share'
-export XDG_DATA_DIRS
-prepend_envvar XDG_CONFIG_DIRS '/etc/xdg'
-export XDG_CONFIG_DIRS
-# User specific
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_DATA_HOME="$HOME/.local/share"
-export XDG_STATE_HOME="$HOME/.local/state"
-# Create XDG dirs
-mkdir -p "$XDG_CONFIG_HOME" "$XDG_CACHE_HOME" "$XDG_DATA_HOME" "$XDG_STATE_HOME"
-
-# PATH
-prepend_envvar PATH "$XDG_CONFIG_HOME/composer/vendor/bin"
-prepend_envvar PATH "$HOME/.gem/ruby/3.0.0/bin"
-prepend_envvar PATH "$HOME/.yarn/bin"
-prepend_envvar PATH "$HOME/Android/Sdk/tools/bin"
-prepend_envvar PATH "$HOME/Android/Sdk/emulator"
-prepend_envvar PATH "$HOME/go/bin"
-prepend_envvar PATH "$HOME/.dotnet/tools"
-prepend_envvar PATH "$HOME/Flutter/bin"
-prepend_envvar PATH "$HOME/.krew/bin"
-prepend_envvar PATH "$XDG_DATA_HOME/npm/bin"
-prepend_envvar PATH "$XDG_DATA_HOME/cargo/bin"
-prepend_envvar PATH "$HOME/.local/bin"
-export PATH
-
 # Editor
-export VISUAL=nvim
-export EDITOR=nvim
-export SUDO_EDITOR=nvim
+export VISUAL={{ profile.editor }}
+export EDITOR={{ profile.editor }}
+export SUDO_EDITOR={{ profile.editor }}
+export SYSTEMD_EDITOR={{ profile.editor }}
 
 # Pager
 export PAGER=less
