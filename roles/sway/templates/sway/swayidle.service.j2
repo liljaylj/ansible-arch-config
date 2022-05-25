@@ -1,0 +1,12 @@
+[Unit]
+Description=Idle manager for Sway
+PartOf=sway-session.target
+After=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c "swayidle-exec"
+Restart=always
+
+[Install]
+WantedBy=sway-session.target

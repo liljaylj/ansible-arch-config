@@ -1,0 +1,12 @@
+[Unit]
+Description=Per-window keyboard layout for Sway
+PartOf=sway-session.target
+After=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c 'swaykbdd'
+Restart=on-failure
+
+[Install]
+WantedBy=sway-session.target

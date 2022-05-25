@@ -1,0 +1,12 @@
+[Unit]
+Description=Automatic output configuration for Sway
+PartOf=sway-session.target
+After=sway-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bash -c 'kanshi'
+Restart=on-failure
+
+[Install]
+WantedBy=sway-session.target
