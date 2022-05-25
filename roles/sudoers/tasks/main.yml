@@ -7,6 +7,4 @@
     src: '{{ item }}'
     dest: '/etc/sudoers.d/{{ item | basename | splitext | first }}'
     mode: '644'
-  with_items:
-    - sudoers/insults.j2
-    - sudoers/env_keep.j2
+  loop: '{{ [role_path, "templates/sudoers/*.j2"] | path_join | fileglob }}'
