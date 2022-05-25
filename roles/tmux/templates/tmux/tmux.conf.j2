@@ -2,4 +2,5 @@ set -g default-terminal screen-256color
 
 if-shell 'test "$(tput colors)" -lt 256' 'set -g default-terminal screen'
 
-set -ag terminal-overrides ',*:Tc'
+# fix vim colors in tmux
+set -ag terminal-overrides ',linux:Tc'
