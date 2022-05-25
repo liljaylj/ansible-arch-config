@@ -41,8 +41,5 @@
     src: 'files/{{ item.path }}'
     dest: '{{ ["~/.ssh", item.path] | path_join | expanduser }}'
     mode: '{{ item.mode }}'
-  with_items:
-    - path: 'id_ed25519'
-      mode: '400'
-    - path: 'id_ed25519.pub'
-      mode: '444'
+  loop: '{{ ssh_keys }}'
+  when: ssh_keys is defined
