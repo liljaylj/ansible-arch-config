@@ -23,3 +23,18 @@
     name: bluetooth.service
     enabled: true
     state: started
+
+- name: apply mpris-proxy service
+  become: true
+  ansible.builtin.template:
+    src: 'bluetooth/mpris-proxy.service.j2'
+    dest: '/etc/systemd/user/mpris-proxy.service'
+    mode: '644'
+
+- name: enable mpris-proxy service
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: mpris-proxy.service
+    enabled: true
+    state: started
+    scope: user

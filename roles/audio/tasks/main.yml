@@ -20,3 +20,19 @@
       - lib32-pipewire-jack
       - lib32-pipewire-v4l2
       - pulsemixer
+      - playerctl
+
+- name: apply playerctld service
+  become: true
+  ansible.builtin.template:
+    src: 'audio/playerctld.service.j2'
+    dest: '/etc/systemd/user/playerctld.service'
+    mode: '644'
+
+- name: enable playerctld service
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: playerctld.service
+    enabled: true
+    state: started
+    scope: user
