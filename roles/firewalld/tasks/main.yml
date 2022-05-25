@@ -1,0 +1,13 @@
+- name: install firewalld
+  ansible.builtin.import_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: firewalld
+
+- name: enable firewalld service
+  become: true
+  ansible.builtin.systemd:
+    name: 'firewalld.service'
+    enabled: true
+    state: started

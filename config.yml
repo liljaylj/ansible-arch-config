@@ -11,6 +11,7 @@
     - ssd
     - sudoers
     - pacman
+    - firewalld
     - pkgfile
     - realtime
     - profile
