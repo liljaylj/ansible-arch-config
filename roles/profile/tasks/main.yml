@@ -7,12 +7,7 @@
     src: '{{ item }}'
     dest: '/etc/profile.d/{{ item | basename | splitext | first }}'
     mode: '644'
-  with_items:
-    - profile/00-utils.sh.j2
-    - profile/10-path.sh.j2
-    - profile/10-xdg.sh.j2
-    - profile/za-to-split.sh.j2
-    - profile/zz-cleanup.sh.j2
+  loop: '{{ [role_path, "templates/profile/*.sh.j2"] | path_join | fileglob }}'
 
 - name: create xdg home dirs
   ansible.builtin.file:
