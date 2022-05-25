@@ -12,7 +12,11 @@
       - swayidle
       - swaylock
       - swaybg
+      - sway-systemd
+      - swaykbdd
+      - swayr
       - mako
+      - libnotify
       - grim
       - slurp
       - i3status-rust
@@ -21,6 +25,7 @@
       - wl-clipboard
       - wl-clipboard-x11
       - xdg-desktop-portal-wlr
+      - xdg-desktop-portal-gtk
         # dependency to blur background image
       - imagemagick
 
@@ -41,3 +46,28 @@
   ansible.builtin.command:
     cmd: 'convert {{ xdg.home.data }}/sway/bg.jpg -blur 0x50 -virtual-pixel edge {{ xdg.home.data }}/sway/bg-blurred.jpg'
   when: sway_bg_result.changed
+
+- name: apply sway utils systemd services
+  become: true
+  ansible.builtin.template:
+    src: '{{ item }}'
+    dest: '/etc/systemd/user/{{ item | basename | splitext | first }}'
+    mode: '644'
+  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob }}'
+
+- name: daemon reload
+  ansible.builtin.systemd:
+    daemon_reload: true
+    scope: user
+
+- name: sway utils systemd service
+  ansible.builtin.systemd:
+    name: '{{ item }}'
+    enabled: true
+    scope: user
+  with_items:
+    - swayidle.service
+    - swaykbdd.service
+    - swayrd.service
+    - mako.service
+    - kanshi.service
