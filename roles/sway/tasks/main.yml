@@ -16,6 +16,7 @@
       - swaykbdd
       - swayr
       - mako
+      - wob
       - libnotify
       - grim
       - slurp
@@ -26,6 +27,8 @@
       - wl-clipboard-x11
       - xdg-desktop-portal-wlr
       - xdg-desktop-portal-gtk
+      - qt5-wayland
+      - qt6-wayland
         # dependency to blur background image
       - imagemagick
 
