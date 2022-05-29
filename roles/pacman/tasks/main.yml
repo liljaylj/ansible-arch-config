@@ -45,20 +45,6 @@
     dest: '/etc/makepkg.conf'
     mode: '644'
 
-- name: install paru
-  become: true
-  become_user: '{{ archconfig_user.name | default("archconfig") }}'
-  kewlfft.aur.aur:
-    use: makepkg
-    name: paru-bin
-
-- name: apply paru.conf
-  become: true
-  ansible.builtin.template:
-    src: 'pacman/paru.conf.j2'
-    dest: '/etc/paru.conf'
-    mode: '644'
-
 - name: update package database
   become: true
   ansible.builtin.pacman:

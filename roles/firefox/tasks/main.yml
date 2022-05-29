@@ -1,0 +1,14 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install firefox and dependencies
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - firefox
+      - hunspell
+      - hunspell-en_us
+      - hunspell-ru
+      - firefox-tridactyl-native

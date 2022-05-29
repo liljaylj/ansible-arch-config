@@ -1,0 +1,20 @@
+log-queries false
+report-client-info true
+hardened-privacy false
+max-inflight-requests 256
+cache-size 50MB
+max-ttl 0s
+mdns all
+bogus-priv true
+use-hosts true
+timeout 5s
+listen localhost:53
+{% if nextdns_id is defined %}
+config {{ nextdns_id }}
+{% endif %}
+setup-router false
+control /var/run/nextdns.sock
+cache-max-age 0s
+discovery-dns 
+detect-captive-portals false
+auto-activate true

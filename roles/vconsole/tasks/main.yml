@@ -10,7 +10,7 @@
     mode: '644'
 
 - name: install terminus font
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
@@ -26,7 +26,7 @@
   when: vconsole.font is defined
 
 - name: install general purpose mouse
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:

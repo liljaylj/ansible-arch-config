@@ -1,2 +1,2 @@
+---
 mirrorlist_timeout_sec: 604800  # 7 days
-update_cache: false
