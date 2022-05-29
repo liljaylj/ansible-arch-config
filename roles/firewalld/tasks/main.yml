@@ -1,5 +1,8 @@
+# vim: ft=yaml.ansible
+---
+
 - name: install firewalld
-  ansible.builtin.import_role:
+  ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:

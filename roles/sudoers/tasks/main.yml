@@ -4,7 +4,15 @@
 - name: apply sudoers.d
   become: true
   ansible.builtin.template:
+    src: '{{ [role_path, "templates/sudoers", item] | path_join }}'
+    dest: '/etc/sudoers.d/{{ item | splitext | first }}'
+    mode: '644'
+  loop: '{{ [role_path, "templates/sudoers/*.j2"] | path_join | fileglob | map("basename") | difference("templates/sudoers/*.j2" | fileglob | map("basename")) }}'
+
+- name: apply sudoers.d overrides
+  become: true
+  ansible.builtin.template:
     src: '{{ item }}'
     dest: '/etc/sudoers.d/{{ item | basename | splitext | first }}'
     mode: '644'
-  loop: '{{ [role_path, "templates/sudoers/*.j2"] | path_join | fileglob }}'
+  loop: '{{ [playbook_dir, "templates/sudoers/*.j2"] | path_join | fileglob }}'

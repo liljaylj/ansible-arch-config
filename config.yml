@@ -6,12 +6,16 @@
     - archconfig_user
     - timedate
     - locale
-    - vconsole
     - hostname
     - ssd
     - sudoers
     - pacman
+    - rust
+    - paru
+    - vconsole
     - firewalld
+    - nextdns
+      # TODO: wireguard
     - pkgfile
     - realtime
     - profile
@@ -29,3 +33,5 @@
     - theme
     - sway
     - apps_gui
+    - firefox
+    - steam

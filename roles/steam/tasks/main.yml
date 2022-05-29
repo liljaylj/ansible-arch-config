@@ -1,0 +1,25 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install steam runtime and related
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - steam
+      - sc-controller  # steam controller gui
+ 
+- name: add big picture desktop shortcut
+  become: true
+  ansible.builtin.template:
+    src: 'steam/steam-bigpicture.desktop.j2'
+    dest: '/usr/share/applications/steam-bigpicture.desktop'
+    mode: '644'
+
+- name: add user to input group
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: user_add_group
+  vars:
+    new_groups: input
