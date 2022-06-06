@@ -1,0 +1,15 @@
+# vim: ft=yaml.ansible
+---
+
+# TODO: https://wiki.archlinux.org/title/Tor#Transparent_Torification
+
+- name: install tor packages
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      # - tor
+      # - torsocks
+      # - nyx
+      - torbrowser-launcher

@@ -12,7 +12,9 @@
     - pacman
     - rust
     - paru
+    - systemd
     - vconsole
+    - solokeys
     - firewalld
     - nextdns
       # TODO: wireguard
@@ -23,6 +25,7 @@
     - ly
     - kmscon
     - tmux
+    - docker
     - apps_cli
       # hardware
     - audio
@@ -33,5 +36,8 @@
     - theme
     - sway
     - apps_gui
+    - tor
     - firefox
     - steam
+
+# TODO: use tags to split vsconsole only and gui only tasks. Eg. tor(cli) and torbrowser-launcher(gui)
