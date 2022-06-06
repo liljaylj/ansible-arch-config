@@ -17,6 +17,9 @@
       - swayr
       - mako
       - wob
+      - wdisplays
+      - wlr-randr
+      - wev
       - libnotify
       - grim
       - slurp
@@ -58,7 +61,8 @@
     src: '{{ [role_path, "templates/sway", item] | path_join }}'
     dest: '/etc/systemd/user/{{ item | splitext | first }}'
     mode: '644'
-  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") | difference("templates/sway/*.service.j2" | fileglob | map("basename")) }}'
+  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") | 
+    difference([playbook_dir, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename")) }}'
 
 - name: apply sway utils systemd services overrides
   become: true
@@ -73,14 +77,19 @@
     daemon_reload: true
     scope: user
 
-- name: sway utils systemd service
+- name: sway utils systemd services
   ansible.builtin.systemd:
-    name: '{{ item }}'
+    name: '{{ item | splitext | first }}'
     enabled: true
     scope: user
   with_items:
-    - swayidle.service
-    - swaykbdd.service
     - swayrd.service
     - mako.service
-    - kanshi.service
+
+- name: sway utils systemd custom services
+  ansible.builtin.systemd:
+    name: '{{ item | splitext | first }}'
+    enabled: true
+    scope: user
+  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") | 
+    union([playbook_dir, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename")) }}'

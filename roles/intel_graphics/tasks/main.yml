@@ -9,6 +9,9 @@
     packages:
       - mesa
       - vulkan-intel
-      - intel-media-driver
+      - intel-media-sdk
+      - libva-utils
+      - intel-gpu-tools
+      - gstreamer-vaapi
       - lib32-mesa
       - lib32-vulkan-intel

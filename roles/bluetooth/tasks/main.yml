@@ -9,6 +9,7 @@
     packages:
       - bluez
       - bluez-utils
+      - bluez-hid2hci
 
 - name: apply bluetooth config
   become: true

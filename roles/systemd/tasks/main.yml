@@ -1,0 +1,53 @@
+# vim: ft=yaml.ansible
+---
+
+- name: create logind config dir
+  become: true
+  ansible.builtin.file:
+    path: '/etc/systemd/logind.conf.d'
+    state: directory
+    mode: '755'
+
+- name: apply logind configs
+  become: true
+  ansible.builtin.template:
+    src: '{{ [role_path, "templates/logind", item] | path_join }}'
+    dest: '/etc/systemd/logind.conf.d/{{ item | splitext | first }}'
+    mode: '644'
+  loop: '{{ [role_path, "templates/logind/*.conf.j2"] | path_join | fileglob | map("basename") | 
+    difference([playbook_dir, "templates/logind/*.conf.j2"] | path_join | fileglob | map("basename")) }}'
+
+- name: apply logind configs overrides
+  become: true
+  ansible.builtin.template:
+    src: '{{ item }}'
+    dest: '/etc/systemd/logind.conf.d/{{ item | basename | splitext | first }}'
+    mode: '644'
+  loop: '{{ [playbook_dir, "templates/logind/*.conf.j2"] | path_join | fileglob }}'
+
+- name: create tmpfiles.d config dir
+  become: true
+  ansible.builtin.file:
+    path: '/etc/tmpfiles.d'
+    state: directory
+    mode: '755'
+
+- name: apply tmpfiles.d configs
+  become: true
+  ansible.builtin.template:
+    src: '{{ [role_path, "templates/tmpfiles.d", item] | path_join }}'
+    dest: '/etc/tmpfiles.d/{{ item | splitext | first }}'
+    mode: '644'
+  loop: '{{ [role_path, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob | map("basename") | 
+    difference([playbook_dir, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob | map("basename")) }}'
+
+- name: apply tmpfiles.d configs overrides
+  become: true
+  ansible.builtin.template:
+    src: '{{ item }}'
+    dest: '/etc/tmpfiles.d/{{ item | basename | splitext | first }}'
+    mode: '644'
+  loop: '{{ [playbook_dir, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob }}'
+
+
+

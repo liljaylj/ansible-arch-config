@@ -8,35 +8,42 @@
     dest: '/etc/pacman.conf'
     mode: '644'
 
-- name: apply reflector.conf
+# - name: apply reflector.conf
+#   become: true
+#   ansible.builtin.template:
+#     src: 'pacman/reflector.conf.j2'
+#     dest: '/etc/xdg/reflector/reflector.conf'
+#     mode: '644'
+#
+# - name: get mirrorlist file stat
+#   become: true
+#   ansible.builtin.stat:
+#     path: /etc/pacman.d/mirrorlist
+#   register:
+#     pacman_mirrorlist_stat
+#
+# - name: update mirrorlist
+#   become: true
+#   ansible.builtin.systemd:
+#     name: 'reflector'
+#     daemon_reload: true
+#     enabled: false
+#     state: restarted
+#   when: 'ansible_facts.date_time.epoch | float - pacman_mirrorlist_stat.stat.mtime > mirrorlist_timeout_sec'
+#
+# - name: enable reflector timer
+#   become: true
+#   ansible.builtin.systemd:
+#     name: 'reflector.timer'
+#     daemon_reload: true
+#     enabled: true
+
+- name: apply mirrorlist
   become: true
   ansible.builtin.template:
-    src: 'pacman/reflector.conf.j2'
-    dest: '/etc/xdg/reflector/reflector.conf'
+    src: 'templates/pacman/mirrorlist.j2'
+    dest: '/etc/pacman.d/mirrorlist'
     mode: '644'
-
-- name: get mirrorlist file stat
-  become: true
-  ansible.builtin.stat:
-    path: /etc/pacman.d/mirrorlist
-  register:
-    pacman_mirrorlist_stat
-
-- name: update mirrorlist
-  become: true
-  ansible.builtin.systemd:
-    name: 'reflector'
-    daemon_reload: true
-    enabled: false
-    state: restarted
-  when: 'ansible_facts.date_time.epoch | float - pacman_mirrorlist_stat.stat.mtime > mirrorlist_timeout_sec'
-
-- name: enable reflector timer
-  become: true
-  ansible.builtin.systemd:
-    name: 'reflector.timer'
-    daemon_reload: true
-    enabled: true
 
 - name: apply makepkg.conf
   become: true
