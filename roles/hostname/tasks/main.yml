@@ -8,17 +8,9 @@
     dest: '/etc/hostname'
     mode: '644'
 
-- name: add hostname to hosts file
+- name: apply hosts file
   become: true
-  ansible.builtin.lineinfile:
-    regexp: '{{ item.regexp }}'
-    line: '{{ item.line }}'
+  ansible.builtin.template:
+    src: 'hostname/hosts.j2'
     dest: '/etc/hosts'
     mode: '644'
-  with_items:
-    - regexp: '^127\.0\.0\.1\s+localhost$'
-      line: '127.0.0.1      localhost'
-    - regexp: '^::1\s+localhost$'
-      line: '::1            localhost'
-    - regexp: '^127\.0\.1\.1\s+{{ hostname }}\.localdomain\s+{{ hostname }}$'
-      line: '127.0.1.1      {{ hostname }}.localdomain      {{ hostname }}'
