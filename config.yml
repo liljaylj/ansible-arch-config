@@ -22,7 +22,7 @@
     - realtime
     - profile
     - ssh
-    - ly
+    # - ly
     - kmscon
     - tmux
     - docker
