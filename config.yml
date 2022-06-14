@@ -26,6 +26,7 @@
     - kmscon
     - tmux
     - docker
+    - kube-tools
     - apps_cli
       # hardware
     - audio
