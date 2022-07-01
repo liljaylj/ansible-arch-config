@@ -28,7 +28,7 @@
 
     - name: apply grub options
       ansible.builtin.template:
-        src: 'templates/bootloader/grub.j2'
+        src: 'bootloader/grub.j2'
         dest: '/etc/default/grub'
         mode: '644'
       notify:
@@ -44,14 +44,14 @@
 
     - name: add bootloader entries
       ansible.builtin.template:
-        src: 'templates/loader-entry.conf.j2'
+        src: 'bootloader/loader-entry.conf.j2'
         dest: '/boot/loader/entries/{{ item | kernel_package }}.conf'
         mode: '755'
       loop: '{{ kernels | to_kernel_list }}'
 
     - name: add bootloader fallback entries
       ansible.builtin.template:
-        src: 'templates/loader-entry.conf.j2'
+        src: 'bootloader/loader-entry.conf.j2'
         dest: '/boot/loader/entries/{{ item | kernel_package }}-fallback.conf'
         mode: '755'
       vars:
@@ -60,6 +60,6 @@
 
     - name: bootloader config
       ansible.builtin.template:
-        src: 'templates/loader.conf.j2'
+        src: 'bootloader/loader.conf.j2'
         dest: '/boot/loader/loader.conf'
         mode: '755'

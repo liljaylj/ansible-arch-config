@@ -20,7 +20,7 @@
 - name: apply mirrorlist
   become: true
   ansible.builtin.template:
-    src: 'templates/pacman/mirrorlist.j2'
+    src: 'pacman/mirrorlist.j2'
     dest: '/etc/pacman.d/mirrorlist'
     mode: '644'
 
