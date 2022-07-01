@@ -2,6 +2,7 @@
 ---
 
 - name: zram swap
+  become: true
   ansible.builtin.ini_file:
     dest: '/etc/systemd/zram-generator.conf'
     section: 'zram0'
@@ -10,6 +11,7 @@
   when: swap | default(true)
 
 - name: zram swap service
+  become: true
   ansible.builtin.systemd:
     name: 'systemd-zram-setup@zram0.service'
     daemon_reload: true
