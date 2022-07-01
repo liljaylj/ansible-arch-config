@@ -8,11 +8,15 @@
   vars:
     packages:
       - plasma-desktop
+      - sddm
+      - sddm-kcm
+      - kdeplasma-addons
       - konsole
       - dolphin
       - patitionmanager
       - ksystemlog
       - kcron
+      - ksnip
       - ark
       - kfind
       - krename
@@ -22,3 +26,9 @@
       - print-manager
       - filelight
       - kcharselect
+
+- name: enable SDDM
+  ansible.builtin.systemd:
+    name: 'sddm.service'
+    daemon_reload: true
+    enabled: true
