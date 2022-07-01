@@ -8,3 +8,17 @@
   vars:
     packages:
       - plasma-desktop
+      - konsole
+      - dolphin
+      - patitionmanager
+      - ksystemlog
+      - kcron
+      - ark
+      - kfind
+      - krename
+      - kwalletmanager
+      - yakuake
+      - kdialog
+      - print-manager
+      - filelight
+      - kcharselect
