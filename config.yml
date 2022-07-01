@@ -29,7 +29,7 @@
     - profile
     - ssh
     # - ly
-    - kmscon
+    # - kmscon
     - tmux
     - docker
     - kube-tools
