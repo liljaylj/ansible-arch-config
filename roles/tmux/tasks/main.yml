@@ -8,15 +8,6 @@
   vars:
     packages: tmux
 
-- name: backup tmux.conf as .pacnew
-  become: true
-  ansible.builtin.copy:
-    src: '/etc/tmux.conf'
-    dest: '/etc/tmux.conf.pacnew'
-    mode: preserve
-    remote_src: true
-    force: false
-
 - name: apply tmux.conf
   become: true
   ansible.builtin.template:
