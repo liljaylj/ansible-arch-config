@@ -11,6 +11,10 @@
       - plasma-wayland-session
       - sddm
       - sddm-kcm
+      - breeze
+      - breeze-gtk
+      - breeze-icons
+      - breeze-grub  # TODO: set grub theme
       - kdeplasma-addons
       - konsole
       - dolphin
