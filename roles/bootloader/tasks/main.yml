@@ -28,7 +28,7 @@
 
     - name: apply grub options
       ansible.builtin.template:
-        src: 'templates/grub.j2'
+        src: 'templates/bootloader/grub.j2'
         dest: '/etc/default/grub'
         mode: '644'
       notify:
