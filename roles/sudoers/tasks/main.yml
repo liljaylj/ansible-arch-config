@@ -2,6 +2,7 @@
 ---
 
 - name: add wheel group to sudoers
+  become: true
   community.general.sudoers:
     name: wheel
     group: wheel
