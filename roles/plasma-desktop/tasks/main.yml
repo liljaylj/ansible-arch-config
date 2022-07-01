@@ -9,13 +9,14 @@
     packages:
       - plasma-desktop
       - plasma-wayland-session
-      - sddm
+      - sddm  # TODO: wayland version, auto-unlock kwallet
       - sddm-kcm
       - breeze
       - breeze-gtk
       - breeze-icons
       - breeze-grub  # TODO: set grub theme
       - kdeplasma-addons
+      - bluedevil
       - konsole
       - dolphin
       - partitionmanager
@@ -31,6 +32,20 @@
       - print-manager
       - filelight
       - kcharselect
+
+- name: apply default SDDM config
+  become: true
+  ansible.builtin.template:
+    src: 'plasma-desktop/00-default.conf.j2'
+    dest: '/etc/sddm.conf.d/00-default.conf'
+    mode: '644'
+
+- name: rotate second monitor
+  become: true
+  ansible.builtin.template:
+    src: 'plasma-desktop/Xsetup.j2'
+    dest: '/usr/share/sddm/scripts/Xsetup'
+    mode: '755'
 
 - name: enable SDDM
   become: true
