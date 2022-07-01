@@ -8,7 +8,7 @@
   vars:
     packages:
       - steam
-      - steam-native
+      - steam-native-runtime
       - sc-controller  # steam controller gui
       - game-devices-udev
 
