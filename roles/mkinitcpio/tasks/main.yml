@@ -2,6 +2,7 @@
 ---
 
 - name: set up mkinitcpio modules
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[#\s]*MODULES='
     line: 'MODULES=({{ [mkinitcpio.modules | default("")] | flatten | join(" ") }})'
@@ -11,6 +12,7 @@
     - run mkinitcpio
 
 - name: set up mkinitcpio binaries
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[#\s]*BINARIES='
     line: 'BINARIES=({{ [mkinitcpio.binaries | default("")] | flatten | join(" ") }})'
@@ -20,6 +22,7 @@
     - run mkinitcpio
 
 - name: set up mkinitcpio files
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[#\s]*FILES='
     line: 'FILES=({{ [mkinitcpio.files | default("")] | flatten | join(" ") }})'
@@ -29,6 +32,7 @@
     - run mkinitcpio
 
 - name: set up mkinitcpio hooks
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[#\s]*HOOKS='
     line: 'HOOKS=({{ [mkinitcpio.hooks |
@@ -40,6 +44,7 @@
     - run mkinitcpio
 
 - name: set up mkinitcpio compression
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[#\s]*COMPRESSION="{{ mkinitcpio.compression | default("zstd") }}"'
     line: 'COMPRESSION="{{ mkinitcpio.compression | default("zstd") }}"'
