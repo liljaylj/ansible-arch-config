@@ -13,7 +13,7 @@
       - kdeplasma-addons
       - konsole
       - dolphin
-      - patitionmanager
+      - partitionmanager
       - ksystemlog
       - kcron
       - ksnip
