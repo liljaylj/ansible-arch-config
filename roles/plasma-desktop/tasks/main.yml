@@ -28,6 +28,7 @@
       - kcharselect
 
 - name: enable SDDM
+  become: true
   ansible.builtin.systemd:
     name: 'sddm.service'
     daemon_reload: true
