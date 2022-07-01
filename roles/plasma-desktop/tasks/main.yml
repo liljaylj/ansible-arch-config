@@ -33,6 +33,13 @@
       - filelight
       - kcharselect
 
+- name: create SDDM config dir
+  become: true
+  ansible.builtin.file:
+    dest: '/etc/sddm.conf.d'
+    state: directory
+    mode: '755'
+
 - name: apply default SDDM config
   become: true
   ansible.builtin.template:
