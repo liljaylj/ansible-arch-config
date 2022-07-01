@@ -4,6 +4,7 @@
 - hosts: local
   roles:
     - archconfig_user
+    - users
     - timedate
     - locale
     - hostname
@@ -12,7 +13,12 @@
     - pacman
     - rust
     - paru
+    - kernels
+    - mkinitcpio
+    - bootloader
+    - zram
     - systemd
+    - networkmanager
     - vconsole
     - solokeys
     - firewalld
@@ -34,8 +40,9 @@
     - intel_graphics
       # gui
     - fonts
-    - theme
-    - sway
+    # - theme
+    # - sway
+    - plasma-desktop
     - apps_gui
     - tor
     - firefox

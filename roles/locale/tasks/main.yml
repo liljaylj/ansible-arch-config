@@ -8,12 +8,8 @@
     dest: '/etc/locale.gen'
     mode: '644'
   register: locales_result
-
-- name: locale gen
-  become: true
-  ansible.builtin.command:
-    cmd: 'locale-gen'
-  when: locales_result.changed
+  notify:
+    - locale gen
 
 - name: set locale lang
   become: true

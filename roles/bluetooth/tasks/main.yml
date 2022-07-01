@@ -11,6 +11,15 @@
       - bluez-utils
       - bluez-hid2hci
 
+- name: backup bluetooth config as .pacnew
+  become: true
+  ansible.builtin.copy:
+    src: '/etc/bluetooth/main.conf'
+    dest: '/etc/bluetooth/main.conf.pacnew'
+    mode: preserve
+    remote_src: true
+    force: false
+
 - name: apply bluetooth config
   become: true
   ansible.builtin.template:

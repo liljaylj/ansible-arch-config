@@ -1,0 +1,10 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install plasma-desktop
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - plasma-desktop

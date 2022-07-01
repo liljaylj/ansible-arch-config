@@ -11,3 +11,17 @@
       - noto-fonts
       - ttf-nerd-fonts-symbols
       - ttf-twemoji
+
+- name: link nerd fonts config
+  become: true
+  ansible.builtin.file:
+    src: '/usr/share/fontconfig/conf.avail/10-nerd-font-symbols.conf'
+    dest: '/etc/fonts/conf.d/10-nerd-font-symbols.conf'
+    state: link
+
+- name: link twemoji config
+  become: true
+  ansible.builtin.file:
+    src: '/usr/share/fontconfig/conf.avail/75-twemoji.conf'
+    dest: '/etc/fonts/conf.d/75-twemoji.conf'
+    state: link

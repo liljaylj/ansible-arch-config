@@ -8,7 +8,13 @@
   vars:
     packages:
       - firefox
+      - firefox-i18n-en-us
+      - firefox-i18n-kk
+      - firefox-i18n-ru
       - hunspell
       - hunspell-en_us
       - hunspell-ru
+      - hyphen
+      - hyphen-en
+      - hyphen-ru
       - firefox-tridactyl-native

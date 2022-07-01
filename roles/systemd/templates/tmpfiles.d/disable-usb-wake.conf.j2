@@ -1,1 +1,3 @@
-w	/proc/acpi/wakeup	-	-	-	-	XHCI
+{% for item in [acpi_wakeup] | flatten %}
+w	/proc/acpi/wakeup	-	-	-	-	{{ item }}
+{% endfor %}

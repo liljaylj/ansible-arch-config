@@ -1,18 +1,27 @@
 # vim: ft=yaml.ansible
 ---
 
+- name: add wheel group to sudoers
+  community.general.sudoers:
+    name: wheel
+    group: wheel
+    nopassword: false
+    runas: 'ALL:ALL'
+    commands: ALL
+
 - name: apply sudoers.d
   become: true
   ansible.builtin.template:
     src: '{{ [role_path, "templates/sudoers", item] | path_join }}'
     dest: '/etc/sudoers.d/{{ item | splitext | first }}'
-    mode: '644'
-  loop: '{{ [role_path, "templates/sudoers/*.j2"] | path_join | fileglob | map("basename") | difference("templates/sudoers/*.j2" | fileglob | map("basename")) }}'
+    mode: '600'
+  loop: '{{ [role_path, "templates/sudoers/*.j2"] | path_join | fileglob | map("basename") |
+    difference("templates/sudoers/*.j2" | fileglob | map("basename")) }}'
 
 - name: apply sudoers.d overrides
   become: true
   ansible.builtin.template:
     src: '{{ item }}'
     dest: '/etc/sudoers.d/{{ item | basename | splitext | first }}'
-    mode: '644'
+    mode: '600'
   loop: '{{ [playbook_dir, "templates/sudoers/*.j2"] | path_join | fileglob }}'

@@ -90,8 +90,10 @@ Include = /etc/pacman.d/mirrorlist
 #[multilib-testing]
 #Include = /etc/pacman.d/mirrorlist
 
+{% if multilib | default(true) %}
 [multilib]
 Include = /etc/pacman.d/mirrorlist
+{% endif %}
 
 # [chaotic-aur]
 # Include = /etc/pacman.d/chaotic-mirrorlist

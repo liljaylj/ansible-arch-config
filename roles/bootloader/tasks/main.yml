@@ -1,0 +1,65 @@
+# vim: ft=yaml.ansible
+---
+
+- name: set up grub
+  when: bootloader.grub | default(true)
+  block:
+    - name: install grub
+      ansible.builtin.include_role:
+        name: utils
+        tasks_from: install_pkg
+      vars:
+        packages: grub
+
+    - name: install grub efi application
+      ansible.builtin.command:
+        cmd: 'grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB'
+        creates: '/boot/grub/x86_64-efi/'
+      notify:
+        - generate grub configuration file
+
+    - name: create .pacnew backup of grub options
+      ansible.builtin.copy:
+        src: '/etc/default/grub'
+        dest: '/etc/default/grub.pacnew'
+        mode: preserve
+        remote_src: true
+        force: false
+
+    - name: apply grub options
+      ansible.builtin.template:
+        src: 'templates/grub.j2'
+        dest: '/etc/default/grub'
+        mode: '644'
+      notify:
+        - generate grub configuration file
+
+- name: set up systemd-boot
+  when: not (bootloader.grub | default(true))
+  block:
+    - name: install systemd-boot application
+      ansible.builtin.command:
+        cmd: 'bootctl --path=/boot install'
+        creates: '/boot/EFI/systemd/systemd-bootx64.efi'
+
+    - name: add bootloader entries
+      ansible.builtin.template:
+        src: 'templates/loader-entry.conf.j2'
+        dest: '/boot/loader/entries/{{ item | kernel_package }}.conf'
+        mode: '755'
+      loop: '{{ kernels | to_kernel_list }}'
+
+    - name: add bootloader fallback entries
+      ansible.builtin.template:
+        src: 'templates/loader-entry.conf.j2'
+        dest: '/boot/loader/entries/{{ item | kernel_package }}-fallback.conf'
+        mode: '755'
+      vars:
+        fallback_entry: true
+      loop: '{{ kernels | to_kernel_list }}'
+
+    - name: bootloader config
+      ansible.builtin.template:
+        src: 'templates/loader.conf.j2'
+        dest: '/boot/loader/loader.conf'
+        mode: '755'
