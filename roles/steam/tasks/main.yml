@@ -8,8 +8,10 @@
   vars:
     packages:
       - steam
+      - steam-native
       - sc-controller  # steam controller gui
- 
+      - game-devices-udev
+
 - name: add big picture desktop shortcut
   become: true
   ansible.builtin.template:

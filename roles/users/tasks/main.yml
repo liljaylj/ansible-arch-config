@@ -1,0 +1,15 @@
+# vim: ft=yaml.ansible
+---
+
+- name: add users
+  ansible.builtin.user:
+    name: '{{ item.name | mandatory }}'
+    comment: '{{ item.comment | default(omit) }}'
+    create_home: '{{ item.create_home | default(true) }}'
+    home: '{{ item.home | default(omit) }}'
+    groups: '{{ item.groups | default(omit) }}'
+    append: '{{ item.append | default(true) }}'
+    password: '{{ item.password | mandatory }}'
+    shell: '{{ item.shell | default(omit) }}'
+    system: '{{ item.system | default(false) }}'
+  loop: '{{ users | default([]) }}'

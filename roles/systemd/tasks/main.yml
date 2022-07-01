@@ -14,7 +14,7 @@
     src: '{{ [role_path, "templates/logind", item] | path_join }}'
     dest: '/etc/systemd/logind.conf.d/{{ item | splitext | first }}'
     mode: '644'
-  loop: '{{ [role_path, "templates/logind/*.conf.j2"] | path_join | fileglob | map("basename") | 
+  loop: '{{ [role_path, "templates/logind/*.conf.j2"] | path_join | fileglob | map("basename") |
     difference([playbook_dir, "templates/logind/*.conf.j2"] | path_join | fileglob | map("basename")) }}'
 
 - name: apply logind configs overrides
@@ -38,7 +38,7 @@
     src: '{{ [role_path, "templates/tmpfiles.d", item] | path_join }}'
     dest: '/etc/tmpfiles.d/{{ item | splitext | first }}'
     mode: '644'
-  loop: '{{ [role_path, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob | map("basename") | 
+  loop: '{{ [role_path, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob | map("basename") |
     difference([playbook_dir, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob | map("basename")) }}'
 
 - name: apply tmpfiles.d configs overrides
@@ -48,6 +48,3 @@
     dest: '/etc/tmpfiles.d/{{ item | basename | splitext | first }}'
     mode: '644'
   loop: '{{ [playbook_dir, "templates/tmpfiles.d/*.conf.j2"] | path_join | fileglob }}'
-
-
-

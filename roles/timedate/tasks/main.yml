@@ -14,6 +14,8 @@
       fi
   register: set_ntp_result
   changed_when: '"set-ntp-success" in set_ntp_result.stdout'
+  notify:
+    - adjust clock to hardware clock
 
 - name: 'set time zone to {{ timezone | default("UTC") }}'
   become: true
@@ -22,9 +24,5 @@
     dest: '/etc/localtime'
     state: link
   register: timezone_result
-
-- name: adjust clock to hardware clock
-  become: true
-  ansible.builtin.command:
-    cmd: 'hwclock --systohc'
-  when: timezone_result.changed
+  notify:
+    - adjust clock to hardware clock

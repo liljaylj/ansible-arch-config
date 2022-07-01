@@ -1,0 +1,17 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install kernels
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: '{{ kernels | to_kernel_list | map("kernel_package") }}'
+
+- name: install microcode
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: '{{ ucode }}'
+  when: ucode is defined

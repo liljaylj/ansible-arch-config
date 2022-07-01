@@ -61,7 +61,7 @@
     src: '{{ [role_path, "templates/sway", item] | path_join }}'
     dest: '/etc/systemd/user/{{ item | splitext | first }}'
     mode: '644'
-  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") | 
+  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") |
     difference([playbook_dir, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename")) }}'
 
 - name: apply sway utils systemd services overrides
@@ -91,5 +91,5 @@
     name: '{{ item | splitext | first }}'
     enabled: true
     scope: user
-  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") | 
+  loop: '{{ [role_path, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename") |
     union([playbook_dir, "templates/sway/*.service.j2"] | path_join | fileglob | map("basename")) }}'

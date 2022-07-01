@@ -2,11 +2,20 @@
 ---
 
 - name: install ly display manager
-  ansible.builtin.include_role: 
+  ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: ly
+
+- name: backup ly config as .pacnew
+  become: true
+  ansible.builtin.copy:
+    src: '/etc/ly/config.ini'
+    dest: '/etc/ly/config.ini.pacnew'
+    mode: preserve
+    remote_src: true
+    force: false
 
 - name: apply ly config
   become: true

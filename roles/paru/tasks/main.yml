@@ -16,6 +16,15 @@
     use: makepkg
     name: paru
 
+- name: backup paru.conf as .pacnew
+  become: true
+  ansible.builtin.copy:
+    src: '/etc/paru.conf'
+    dest: '/etc/paru.conf.pacnew'
+    mode: preserve
+    remote_src: true
+    force: false
+
 - name: apply paru.conf
   become: true
   ansible.builtin.template:
