@@ -15,7 +15,6 @@
       - pipewire-v4l2
         # TODO: - pipewire-x11-bell
         # TODO: - pipewire-zeroconf
-      - gst-plugin-pipewire
       - lib32-pipewire
       - lib32-pipewire-jack
       - lib32-pipewire-v4l2
