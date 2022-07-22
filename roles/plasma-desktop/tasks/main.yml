@@ -89,6 +89,7 @@
     src: '/var/lib/AccountsService/icons/{{ user.name }}'
     dest: '/usr/share/sddm/faces/{{ user.name }}.face.icon'
     state: link
+    force: true
 
 - name: enable SDDM
   become: true
