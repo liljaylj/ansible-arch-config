@@ -1,0 +1,6 @@
+# vim: ft=yaml.ansible
+---
+
+- name: generate grub configuration file
+  ansible.builtin.command:
+    cmd: 'grub-mkconfig -o /boot/grub/grub.cfg'

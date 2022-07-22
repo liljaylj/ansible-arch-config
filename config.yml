@@ -4,7 +4,7 @@
 - hosts: local
   roles:
     - archconfig_user
-    - users
+    - user
     - timedate
     - locale
     - hostname
