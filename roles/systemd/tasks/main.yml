@@ -29,7 +29,7 @@
   become: true
   ansible.builtin.template:
     src: '{{ item }}'
-    dest: '/etc/tmpfiles.d/{{ item | splitext | first }}'
+    dest: '/etc/tmpfiles.d/{{ item | basename | splitext | first }}'
     mode: '644'
   with_items:
     - tmpfiles.d/disable-usb-wake.conf.j2
