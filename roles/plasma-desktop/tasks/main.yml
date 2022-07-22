@@ -7,32 +7,59 @@
     tasks_from: install_pkg
   vars:
     packages:
-      - plasma-desktop
+      - plasma
       - plasma-wayland-session
-      - sddm  # TODO: wayland version, auto-unlock kwallet
-      - sddm-kcm
-      - breeze
-      - breeze-gtk
-      - breeze-icons
+      - sddm
       - breeze-grub  # TODO: set grub theme
-      - kdeplasma-addons
-      - bluedevil
+        # KDE applications
       - konsole
       - dolphin
+      - kdeconnect
       - gwenview
+      - okular
+      - kamoso
       - partitionmanager
-      - ksystemlog
-      - kcron
+      - spectacle
       - ksnip
+      - kdialog
       - ark
+      - filelight
       - kfind
       - krename
       - kwalletmanager
       - yakuake
-      - kdialog
       - print-manager
-      - filelight
       - kcharselect
+      - kwrite
+      - kate
+      - kcalc
+      - kdebugsettings
+      - keditbookmarks
+      - kgpg
+      - markdownpart
+      - print-manager
+      - skanlite
+      - skanpage
+      - kdegraphics-thumbnailers
+      - svgpart
+      # - kio-extras
+      # - kio-gdrive
+      - krdc
+      - kdenetwork-filesharing
+      # Games
+      - kmines
+      - kmahjongg
+      - kshisen
+
+- name: set breeze grub theme
+  become: true
+  ansible.builtin.lineinfile:
+    regexp: '^[ #]*GRUB_THEME='
+    line: 'GRUB_THEME=/usr/share/grub/themes/breeze/theme.txt'
+    dest: '/etc/default/grub'
+    mode: '644'
+  notify:
+    - generate grub configuration file
 
 - name: create SDDM config dir
   become: true
@@ -41,6 +68,7 @@
     state: directory
     mode: '755'
 
+# TODO: wayland version, auto-unlock kwallet
 - name: apply default SDDM config
   become: true
   ansible.builtin.template:
@@ -54,6 +82,13 @@
     src: 'plasma-desktop/Xsetup.j2'
     dest: '/usr/share/sddm/scripts/Xsetup'
     mode: '755'
+
+- name: link AccountService user avatar to .face
+  become: true
+  ansible.builtin.file:
+    src: '/var/lib/AccountsService/icons/{{ user.name }}'
+    dest: '/usr/share/sddm/faces/{{ user.name }}.face.icon'
+    state: link
 
 - name: enable SDDM
   become: true

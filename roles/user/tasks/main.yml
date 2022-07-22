@@ -1,0 +1,15 @@
+# vim: ft=yaml.ansible
+---
+
+- name: set up user
+  become: true
+  ansible.builtin.user:
+    name: '{{ user.name | mandatory }}'
+    groups: '{{ user.groups | default([]) | union(["wheel"]) }}'
+    password: '{{ user.password | mandatory }}'
+    append: '{{ user.append | default(true) }}'
+    shell: '{{ user.shell | default(omit) }}'
+    comment: '{{ user.comment | default(omit) }}'
+    create_home: '{{ user.create_home | default(true) }}'
+    home: '{{ user.home | default(omit) }}'
+    system: false
