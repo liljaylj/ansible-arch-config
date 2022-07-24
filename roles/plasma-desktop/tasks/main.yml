@@ -51,16 +51,6 @@
       - kmahjongg
       - kshisen
 
-- name: set breeze grub theme
-  become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[ #]*GRUB_THEME='
-    line: 'GRUB_THEME=/usr/share/grub/themes/breeze/theme.txt'
-    dest: '/etc/default/grub'
-    mode: '644'
-  notify:
-    - generate grub configuration file
-
 - name: create SDDM config dir
   become: true
   ansible.builtin.file:
