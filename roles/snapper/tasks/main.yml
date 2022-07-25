@@ -12,6 +12,7 @@
       - snap-pac
       - grub-btrfs
       - snap-pac-grub
+      - snapper-rollback
 
 - name: ensure snapshots folder
   become: true
