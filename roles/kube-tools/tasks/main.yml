@@ -8,7 +8,7 @@
   vars:
     packages:
       - kubectl
-      - krew
+      - krew-bin
       - kustomize
 
 - name: list installed krew plugins
