@@ -5,6 +5,7 @@
   roles:
     - archconfig_user
     - user
+    - snapper
     - zsh
     - timedate
     - locale

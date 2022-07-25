@@ -1,0 +1,50 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install snapper and pacman/grub addons
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - snapper
+      - snp  # create snapshot before/after command execution
+      - snap-pac
+      - grub-btrfs
+      - snap-pac-grub
+
+- name: ensure snapshots folder
+  become: true
+  ansible.builtin.file:
+    path: '/.snapshots'
+    state: directory
+    group: 'wheel'
+    mode: '750'
+
+- name: apply config for root
+  become: true
+  ansible.builtin.template:
+    src: 'snapper/root.j2'
+    dest: '/etc/snapper/configs/root'
+    mode: '640'
+
+- name: apply snapper config
+  become: true
+  ansible.builtin.template:
+    src: 'snapper/snapper.j2'
+    dest: '/etc/conf.d/snapper'
+    mode: '640'
+
+- name: enable snapper systemd timer
+  become: true
+  ansible.builtin.systemd:
+    name: 'snapper-timeline.timer'
+    daemon_reload: true
+    state: enabled
+
+- name: enable snapper cleanup systemd timer
+  become: true
+  ansible.builtin.systemd:
+    name: 'snapper-cleanup.timer'
+    daemon_reload: true
+    state: enabled
