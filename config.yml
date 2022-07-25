@@ -19,7 +19,6 @@
     - zram
     - systemd
     - zsh
-    - snapper
     - networkmanager
     - vconsole
     - solokeys
@@ -51,5 +50,6 @@
     - steam
       # WARN: neet to refactor
     - printer
+    - snapper  # should be last (do not create snapshots when ansible install packages)
 
 # TODO: use tags to split vsconsole only and gui only tasks. Eg. tor(cli) and torbrowser-launcher(gui)
