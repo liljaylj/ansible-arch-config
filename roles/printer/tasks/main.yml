@@ -28,6 +28,7 @@
       - skanpage
 
 - name: enable cups socket
+  become: true
   ansible.builtin.systemd:
     name: 'cups.socket'
     daemon_reload: true
