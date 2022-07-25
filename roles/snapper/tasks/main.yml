@@ -41,11 +41,11 @@
   ansible.builtin.systemd:
     name: 'snapper-timeline.timer'
     daemon_reload: true
-    state: enabled
+    enabled: true
 
 - name: enable snapper cleanup systemd timer
   become: true
   ansible.builtin.systemd:
     name: 'snapper-cleanup.timer'
     daemon_reload: true
-    state: enabled
+    enabled: true
