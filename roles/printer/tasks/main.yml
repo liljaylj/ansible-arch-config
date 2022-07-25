@@ -7,24 +7,25 @@
     name: utils
     tasks_from: install_pkg
   vars:
-    - cups
-    - cups-pdf
-    - cups-pk-helper
-    - ghostscript
-    - gsfonts
-    - gutenprint
-    - hplip
-    - hplip-plugin
-    - foomatic-db
-    - foomatic-db-gutenprint-ppds
-    - python-pyqt5
-    - python-pysmbc
-    - python-reportlab
-    - splix
-    - system-config-printer
-    - print-manager
-    - skanlite
-    - skanpage
+    packages:
+      - cups
+      - cups-pdf
+      - cups-pk-helper
+      - ghostscript
+      - gsfonts
+      - gutenprint
+      - hplip
+      - hplip-plugin
+      - foomatic-db
+      - foomatic-db-gutenprint-ppds
+      - python-pyqt5
+      - python-pysmbc
+      - python-reportlab
+      - splix
+      - system-config-printer
+      - print-manager
+      - skanlite
+      - skanpage
 
 - name: enable cups socket
   ansible.builtin.systemd:
