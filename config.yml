@@ -5,8 +5,6 @@
   roles:
     - archconfig_user
     - user
-    - snapper
-    - zsh
     - timedate
     - locale
     - hostname
@@ -20,6 +18,8 @@
     - bootloader
     - zram
     - systemd
+    - zsh
+    - snapper
     - networkmanager
     - vconsole
     - solokeys
