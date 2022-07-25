@@ -1,0 +1,31 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install avahi
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - avahi
+      - nss-mdns
+
+- name: enable avahi systemd socket
+  become: true
+  ansible.builtin.systemd:
+    name: 'avahi-daemon.socket'
+    daemon_reload: true
+    enabled: true
+
+- name: disable mDNS conflicting systemd-resolved service
+  become: true
+  ansible.builtin.systemd:
+    name: 'systemd-resolved.service'
+    enabled: false
+
+- name: apply nss config
+  become: true
+  ansible.builtin.template:
+    src: 'avahi/nsswitch.conf.j2'
+    dest: '/etc/nsswitch.conf'
+    mode: '644'
