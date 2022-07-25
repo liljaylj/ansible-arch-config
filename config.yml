@@ -49,5 +49,7 @@
     - tor
     - firefox
     - steam
+      # WARN: neet to refactor
+    - printer
 
 # TODO: use tags to split vsconsole only and gui only tasks. Eg. tor(cli) and torbrowser-launcher(gui)
