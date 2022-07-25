@@ -11,7 +11,6 @@
     - ssd
     - sudoers
     - pacman
-    - rust
     - paru
     - kernels
     - mkinitcpio
@@ -32,6 +31,7 @@
     # - ly
     # - kmscon
     - tmux
+    - rust
     - docker
     - kube-tools
     - apps_cli

@@ -1,20 +1,12 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install rust toolchain
-  become: true
-  become_user: '{{ archconfig_user.name | default("archconfig") }}'
-  ansible.builtin.command:
-    cmd: 'rustup default stable'
-  register: install_result
-  changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
-
 - name: install paru
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   kewlfft.aur.aur:
     use: makepkg
-    name: paru
+    name: paru-bin
 
 - name: backup paru.conf as .pacnew
   become: true
