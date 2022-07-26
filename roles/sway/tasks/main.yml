@@ -82,9 +82,11 @@
     name: '{{ item | splitext | first }}'
     enabled: true
     scope: user
-  with_items:
-    - swayrd.service
-    - mako.service
+  vars:
+    units:
+      - swayrd.service
+      - mako.service
+  loop: '{{ units }}'
 
 - name: sway utils systemd custom services
   ansible.builtin.systemd:
