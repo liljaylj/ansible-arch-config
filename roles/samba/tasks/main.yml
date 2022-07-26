@@ -1,0 +1,40 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install samba
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - samba
+      - wsdd2
+
+- name: enable samba services
+  become: true
+  ansible.builtin.systemd:
+    name: '{{ item }}'
+    daemon_reload: true
+    enabled: true
+  vars:
+    units:
+      - 'smb.service'
+      - 'nmb.service'
+      - 'wsdd2.service'
+  loop: '{{ units }}'
+
+- name: permit traffic for samba in home zone
+  ansible.posix.firewalld:
+    zone: '{{ item.0 }}'
+    service: '{{ item.1 }}'
+    permanent: true
+    state: enabled
+  vars:
+    zones:
+      - home
+      - trusted
+    services:
+      - samba
+      - samba-client
+      - netbios-ns
+  loop: '{{ zones | product(services) | list }}'
