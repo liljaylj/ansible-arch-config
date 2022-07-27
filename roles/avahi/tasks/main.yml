@@ -31,6 +31,7 @@
     mode: '644'
 
 - name: permit traffic for avahi in home zone
+  become: true
   ansible.posix.firewalld:
     zone: '{{ item }}'
     service: 'mdns'
