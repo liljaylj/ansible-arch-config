@@ -11,6 +11,7 @@
       - wsdd2
 
 - name: permit traffic for samba in home zone
+  become: true
   ansible.posix.firewalld:
     zone: '{{ item.0 }}'
     service: '{{ item.1 }}'
