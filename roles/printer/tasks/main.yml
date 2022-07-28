@@ -27,6 +27,13 @@
       - skanlite
       - skanpage
 
+- name: add user to groups for printing
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: user_add_group
+  vars:
+    new_groups: lp
+
 - name: enable cups socket
   become: true
   ansible.builtin.systemd:
