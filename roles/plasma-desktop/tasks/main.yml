@@ -11,8 +11,8 @@
       - plasma-wayland-session
       - sddm
       - breeze-grub  # TODO: set grub theme
-      - xdg-desktop-desktop
-      - xdg-desktop-desktop-kde
+      - xdg-desktop-portal
+      - xdg-desktop-portal-kde
         # KDE applications
       - konsole
       - dolphin
