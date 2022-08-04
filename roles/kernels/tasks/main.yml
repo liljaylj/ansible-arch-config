@@ -22,13 +22,13 @@
     tasks_from: install_pkg
   vars:
     packages: mkmm
-#
-# - name: ensure that hook dir exists
-#   become: true
-#   ansible.builtin.file:
-#     path: '/etc/pacman.d/hooks'
-#     state: directory
-#     mode: '755'
+
+- name: ensure that hook dir exists
+  become: true
+  ansible.builtin.file:
+    path: '/etc/pacman.d/hooks'
+    state: directory
+    mode: '755'
 
 - name: enable pacman hooks
   become: true
