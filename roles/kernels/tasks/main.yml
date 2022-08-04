@@ -15,3 +15,25 @@
   vars:
     packages: '{{ ucode }}'
   when: ucode is defined
+
+- name: install kernel pacman hook
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: mkmm
+
+- name: enable pacman hooks
+  become: true
+  ansible.builtin.file:
+    src: '/usr/share/mkmm/10-mkmm-tmpfs-{{ item }}.hook'
+    dest: '/etc/pacman.d/hooks/10-mkmm-tmpfs-{{ item }}.hook'
+  with_items:
+    - pre
+    - post
+
+- name: install mkmm bleach service
+  become: true
+  ansible.builtin.systemd:
+    name: 'mkmm-bleach.service'
+    enabled: true
