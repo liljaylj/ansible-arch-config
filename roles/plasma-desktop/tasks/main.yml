@@ -9,11 +9,12 @@
     packages:
       - plasma
       - plasma-wayland-session
-      - sddm
+      # - sddm  # TODO: use this, when upstream released
+      - sddm-git
       - breeze-grub  # TODO: set grub theme
       - xdg-desktop-portal
       - xdg-desktop-portal-kde
-        # KDE applications
+      # KDE applications
       - konsole
       - dolphin
       - kdeconnect
