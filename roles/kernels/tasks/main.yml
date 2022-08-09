@@ -33,8 +33,8 @@
 - name: enable pacman hooks
   become: true
   ansible.builtin.file:
-    src: '/usr/share/mkmm/{{ item }}.hook'
-    dest: '/etc/pacman.d/hooks/{{ item }}.hook'
+    src: '/usr/share/mkmm/{{ item.src }}.hook'
+    dest: '/etc/pacman.d/hooks/{{ item.dest }}.hook'
     state: link
   with_items:
     - src: 10-mkmm-tmpfs-pre
