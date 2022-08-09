@@ -1,3 +1,6 @@
+# vim: ft=yaml.ansible
+---
+
 - name: adjust clock to hardware clock
   become: true
   ansible.builtin.command:
