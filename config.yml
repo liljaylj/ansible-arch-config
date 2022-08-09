@@ -23,7 +23,7 @@
     - solokeys
     - firewalld
     - nextdns
-      # TODO: wireguard
+    # TODO: wireguard
     - pkgfile
     - realtime
     - profile
@@ -35,11 +35,11 @@
     - docker
     - kube-tools
     - apps_cli
-      # hardware
+    # hardware
     - audio
     - bluetooth
     - intel_graphics
-      # gui
+    # gui
     - fonts
     # - theme
     # - sway
@@ -48,7 +48,7 @@
     - tor
     - firefox
     - steam
-      # WARN: neet to refactor
+    # WARN: neet to refactor
     - printer
     - avahi
     - samba

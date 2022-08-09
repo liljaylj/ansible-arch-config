@@ -34,7 +34,7 @@
       - qt5-wayland
       - qt6-wayland
       - gtk-layer-shell
-        # dependency to blur background image
+      # dependency to blur background image
       - imagemagick
 
 - name: create sway data dir

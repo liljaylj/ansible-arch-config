@@ -7,16 +7,16 @@
     tasks_from: install_pkg
   vars:
     packages:
-        # materia theme
+      # materia theme
       - kvantum-theme-materia
       - materia-gtk-theme
       - materia-kde
-        # capitaine cursors
+      # capitaine cursors
       - capitaine-cursors
-        # icon theme
+      # icon theme
       - papirus-icon-theme
-        # sound theme
+      # sound theme
       - sound-theme-freedesktop
-        # qt config
+      # qt config
       - qt5ct
       - qt6ct
