@@ -13,6 +13,7 @@
     - pacman
     - paru
     - kernels
+    - needrestart
     - mkinitcpio
     - bootloader
     - zram
