@@ -40,7 +40,7 @@
     - src: 10-mkmm-tmpfs-pre
       dest: 10-mkmm-tmpfs-pre
     - src: 10-mkmm-tmpfs-post
-      dest: zz-mkmm-tmpfs-post  # TODO: don't touch order of hooks if ever found a workaround
+      dest: za-mkmm-tmpfs-post  # TODO: don't touch order of hooks if ever found a workaround
 
 - name: install mkmm bleach service
   become: true

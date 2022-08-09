@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Target = *
+
+[Action]
+Description = Need restart?
+When = PostTransaction
+Exec = /usr/bin/bash -ec "/usr/bin/needrestart -b | /usr/bin/grep --color=always -E '((KSTA|UCSTA): [023])|SVC:|SESS:'"
