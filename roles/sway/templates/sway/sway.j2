@@ -1,0 +1,44 @@
+#!/bin/sh
+
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
+
+# Enable Wayland in Apps
+# ----------------------
+# NOTE: Gtk3 apps enable Wayland by default
+export GDK_BACKEND=wayland
+# Firefox
+export MOZ_ENABLE_WAYLAND=1
+export MOZ_WEBRENDER=1
+export MOZ_ACCELERATED=1
+export MOZ_USE_XINPUT2=1
+# Fix firefox "Firefox is already running"
+export MOZ_DBUS_REMOTE=1
+# Fix for ATK taking precedence over Gecko
+export NO_AT_BRIDGE=1
+# LibreOffice
+export SAL_USE_VCLPLUGIN=gtk3
+# Gtk use xdg-desktop-portal
+export GTK_USE_PORTAL=1
+# Qt5
+export QT_QPA_PLATFORM=wayland
+# export QT_WAYLAND_FORCE_DPI=physical # disabled, because it makes QT apps ugly
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+# Elementary/EFL
+export ECORE_EVAS_ENGINE=wayland_egl
+export ELM_ENGINE=wayland_egl
+# SDL
+export SDL_VIDEODRIVER=wayland
+# Clutter
+export CLUTTER_BACKEND=wayland
+# Java AWT
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+# Fix external display disabled after dpms off
+export WLR_DRM_NO_MODIFIERS=1
+
+# reset cwd to user home
+cd "$HOME"
+
+systemd-cat --identifier=sway /usr/bin/sway -V "$@"
