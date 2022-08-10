@@ -274,3 +274,6 @@ $RECYCLE.BIN/
 
 # Temporary playbook for testing purposes
 /test.yml
+
+# Yaml file with extra vars
+/.vars.yml
