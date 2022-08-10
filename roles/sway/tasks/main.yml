@@ -37,6 +37,18 @@
       # dependency to blur background image
       - imagemagick
 
+- name: ensure user local bin folder exists
+  ansible.builtin.file:
+    path: '~/.local/bin'
+    state: directory
+    mode: '755'
+
+- name: apply sway executable wrapper
+  ansible.builtin.template:
+    src: 'sway/sway.j2'
+    dest: '~/.local/bin/sway'
+    mode: '755'
+
 - name: create sway data dir
   ansible.builtin.file:
     path: '{{ xdg.home.data }}/sway'
