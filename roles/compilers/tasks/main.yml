@@ -4,7 +4,7 @@
 - name: install compilers
   ansible.builtin.include_role:
     name: utils
-    tasks_from: install_pkgs
+    tasks_from: install_pkg
   vars:
     packages:
       - rustup
