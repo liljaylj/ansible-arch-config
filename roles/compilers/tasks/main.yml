@@ -1,0 +1,54 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install compilers
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkgs
+  vars:
+    packages:
+      - rustup
+      - go
+      - nodejs
+      - npm
+      - nim
+      - clang
+      - php
+      - composer
+      - jdk-openjdk
+      - jdk17-openjdk
+
+- name: stable rust toolchain as default
+  ansible.builtin.command:
+    cmd: 'rustup default stable'
+  register: install_result
+  changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
+
+- name: set default java toolchain
+  become: true
+  vars:
+    java_version: 'java-17-openjdk'
+  ansible.builtin.shell:
+    executable: '/bin/bash'
+    cmd: |
+      set -Eeuxo pipefail
+      prev_java_version="$(archlinux-java status | { grep default || true; })"
+      archlinux-java set {{ java_version }}
+      new_java_version="$(archlinux-java status | grep default)"
+      if [ "$prev_java_version" != "$new_java_version" ]; then
+        echo 'changed'
+      fi
+  register: set_java_result
+  changed_when: "'changed' in set_java_result.stdout"
+
+- name: apply profile.d
+  become: true
+  ansible.builtin.template:
+    src: 'compilers/{{ item }}'
+    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    mode: '644'
+  with_items:
+    - 50-debuginfo.sh.j2
+    - 50-java.sh.j2
+    - 50-make.sh.j2
+    - 50-rust.sh.j2
