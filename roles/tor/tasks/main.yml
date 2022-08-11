@@ -13,3 +13,10 @@
       # - torsocks
       # - nyx
       - torbrowser-launcher
+
+# - name: add user to tor group
+#   ansible.builtin.include_role:
+#     name: utils
+#     tasks_from: user_add_group
+#   vars:
+#     new_groups: tor
