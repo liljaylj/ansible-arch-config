@@ -1,5 +1,12 @@
 # vim: ft=yaml.ansible
 ---
+- name: install git version of sddm
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - sddm-git  # TODO: use this, when upstream released and move it to task below
 
 - name: install plasma-desktop
   ansible.builtin.include_role:
@@ -9,8 +16,7 @@
     packages:
       - plasma
       - plasma-wayland-session
-      # - sddm  # TODO: use this, when upstream released
-      - sddm-git
+      # - sddm
       - breeze-grub  # TODO: set grub theme
       - xdg-desktop-portal
       - xdg-desktop-portal-kde
