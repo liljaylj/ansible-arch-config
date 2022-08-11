@@ -12,6 +12,7 @@
     - sudoers
     - pacman
     - paru
+    - compilers
     - kernels
     - needrestart
     - mkinitcpio
@@ -21,7 +22,6 @@
     - zsh
     - networkmanager
     - vconsole
-    - solokeys
     - firewalld
     - nextdns
     # TODO: wireguard
@@ -32,10 +32,10 @@
     # - ly
     # - kmscon
     - tmux
-    - rust
     - docker
     - kube-tools
     - apps_cli
+    - solokeys
     # hardware
     - audio
     - bluetooth
