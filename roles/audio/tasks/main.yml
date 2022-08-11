@@ -20,7 +20,16 @@
       - lib32-pipewire-v4l2
       - pulsemixer
       - playerctl
-#
+
+- name: apply profile.d
+  become: true
+  ansible.builtin.template:
+    src: 'audio/{{ item }}'
+    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    mode: '644'
+  with_items:
+    - 60-pipewire.sh.j2
+
 # - name: apply playerctld service
 #   become: true
 #   ansible.builtin.template:
