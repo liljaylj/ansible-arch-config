@@ -35,7 +35,6 @@
     - docker
     - kube-tools
     - apps_cli
-    - solokeys
     # hardware
     - audio
     - bluetooth
