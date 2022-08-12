@@ -58,4 +58,3 @@
 # TODO: use tags to split vsconsole only and gui only tasks. Eg. tor(cli) and torbrowser-launcher(gui)
 # TODO: podman, buildah, skopeo, ... instead of docker
 # TODO: install wireshark and add user to group wireshark
-# TODO: gamemode - wtf is this?
