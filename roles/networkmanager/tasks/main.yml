@@ -7,3 +7,17 @@
     tasks_from: install_pkg
   vars:
     packages: networkmanager
+
+- name: add user to 'network' group
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: user_add_group
+  vars:
+    new_groups: network
+
+- name: apply rules.d
+  become: true
+  ansible.builtin.template:
+    src: 'networkmanager/50-org.freedesktop.NetworkManager.rules.j2'
+    dest: '/etc/polkit-1/rules.d/50-org.freedesktop.NetworkManager.rules'
+    mode: '644'
