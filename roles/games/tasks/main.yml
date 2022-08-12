@@ -13,6 +13,7 @@
       - game-devices-udev
       - gamemode
       - lib32-gamemode
+      - gzdoom
 
 - name: add big picture desktop shortcut
   become: true
