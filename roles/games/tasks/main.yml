@@ -11,17 +11,28 @@
       - steam-native-runtime
       - sc-controller  # steam controller gui
       - game-devices-udev
+      - gamemode
+      - lib32-gamemode
 
 - name: add big picture desktop shortcut
   become: true
   ansible.builtin.template:
-    src: 'steam/steam-bigpicture.desktop.j2'
+    src: 'games/steam-bigpicture.desktop.j2'
     dest: '/usr/share/applications/steam-bigpicture.desktop'
     mode: '644'
 
-- name: add user to input group
+- name: apply gamemode config
+  become: true
+  ansible.builtin.template:
+    src: 'games/gamemode.ini.j2'
+    dest: '/etc/gamemode.ini'
+    mode: '644'
+
+- name: add user to input and gamemode group
   ansible.builtin.include_role:
     name: utils
     tasks_from: user_add_group
   vars:
-    new_groups: input
+    new_groups:
+      - input
+      - gamemode
