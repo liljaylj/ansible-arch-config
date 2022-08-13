@@ -10,6 +10,7 @@
       - bluez
       - bluez-utils
       - bluez-hid2hci
+      - bluez-cups
 
 - name: backup bluetooth config as .pacnew
   become: true
