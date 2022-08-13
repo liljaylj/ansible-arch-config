@@ -10,6 +10,7 @@
       - docker
       - docker-compose
       - docker-scan
+      - skopeo
 
 - name: add user to docker group
   ansible.builtin.include_role:
