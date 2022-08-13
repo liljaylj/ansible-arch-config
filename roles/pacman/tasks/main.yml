@@ -1,6 +1,20 @@
 # vim: ft=yaml.ansible
 ---
 
+- name: install pacman/libalpm helpers and utils
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - pacman-contrib  # libalpm utils
+      - pkgstats  # auto-submit and view archlinux package statistics
+      - asp  # arch build sources management
+      - devtools  # arch package build tools
+      - namcap  # arch package analysis
+      - expac  # query pacman database
+      - downgrade  # ability to downgrade package(s)
+
 - name: backup pacman.conf as .pacnew
   become: true
   ansible.builtin.copy:
