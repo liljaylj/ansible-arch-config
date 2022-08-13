@@ -11,6 +11,7 @@
       - cups
       - cups-pdf
       - cups-pk-helper
+      - lib32-libcups
       - ghostscript
       - gsfonts
       - gutenprint
