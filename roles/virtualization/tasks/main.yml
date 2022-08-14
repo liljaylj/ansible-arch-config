@@ -10,7 +10,6 @@
       - libvirt
       - dmidecode
       - dnsmasq
-      - ebtables
       - swtpm
       - qemu-desktop  # NOTE: qemu-base for non-gui setups
       - qemu-user
