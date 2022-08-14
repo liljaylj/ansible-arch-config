@@ -10,6 +10,7 @@
       - kubectl
       - krew-bin
       - kustomize
+      - kubectl-convert-bin
 
 - name: list installed krew plugins
   ansible.builtin.shell:
