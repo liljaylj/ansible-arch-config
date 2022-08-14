@@ -1,22 +1,45 @@
 # vim: ft=yaml.ansible
 ---
 
-# TODO: https://wiki.archlinux.org/title/Tor#Transparent_Torification
-
 - name: install tor packages
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages:
-      # - tor
-      # - torsocks
-      # - nyx
+      - tor
+      - torsocks
+      - nyx
       - torbrowser-launcher
 
-# - name: add user to tor group
-#   ansible.builtin.include_role:
-#     name: utils
-#     tasks_from: user_add_group
-#   vars:
-#     new_groups: tor
+- name: add user to tor group
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: user_add_group
+  vars:
+    new_groups: tor
+
+- name: ensure tor config dir
+  become: true
+  ansible.builtin.file:
+    path: '/etc/torrc.d'
+    state: directory
+    mode: '755'
+
+- name: apply torrc.d configs
+  become: true
+  ansible.builtin.template:
+    src: 'tor/{{ item }}'
+    dest: '/etc/torrc.d/{{ item | splitext | first }}'
+    mode: '644'
+  with_items:
+    - control.conf.j2
+    - http-tunnel.conf.j2
+
+- name: add torrc include
+  become: true
+  ansible.builtin.lineinfile:
+    path: '/etc/tor/torrc'
+    line: '%include /etc/torrc.d/*.conf'
+    create: true
+    mode: '644'
