@@ -24,9 +24,6 @@
       - python-reportlab
       - splix
       - system-config-printer
-      - print-manager
-      - skanlite
-      - skanpage
 
 - name: add user to groups for printing
   ansible.builtin.include_role:
