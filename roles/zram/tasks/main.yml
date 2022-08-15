@@ -17,3 +17,11 @@
     daemon_reload: true
     enabled: true
   when: swap | default(true)
+
+- name: set swappiness
+  become: true
+  ansible.posix.sysctl:
+    name: 'vm.swappiness'
+    sysctl_file: '/etc/sysctl.d/99-swappiness.conf'
+    sysctl_set: true
+    value: '{{ swappiness | default("60") }}'
