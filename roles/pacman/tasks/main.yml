@@ -1,12 +1,49 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install pacman/libalpm helpers and utils
-  ansible.builtin.include_role:
-    name: utils
-    tasks_from: install_pkg
-  vars:
-    packages:
+- name: apply mirrorlist
+  ansible.builtin.template:
+    src: 'pacman/mirrorlist.j2'
+    dest: '/etc/pacman.d/mirrorlist'
+    mode: '644'
+
+- name: ensure pacman conf.d dir exists
+  ansible.builtin.file:
+    path: '/etc/pacman.d/conf.d'
+    state: directory
+    mode: '755'
+
+- name: import chaotic pacman key
+  community.general.pacman_key:
+    id: 'A3873AB27021C5DD39E0501AFBA220DFC880C036'
+    keyserver: 'keyserver.ubuntu.com'
+
+- name: install chaotic mirrorlist and keyring
+  ansible.builtin.pacman:
+    name:
+      - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+      - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
+- name: apply pacman conf.d
+  ansible.builtin.template:
+    src: 'pacman/{{ item }}'
+    dest: '/etc/pacman.d/conf.d/{{ item | splitext | first }}'
+    mode: '644'
+  with_items:
+    - 10-options.conf.j2
+    - 20-multilib.conf.j2
+    - 50-chaotic.conf.j2
+
+- name: include conf.d to pacman.conf
+  ansible.builtin.lineinfile:
+    path: '/etc/pacman.conf'
+    line: 'Include = /etc/pacman.d/conf.d/*.conf'
+
+- name: install libalpm packages
+  become: true
+  ansible.builtin.pacman:
+    update_cache: true
+    name:
       - pacman-contrib  # libalpm utils
       - pkgstats  # auto-submit and view archlinux package statistics
       - asp  # arch build sources management
@@ -14,29 +51,9 @@
       - namcap  # arch package analysis
       - expac  # query pacman database
       - downgrade  # ability to downgrade package(s)
-
-- name: backup pacman.conf as .pacnew
-  become: true
-  ansible.builtin.copy:
-    src: '/etc/pacman.conf'
-    dest: '/etc/pacman.conf.pacnew'
-    mode: preserve
-    remote_src: true
-    force: false
-
-- name: apply pacman.conf
-  become: true
-  ansible.builtin.template:
-    src: 'pacman/pacman.conf.j2'
-    dest: '/etc/pacman.conf'
-    mode: '644'
-
-- name: apply mirrorlist
-  become: true
-  ansible.builtin.template:
-    src: 'pacman/mirrorlist.j2'
-    dest: '/etc/pacman.d/mirrorlist'
-    mode: '644'
+      - reflector  # update archlinux mirrorlist
+      - paru  # pacman aur helper
+      - pkgfile  # packages metadata explorer
 
 - name: backup makepkg.conf as .pacnew
   become: true
@@ -54,7 +71,40 @@
     dest: '/etc/makepkg.conf'
     mode: '644'
 
-- name: update package database
+- name: apply reflector config
   become: true
-  ansible.builtin.pacman:
-    update_cache: true
+  ansible.builtin.template:
+    src: 'pacman/reflector.conf.j2'
+    dest: '/etc/xdg/reflector/reflector.conf'
+    mode: '644'
+
+- name: enable reflector timer
+  become: true
+  ansible.builtin.systemd:
+    name: 'reflector.timer'
+    daemon_reload: true
+    enabled: true
+    state: started
+
+- name: backup paru.conf as .pacnew
+  become: true
+  ansible.builtin.copy:
+    src: '/etc/paru.conf'
+    dest: '/etc/paru.conf.pacnew'
+    mode: preserve
+    remote_src: true
+    force: false
+
+- name: apply paru.conf
+  become: true
+  ansible.builtin.template:
+    src: 'pacman/paru.conf.j2'
+    dest: '/etc/paru.conf'
+    mode: '644'
+
+- name: enable pkgfile update timer
+  become: true
+  ansible.builtin.systemd:
+    name: 'pkgfile-update.timer'
+    enabled: true
+    state: started
