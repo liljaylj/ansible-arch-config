@@ -11,6 +11,7 @@
     - ssd
     - sudoers
     - pacman
+    - fwupd
     - compilers
     - kernels
     - needrestart
