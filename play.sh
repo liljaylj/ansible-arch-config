@@ -2,6 +2,8 @@
 
 set -Eeuo pipefail
 
+export ANSIBLE_NOCOWS=1
+
 # install prerequisites
 # ansible-galaxy collection install -r requirements.yml
 
