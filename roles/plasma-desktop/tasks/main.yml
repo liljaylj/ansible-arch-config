@@ -58,6 +58,9 @@
       - kmines
       - kmahjongg
       - kshisen
+      # Discover
+      - discover
+      - packagekit-qt5
 
 - name: create SDDM config dir
   become: true
