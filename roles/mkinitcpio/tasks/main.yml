@@ -1,53 +1,10 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: set up mkinitcpio modules
+- name: apply mkinitcpio.conf
   become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[#\s]*MODULES='
-    line: 'MODULES=({{ [mkinitcpio.modules | default("")] | flatten | join(" ") }})'
-    dest: '/etc/mkinitcpio.conf'
-    mode: '644'
-  notify:
-    - run mkinitcpio
-
-- name: set up mkinitcpio binaries
-  become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[#\s]*BINARIES='
-    line: 'BINARIES=({{ [mkinitcpio.binaries | default("")] | flatten | join(" ") }})'
-    dest: '/etc/mkinitcpio.conf'
-    mode: '644'
-  notify:
-    - run mkinitcpio
-
-- name: set up mkinitcpio files
-  become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[#\s]*FILES='
-    line: 'FILES=({{ [mkinitcpio.files | default("")] | flatten | join(" ") }})'
-    dest: '/etc/mkinitcpio.conf'
-    mode: '644'
-  notify:
-    - run mkinitcpio
-
-- name: set up mkinitcpio hooks
-  become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[#\s]*HOOKS='
-    line: 'HOOKS=({{ [mkinitcpio.hooks |
-      default("base consolefont udev autodetect modconf block filesystems keyboard fsck")] |
-      flatten | join(" ") }})'
-    dest: '/etc/mkinitcpio.conf'
-    mode: '644'
-  notify:
-    - run mkinitcpio
-
-- name: set up mkinitcpio compression
-  become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[#\s]*COMPRESSION="{{ mkinitcpio.compression | default("zstd") }}"'
-    line: 'COMPRESSION="{{ mkinitcpio.compression | default("zstd") }}"'
+  ansible.builtin.template:
+    src: 'mkinitcpio/mkinitcpio.conf.j2'
     dest: '/etc/mkinitcpio.conf'
     mode: '644'
   notify:
