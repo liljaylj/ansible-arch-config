@@ -1,0 +1,12 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install flatpak
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - flatpak
+      - xdg-desktop-portal
+      - flatseal
