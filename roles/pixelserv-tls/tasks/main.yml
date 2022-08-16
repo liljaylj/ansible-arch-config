@@ -12,7 +12,7 @@
   become: true
   become_user: '{{ archconfig.user.name | default("archconfig") }}'
   ansible.builtin.command:
-    cmd: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'genrsa', '-out', '/var/cache/pixelserv/ca.key',
+    argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'genrsa', '-out', '/var/cache/pixelserv/ca.key',
           '2048']
     creates: '/var/cache/pixelserv/ca.key'
 
@@ -21,7 +21,7 @@
   become_user: '{{ archconfig.user.name | default("archconfig") }}'
   become_flags: '-s /bin/bash'
   ansible.builtin.command:
-    cmd: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key',
+    argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key',
           '-new', '-x509', '-days', '3650', '-sha256', '-extension', 'v3_ca', '-out', '/var/cache/pixelserv/ca.crt',
           '-subj', '/CN=Pixelserv CA']
     creates: '/var/cache/pixelserv/ca.crt'
