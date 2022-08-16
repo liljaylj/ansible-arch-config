@@ -1,0 +1,33 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install systemd-boot application
+  become: true
+  ansible.builtin.command:
+    cmd: 'bootctl --path=/boot install'
+    creates: '/boot/EFI/systemd/systemd-bootx64.efi'
+
+- name: add bootloader entries
+  become: true
+  ansible.builtin.template:
+    src: 'bootloader/loader-entry.conf.j2'
+    dest: '/boot/loader/entries/{{ item | kernel_package }}.conf'
+    mode: '755'
+  loop: '{{ kernels | to_kernel_list }}'
+
+- name: add bootloader fallback entries
+  become: true
+  ansible.builtin.template:
+    src: 'bootloader/loader-entry.conf.j2'
+    dest: '/boot/loader/entries/{{ item | kernel_package }}-fallback.conf'
+    mode: '755'
+  vars:
+    fallback_entry: true
+  loop: '{{ kernels | to_kernel_list }}'
+
+- name: bootloader config
+  become: true
+  ansible.builtin.template:
+    src: 'bootloader/loader.conf.j2'
+    dest: '/boot/loader/loader.conf'
+    mode: '755'
