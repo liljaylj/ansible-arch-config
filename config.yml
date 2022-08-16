@@ -26,6 +26,7 @@
     # TODO: wireguard
     - realtime
     - profile
+    - smartcard
     - ssh
     # - ly
     # - kmscon

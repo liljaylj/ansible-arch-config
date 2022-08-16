@@ -1,0 +1,18 @@
+# vim: ft=yaml.ansible
+---
+
+- name: install smartcard services
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - ccid
+      - opensc
+      - pcsc-tools
+
+- name: enable smartcard service socket
+  ansible.builtin.systemd:
+    name: 'pcscd.socket'
+    daemon_reload: true
+    enabled: true
