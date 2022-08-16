@@ -16,4 +16,5 @@
     name: archconfig
     user: '{{ archconfig_user.name | default("archconfig") }}'
     nopassword: true
+    runas: 'ALL:ALL'
     commands: ALL
