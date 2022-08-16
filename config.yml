@@ -45,6 +45,7 @@
     # - sway
     - plasma-desktop
     - apps_gui
+    - flatpak
     - tor
     - firefox
     - games
