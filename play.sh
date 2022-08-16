@@ -3,7 +3,7 @@
 set -Eeuo pipefail
 
 # install prerequisites
-ansible-galaxy collection install -r requirements.yml
+# ansible-galaxy collection install -r requirements.yml
 
 # play
 case "$1" in
