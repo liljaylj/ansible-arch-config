@@ -26,3 +26,11 @@
     creates: '/var/cache/pixelserv/ca.crt'
   notify:
     - add trust anchor
+
+- name: enable pixelserv-tls service
+  become: true
+  ansible.builtin.systemd:
+    name: 'pixelserv-tls.service'
+    daemon_reload: true
+    enabled: true
+    state: started
