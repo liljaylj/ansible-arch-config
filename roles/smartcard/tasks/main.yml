@@ -12,6 +12,7 @@
       - pcsc-tools
 
 - name: enable smartcard service socket
+  become: true
   ansible.builtin.systemd:
     name: 'pcscd.socket'
     daemon_reload: true
