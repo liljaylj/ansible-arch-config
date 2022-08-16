@@ -32,6 +32,7 @@
     - tmux
     - docker
     - kube-tools
+    - pixelserv-tls
     - apps_cli
     # hardware
     - audio
