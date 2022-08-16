@@ -1,12 +1,6 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: update package database
-  become: true
-  ansible.builtin.pacman:
-    update_cache: '{{ update_cache | default(false) }}'
-  when: update_cache is truthy
-
 - name: install packages
   become: true
   become_user: '{{ archconfig.user.name | default("archconfig") }}'
