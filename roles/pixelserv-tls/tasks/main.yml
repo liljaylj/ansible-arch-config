@@ -11,7 +11,6 @@
 - name: generate rsa private key
   become: true
   become_user: nobody
-  become_method: su
   become_flags: '-s /bin/bash'
   ansible.builtin.command:
     cmd: ['/usr/bin/openssl', 'genrsa', '-out', '/var/cache/pixelserv/ca.key', '2048']
@@ -20,7 +19,6 @@
 - name: generate rsa private key
   become: true
   become_user: nobody
-  become_method: su
   become_flags: '-s /bin/bash'
   ansible.builtin.command:
     cmd: ['/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key', '-new', '-x509', '-days', '3650',
