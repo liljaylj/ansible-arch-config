@@ -4,4 +4,4 @@
 - name: add trust anchor
   become: true
   ansible.builtin.command:
-    cmd: ['trust', 'anchor', '/var/cache/pixelserv/ca.crt']
+    argv: ['trust', 'anchor', '/var/cache/pixelserv/ca.crt']
