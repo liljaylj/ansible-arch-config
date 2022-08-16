@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install grub and breee theme
+- name: install grub and breeze theme
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
