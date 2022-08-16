@@ -11,7 +11,6 @@
     - ssd
     - sudoers
     - pacman
-    - paru
     - compilers
     - kernels
     - needrestart
@@ -25,7 +24,6 @@
     - firewalld
     - nextdns
     # TODO: wireguard
-    - pkgfile
     - realtime
     - profile
     - ssh
@@ -47,7 +45,7 @@
     - apps_gui
     - tor
     - firefox
-    - steam
+    - games
     # WARN: neet to refactor
     - printer
     - avahi
