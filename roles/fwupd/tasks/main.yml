@@ -11,13 +11,13 @@
 - name: enable lvfs remote
   become: true
   ansible.builtin.command:
-    argv: ['fwupdmgr', 'enable-remote', 'lvfs']
+    argv: ['fwupdmgr', '-v', '-y', 'enable-remote', 'lvfs']
   register: enable_lvfs_result
   changed_when: "'::changed()' in enable_lvfs_result.stdout"
 
 - name: enable vendor-directory remote
   become: true
   ansible.builtin.command:
-    argv: ['fwupdmgr', 'enable-remote', 'vendor-directory']
+    argv: ['fwupdmgr', '-v', '-y', 'enable-remote', 'vendor-directory']
   register: enable_vendor_result
   changed_when: "'::changed()' in enable_vendor_result.stdout"
