@@ -2,29 +2,34 @@
 ---
 
 - name: apply mirrorlist
+  become: true
   ansible.builtin.template:
     src: 'pacman/mirrorlist.j2'
     dest: '/etc/pacman.d/mirrorlist'
     mode: '644'
 
 - name: ensure pacman conf.d dir exists
+  become: true
   ansible.builtin.file:
     path: '/etc/pacman.d/conf.d'
     state: directory
     mode: '755'
 
 - name: import chaotic pacman key
+  become: true
   community.general.pacman_key:
     id: 'A3873AB27021C5DD39E0501AFBA220DFC880C036'
     keyserver: 'keyserver.ubuntu.com'
 
 - name: install chaotic mirrorlist and keyring
+  become: true
   ansible.builtin.pacman:
     name:
       - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
       - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 - name: apply pacman conf.d
+  become: true
   ansible.builtin.template:
     src: 'pacman/{{ item }}'
     dest: '/etc/pacman.d/conf.d/{{ item | splitext | first }}'
@@ -35,6 +40,7 @@
     - 50-chaotic.conf.j2
 
 - name: include conf.d to pacman.conf
+  become: true
   ansible.builtin.lineinfile:
     path: '/etc/pacman.conf'
     line: 'Include = /etc/pacman.d/conf.d/*.conf'
