@@ -16,6 +16,12 @@
     packages:
       - plasma
       - plasma-wayland-session
+      - xorg-xwayland
+      - wl-clipboard
+      - wl-clipboard-x11
+      - qt5-wayland
+      - qt6-wayland
+      - gtk-layer-shell
       # - sddm
       - breeze-grub  # TODO: set grub theme
       - xdg-desktop-portal
