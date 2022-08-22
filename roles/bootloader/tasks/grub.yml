@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install grub and breeze theme
+- name: Install grub and breeze theme
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -10,7 +10,7 @@
       - grub
       - breeze-grub
 
-- name: install grub efi application
+- name: Install grub efi application
   become: true
   ansible.builtin.command:
     cmd: 'grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB'
@@ -18,7 +18,7 @@
   notify:
     - generate grub configuration file
 
-- name: create .pacnew backup of grub options
+- name: Create .pacnew backup of grub options
   become: true
   ansible.builtin.copy:
     src: '/etc/default/grub'
@@ -27,7 +27,7 @@
     remote_src: true
     force: false
 
-- name: apply grub options
+- name: Apply grub options
   become: true
   ansible.builtin.template:
     src: 'bootloader/grub.j2'

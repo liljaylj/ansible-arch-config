@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install theme, cursors and icons
+- name: Install theme, cursors and icons
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg

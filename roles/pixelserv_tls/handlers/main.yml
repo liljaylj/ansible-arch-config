@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: add trust anchor
+- name: Add trust anchor
   become: true
   ansible.builtin.command:
     argv: ['trust', 'anchor', '/var/cache/pixelserv/ca.crt']

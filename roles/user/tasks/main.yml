@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: set up user
+- name: Set up user
   become: true
   ansible.builtin.user:
     name: '{{ user.name | mandatory }}'

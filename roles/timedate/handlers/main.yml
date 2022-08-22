@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: adjust clock to hardware clock
+- name: Adjust clock to hardware clock
   become: true
   ansible.builtin.command:
     cmd: 'hwclock --systohc'

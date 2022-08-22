@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install pixelxerv-tls
+- name: Install pixelxerv-tls
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: pixelserv-tls
 
-- name: generate rsa private key
+- name: Generate rsa private key
   become: true
   become_user: '{{ archconfig.user.name | default("archconfig") }}'
   ansible.builtin.command:
@@ -16,7 +16,7 @@
            '2048']
     creates: '/var/cache/pixelserv/ca.key'
 
-- name: generate local certificate
+- name: Generate local certificate
   become: true
   become_user: '{{ archconfig.user.name | default("archconfig") }}'
   ansible.builtin.command:
@@ -27,7 +27,7 @@
   notify:
     - add trust anchor
 
-- name: enable pixelserv-tls service
+- name: Enable pixelserv-tls service
   become: true
   ansible.builtin.systemd:
     name: 'pixelserv-tls.service'

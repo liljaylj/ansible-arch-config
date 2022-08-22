@@ -2,7 +2,7 @@
 ---
 
 # TODO: split cli/gui packages (maybe depends on DE/WM config option)
-- name: install printer support packages
+- name: Install printer support packages
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -25,7 +25,7 @@
       - splix
       - system-config-printer
 
-- name: add user to groups for printing
+- name: Add user to groups for printing
   ansible.builtin.include_role:
     name: utils
     tasks_from: user_add_group
@@ -34,7 +34,7 @@
       - lp
       - sys
 
-- name: enable cups socket
+- name: Enable cups socket
   become: true
   ansible.builtin.systemd:
     name: 'cups.socket'

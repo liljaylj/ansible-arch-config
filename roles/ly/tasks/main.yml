@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install ly display manager
+- name: Install ly display manager
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: ly
 
-- name: backup ly config as .pacnew
+- name: Backup ly config as .pacnew
   become: true
   ansible.builtin.copy:
     src: '/etc/ly/config.ini'
@@ -17,14 +17,14 @@
     remote_src: true
     force: false
 
-- name: apply ly config
+- name: Apply ly config
   become: true
   ansible.builtin.template:
     src: 'ly/config.ini.j2'
     dest: '/etc/ly/config.ini'
     mode: '755'
 
-- name: enable ly display manager
+- name: Enable ly display manager
   become: true
   ansible.builtin.systemd:
     name: 'ly'

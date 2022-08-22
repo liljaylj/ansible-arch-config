@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install realtime-privileges
+- name: Install realtime-privileges
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: realtime-privileges
 
-- name: add user to realtime group
+- name: Add user to realtime group
   ansible.builtin.include_role:
     name: utils
     tasks_from: user_add_group

@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install steam runtime and related
+- name: Install steam runtime and related
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -15,21 +15,21 @@
       - lib32-gamemode
       - gzdoom
 
-- name: add big picture desktop shortcut
+- name: Add big picture desktop shortcut
   become: true
   ansible.builtin.template:
     src: 'games/steam-bigpicture.desktop.j2'
     dest: '/usr/share/applications/steam-bigpicture.desktop'
     mode: '644'
 
-- name: apply gamemode config
+- name: Apply gamemode config
   become: true
   ansible.builtin.template:
     src: 'games/gamemode.ini.j2'
     dest: '/etc/gamemode.ini'
     mode: '644'
 
-- name: add user to input and gamemode group
+- name: Add user to input and gamemode group
   ansible.builtin.include_role:
     name: utils
     tasks_from: user_add_group

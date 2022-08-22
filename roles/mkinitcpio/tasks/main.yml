@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: apply mkinitcpio.conf
+- name: Apply mkinitcpio.conf
   become: true
   ansible.builtin.template:
     src: 'mkinitcpio/mkinitcpio.conf.j2'

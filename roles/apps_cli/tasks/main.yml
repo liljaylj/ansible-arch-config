@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install cli apps
+- name: Install cli apps
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg

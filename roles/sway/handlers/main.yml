@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: create blurred background image
+- name: Create blurred background image
   ansible.builtin.command:
     cmd: 'convert {{ xdg.home.data }}/sway/bg.jpg -blur 0x50
       -virtual-pixel edge {{ xdg.home.data }}/sway/bg-blurred.jpg'

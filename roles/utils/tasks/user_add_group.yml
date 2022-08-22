@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: 'add user to {{ new_groups }} groups'
+- name: 'Add user to {{ new_groups }} groups'
   become: true
   ansible.builtin.user:
     append: true

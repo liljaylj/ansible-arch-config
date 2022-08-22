@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install pipewire and dependencies
+- name: Install pipewire and dependencies
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -21,7 +21,7 @@
       - pulsemixer
       - playerctl
 
-- name: apply profile.d
+- name: Apply profile.d
   become: true
   ansible.builtin.template:
     src: 'audio/{{ item }}'
@@ -30,14 +30,14 @@
   with_items:
     - 60-pipewire.sh.j2
 
-# - name: apply playerctld service
+# - name: Apply playerctld service
 #   become: true
 #   ansible.builtin.template:
 #     src: 'audio/playerctld.service.j2'
 #     dest: '/etc/systemd/user/playerctld.service'
 #     mode: '644'
 #
-# - name: enable playerctld service
+# - name: Enable playerctld service
 #   ansible.builtin.systemd:
 #     daemon_reload: true
 #     name: playerctld.service

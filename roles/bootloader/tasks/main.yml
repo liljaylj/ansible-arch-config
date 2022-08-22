@@ -1,10 +1,10 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: set up grub
+- name: Set up grub
   when: bootloader.grub | default(true)
   ansible.builtin.include_tasks: grub.yml
 
-- name: set up systemd-boot
+- name: Set up systemd-boot
   when: not (bootloader.grub | default(true))
   ansible.builtin.include_tasks: systemd-boot.yml

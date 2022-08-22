@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: set vconsole keyboard layout
+- name: Set vconsole keyboard layout
   ansible.builtin.lineinfile:
     regexp: '^[ #]*KEYMAP='
     line: 'KEYMAP={{ vconsole.keymap | default("us") }}'
@@ -9,14 +9,14 @@
     create: true
     mode: '644'
 
-- name: install terminus font
+- name: Install terminus font
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: terminus-font
 
-- name: set vconsole font
+- name: Set vconsole font
   ansible.builtin.lineinfile:
     regexp: '^[ #]*FONT='
     line: 'FONT={{ vconsole.font }}'
@@ -25,14 +25,14 @@
     mode: '644'
   when: vconsole.font is defined
 
-- name: install general purpose mouse
+- name: Install general purpose mouse
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: gpm
 
-- name: enable mouse support
+- name: Enable mouse support
   become: true
   ansible.builtin.systemd:
     name: 'gpm.service'

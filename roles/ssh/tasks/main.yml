@@ -1,28 +1,28 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install openssh
+- name: Install openssh
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: openssh
 
-- name: apply ssh_config
+- name: Apply ssh_config
   become: true
   ansible.builtin.template:
     src: 'ssh/ssh_config.j2'
     dest: '/etc/ssh/ssh_config'
     mode: '644'
 
-- name: ssh agent systemd service file
+- name: Ssh agent systemd service file
   become: true
   ansible.builtin.template:
     src: 'ssh/ssh-agent.service.j2'
     dest: '/etc/systemd/user/ssh-agent.service'
     mode: '644'
 
-- name: start ssh agent service
+- name: Start ssh agent service
   ansible.builtin.systemd:
     name: 'ssh-agent'
     daemon_reload: true
@@ -30,13 +30,13 @@
     state: started
     scope: user
 
-- name: create user ssh dir
+- name: Create user ssh dir
   ansible.builtin.file:
     path: '{{ "~/.ssh" | expanduser }}'
     state: directory
     mode: '700'
 
-- name: copy ssh key
+- name: Copy ssh key
   ansible.builtin.copy:
     src: 'files/{{ item.path }}'
     dest: '{{ ["~/.ssh", item.path] | path_join | expanduser }}'

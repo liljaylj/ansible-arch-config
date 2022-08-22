@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: create logind config dir
+- name: Create logind config dir
   become: true
   ansible.builtin.file:
     path: '/etc/systemd/logind.conf.d'
     state: directory
     mode: '755'
 
-- name: apply logind configs
+- name: Apply logind configs
   become: true
   ansible.builtin.template:
     src: '{{ item }}'
@@ -20,14 +20,14 @@
       - logind/keys.conf.j2
   loop: '{{ templates }}'
 
-- name: create tmpfiles.d config dir
+- name: Create tmpfiles.d config dir
   become: true
   ansible.builtin.file:
     path: '/etc/tmpfiles.d'
     state: directory
     mode: '755'
 
-- name: apply tmpfiles.d configs
+- name: Apply tmpfiles.d configs
   become: true
   ansible.builtin.template:
     src: '{{ item }}'

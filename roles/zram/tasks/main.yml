@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: zram swap
+- name: Zram swap
   become: true
   ansible.builtin.ini_file:
     dest: '/etc/systemd/zram-generator.conf'
@@ -10,7 +10,7 @@
     mode: '644'
   when: swap | default(true)
 
-- name: zram swap service
+- name: Zram swap service
   become: true
   ansible.builtin.systemd:
     name: 'systemd-zram-setup@zram0.service'
@@ -18,7 +18,7 @@
     enabled: true
   when: swap | default(true)
 
-- name: set swappiness
+- name: Set swappiness
   become: true
   ansible.posix.sysctl:
     name: 'vm.swappiness'

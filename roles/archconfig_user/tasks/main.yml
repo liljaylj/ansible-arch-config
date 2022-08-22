@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: archconfig user
+- name: Archconfig user
   become: true
   ansible.builtin.user:
     name: '{{ archconfig_user.name | default("archconfig") }}'
@@ -10,7 +10,7 @@
     home: '{{ archconfig_user.home | default("/var/lib/archconfig") }}'
     create_home: true
 
-- name: add archconfig user to sudoers
+- name: Add archconfig user to sudoers
   become: true
   community.general.sudoers:
     name: archconfig
