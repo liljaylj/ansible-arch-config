@@ -13,6 +13,8 @@
       - npm
       - clang
       - php
+      - php7
+      - xdebug
       - composer
       - jdk-openjdk
       - jdk17-openjdk
