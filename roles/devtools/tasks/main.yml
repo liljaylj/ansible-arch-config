@@ -61,7 +61,7 @@
 - name: apply profile.d
   become: true
   ansible.builtin.template:
-    src: 'develop/{{ item }}'
+    src: 'devtools/{{ item }}'
     dest: '/etc/profile.d/{{ item | splitext | first }}'
     mode: '644'
   with_items:
