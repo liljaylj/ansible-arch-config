@@ -53,8 +53,6 @@
       - pacman-contrib  # libalpm utils
       - pkgstats  # auto-submit and view archlinux package statistics
       - asp  # arch build sources management
-      - devtools  # arch package build tools
-      - namcap  # arch package analysis
       - expac  # query pacman database
       - downgrade  # ability to downgrade package(s)
       - reflector  # update archlinux mirrorlist
