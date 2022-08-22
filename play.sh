@@ -18,3 +18,6 @@ case "$1" in
 esac
 
 ansible-playbook -i hosts.yml config.yml -e@.vars.yml "${vault_args[@]}"
+
+# need restart ?
+/usr/bin/needrestart -b | { /usr/bin/grep --color=always -E '((KSTA|UCSTA): [023])|SVC:|SESS:' || /usr/bin/test $? = 1; }
