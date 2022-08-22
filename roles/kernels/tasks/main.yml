@@ -8,6 +8,13 @@
   vars:
     packages: '{{ kernels | to_kernel_list | map("kernel_package") }}'
 
+- name: install extra kernel packages (modules, etc)
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages: '{{ [kernel_extra_modules] | flatten }}'
+
 - name: install microcode
   ansible.builtin.include_role:
     name: utils
