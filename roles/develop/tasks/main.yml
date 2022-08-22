@@ -16,6 +16,22 @@
       - composer
       - jdk-openjdk
       - jdk17-openjdk
+      ## libs
+      - python-aiohttp  # needed for codestats-relay
+      ## lsp
+      - lua-language-server
+      - stylua
+      - bash-language-server
+      - shellcheck
+      - shfmt
+      - ansible-language-server
+      - ansible-lint
+      ### tools
+      - aws-cli
+      - web-ext  # web extension developer tools
+      ## arch linux packaging
+      - devtools  # arch package build tools
+      - namcap  # arch package analysis
 
 - name: stable rust toolchain as default
   ansible.builtin.command:
