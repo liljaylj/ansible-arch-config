@@ -27,6 +27,7 @@
     # TODO: wireguard
     - realtime
     - profile
+    - power_management
     - smartcard
     - ssh
     # - ly
