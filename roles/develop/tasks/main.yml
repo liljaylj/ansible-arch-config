@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install compilers
+- name: install developer tools
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -43,7 +43,7 @@
 - name: apply profile.d
   become: true
   ansible.builtin.template:
-    src: 'compilers/{{ item }}'
+    src: 'develop/{{ item }}'
     dest: '/etc/profile.d/{{ item | splitext | first }}'
     mode: '644'
   with_items:
