@@ -19,3 +19,12 @@
       - hyphen-ru
       - firefox-tridactyl-native-bin
       - xdg-desktop-portal-gtk
+
+- name: Apply profile.d
+  become: true
+  ansible.builtin.template:
+    src: 'firefox/{{ item }}'
+    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    mode: '644'
+  with_items:
+    - 60-firefox.sh.j2
