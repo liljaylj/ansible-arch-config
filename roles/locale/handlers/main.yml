@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: locale gen
+- name: Locale gen
   become: true
   ansible.builtin.command:
     cmd: 'locale-gen'

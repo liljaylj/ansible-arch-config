@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install tmux
+- name: Install tmux
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: tmux
 
-- name: apply tmux.conf
+- name: Apply tmux.conf
   become: true
   ansible.builtin.template:
     src: 'tmux/tmux.conf.j2'

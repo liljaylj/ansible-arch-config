@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install snapper and pacman/grub addons
+- name: Install snapper and pacman/grub addons
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -14,7 +14,7 @@
       - snap-pac-grub
       - snapper-rollback
 
-- name: ensure snapshots folder
+- name: Ensure snapshots folder
   become: true
   ansible.builtin.file:
     path: '/.snapshots'
@@ -22,35 +22,35 @@
     group: 'wheel'
     mode: '750'
 
-- name: apply config for root
+- name: Apply config for root
   become: true
   ansible.builtin.template:
     src: 'snapper/root.j2'
     dest: '/etc/snapper/configs/root'
     mode: '640'
 
-- name: apply snapper config
+- name: Apply snapper config
   become: true
   ansible.builtin.template:
     src: 'snapper/snapper.j2'
     dest: '/etc/conf.d/snapper'
     mode: '640'
 
-- name: apply grub-btrfs config
+- name: Apply grub-btrfs config
   become: true
   ansible.builtin.template:
     src: 'snapper/grub-btrfs.j2'
     dest: '/etc/default/grub-btrfs/config'
     mode: '644'
 
-- name: enable snapper systemd timer
+- name: Enable snapper systemd timer
   become: true
   ansible.builtin.systemd:
     name: 'snapper-timeline.timer'
     daemon_reload: true
     enabled: true
 
-- name: enable snapper cleanup systemd timer
+- name: Enable snapper cleanup systemd timer
   become: true
   ansible.builtin.systemd:
     name: 'snapper-cleanup.timer'

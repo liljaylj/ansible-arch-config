@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install z shell
+- name: Install z shell
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: zsh
 
-- name: apply zshenv
+- name: Apply zshenv
   become: true
   ansible.builtin.template:
     src: 'zsh/zshenv.j2'

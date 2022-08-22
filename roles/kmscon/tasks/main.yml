@@ -1,21 +1,21 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install kmscon
+- name: Install kmscon
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: kmscon
 
-- name: disable agetty on tty2
+- name: Disable agetty on tty2
   become: true
   ansible.builtin.systemd:
     name: 'getty@tty2.service'
     daemon_reload: true
     enabled: '{{ not (kmscon is defined and kmscon is truthy) }}'
 
-- name: enable kmscon on tty2
+- name: Enable kmscon on tty2
   become: true
   ansible.builtin.systemd:
     name: 'kmsconvt@tty2.service'

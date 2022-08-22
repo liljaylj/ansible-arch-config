@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install noto, fira-code, nerd and twemoji fonts
+- name: Install noto, fira-code, nerd and twemoji fonts
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -12,14 +12,14 @@
       - ttf-nerd-fonts-symbols
       - ttf-twemoji
 
-- name: link nerd fonts config
+- name: Link nerd fonts config
   become: true
   ansible.builtin.file:
     src: '/usr/share/fontconfig/conf.avail/10-nerd-font-symbols.conf'
     dest: '/etc/fonts/conf.d/10-nerd-font-symbols.conf'
     state: link
 
-- name: link twemoji config
+- name: Link twemoji config
   become: true
   ansible.builtin.file:
     src: '/usr/share/fontconfig/conf.avail/75-twemoji.conf'

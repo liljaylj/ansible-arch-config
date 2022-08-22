@@ -1,21 +1,21 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install nextdns
+- name: Install nextdns
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: nextdns
 
-- name: apply nextdns config
+- name: Apply nextdns config
   become: true
   ansible.builtin.template:
     src: 'nextdns/nextdns.conf.j2'
     dest: '/etc/nextdns.conf'
     mode: '644'
 
-- name: enable nextdns service
+- name: Enable nextdns service
   become: true
   ansible.builtin.systemd:
     name: 'nextdns.service'

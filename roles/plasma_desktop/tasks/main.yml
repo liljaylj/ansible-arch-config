@@ -1,6 +1,6 @@
 # vim: ft=yaml.ansible
 ---
-- name: install git version of sddm
+- name: Install git version of sddm
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -8,7 +8,7 @@
     packages:
       - sddm-git  # TODO: use this, when upstream released and move it to task below
 
-- name: install plasma-desktop
+- name: Install plasma-desktop
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -68,7 +68,7 @@
       - discover
       - packagekit-qt5
 
-- name: create SDDM config dir
+- name: Create SDDM config dir
   become: true
   ansible.builtin.file:
     dest: '/etc/sddm.conf.d'
@@ -76,21 +76,21 @@
     mode: '755'
 
 # TODO: wayland version, auto-unlock kwallet
-- name: apply default SDDM config
+- name: Apply default SDDM config
   become: true
   ansible.builtin.template:
-    src: 'plasma-desktop/00-default.conf.j2'
+    src: 'plasma_desktop/00-default.conf.j2'
     dest: '/etc/sddm.conf.d/00-default.conf'
     mode: '644'
 
-- name: rotate second monitor
+- name: Rotate second monitor
   become: true
   ansible.builtin.template:
-    src: 'plasma-desktop/Xsetup.j2'
+    src: 'plasma_desktop/Xsetup.j2'
     dest: '/usr/share/sddm/scripts/Xsetup'
     mode: '755'
 
-- name: link AccountService user avatar to .face
+- name: Link AccountService user avatar to .face
   become: true
   ansible.builtin.file:
     src: '/var/lib/AccountsService/icons/{{ user.name }}'
@@ -99,7 +99,7 @@
     follow: false
     force: true
 
-- name: enable SDDM
+- name: Enable SDDM
   become: true
   ansible.builtin.systemd:
     name: 'sddm.service'

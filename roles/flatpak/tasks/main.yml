@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install flatpak
+- name: Install flatpak
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -12,13 +12,13 @@
       - flatpak-xdg-utils
       - flatseal
 
-- name: add flathub remote
+- name: Add flathub remote
   become: true
   community.general.flatpak_remote:
     name: flathub
     flatpakrepo_url: 'https://flathub.org/repo/flathub.flatpakrepo'
 
-- name: install flatpak apps
+- name: Install flatpak apps
   become: true
   community.general.flatpak:
     name: '{{ apps.flatpak }}'

@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install libvirt
+- name: Install libvirt
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -19,14 +19,14 @@
       - virt-install
       - vagrant
 
-- name: apply libvirt profile.d
+- name: Apply libvirt profile.d
   become: true
   ansible.builtin.template:
     src: 'virtualization/50-libvirt.sh.j2'
     dest: '/etc/profile.d/50-libvirt.sh'
     mode: '644'
 
-- name: add user to libvirt group
+- name: Add user to libvirt group
   ansible.builtin.include_role:
     name: utils
     tasks_from: user_add_group

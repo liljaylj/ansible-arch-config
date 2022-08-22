@@ -1,21 +1,21 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install fwupd
+- name: Install fwupd
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
   vars:
     packages: fwupd
 
-- name: enable lvfs remote
+- name: Enable lvfs remote
   become: true
   ansible.builtin.command:
     argv: ['fwupdmgr', '-v', '-y', 'enable-remote', 'lvfs']
   register: enable_lvfs_result
   changed_when: "'::changed()' in enable_lvfs_result.stdout"
 
-- name: enable vendor-directory remote
+- name: Enable vendor-directory remote
   become: true
   ansible.builtin.command:
     argv: ['fwupdmgr', '-v', '-y', 'enable-remote', 'vendor-directory']

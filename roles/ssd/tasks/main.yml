@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: enable periodic trim
+- name: Enable periodic trim
   ansible.builtin.systemd:
     name: fstrim.timer
     enabled: true

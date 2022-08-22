@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install developer tools
+- name: Install developer tools
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -35,13 +35,13 @@
       - devtools  # arch package build tools
       - namcap  # arch package analysis
 
-- name: stable rust toolchain as default
+- name: Stable rust toolchain as default
   ansible.builtin.command:
     cmd: 'rustup default stable'
   register: install_result
   changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
 
-- name: set default java toolchain
+- name: Set default java toolchain
   become: true
   vars:
     java_version: 'java-17-openjdk'
@@ -58,7 +58,7 @@
   register: set_java_result
   changed_when: "'changed' in set_java_result.stdout"
 
-- name: apply profile.d
+- name: Apply profile.d
   become: true
   ansible.builtin.template:
     src: 'devtools/{{ item }}'

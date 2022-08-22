@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install samba
+- name: Install samba
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -10,7 +10,7 @@
       - samba
       - wsdd2
 
-- name: permit traffic for samba in home zone
+- name: Permit traffic for samba in home zone
   become: true
   ansible.posix.firewalld:
     zone: '{{ item.0 }}'
@@ -27,20 +27,20 @@
       - netbios-ns
   loop: '{{ zones | product(services) | list }}'
 
-- name: create sambashare group
+- name: Create sambashare group
   become: true
   ansible.builtin.group:
     name: sambashare
     system: true
 
-- name: add user to sambashare group
+- name: Add user to sambashare group
   ansible.builtin.include_role:
     name: utils
     tasks_from: user_add_group
   vars:
     new_groups: sambashare
 
-- name: create usershares folder
+- name: Create usershares folder
   become: true
   ansible.builtin.file:
     path: '/var/lib/samba/usershares'
@@ -49,14 +49,14 @@
     owner: root
     group: sambashare
 
-- name: apply smb.conf
+- name: Apply smb.conf
   become: true
   ansible.builtin.template:
     src: 'samba/smb.conf.j2'
     dest: '/etc/samba/smb.conf'
     mode: '644'
 
-- name: enable samba services
+- name: Enable samba services
   become: true
   ansible.builtin.systemd:
     name: '{{ item }}'
@@ -69,7 +69,7 @@
       - 'wsdd2.service'
   loop: '{{ units }}'
 
-- name: set user's samba password
+- name: Set user's samba password
   become: true
   ansible.builtin.shell: |
     set -e -o pipefail

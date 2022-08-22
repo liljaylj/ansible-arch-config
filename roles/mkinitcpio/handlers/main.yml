@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: run mkinitcpio
+- name: Run mkinitcpio
   become: true
   ansible.builtin.command:
     cmd: 'mkinitcpio -P'

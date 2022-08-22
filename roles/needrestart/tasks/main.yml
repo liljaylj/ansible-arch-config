@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install needrestart
+- name: Install needrestart
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -10,14 +10,14 @@
       - needrestart  # restart services after libraries update
       - iucode-tool  # detect ucode
 
-- name: ensure that hook dir exists
+- name: Ensure that hook dir exists
   become: true
   ansible.builtin.file:
     path: '/etc/pacman.d/hooks'
     state: directory
     mode: '755'
 
-- name: apply needrestart pacman hook
+- name: Apply needrestart pacman hook
   become: true
   ansible.builtin.template:
     src: 'needrestart/zz-needrestart.hook.j2'

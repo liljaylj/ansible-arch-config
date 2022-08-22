@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install kubectl and krew
+- name: Install kubectl and krew
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -12,14 +12,14 @@
       - kustomize
       - kubectl-convert-bin
 
-- name: list installed krew plugins
+- name: List installed krew plugins
   ansible.builtin.shell:
     executable: 'bash'
     cmd: 'kubectl krew update && kubectl krew list'
   changed_when: false
   register: krew_list_result
 
-- name: install krew plugins
+- name: Install krew plugins
   vars:
     plugins: '{{ [krew_plugins] | flatten | difference(krew_list_result.stdout_lines) }}'
   ansible.builtin.command:
@@ -28,7 +28,7 @@
   changed_when: (plugins | length) > 0
   when: krew_plugins is defined and (krew_plugins | length) > 0 and (plugins | length) > 0
 
-- name: upgrade krew plugins
+- name: Upgrade krew plugins
   ansible.builtin.command:
     cmd: 'kubectl krew upgrade'
   register: krew_upgrade_result

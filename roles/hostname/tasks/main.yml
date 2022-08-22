@@ -1,14 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: define hostname
+- name: Define hostname
   become: true
   ansible.builtin.copy:
     content: "{{ hostname }}\n"
     dest: '/etc/hostname'
     mode: '644'
 
-- name: apply hosts file
+- name: Apply hosts file
   become: true
   ansible.builtin.template:
     src: 'hostname/hosts.j2'

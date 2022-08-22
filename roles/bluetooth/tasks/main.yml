@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: install bluetooth packages
+- name: Install bluetooth packages
   ansible.builtin.include_role:
     name: utils
     tasks_from: install_pkg
@@ -12,7 +12,7 @@
       - bluez-hid2hci
       - bluez-cups
 
-- name: backup bluetooth config as .pacnew
+- name: Backup bluetooth config as .pacnew
   become: true
   ansible.builtin.copy:
     src: '/etc/bluetooth/main.conf'
@@ -21,28 +21,28 @@
     remote_src: true
     force: false
 
-- name: apply bluetooth config
+- name: Apply bluetooth config
   become: true
   ansible.builtin.template:
     src: 'bluetooth/bluetooth-main.conf.j2'
     dest: '/etc/bluetooth/main.conf'
     mode: '644'
 
-- name: enable bluetooth service
+- name: Enable bluetooth service
   become: true
   ansible.builtin.systemd:
     name: bluetooth.service
     enabled: true
     state: started
 
-- name: apply mpris-proxy service
+- name: Apply mpris-proxy service
   become: true
   ansible.builtin.template:
     src: 'bluetooth/mpris-proxy.service.j2'
     dest: '/etc/systemd/user/mpris-proxy.service'
     mode: '644'
 
-- name: enable mpris-proxy service
+- name: Enable mpris-proxy service
   ansible.builtin.systemd:
     daemon_reload: true
     name: mpris-proxy.service

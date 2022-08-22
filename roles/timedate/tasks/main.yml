@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: enable ntp
+- name: Enable ntp
   become: true
   ansible.builtin.shell:
     executable: /bin/bash
@@ -17,7 +17,7 @@
   notify:
     - adjust clock to hardware clock
 
-- name: 'set time zone to {{ timezone | default("UTC") }}'
+- name: 'Set time zone to {{ timezone | default("UTC") }}'
   become: true
   ansible.builtin.file:
     src: '{{ ["/usr/share/zoneinfo", timezone | default("UTC")] | path_join }}'
