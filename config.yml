@@ -12,7 +12,7 @@
     - sudoers
     - pacman
     - fwupd
-    - compilers
+    - develop
     - kernels
     - needrestart
     - mkinitcpio
