@@ -33,9 +33,9 @@
       - git-extras
       - cocogitto  # lint conventional commits
       ### tools
-      - aws-cli
       - github-cli
       - glab
+      - aws-cli-v2-bin  # AWS cli
       - web-ext  # web extension developer tools
       ## arch linux packaging
       - devtools  # arch package build tools
