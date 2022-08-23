@@ -28,8 +28,14 @@
       - shfmt
       - ansible-language-server
       - ansible-lint
+      ### git
+      - git-delta  # modern diff
+      - git-extras
+      - cocogitto  # lint conventional commits
       ### tools
       - aws-cli
+      - github-cli
+      - glab
       - web-ext  # web extension developer tools
       ## arch linux packaging
       - devtools  # arch package build tools
