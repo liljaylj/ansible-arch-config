@@ -16,7 +16,7 @@
     cmd: 'grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB'
     creates: '/boot/grub/x86_64-efi/'
   notify:
-    - generate grub configuration file
+    - Generate grub configuration file
 
 - name: Create .pacnew backup of grub options
   become: true
@@ -34,4 +34,4 @@
     dest: '/etc/default/grub'
     mode: '644'
   notify:
-    - generate grub configuration file
+    - Generate grub configuration file

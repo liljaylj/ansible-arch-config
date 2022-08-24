@@ -25,7 +25,7 @@
            '-subj', '/CN=Pixelserv CA']
     creates: '/var/cache/pixelserv/ca.crt'
   notify:
-    - add trust anchor
+    - Add trust anchor
 
 - name: Enable pixelserv-tls service
   become: true
