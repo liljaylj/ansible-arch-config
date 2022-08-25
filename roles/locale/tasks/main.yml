@@ -9,7 +9,7 @@
     mode: '644'
   register: locales_result
   notify:
-    - locale gen
+    - Locale gen
 
 - name: Set locale lang
   become: true
