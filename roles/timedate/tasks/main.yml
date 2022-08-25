@@ -15,7 +15,7 @@
   register: set_ntp_result
   changed_when: '"set-ntp-success" in set_ntp_result.stdout'
   notify:
-    - adjust clock to hardware clock
+    - Adjust clock to hardware clock
 
 - name: 'Set time zone to {{ timezone | default("UTC") }}'
   become: true
@@ -25,4 +25,4 @@
     state: link
   register: timezone_result
   notify:
-    - adjust clock to hardware clock
+    - Adjust clock to hardware clock

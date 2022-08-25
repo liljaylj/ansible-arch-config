@@ -8,4 +8,4 @@
     dest: '/etc/mkinitcpio.conf'
     mode: '644'
   notify:
-    - run mkinitcpio
+    - Run mkinitcpio

@@ -60,7 +60,7 @@
     src: 'bg.jpg'
     dest: '{{ xdg.home.data }}/sway/bg.jpg'
     mode: '644'
-  notify: create blurred background image
+  notify: Create blurred background image
 
 - name: Apply sway utils systemd services
   become: true
