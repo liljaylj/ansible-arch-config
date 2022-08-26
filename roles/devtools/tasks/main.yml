@@ -28,6 +28,16 @@
       - shfmt
       - ansible-language-server
       - ansible-lint
+      - pyright
+      - python-lsp-server
+      - python-mccabe
+      - python-pycodestyle
+      - python-pydocstyle
+      - python-pyflakes
+      - python-pylint
+      - python-rope
+      - yapf
+      - python-whatthepatch
       ### git
       - git-delta  # modern diff
       - git-extras
