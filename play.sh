@@ -13,7 +13,7 @@ fi
 case "$yn" in
 [Yy] | '')
     set -x
-    sudo paru -Syu
+    paru -Syu
     sudo flatpak update
     set +x
     ;;
