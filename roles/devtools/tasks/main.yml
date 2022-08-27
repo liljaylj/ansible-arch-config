@@ -53,9 +53,23 @@
       - devtools  # arch package build tools
       - namcap  # arch package analysis
 
-- name: Stable rust toolchain as default
+- name: Install rust toolchains
+  vars:
+    rust_toolchains:
+      - stable
+      - nightly
+  ansible.builtin.shell:
+    executable: '/bin/bash'
+    cmd: 'rustup install {{ rust_toolchains | join(" ") }} | grep unchanged || true'
+  register: install_toolchains_result
+  changed_when: '(install_toolchains_result.stdout_lines | length) != (rust_toolchains | length)'
+
+
+- name: Set default rust toolchain
+  vars:
+    rust_default_toolchain: nightly
   ansible.builtin.command:
-    cmd: 'rustup default stable'
+    cmd: 'rustup default {{ rust_default_toolchain }}'
   register: install_result
   changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
 
