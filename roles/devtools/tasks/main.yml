@@ -8,6 +8,7 @@
   vars:
     packages:
       - rustup
+      - rust-analyzer
       - go
       - nodejs
       - npm
