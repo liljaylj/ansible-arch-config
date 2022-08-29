@@ -12,6 +12,15 @@
       - docker-scan
       - skopeo
 
+- name: Apply profile.d
+  become: true
+  ansible.builtin.template:
+    src: 'docker/{{ item }}'
+    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    mode: '644'
+  with_items:
+    - 50-docker.sh.j2
+
 - name: Add user to docker group
   ansible.builtin.include_role:
     name: utils
