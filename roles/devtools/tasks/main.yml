@@ -49,6 +49,7 @@
       - git-delta  # modern diff
       - git-extras
       - cocogitto  # lint conventional commits
+      - lazygit
       ### tools
       - github-cli
       - glab
