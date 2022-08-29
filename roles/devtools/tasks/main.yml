@@ -18,6 +18,7 @@
       ## php extensions
       - php7-gd
       - php7-pgsql
+      - php7-sqlite
       - php7-redis
       ## end php extensions
       - xdebug
