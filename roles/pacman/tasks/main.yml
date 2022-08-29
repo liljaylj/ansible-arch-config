@@ -25,8 +25,15 @@
   become: true
   ansible.builtin.pacman:
     name:
-      - 'https://geo-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-      - 'https://geo-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+      - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+      - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+
+- name: Apply chaotic mirrorlist
+  become: true
+  ansible.builtin.template:
+    src: 'pacman/chaotic-mirrorlist.j2'
+    dest: '/etc/pacman.d/chaotic-mirrorlist'
+    mode: '644'
 
 - name: Apply pacman conf.d
   become: true
