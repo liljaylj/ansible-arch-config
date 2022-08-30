@@ -32,3 +32,14 @@
     tasks_from: user_add_group
   vars:
     new_groups: libvirt
+
+- name: Enable libvirt services
+  become: true
+  ansible.builtin.systemd:
+    name: '{{ item }}'
+    daemon_reload: true
+    enabled: true
+  with_items:
+    - 'libvirtd.socket'
+    - 'virtlogd.socket'
+    - 'virtlockd.socket'
