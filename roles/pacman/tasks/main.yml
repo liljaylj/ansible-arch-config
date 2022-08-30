@@ -21,13 +21,6 @@
     id: 'A3873AB27021C5DD39E0501AFBA220DFC880C036'
     keyserver: 'keyserver.ubuntu.com'
 
-- name: Install chaotic mirrorlist and keyring
-  become: true
-  ansible.builtin.pacman:
-    name:
-      - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-      - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-
 - name: Apply chaotic mirrorlist
   become: true
   ansible.builtin.template:
@@ -51,6 +44,15 @@
   ansible.builtin.lineinfile:
     path: '/etc/pacman.conf'
     line: 'Include = /etc/pacman.d/conf.d/*.conf'
+
+- name: Install chaotic mirrorlist and keyring
+  become: true
+  ansible.builtin.pacman:
+    name:
+      - chaotic-keyring
+      - chaotic-mirrorlist
+      # - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+      # - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 - name: Install libalpm packages
   become: true
