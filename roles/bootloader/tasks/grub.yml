@@ -18,15 +18,6 @@
   notify:
     - Generate grub configuration file
 
-- name: Create .pacnew backup of grub options
-  become: true
-  ansible.builtin.copy:
-    src: '/etc/default/grub'
-    dest: '/etc/default/grub.pacnew'
-    mode: preserve
-    remote_src: true
-    force: false
-
 - name: Apply grub options
   become: true
   ansible.builtin.template:
