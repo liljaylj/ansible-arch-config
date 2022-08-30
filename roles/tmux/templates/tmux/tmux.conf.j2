@@ -4,3 +4,7 @@ if-shell 'test "$(tput colors)" -lt 256' 'set -g default-terminal screen'
 
 # fix vim colors in tmux
 set -ag terminal-overrides ',linux:Tc'
+
+# copy/paste to/from system clipboard
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "wl-copy"
+bind-key P run "wl-paste -n | tmux load-buffer - ; tmux paste-buffer"
