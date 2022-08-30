@@ -33,6 +33,7 @@
     new_groups:
       - lp
       - sys
+      - cups
 
 - name: Enable cups socket
   become: true
