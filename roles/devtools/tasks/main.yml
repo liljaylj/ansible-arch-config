@@ -59,6 +59,8 @@
       ## arch linux packaging
       - devtools  # arch package build tools
       - namcap  # arch package analysis
+      ## database management tools
+      - pgcli
 
 - name: Install rust toolchains
   vars:
