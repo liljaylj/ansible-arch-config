@@ -8,15 +8,6 @@
   vars:
     packages: ly
 
-- name: Backup ly config as .pacnew
-  become: true
-  ansible.builtin.copy:
-    src: '/etc/ly/config.ini'
-    dest: '/etc/ly/config.ini.pacnew'
-    mode: preserve
-    remote_src: true
-    force: false
-
 - name: Apply ly config
   become: true
   ansible.builtin.template:
