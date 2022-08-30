@@ -12,12 +12,12 @@
       - bluez-hid2hci
       - bluez-cups
 
-- name: Apply bluetooth config
-  become: true
-  ansible.builtin.template:
-    src: 'bluetooth/bluetooth-main.conf.j2'
-    dest: '/etc/bluetooth/main.conf'
-    mode: '644'
+# - name: Apply bluetooth config
+#   become: true
+#   ansible.builtin.template:
+#     src: 'bluetooth/bluetooth-main.conf.j2'
+#     dest: '/etc/bluetooth/main.conf'
+#     mode: '644'
 
 - name: Enable bluetooth service
   become: true
