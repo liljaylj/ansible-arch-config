@@ -33,6 +33,14 @@
   vars:
     new_groups: libvirt
 
+- name: Add libvirt-qemu user ACL to home dir
+  ansible.posix.acl:
+    path: '{{ "~" | expanduser }}'
+    entity: libvirt-qemu
+    etype: user
+    permissions: x
+    state: present
+
 - name: Enable libvirt services
   become: true
   ansible.builtin.systemd:
