@@ -2,5 +2,6 @@
 ---
 
 - name: Generate grub configuration file
+  become: true
   ansible.builtin.command:
     cmd: 'grub-mkconfig -o /boot/grub/grub.cfg'
