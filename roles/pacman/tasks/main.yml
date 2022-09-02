@@ -48,6 +48,7 @@
 - name: Install chaotic mirrorlist and keyring
   become: true
   ansible.builtin.pacman:
+    update_cache: true
     name:
       - chaotic-keyring
       - chaotic-mirrorlist
@@ -57,7 +58,6 @@
 - name: Install libalpm packages
   become: true
   ansible.builtin.pacman:
-    update_cache: true
     name:
       - pacman-contrib  # libalpm utils
       - pkgstats  # auto-submit and view archlinux package statistics
