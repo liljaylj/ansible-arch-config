@@ -4,19 +4,19 @@
 # run.  Advanced users may wish to specify all system modules
 # in this array.  For instance:
 #     MODULES=(piix ide_disk reiserfs)
-MODULES=({{ [archinstall.mkinitcpio.modules | default('')] | flatten | join(' ') }})
+MODULES=({{ [mkinitcpio.modules | default('')] | flatten | join(' ') }})
 
 # BINARIES
 # This setting includes any additional binaries a given user may
 # wish into the CPIO image.  This is run last, so it may be used to
 # override the actual binaries included by a given hook
 # BINARIES are dependency parsed, so you may safely ignore libraries
-BINARIES=({{ [archinstall.mkinitcpio.binaries | default('')] | flatten | join(' ') }})
+BINARIES=({{ [mkinitcpio.binaries | default('')] | flatten | join(' ') }})
 
 # FILES
 # This setting is similar to BINARIES above, however, files are added
 # as-is and are not parsed in any way.  This is useful for config files.
-FILES=({{ [archinstall.mkinitcpio.files | default('')] | flatten | join(' ') }})
+FILES=({{ [mkinitcpio.files | default('')] | flatten | join(' ') }})
 
 # HOOKS
 # This is the most important setting in this file.  The HOOKS control the
@@ -49,7 +49,7 @@ FILES=({{ [archinstall.mkinitcpio.files | default('')] | flatten | join(' ') }})
 #
 ##   NOTE: If you have /usr on a separate partition, you MUST include the
 #    usr, fsck and shutdown hooks.
-HOOKS=({{ [archinstall.mkinitcpio.hooks | default('base consolefont udev autodetect modconf block filesystems keyboard fsck')] | flatten | join(' ') }})
+HOOKS=({{ [mkinitcpio.hooks | default('base consolefont udev autodetect modconf block filesystems keyboard fsck')] | flatten | join(' ') }})
 
 # COMPRESSION
 # Use this to compress the initramfs image. By default, zstd compression
@@ -62,7 +62,7 @@ HOOKS=({{ [archinstall.mkinitcpio.hooks | default('base consolefont udev autodet
 #COMPRESSION="lzop"
 #COMPRESSION="lz4"
 #COMPRESSION="cat"
-COMPRESSION="{{ archinstall.mkinitcpio.compression | default('zstd') }}"
+COMPRESSION="{{ mkinitcpio.compression | default('zstd') }}"
 
 # COMPRESSION_OPTIONS
 # Additional options for the compressor
