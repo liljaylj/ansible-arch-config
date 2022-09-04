@@ -14,10 +14,11 @@
       - cargo-audit  # scan for security vulnerabilities
       - cargo-deny  # scan and lint dependencies
       - cargo-expand  # expand rust macros
+      - clang
+      - lld
       - go
       - nodejs
       - npm
-      - clang
       - php
       - php7
       ## php extensions
