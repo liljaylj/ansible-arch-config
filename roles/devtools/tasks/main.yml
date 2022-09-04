@@ -68,6 +68,7 @@
       - namcap  # arch package analysis
       ## database management tools
       - pgcli
+      - litecli
 
 - name: Install rust toolchains
   vars:
