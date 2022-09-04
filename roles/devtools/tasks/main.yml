@@ -9,6 +9,11 @@
     packages:
       - rustup
       - rust-analyzer
+      - cargo-watch  # watch and recompile cargo project on change
+      - cargo-tarpaulin  # generate code coverage reports
+      - cargo-audit  # scan for security vulnerabilities
+      - cargo-deny  # scan and lint dependencies
+      - cargo-expand  # expand rust macros
       - go
       - nodejs
       - npm
