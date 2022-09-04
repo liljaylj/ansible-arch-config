@@ -21,6 +21,7 @@
       - npm
       - php
       - php7
+      - ctags
       ## php extensions
       - php7-gd
       - php7-pgsql
