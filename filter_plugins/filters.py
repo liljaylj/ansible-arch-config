@@ -9,6 +9,7 @@ class FilterModule(object):
                 self.default_kernel,
                 self.microcode_package,
                 self.kernel_package,
+                self.kernel_headers,
                 self.kernel_title,
             ])
 
@@ -66,6 +67,10 @@ class FilterModule(object):
         if kernel not in self.SUPPORTED_KERNELS:
             raise ValueError(f'kernel "{kernel}" is not supported')
         return kernel if kernel == 'linux' else f'linux-{kernel}'
+
+    def kernel_headers(self, kernel):
+        pkg = self.kernel_package(kernel)
+        return f'{pkg}-headers'
 
     def kernel_title(self, kernel):
         if not isinstance(kernel, str):
