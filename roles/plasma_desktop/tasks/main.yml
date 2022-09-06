@@ -22,6 +22,10 @@
       - qt5-wayland
       - qt6-wayland
       - gtk-layer-shell
+      - libappindicator-gtk3
+      - libappindicator-gtk2
+      - lib32-libappindicator-gtk3
+      - lib32-libappindicator-gtk2
       # - sddm
       - breeze-grub  # TODO: set grub theme
       - xdg-desktop-portal
