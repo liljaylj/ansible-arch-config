@@ -11,6 +11,7 @@
       - snp  # create snapshot before/after command execution
       - snap-pac
       - grub-btrfs
+      - inotify-tools
       - snap-pac-grub
       - snapper-rollback
 
@@ -42,6 +43,13 @@
     src: 'snapper/grub-btrfs.j2'
     dest: '/etc/default/grub-btrfs/config'
     mode: '644'
+
+- name: Enable grub-btrfsd service
+  become: true
+  ansible.builtin.systemd:
+    name: 'grub-btrfsd.service'
+    daemon_reload: true
+    enabled: true
 
 - name: Enable snapper systemd timer
   become: true

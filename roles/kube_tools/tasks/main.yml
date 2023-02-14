@@ -21,12 +21,12 @@
 
 - name: Install krew plugins
   vars:
-    plugins: '{{ [krew_plugins] | flatten | difference(krew_list_result.stdout_lines) }}'
+    plugins: '{{ [kube.krew.plugins] | flatten | difference(krew_list_result.stdout_lines) }}'
   ansible.builtin.command:
     cmd: 'kubectl krew install {{ plugins | join(" ") }}'
   register: krew_install_result
   changed_when: (plugins | length) > 0
-  when: krew_plugins is defined and (krew_plugins | length) > 0 and (plugins | length) > 0
+  when: kube.krew.plugins is defined and (kube.krew.plugins | length) > 0 and (plugins | length) > 0
 
 - name: Upgrade krew plugins
   ansible.builtin.command:

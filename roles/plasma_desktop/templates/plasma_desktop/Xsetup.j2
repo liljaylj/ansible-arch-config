@@ -1,5 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 # Xsetup - run as root before the login dialog appears
 
-# TODO: detect specific monitor by EDID
-xrandr --output eDP1 --primary --mode 1920x1080 --pos 0x840 --output HDMI1 --mode 1920x1080 --pos 1920x0 --rotate right
+primary_display="$(xrandr | rg '^([\w-]+) connected primary' -or '$1' | head -1)"
+primary_display="${primary_display:-eDP1}"
+secondary_display="$(xrandr | rg '^([\w-]+) connected' -or '$1' | rg -v "$primary_display" | head -1)"
+
+# if there is secondary display, rotate it right by 90°
+if [[ -n "$secondary_display" ]]; then
+    xrandr --output "$primary_display" --primary --mode 1920x1200 --pos 0x720 \
+        --output "$secondary_display" --mode 1920x1080 --pos 1920x0 --rotate right
+fi

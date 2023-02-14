@@ -7,7 +7,9 @@
 ff02::1			ip6-allnodes
 ff02::2			ip6-allrouters
 
+{% if extra_hosts is defined %}
 # Extra hosts
 {% for host in extra_hosts %}
 {{ host.ip }}	{{ [host.name] | flatten | join('\t') }}
 {% endfor %}
+{% endif %}

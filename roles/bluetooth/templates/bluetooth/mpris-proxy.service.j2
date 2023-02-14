@@ -1,7 +1,7 @@
 [Unit]
 Description=Forward bluetooth midi controls via mpris2 so they are picked up by supporting media players
-Wants=bluetooth.service
-After=bluetooth.service
+Requires=dbus.service bluetooth.target
+After=dbus.service bluetooth.target
 
 [Service]
 Type=simple

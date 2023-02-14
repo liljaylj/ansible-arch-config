@@ -8,9 +8,17 @@
   vars:
     packages:
       - ttf-fira-code
+      - ttf-jetbrains-mono
       - noto-fonts
+      - ttf-liberation
+      - ttf-croscore
+      - ttf-nerd-fonts-symbols-2048-em
       - ttf-nerd-fonts-symbols-2048-em-mono
       - ttf-twemoji
+      - ttf-joypixels
+      - ttf-ms-fonts
+      - ttf-carlito
+      - ttf-caladea
 
 - name: Link nerd fonts config
   become: true

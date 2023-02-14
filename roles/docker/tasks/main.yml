@@ -11,15 +11,17 @@
       - docker-compose
       - docker-scan
       - skopeo
+      - dive
+      - lazydocker
 
 - name: Apply profile.d
   become: true
   ansible.builtin.template:
-    src: 'docker/{{ item }}'
-    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    src: 'docker/{{ item }}.j2'
+    dest: '/etc/profile.d/{{ item }}'
     mode: '644'
   with_items:
-    - 50-docker.sh.j2
+    - 50-docker.sh
 
 - name: Add user to docker group
   ansible.builtin.include_role:

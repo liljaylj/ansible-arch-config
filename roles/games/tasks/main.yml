@@ -12,15 +12,18 @@
       - sc-controller  # steam controller gui
       - game-devices-udev
       - gamemode
+      - gamescope
       - lib32-gamemode
       - gzdoom
+      - zandronum
+      - doomseeker
+      - nudoku
+      - prismlauncher
+      - glfw-wayland
+      - pokerth
 
-- name: Add big picture desktop shortcut
-  become: true
-  ansible.builtin.template:
-    src: 'games/steam-bigpicture.desktop.j2'
-    dest: '/usr/share/applications/steam-bigpicture.desktop'
-    mode: '644'
+      # dependencies
+      - libxcrypt-compat  # nplusplus (Steam) dependency
 
 - name: Apply gamemode config
   become: true

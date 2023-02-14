@@ -13,6 +13,7 @@
       - swtpm
       - qemu-desktop  # NOTE: qemu-base for non-gui setups
       - qemu-user
+      - qemu-user-binfmt
       - qemu-system-x86
       - virt-manager
       - virt-viewer

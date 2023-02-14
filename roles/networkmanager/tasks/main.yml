@@ -6,7 +6,11 @@
     name: utils
     tasks_from: install_pkg
   vars:
-    packages: networkmanager
+    packages:
+      - networkmanager
+      # IPSec
+      - networkmanager-l2tp
+      - strongswan
 
 - name: Add user to 'network' group
   ansible.builtin.include_role:

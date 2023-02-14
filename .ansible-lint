@@ -1,0 +1,4 @@
+# vim: ft=yaml
+# yaml-language-server: $schema=https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible-lint-config.json
+
+profile: production

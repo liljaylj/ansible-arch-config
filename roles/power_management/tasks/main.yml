@@ -17,3 +17,42 @@
     daemon_reload: true
     enabled: true
     state: started
+
+- name: Create logind config dir
+  become: true
+  ansible.builtin.file:
+    path: '/etc/systemd/logind.conf.d'
+    state: directory
+    mode: '755'
+
+- name: Apply logind configs
+  become: true
+  ansible.builtin.template:
+    src: 'logind/{{ item }}.j2'
+    dest: '/etc/systemd/logind.conf.d/{{ item }}'
+    mode: '644'
+  vars:
+    templates:
+      - lid.conf
+      - keys.conf
+  loop: '{{ templates }}'
+
+# TODO: acpi wakeup
+#
+# - name: Create tmpfiles.d config dir
+#   become: true
+#   ansible.builtin.file:
+#     path: '/etc/tmpfiles.d'
+#     state: directory
+#     mode: '755'
+#
+# - name: Apply tmpfiles.d configs
+#   become: true
+#   ansible.builtin.template:
+#     src: 'tmpfiles.d/{{ item }}.j2'
+#     dest: '/etc/tmpfiles.d/{{ item }}'
+#     mode: '644'
+#   vars:
+#     templates:
+#       - disable-usb-wake.conf
+#   loop: '{{ templates }}'

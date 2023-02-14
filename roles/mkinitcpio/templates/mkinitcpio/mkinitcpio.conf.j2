@@ -49,7 +49,7 @@ FILES=({{ [mkinitcpio.files | default('')] | flatten | join(' ') }})
 #
 ##   NOTE: If you have /usr on a separate partition, you MUST include the
 #    usr, fsck and shutdown hooks.
-HOOKS=({{ [mkinitcpio.hooks | default('base consolefont udev autodetect modconf block filesystems keyboard fsck')] | flatten | join(' ') }})
+HOOKS=({{ [mkinitcpio.hooks | default('base consolefont udev autodetect modconf kms block filesystems keyboard keymap fsck')] | flatten | join(' ') }})
 
 # COMPRESSION
 # Use this to compress the initramfs image. By default, zstd compression
@@ -67,3 +67,9 @@ COMPRESSION="{{ mkinitcpio.compression | default('zstd') }}"
 # COMPRESSION_OPTIONS
 # Additional options for the compressor
 #COMPRESSION_OPTIONS=()
+
+# MODULES_DECOMPRESS
+# Decompress kernel modules during initramfs creation.
+# Enable to speedup boot process, disable to save RAM
+# during early userspace. Switch (yes/no).
+MODULES_DECOMPRESS="{{ mkinitcpio.modules_decompress | default(false) | ternary('yes', 'no') }}"

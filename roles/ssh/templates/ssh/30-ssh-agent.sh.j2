@@ -1,0 +1,11 @@
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+if [ -x /usr/bin/ksshaskpass ]; then
+  export SSH_ASKPASS=/usr/bin/ksshaskpass
+elif [ -x /usr/bin/lxqt-openssh-askpass ]; then
+  export SSH_ASKPASS=/usr/bin/lxqt-openssh-askpass
+elif [ -x /usr/lib/ssh/x11-ssh-askpass ]; then
+  export SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass
+elif [ -x /usr/lib/ssh/ssh-askpass ]; then
+  export SSH_ASKPASS=/usr/lib/ssh/ssh-askpass
+fi

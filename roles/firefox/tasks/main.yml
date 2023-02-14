@@ -18,7 +18,7 @@
       - hyphen-en
       - hyphen-ru
       - firefox-tridactyl-native-bin
-      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal
 
 - name: Apply profile.d
   become: true

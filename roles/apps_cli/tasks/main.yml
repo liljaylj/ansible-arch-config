@@ -1,6 +1,116 @@
 # vim: ft=yaml.ansible
 ---
 
+- name: Install base cli apps
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      # core
+      - ansible
+      - polkit
+
+      # (un-)archiving tools
+      - zip
+      - unzip
+
+      # utils/tools
+      - moreutils
+      - dos2unix
+      - ripgrep  # modern grep
+      - ripgrep-all  # add multiple searchable formats for rg
+      - lsd  # modern ls
+      - tree  # output tree structure of fs
+      - ictree  # generate tree output from stdin
+      - fd  # modern find
+      - jq  # json query processor
+      - go-yq  # yaml query processor
+      - jless  # json viewer like less
+      - fzf  # fuzzy menu
+      - zoxide  # jump to directory like z
+      - direnv  # shell extension that manages your env
+      - vivid  # generate console colors
+      - bat  # modern cat
+      - dialog
+      - s-tui  # stress testing
+      - yt-dlp  # download youtube videos
+      - upower  # power devices info
+      - udisks2  # disk management
+      - chezmoi  # dotfiles manager
+      - dex  # execute desktop files and autostart apps
+      - dust  # modern du
+      - duf  # modern df
+      - btop  # modern htop/top
+      - brightnessctl  # backlight control
+      - libqalculate  # cli qalculator
+      - cowsay
+      - ponysay
+      - pipe-rename  # rename your files using your favorite text editor
+      - sad
+      - yj-bin
+      - todotxt
+      - b3sum
+      - pv  # progress bar for commands
+      - toilet
+      - toilet-fonts
+      - fsrx  # flow state reading (aka bionic reading)
+      - zap-bin  # AppImage package manager
+      - ventoy-bin  # create multiboot live usb
+      - ydotool  # systemd service (ydotoold)
+
+      # tex
+      - tectonic
+
+      # networking tools
+      - nmap  # port scanner
+      - net-tools  # netstat and friends
+      - bind  # dns utils
+      - inetutils  # network utils
+      - traceroute
+      - webtorrent-cli
+      - nushell
+      - wireshark-cli
+      - miniserve  # local http file server
+      - rsync
+      # - rclone
+      # TODO: wireguard vlan with egress (zerotier, tailscale, teleport, netmaker, firezone, etc.)
+
+      # 2fa
+      - libfido2
+      - pam-u2f
+
+      # qmk
+      - zsa-udev
+
+      # android
+      - android-udev
+      - android-tools
+
+      # neovim
+      - neovim  # neovim
+      - python-pynvim  # python 3 provider for neovim
+      - neovim-drop-in  # drop-in replacement for vi/vim with neovim
+      - nvimpager  # neovim based pager
+      - page-git  # neovim based pager
+
+      # filesystems
+      - btrfs-progs
+      - exfat-utils
+
+      # documentation
+      - man-db
+      - man-pages
+      - arch-wiki-docs
+      - arch-wiki-lite
+      - tealdeer  # tldr
+
+      # bash
+      - bash-completion  # bash shell completions
+
+      # dependencies
+      - xxd-standalone  # needed for ncalayer to work
+
 - name: Install cli apps
   ansible.builtin.include_role:
     name: utils

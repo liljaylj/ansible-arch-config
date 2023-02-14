@@ -4,23 +4,18 @@
 - name: Apply profile.d
   become: true
   ansible.builtin.template:
-    src: '{{ [role_path, "templates/profile", item] | path_join }}'
-    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    src: 'profile/{{ item }}.j2'
+    dest: '/etc/profile.d/{{ item }}'
     mode: '644'
-  loop: '{{ [role_path, "templates/profile/*.sh.j2"] | path_join | fileglob | map("basename") |
-    difference("templates/profile/*.sh.j2" | fileglob | map("basename")) }}'
-
-- name: Apply profile.d overrides
-  become: true
-  ansible.builtin.template:
-    src: '{{ item }}'
-    dest: '/etc/profile.d/{{ item | basename | splitext | first }}'
-    mode: '644'
-  loop: '{{ [playbook_dir, "templates/profile/*.sh.j2"] | path_join | fileglob }}'
-
-- name: Create xdg home dirs
-  ansible.builtin.file:
-    path: '{{ item | expandvars }}'
-    state: directory
-    mode: '755'
-  loop: '{{ xdg.home.values() }}'
+  with_items:
+    - 00-setup.sh
+    - 10-xdg.sh
+    - 15-xdg-base-dir-override.sh
+    - 20-path.sh
+    - 30-diffprog.sh
+    - 30-editor.sh
+    - 30-pager.sh
+    - 70-fzf.sh
+    - 70-kube.sh
+    - zo-import-env.sh
+    - zz-cleanup.sh

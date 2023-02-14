@@ -3,7 +3,7 @@
 GRUB_DEFAULT=saved
 GRUB_TIMEOUT={{ bootloader.timeout | default(5) }}
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3{% if swap | default(true) %} zswap.enabled=0{% endif %}{% if bootloader.kernel_params is defined %} {{ [bootloader.kernel_params] | flatten | join(' ') }}{% endif %} quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3{% if swap.enabled | default(true) %} zswap.enabled=0{% endif %}{% if power_management.ec_no_wakeup | default(false) %} acpi.ec_no_wakeup=1{% endif %}{% if bootloader.kernel_params is defined %} {{ [bootloader.kernel_params] | flatten | join(' ') }}{% endif %} quiet"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed

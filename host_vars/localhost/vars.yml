@@ -1,0 +1,81 @@
+# yaml-language-server: $schema=./vars.schema.yml
+---
+
+bootloader:
+  timeout: 1
+  timeout_style: menu
+
+kernels:
+  list:
+    - zen
+    - lts
+  default: zen
+  headers: true
+  extra_modules:
+    - upd72020x-fw
+
+mkinitcpio:
+  modules:
+    - usbhid
+    - xhci_hcd
+    - amdgpu
+  compression: zstd
+
+power_management:
+  lid_switch: suspend
+  suspend_key: suspend
+  power_key: suspend
+  power_key_long: poweroff
+  ec_no_wakeup: true
+
+hostname: arch-t16
+
+timezone: Asia/Almaty
+
+locales:
+  list:
+    - en_US.UTF-8 UTF-8
+    - ru_RU.UTF-8 UTF-8
+    - kk_KZ.UTF-8 UTF-8
+  lang: en_US.UTF-8
+
+user:
+  name: zhanibek
+  shell: /usr/bin/zsh
+  password: '{{ vault.user_password }}'
+
+swap:
+  enabled: true
+  swappiness: 10
+
+vconsole:
+  keymap: ru
+  font: ter-p22n
+
+ssh:
+  key_files:
+    - public: 'id_ed25519.pub'
+      private: 'id_ed25519'
+
+nextdns:
+  id: '{{ vault.nextdns_id }}'
+
+kube:
+  krew:
+    plugins:
+      - ctx
+      - ns
+      - neat
+
+apps:
+  flatpak:
+    - app.resp.RESP
+
+
+# TODO: ...create great vlan setup
+# vlan
+# - zerotier-one
+# - tailscale
+#
+#
+# TODO: linux-amd

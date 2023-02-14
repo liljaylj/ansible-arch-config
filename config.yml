@@ -1,7 +1,8 @@
 # vim: ft=yaml.ansible
 ---
 
-- hosts: local
+- name: Config
+  hosts: localhost
   roles:
     - archconfig_user
     - user
@@ -18,11 +19,12 @@
     - mkinitcpio
     - bootloader
     - zram
-    - systemd
     - zsh
     - networkmanager
-    - vconsole
     - firewalld
+    - avahi
+    - samba
+    - vconsole
     - nextdns
     # TODO: wireguard
     - realtime
@@ -37,24 +39,26 @@
     - kube_tools
     - pixelserv_tls
     - apps_cli
+
     # hardware
     - audio
     - bluetooth
-    - intel_graphics
+    # - intel_graphics
+    - amd_graphics
+
     # gui
     - fonts
     # - theme
     # - sway
     - plasma_desktop
+
     - apps_gui
+
     - flatpak
     - tor
     - firefox
     - games
-    # WARN: neet to refactor
     - printer
-    - avahi
-    - samba
     - virtualization
     - snapper  # should be last (do not create snapshots when ansible install packages)
 
