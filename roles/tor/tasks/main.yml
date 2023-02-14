@@ -29,12 +29,12 @@
 - name: Apply torrc.d configs
   become: true
   ansible.builtin.template:
-    src: 'tor/{{ item }}'
-    dest: '/etc/torrc.d/{{ item | splitext | first }}'
+    src: 'tor/{{ item }}.j2'
+    dest: '/etc/torrc.d/{{ item }}'
     mode: '644'
   with_items:
-    - control.conf.j2
-    - http-tunnel.conf.j2
+    - control.conf
+    - http-tunnel.conf
 
 - name: Add torrc include
   become: true

@@ -1,6 +1,98 @@
 # vim: ft=yaml.ansible
 ---
 
+- name: Install base gui apps
+  ansible.builtin.include_role:
+    name: utils
+    tasks_from: install_pkg
+  vars:
+    packages:
+      # ui toolkits
+      - tk  # gitk
+
+      # compatibility
+      - wine-staging
+      - wine-gecko
+      - wine-mono
+
+      # neovim
+      - neovim-qt
+
+      # gui dev tools
+      - kcachegrind
+      - insomnia
+      - visual-studio-code-bin
+      - poedit
+      - gource
+
+      # office
+      - libreoffice-fresh
+      - tesseract  # text recognition (OCR)
+      - tesseract-data-eng
+      - tesseract-data-rus
+      - tesseract-data-kaz
+      - gimagereader-qt  # text recognition gui and scanner
+      - obsidian
+      - anki
+
+      # utils/tools
+      - qalculate-qt  # qt frontend for qalculate
+      - enpass-bin  # password manager
+      - zenity  # gui dialogs in scripts
+      - xorg-xeyes  # xeyes, detect xwayland windows
+      - dragon-drop  # drag-and-drop from/to terminal
+
+      # multimedia
+      - mpv  # multimedia player
+      - mpv-mpris  # mpris plugin for mpv
+      - imagemagick  # image processing
+      - ffmpeg  # video processing
+      - gstreamer
+      - gst-libav
+      - gst-plugins-base
+      - gst-plugins-bad
+      - gst-plugins-ugly
+      - gst-plugins-good
+      - gst-plugin-pipewire
+      - gst-plugin-libcamera
+      - lib32-gst-plugins-base
+      - lib32-gst-plugins-good
+      - easyeffects  # audio effects for pipewire apps
+      - noisetorch  # noise suppression for microphone
+      - qpwgraph  # pipewire gui patchbay
+      - qt6-multimedia
+      - qt6-multimedia-ffmpeg
+      - qt6-multimedia-gstreamer
+
+      # social networks
+      - telegram-desktop  # Telegram desktop client
+
+      # torrent
+      - qbittorrent
+
+      # drawing tablet
+      - xp-pen-tablet
+      - opentabletdriver
+
+      # graphical programs
+      - blender
+      - gimp
+      - inkscape
+      - krita
+      - pinta
+
+      # android
+      - scrcpy
+
+      # video
+      - v4l2loopback-dkms
+      - obs-studio
+
+      # separate role
+      # - wireshark-qt  # TODO: add user to wireshark group
+      # TODO: dosbox, 86box
+      # - audiorelay  # TODO: open ports;
+
 - name: Install gui apps
   ansible.builtin.include_role:
     name: utils

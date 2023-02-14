@@ -30,6 +30,7 @@
       - breeze-grub  # TODO: set grub theme
       - xdg-desktop-portal
       - xdg-desktop-portal-kde
+      - xdg-desktop-portal-gtk
       # KDE applications
       - konsole
       - dolphin
@@ -71,6 +72,11 @@
       - discover
       - packagekit-qt5
 
+# TODO: use this somehow
+- name: Set fact that graphical session is installed
+  ansible.builtin.set_fact:
+    graphical_installed: true
+
 - name: Create SDDM config dir
   become: true
   ansible.builtin.file:
@@ -90,7 +96,7 @@
   become: true
   ansible.builtin.template:
     src: 'plasma_desktop/Xsetup.j2'
-    dest: '/usr/share/sddm/scripts/Xsetup'
+    dest: '/usr/bin/sddm_Xsetup'
     mode: '755'
 
 - name: Link AccountService user avatar to .face

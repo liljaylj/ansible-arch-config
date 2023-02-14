@@ -4,7 +4,7 @@
 - name: Set locales
   become: true
   ansible.builtin.copy:
-    content: "{{ locales | default(['en_US.UTF-8 UTF-8']) | join('\n') }}\n"
+    content: "{{ locales.list | default(['en_US.UTF-8 UTF-8']) | join('\n') }}\n"
     dest: '/etc/locale.gen'
     mode: '644'
   register: locales_result
@@ -15,7 +15,7 @@
   become: true
   ansible.builtin.lineinfile:
     regexp: '^[ #]*LANG='
-    line: "LANG={{ locales | default(['en_US.UTF-8 UTF-8']) | first | trim | split | first }}\n"
+    line: "LANG={{ locales.lang | default(['en_US.UTF-8 UTF-8'] | first | trim | split | first) }}\n"
     dest: '/etc/locale.conf'
     create: true
     mode: '644'

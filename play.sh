@@ -13,7 +13,7 @@ fi
 case "$yn" in
 [Yy] | '')
     set -x
-    paru -Syu
+    sudo -u archconfig paru -Syu
     sudo flatpak update
     set +x
     ;;
@@ -38,7 +38,9 @@ case "$1" in
     ;;
 esac
 
-ansible-playbook -i hosts.yml config.yml -e@.vars.yml "${vault_args[@]}"
+shift 1
+
+ansible-playbook config.yml "${vault_args[@]}" "$@"
 
 # need restart ?
 /usr/bin/needrestart -b | { /usr/bin/grep --color=always -E '((KSTA|UCSTA): [023])|SVC:|SESS:' || /usr/bin/test $? = 1; }

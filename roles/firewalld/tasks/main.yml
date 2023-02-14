@@ -6,7 +6,9 @@
     name: utils
     tasks_from: install_pkg
   vars:
-    packages: firewalld
+    packages:
+      - iptables-nft
+      - firewalld
 
 - name: Enable firewalld service
   become: true

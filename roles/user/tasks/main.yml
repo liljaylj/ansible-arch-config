@@ -5,6 +5,8 @@
   become: true
   ansible.builtin.user:
     name: '{{ user.name | mandatory }}'
+    password: '{{ user.password | mandatory | password_hash("sha512", rounds=65536) }}'
+    update_password: '{{ user.update_password | default("on_create") }}'
     groups: '{{ user.groups | default([]) | union(["wheel"]) }}'
     append: '{{ user.append | default(true) }}'
     shell: '{{ user.shell | default(omit) }}'

@@ -1,0 +1,430 @@
+# yaml-language-server: $schema=https://json-schema.org/draft/2020-12/schema
+---
+
+type: object
+properties:
+
+  archconfig_user:
+    description: 'Non-root user with passwordless sudo capabilities'
+    type: object
+    properties:
+      name:
+        description: 'User name'
+        type: string
+        default: archconfig
+      home:
+        description: 'User home directory'
+        type: string
+        default: /var/lib/archconfig
+
+  user:
+    description: 'User configuration'
+    type: object
+    properties:
+      name:
+        description: 'User name'
+        type: string
+      password:
+        description: 'User password'
+        type: string
+      update_password:
+        description: 'Update password on'
+        type: string
+        enum:
+          - always
+          - on_create
+        default: on_create
+      groups:
+        description: 'User groups'
+        type: array
+        items:
+          type: string
+      append:
+        description: 'Append or replace user groups'
+        type: boolean
+        default: true
+      shell:
+        description: 'User login shell'
+        type: string
+      comment:
+        description: 'User GECOS description'
+        type: string
+      create_home:
+        description: 'Create user home directory'
+        type: boolean
+        default: true
+      home:
+        description: 'User home directory location'
+        type: string
+    required:
+      - name
+
+  timezone:
+    description: 'Timezone of the system'
+    examples:
+      - Asia/Almaty
+      - UTC
+    type: string
+
+  hostname:
+    description: 'Host name of the current system'
+    $ref: '#/$defs/hostname'
+
+  extra_hosts:
+    description: 'Extra hosts in /etc/hosts'
+    type: array
+    items:
+      description: 'List of hosts'
+      type: object
+      properties:
+        ip:
+          description: 'IP address'
+          type: string
+          anyOf:
+            - format: ipv4
+            - format: ipv6
+        hostnames:
+          description: 'Hostname'
+          oneOf:
+            - $ref: '#/$defs/hostname'
+            - type: array
+              items:
+                $ref: '#/$defs/hostname'
+      required:
+        - ip
+        - hostnames
+
+  locales:
+    description: 'System locales'
+    type: object
+    properties:
+      list:
+        description: 'List of locales'
+        type: array
+        items:
+          type: string
+        default:
+          - 'en_US.UTF-8 UTF-8'
+      lang:
+        description: 'LANG env var'
+        type: string
+        default: 'en_US.UTF-8'
+
+  kernels:
+    description: 'Linux kernel packages'
+    type: object
+    properties:
+      list:
+        description: 'List kernel packages to install'
+        type: array
+        items:
+          $ref: '#/$defs/kernel'
+      default:
+        description: 'Default kernel'
+        $ref: '#/$defs/kernel'
+      microcode:
+        description: 'CPU microcode'
+        type: string
+        enum:
+          - intel-ucode
+          - amd-ucode
+      headers:
+        description: 'Install kernel headers'
+        type: boolean
+        default: false
+      extra_modules:
+        description: 'List of extra kernel module packages'
+        type: array
+        items:
+          type: string
+    required:
+      - list
+
+  mkinitcpio:
+    description: 'Mkinitcpio config'
+    type: object
+    properties:
+      modules:
+        description: 'List of modules'
+        type: array
+        items:
+          type: string
+      binaries:
+        description: 'List of binaries'
+        type: array
+        items:
+          type: string
+      files:
+        description: 'List of files'
+        type: array
+        items:
+          type: string
+      hooks:
+        description: 'List of hooks'
+        type: array
+        items:
+          type: string
+        default:
+          - base
+          - consolefont
+          - udev
+          - autodetect
+          - modconf
+          - block
+          - filesystems
+          - keyboard
+          - keymap
+          - fsck
+      compression:
+        description: 'Initcpio image compression'
+        type: string
+        default: zstd
+      modules_decompress:
+        description: 'Decompress modules on boot'
+        type: boolean
+        default: false
+
+  bootloader:
+    description: 'Bootloader config'
+    type: object
+    properties:
+      timeout:
+        description: 'Bootloader timeout'
+        type: integer
+        default: 3
+      timeout_style:
+        description: 'GRUB bootloader timeout style'
+        type: string
+        enum:
+          - menu
+          - hidden
+          - countdown
+        default: menu
+      kernel_params:
+        description: 'Kernel parameters'
+        type: array
+        items:
+          type: string
+
+  swap:
+    description: 'Swap (zram) config'
+    type: object
+    properties:
+      enabled:
+        description: 'Enable swap'
+        type: boolean
+        default: true
+      swappiness:
+        description: 'Swappiness value'
+        type: integer
+        default: 60
+
+  ssd:
+    description: 'SSD config'
+    type: boolean
+    default: true
+
+  vconsole:
+    description: 'Config for agetty vconsole'
+    type: object
+    properties:
+      keymap:
+        description: 'Agetty keymap'
+        type: string
+      font:
+        description: 'Agetty font'
+        type: string
+
+  nextdns:
+    description: 'NextDNS config'
+    type: object
+    properties:
+      id:
+        description: 'NextDNS ID'
+        type: string
+    required:
+      - id
+
+  xdg_base_dir:
+    description: 'XDG Base Directory'
+    type: object
+    properties:
+      system:
+        description: 'XDG system directories'
+        type: object
+        properties:
+          data:
+            description: 'XDG data dirs'
+            type: array
+            items:
+              type: string
+            default:
+              - /usr/share
+              - /usr/local/share
+          config:
+            description: 'XDG config dirs'
+            type: array
+            items:
+              type: string
+            default:
+              - /etc/xdg
+      user:
+        description: 'XDG user directories'
+        type: object
+        properties:
+          config:
+            description: 'XDG user config directory'
+            type: string
+            default: '$HOME/.config'
+          cache:
+            description: 'XDG user cache directory'
+            type: string
+            default: '$HOME/.cache'
+          data:
+            description: 'XDG user data directory'
+            type: string
+            default: '$HOME/.local/share'
+          state:
+            description: 'XDG user state directory'
+            type: string
+            default: '$HOME/.local/state'
+
+  power_management:
+    description: 'Power management config'
+    type: object
+    properties:
+      lid_switch:
+        description: 'Lid switch action'
+        type: string
+        enum:
+          - ignore
+          - poweroff
+          - reboot
+          - halt
+          - suspend
+          - hibernate
+          - hybrid-sleep
+          - suspend-then-hibernate
+          - lock
+          - kexec
+        default: suspend
+      suspend_key:
+        description: 'Suspend key action'
+        type: string
+        enum:
+          - ignore
+          - poweroff
+          - reboot
+          - halt
+          - suspend
+          - hibernate
+          - hybrid-sleep
+          - suspend-then-hibernate
+          - lock
+          - kexec
+        default: suspend
+      power_key:
+        description: 'Power key action'
+        type: string
+        enum:
+          - ignore
+          - poweroff
+          - reboot
+          - halt
+          - suspend
+          - hibernate
+          - hybrid-sleep
+          - suspend-then-hibernate
+          - lock
+          - kexec
+        default: suspend
+      power_key_long:
+        description: 'Power key long press action'
+        type: string
+        enum:
+          - ignore
+          - poweroff
+          - reboot
+          - halt
+          - suspend
+          - hibernate
+          - hybrid-sleep
+          - suspend-then-hibernate
+          - lock
+          - kexec
+        default: poweroff
+      ec_no_wakeup:
+        description: 'Disable wakeup triggers from embedded controller'
+        type: boolean
+        default: false
+
+  ssh:
+    description: 'SSH config'
+    type: object
+    properties:
+      key_files:
+        description: 'SSH key files'
+        type: array
+        items:
+          type: object
+          properties:
+            public:
+              description: 'Public key file'
+              type: string
+            private:
+              description: 'Private key file'
+              type: string
+
+  kube:
+    description: 'Kubernetes tools'
+    type: object
+    properties:
+      krew:
+        description: 'Krew plugin manager'
+        type: object
+        properties:
+          plugins:
+            description: 'Krew plugins'
+            type: array
+            items:
+              type: string
+
+  apps:
+    description: 'Extra apps to install'
+    type: object
+    properties:
+      cli:
+        description: 'Command line interface apps'
+        type: array
+        items:
+          type: string
+      gui:
+        description: 'Graphical user interface apps'
+        type: array
+        items:
+          type: string
+      flatpak:
+        description: 'Flatpak apps to install'
+        type: array
+        items:
+          type: string
+
+required:
+  - user
+  - timezone
+  - hostname
+  - kernels
+
+$defs:
+  hostname:
+    type: string
+    anyOf:
+      - format: hostname
+      - format: idn-hostname
+  kernel:
+    type: string
+    enum:
+      - linux
+      - lts
+      - zen
+      - hardened

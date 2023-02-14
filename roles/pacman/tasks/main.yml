@@ -8,13 +8,6 @@
     dest: '/etc/pacman.d/mirrorlist'
     mode: '644'
 
-- name: Ensure pacman conf.d dir exists
-  become: true
-  ansible.builtin.file:
-    path: '/etc/pacman.d/conf.d'
-    state: directory
-    mode: '755'
-
 - name: Import chaotic pacman key
   become: true
   community.general.pacman_key:
@@ -28,16 +21,23 @@
     dest: '/etc/pacman.d/chaotic-mirrorlist'
     mode: '644'
 
+- name: Ensure pacman conf.d dir exists
+  become: true
+  ansible.builtin.file:
+    path: '/etc/pacman.d/conf.d'
+    state: directory
+    mode: '755'
+
 - name: Apply pacman conf.d
   become: true
   ansible.builtin.template:
-    src: 'pacman/{{ item }}'
-    dest: '/etc/pacman.d/conf.d/{{ item | splitext | first }}'
+    src: 'pacman/{{ item }}.j2'
+    dest: '/etc/pacman.d/conf.d/{{ item }}'
     mode: '644'
   with_items:
-    - 10-options.conf.j2
-    - 20-multilib.conf.j2
-    - 50-chaotic.conf.j2
+    - 10-options.conf
+    - 20-multilib.conf
+    - 50-chaotic.conf
 
 - name: Include conf.d to pacman.conf
   become: true
@@ -47,18 +47,17 @@
 
 - name: Install chaotic mirrorlist and keyring
   become: true
-  ansible.builtin.pacman:
+  community.general.pacman:
     update_cache: true
     name:
       - chaotic-keyring
       - chaotic-mirrorlist
-      # - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-      # - 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 - name: Install libalpm packages
   become: true
-  ansible.builtin.pacman:
+  community.general.pacman:
     name:
+      - base-devel  # basic tools to build arch linux packages
       - pacman-contrib  # libalpm utils
       - pkgstats  # auto-submit and view archlinux package statistics
       - asp  # arch build sources management
@@ -67,6 +66,8 @@
       - reflector  # update archlinux mirrorlist
       - paru  # pacman aur helper
       - pkgfile  # packages metadata explorer
+      - devtools  # tools for package maintainers
+      - namcap  # pacman package analyzer
 
 - name: Apply makepkg.conf
   become: true

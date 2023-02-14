@@ -1,0 +1,12 @@
+[Unit]
+Description=Restart NextDNS service after resume
+Before=sleep.target
+StopWhenUnneeded=true
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStop=/usr/bin/systemctl --no-block restart nextdns.service
+
+[Install]
+WantedBy=sleep.target

@@ -7,6 +7,7 @@
     tasks_from: install_pkg
   vars:
     packages:
+      # rust
       - rustup
       - rust-analyzer
       - cargo-watch  # watch and recompile cargo project on change
@@ -14,34 +15,47 @@
       - cargo-audit  # scan for security vulnerabilities
       - cargo-deny  # scan and lint dependencies
       - cargo-expand  # expand rust macros
+      - sqlx-cli
       - clang
       - lld
+      - lldb
+
+      # go
       - go
+
+      # nodejs
       - nodejs
       - npm
-      - php
-      - php7
+      - nodejs-emmet-ls
+      - vscode-json-languageserver
+      - typescript-language-server
+      - eslint_d
+
+      # web extensions
+      - web-ext  # web extension developer tools
+
+      # vim
       - ctags
-      ## php extensions
-      - php7-gd
-      - php7-pgsql
-      - php7-sqlite
-      - php7-redis
-      ## end php extensions
-      - xdebug
-      - composer
+
+      # toml
+      - taplo-cli
+
+      # php
+      - nodejs-intelephense
+      - vscode-php-debug
+
+      # java dev
       - jdk-openjdk
       - jdk17-openjdk
-      ## libs
+
+      # intellij idea
+      - intellij-idea-community-edition
+      - jre-jetbrains
+
+      # python
+      - python
+      - python-pip
       - python-aiohttp  # needed for codestats-relay
-      ## lsp
-      - lua-language-server
-      - stylua
-      - bash-language-server
-      - shellcheck
-      - shfmt
-      - ansible-language-server
-      - ansible-lint
       - pyright
       - python-lsp-server
       - python-mccabe
@@ -52,22 +66,47 @@
       - python-rope
       - yapf
       - python-whatthepatch
-      ### git
+
+      # lua
+      - lua-language-server
+      - stylua
+
+      # bash
+      - bash-language-server
+      - shellcheck
+      - shfmt
+
+      # yaml
+      - yaml-language-server
+
+      # ansible
+      - ansible-language-server
+      - ansible-lint
+
+      # sql
+      - sqlfluff
+      - sql-language-server
+
+      # tex
+      - texlab
+
+      # git
+      - git
       - git-delta  # modern diff
       - git-extras
+      - gitflow-avh
       - cocogitto  # lint conventional commits
       - lazygit
-      ### tools
       - github-cli
       - glab
-      - aws-cli-v2-bin  # AWS cli
+
+      # cloud cli
+      - aws-cli-v2  # AWS cli
       - doctl  # DigitalOcean cli
-      - web-ext  # web extension developer tools
-      ## arch linux packaging
-      - devtools  # arch package build tools
-      - namcap  # arch package analysis
-      ## database management tools
+
+      # database management tools
       - pgcli
+      - python-sshtunnel  # for pgcli ssh tunneling functionality
       - litecli
 
 - name: Install rust toolchains
@@ -83,6 +122,16 @@
 
 
 - name: Set default rust toolchain
+  vars:
+    rust_default_toolchain: nightly
+  ansible.builtin.command:
+    cmd: 'rustup default {{ rust_default_toolchain }}'
+  register: install_result
+  changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
+
+- name: Set default rust toolchain for archconfig user
+  become: true
+  become_user: '{{ archconfig.user.name | default("archconfig") }}'
   vars:
     rust_default_toolchain: nightly
   ansible.builtin.command:
@@ -110,18 +159,11 @@
 - name: Apply profile.d
   become: true
   ansible.builtin.template:
-    src: 'devtools/{{ item }}'
-    dest: '/etc/profile.d/{{ item | splitext | first }}'
+    src: 'devtools/{{ item }}.j2'
+    dest: '/etc/profile.d/{{ item }}'
     mode: '644'
   with_items:
-    - 50-debuginfo.sh.j2
-    - 50-java.sh.j2
-    - 50-make.sh.j2
-    - 50-rust.sh.j2
-
-- name: Enable php 7 extensions
-  become: true
-  ansible.builtin.template:
-    src: 'devtools/30-php-extensions.ini.j2'
-    dest: '/etc/php7/conf.d/30-extensions.ini'
-    mode: '644'
+    - 50-debuginfo.sh
+    - 50-java.sh
+    - 50-make.sh
+    - 50-rust.sh

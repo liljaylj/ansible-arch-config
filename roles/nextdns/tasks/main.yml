@@ -21,3 +21,18 @@
     name: 'nextdns.service'
     enabled: true
     state: started
+
+# TODO: check if NextDNS will work without this
+#
+# - name: Create nextdns restart on resume after sleep
+#   become: true
+#   ansible.builtin.template:
+#     src: 'nextdns/nextdns-restart.service.j2'
+#     dest: '/etc/systemd/system/nextdns-restart.service'
+#     mode: '644'
+#
+# - name: Enable nextdns restart service
+#   become: true
+#   ansible.builtin.systemd:
+#     name: 'nextdns.service'
+#     enabled: true

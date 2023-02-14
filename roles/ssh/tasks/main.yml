@@ -15,20 +15,33 @@
     dest: '/etc/ssh/ssh_config'
     mode: '644'
 
-- name: Ssh agent systemd service file
+- name: Apply profile.d for ssh-agent
   become: true
   ansible.builtin.template:
-    src: 'ssh/ssh-agent.service.j2'
-    dest: '/etc/systemd/user/ssh-agent.service'
+    src: 'ssh/30-ssh-agent.sh.j2'
+    dest: '/etc/profile.d/30-ssh-agent.sh'
     mode: '644'
+
+- name: SSH agent systemd service file
+  become: true
+  ansible.builtin.template:
+    src: 'ssh/{{ item }}.j2'
+    dest: '/etc/systemd/user/{{ item }}'
+    mode: '644'
+  with_items:
+    - ssh-agent.service
+    - ssh-agent-restart.service
 
 - name: Start ssh agent service
   ansible.builtin.systemd:
-    name: 'ssh-agent'
+    name: '{{ item }}'
     daemon_reload: true
     enabled: true
     state: started
     scope: user
+  with_items:
+    - ssh-agent
+    - ssh-agent-restart
 
 - name: Create user ssh dir
   ansible.builtin.file:
@@ -36,10 +49,18 @@
     state: directory
     mode: '700'
 
-- name: Copy ssh key
+- name: Copy public keys to ssh folder
   ansible.builtin.copy:
-    src: 'files/{{ item.path }}'
-    dest: '{{ ["~/.ssh", item.path] | path_join | expanduser }}'
-    mode: '{{ item.mode }}'
-  loop: '{{ ssh_keys }}'
-  when: ssh_keys is defined
+    src: 'files/{{ item.public }}'
+    dest: '{{ ["~/.ssh", item.public] | path_join | expanduser }}'
+    mode: '444'
+  loop: '{{ ssh.key_files }}'
+  when: ssh.key_files is defined
+
+- name: Copy private keys to ssh folder
+  ansible.builtin.copy:
+    src: 'files/{{ item.private }}'
+    dest: '{{ ["~/.ssh", item.private] | path_join | expanduser }}'
+    mode: '400'
+  loop: '{{ ssh.key_files }}'
+  when: ssh.key_files is defined

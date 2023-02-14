@@ -1,7 +1,7 @@
 [Unit]
 Description=Playerctl daemon
-PartOf=sway-session.target
-After=sway-session.target
+PartOf=default.target
+After=default.target
 
 [Service]
 Type=simple
@@ -9,4 +9,4 @@ ExecStart=/usr/bin/bash -c 'playerctld'
 Restart=on-failure
 
 [Install]
-WantedBy=sway-session.target
+WantedBy=default.target
