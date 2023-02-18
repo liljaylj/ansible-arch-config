@@ -2,7 +2,7 @@
 ---
 
 bootloader:
-  timeout: 1
+  timeout: 0
   timeout_style: menu
 
 kernels:
