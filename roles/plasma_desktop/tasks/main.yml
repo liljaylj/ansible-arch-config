@@ -14,23 +14,22 @@
     tasks_from: install_pkg
   vars:
     packages:
-      - plasma
+      - plasma-meta
       - plasma-wayland-session
       - xorg-xwayland
       - wl-clipboard
       - wl-clipboard-x11
-      - qt5-wayland
       - qt6-wayland
       - gtk-layer-shell
+      - xdg-desktop-portal
+      - xdg-desktop-portal-kde
+      - xdg-desktop-portal-gtk
       - libappindicator-gtk3
       - libappindicator-gtk2
       - lib32-libappindicator-gtk3
       - lib32-libappindicator-gtk2
       # - sddm
       - breeze-grub  # TODO: set grub theme
-      - xdg-desktop-portal
-      - xdg-desktop-portal-kde
-      - xdg-desktop-portal-gtk
       # KDE applications
       - konsole
       - dolphin
@@ -69,7 +68,6 @@
       - kmahjongg
       - kshisen
       # Discover
-      - discover
       - packagekit-qt5
 
 # TODO: use this somehow
