@@ -11,7 +11,7 @@
 
 - name: Install terminus font
   ansible.builtin.include_role:
-    name: utils
+    name: pacman
     tasks_from: install_pkg
   vars:
     packages: terminus-font
@@ -27,7 +27,7 @@
 
 # - name: Install general purpose mouse
 #   ansible.builtin.include_role:
-#     name: utils
+#     name: pacman
 #     tasks_from: install_pkg
 #   vars:
 #     packages: gpm
