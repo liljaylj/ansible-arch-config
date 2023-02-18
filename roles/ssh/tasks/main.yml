@@ -34,14 +34,18 @@
 
 - name: Start ssh agent service
   ansible.builtin.systemd:
-    name: '{{ item }}'
+    name: 'ssh-agent'
     daemon_reload: true
     enabled: true
     state: started
     scope: user
-  with_items:
-    - ssh-agent
-    - ssh-agent-restart
+
+- name: Start ssh agent service
+  ansible.builtin.systemd:
+    name: 'ssh-agent-restart'
+    daemon_reload: true
+    enabled: true
+    scope: user
 
 - name: Create user ssh dir
   ansible.builtin.file:
