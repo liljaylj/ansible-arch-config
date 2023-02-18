@@ -4,7 +4,7 @@
 # TODO: split cli/gui packages (maybe depends on DE/WM config option)
 - name: Install printer support packages
   ansible.builtin.include_role:
-    name: utils
+    name: pacman
     tasks_from: install_pkg
   vars:
     packages:
@@ -27,7 +27,7 @@
 
 - name: Add user to groups for printing
   ansible.builtin.include_role:
-    name: utils
+    name: user
     tasks_from: user_add_group
   vars:
     new_groups:

@@ -3,7 +3,7 @@
 
 - name: Install base cli apps
   ansible.builtin.include_role:
-    name: utils
+    name: pacman
     tasks_from: install_pkg
   vars:
     packages:
@@ -112,7 +112,7 @@
 
 - name: Install cli apps
   ansible.builtin.include_role:
-    name: utils
+    name: pacman
     tasks_from: install_pkg
   vars:
     packages: '{{ apps.cli | default([]) }}'

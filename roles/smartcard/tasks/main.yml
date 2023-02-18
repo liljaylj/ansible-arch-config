@@ -5,7 +5,7 @@
 
 - name: Install smartcard services
   ansible.builtin.include_role:
-    name: utils
+    name: pacman
     tasks_from: install_pkg
   vars:
     packages:

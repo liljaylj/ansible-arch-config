@@ -3,7 +3,7 @@
 
 - name: Install samba
   ansible.builtin.include_role:
-    name: utils
+    name: pacman
     tasks_from: install_pkg
   vars:
     packages:
@@ -35,7 +35,7 @@
 
 - name: Add user to sambashare group
   ansible.builtin.include_role:
-    name: utils
+    name: user
     tasks_from: user_add_group
   vars:
     new_groups: sambashare
