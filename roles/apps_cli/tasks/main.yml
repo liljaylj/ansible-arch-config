@@ -92,7 +92,6 @@
       - python-pynvim  # python 3 provider for neovim
       - neovim-drop-in  # drop-in replacement for vi/vim with neovim
       - nvimpager  # neovim based pager
-      - page-git  # neovim based pager
 
       # filesystems
       - btrfs-progs
