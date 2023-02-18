@@ -37,6 +37,14 @@
       - keys.conf
   loop: '{{ templates }}'
 
+- name: Disable wakeup triggers for defined USB devices
+  become: true
+  ansible.builtin.template:
+    src: 'udev/50-wakeup-triggers-disable.rules.j2'
+    dest: '/etc/udev/rules.d/50-wakeup-triggers-disable.rules'
+    mode: '644'
+  when: power_management.disable_wakeup_triggers is defined
+
 # TODO: acpi wakeup
 #
 # - name: Create tmpfiles.d config dir
