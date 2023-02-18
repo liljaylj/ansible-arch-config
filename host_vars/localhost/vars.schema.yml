@@ -357,6 +357,21 @@ properties:
         description: 'Disable wakeup triggers from embedded controller'
         type: boolean
         default: false
+      disable_wakeup_triggers:
+        description: 'Devices for which to disable wakeup trigger'
+        type: array
+        items:
+          type: object
+          properties:
+            vendor_id:
+              description: 'Device vendor ID'
+              type: string
+            product_id:
+              description: 'Device product ID'
+              type: string
+          required:
+            - vendor_id
+            - product_id
 
   ssh:
     description: 'SSH config'
