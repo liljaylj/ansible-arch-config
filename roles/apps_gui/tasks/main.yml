@@ -75,7 +75,6 @@
       - opentabletdriver
 
       # graphical programs
-      - blender
       - gimp
       - inkscape
       - krita
