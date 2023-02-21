@@ -110,6 +110,9 @@
       # dependencies
       - xxd-standalone  # needed for ncalayer to work
 
+      # fingerprint
+      - fprintd
+
 - name: Install cli apps
   ansible.builtin.include_role:
     name: pacman
