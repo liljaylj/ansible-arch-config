@@ -1,0 +1,28 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Add firewalld rules for services
+  become: true
+  ansible.posix.firewalld:
+    zone: '{{ item.0 }}'
+    service: '{{ item.1 }}'
+    permanent: true
+    immediate: true
+    state: enabled
+  vars:
+    _zones: '{{ zones | default(["home", "trusted"]) }}'
+  loop: '{{ _zones | product(services) | list }}'
+  when: services is defined
+
+- name: Add firewalld rules for ports
+  become: true
+  ansible.posix.firewalld:
+    zone: '{{ item.0 }}'
+    port: '{{ item.1 }}'
+    permanent: true
+    immediate: true
+    state: enabled
+  vars:
+    _zones: '{{ zones | default(["home", "trusted"]) }}'
+  loop: '{{ _zones | product(ports) | list }}'
+  when: ports is defined

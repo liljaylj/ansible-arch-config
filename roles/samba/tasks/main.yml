@@ -11,21 +11,14 @@
       - wsdd2
 
 - name: Permit traffic for samba in home zone
-  become: true
-  ansible.posix.firewalld:
-    zone: '{{ item.0 }}'
-    service: '{{ item.1 }}'
-    permanent: true
-    state: enabled
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: add_rule
   vars:
-    zones:
-      - home
-      - trusted
     services:
       - samba
       - samba-client
       - netbios-ns
-  loop: '{{ zones | product(services) | list }}'
 
 - name: Create sambashare group
   become: true
