@@ -31,14 +31,10 @@
     mode: '644'
 
 - name: Permit traffic for avahi in home zone
-  become: true
-  ansible.posix.firewalld:
-    zone: '{{ item }}'
-    service: 'mdns'
-    permanent: true
-    state: enabled
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: add_rule
   vars:
     zones:
       - home
       - trusted
-  loop: '{{ zones }}'
