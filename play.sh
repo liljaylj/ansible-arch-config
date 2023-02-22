@@ -40,7 +40,7 @@ esac
 
 shift 1
 
-ansible-playbook config.yml "${vault_args[@]}" "$@"
+ansible-playbook -i ./inventory -c local config.yml "${vault_args[@]}" "$@"
 
 # need restart ?
 /usr/bin/needrestart -b | { /usr/bin/grep --color=always -E '((KSTA|UCSTA): [023])|SVC:|SESS:' || /usr/bin/test $? = 1; }
