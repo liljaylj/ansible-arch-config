@@ -2,7 +2,7 @@
 ---
 
 - name: Config
-  hosts: localhost
+  hosts: all
   roles:
     - archconfig_user
     - user
