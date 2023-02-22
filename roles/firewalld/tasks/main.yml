@@ -9,6 +9,12 @@
     packages:
       - iptables-nft
       - firewalld
+      # firewalld optional dependencies
+      - gtk3
+      - libnotify
+      - nm-connection-editor
+      - python-capng
+      - python-pyqt5
 
 - name: Enable firewalld service
   become: true
