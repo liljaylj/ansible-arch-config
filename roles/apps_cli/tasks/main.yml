@@ -9,6 +9,7 @@
     packages:
       # core
       - ansible
+      - python-passlib  # python crypt module is deprecated in Ansible
       - polkit
 
       # (un-)archiving tools
