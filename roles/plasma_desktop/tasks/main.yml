@@ -69,6 +69,8 @@
       - kshisen
       # Discover
       - packagekit-qt5
+      # Plasma Vault dependency
+      - cryfs
 
 # TODO: use this somehow
 - name: Set fact that graphical session is installed
