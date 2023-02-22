@@ -4,6 +4,8 @@
 bootloader:
   timeout: 0
   timeout_style: menu
+  kernel_params:
+    - 'amdgpu.runpm=0'
 
 kernels:
   list:
