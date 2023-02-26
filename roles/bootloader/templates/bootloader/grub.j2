@@ -1,7 +1,9 @@
 # GRUB boot loader configuration
 
 GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
 GRUB_TIMEOUT={{ bootloader.timeout | default(5) }}
+GRUB_TIMEOUT_STYLE={{ bootloader.timeout_style | default('menu') }}
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3{% if swap.enabled | default(true) %} zswap.enabled=0{% endif %}{% if power_management.ec_no_wakeup | default(false) %} acpi.ec_no_wakeup=1{% endif %}{% if bootloader.kernel_params is defined %} {{ [bootloader.kernel_params] | flatten | join(' ') }}{% endif %} quiet"
 GRUB_CMDLINE_LINUX=""
@@ -14,7 +16,7 @@ GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 
 # Set to 'countdown' or 'hidden' to change timeout behavior,
 # press ESC key to display menu.
-GRUB_TIMEOUT_STYLE={{ bootloader.timeout_style | default('menu') }}
+# GRUB_TIMEOUT_STYLE=menu
 
 # Uncomment to use basic console
 GRUB_TERMINAL_INPUT=console
