@@ -4,7 +4,7 @@ set -Eeuo pipefail
 
 : "${1:?provide argument to script - path to the file with vault password or \`ask\`}"
 
-read -rn1 -p 'Run system and flatpak update? [Y/n] ' yn
+read -rn1 -p 'Run system, flatpak and lvfs (firmware) update? [Y/n] ' yn
 
 if [[ -n "$yn" ]]; then
     echo
@@ -15,6 +15,7 @@ case "$yn" in
     set -x
     sudo -u archconfig paru -Syu
     sudo flatpak update
+    sudo fwupdmgr udpate
     set +x
     ;;
 [Nn])
