@@ -25,6 +25,7 @@ mkinitcpio:
     - xhci_hcd
     - amdgpu
   compression: zstd
+  modules_decompress: true
 
 power_management:
   lid_switch: suspend
