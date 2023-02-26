@@ -6,14 +6,14 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ kernels.list | to_kernel_list | map("kernel_package") }}'
+    packages: '{{ kernels.list | default(["linux"]) }}'
 
 - name: Install kernel headers
   ansible.builtin.include_role:
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ kernels.list | to_kernel_list | map("kernel_headers") }}'
+    packages: '{{ kernels.list | default(["linux"]) | product(["headers"]) | map("join", "-") }}'
   when: kernels.headers is defined and kernels.headers
 
 - name: Install firmware package

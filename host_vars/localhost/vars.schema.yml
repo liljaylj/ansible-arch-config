@@ -117,11 +117,16 @@ properties:
       list:
         description: 'List kernel packages to install'
         type: array
+        minItems: 1
         items:
-          $ref: '#/$defs/kernel'
-      default:
-        description: 'Default kernel'
-        $ref: '#/$defs/kernel'
+          type: string
+          enum:
+            - linux
+            - linux-lts
+            - linux-zen
+            - linux-hardened
+            - linux-amd
+          default: linux
       microcode:
         description: 'CPU microcode'
         type: string
@@ -436,10 +441,3 @@ $defs:
     anyOf:
       - format: hostname
       - format: idn-hostname
-  kernel:
-    type: string
-    enum:
-      - linux
-      - lts
-      - zen
-      - hardened
