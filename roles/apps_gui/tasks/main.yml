@@ -15,9 +15,6 @@
       - wine-gecko
       - wine-mono
 
-      # neovim
-      - neovim-qt
-
       # gui dev tools
       - kcachegrind
       - insomnia
