@@ -2,10 +2,10 @@
 ---
 
 bootloader:
-  timeout: 1
+  timeout: 0
   timeout_style: menu
   kernel_params:
-    # - 'amdgpu.runpm=0'
+    - 'amdgpu.runpm=0'
     - 'nowatchdog'
     - 'modprobe.blacklist=sp5100_tco'
     - 'nmi_watchdog=0'
@@ -14,7 +14,6 @@ kernels:
   list:
     - linux-zen
     - linux-lts
-    - linux-amd
   headers: true
   extra_modules:
     - upd72020x-fw
