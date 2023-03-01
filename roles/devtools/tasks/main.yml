@@ -83,6 +83,9 @@
       # yaml
       - yaml-language-server
 
+      # docker
+      - dockerfile-language-server
+
       # ansible
       - ansible-language-server
       - ansible-lint
