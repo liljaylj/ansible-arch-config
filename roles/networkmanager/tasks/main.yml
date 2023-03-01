@@ -8,6 +8,7 @@
   vars:
     packages:
       - networkmanager
+      - wireless-regdb
       # IPSec
       - networkmanager-l2tp
       - strongswan
