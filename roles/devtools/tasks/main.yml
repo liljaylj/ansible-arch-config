@@ -31,6 +31,10 @@
       - typescript-language-server
       - eslint_d
 
+      # css
+      - stylelint
+      - stylelint-config-standard
+
       # web extensions
       - web-ext  # web extension developer tools
 
