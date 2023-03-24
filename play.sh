@@ -12,11 +12,14 @@ fi
 
 case "$yn" in
 [Yy] | '')
-    set -x
+    echo 'UPDATE PACKAGES...'
     sudo -u archconfig paru -Syu
+    echo
+    echo 'UPDATE FLATPAK...'
     sudo flatpak update
-    sudo fwupdmgr udpate
-    set +x
+    echo
+    echo 'UPDATE LVFS...'
+    sudo fwupdmgr update
     ;;
 [Nn])
     echo 'Skipping system and flatpak update...'
