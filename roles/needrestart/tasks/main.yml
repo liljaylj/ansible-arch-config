@@ -10,16 +10,16 @@
       - needrestart  # restart services after libraries update
       - iucode-tool  # detect ucode
 
-- name: Ensure that hook dir exists
-  become: true
-  ansible.builtin.file:
-    path: '/etc/pacman.d/hooks'
-    state: directory
-    mode: '755'
-
-- name: Apply needrestart pacman hook
-  become: true
-  ansible.builtin.template:
-    src: 'needrestart/zz-needrestart.hook.j2'
-    dest: '/etc/pacman.d/hooks/zz-needrestart.hook'
-    mode: '644'
+# - name: Ensure that hook dir exists
+#   become: true
+#   ansible.builtin.file:
+#     path: '/etc/pacman.d/hooks'
+#     state: directory
+#     mode: '755'
+#
+# - name: Apply needrestart pacman hook
+#   become: true
+#   ansible.builtin.template:
+#     src: 'needrestart/zz-needrestart.hook.j2'
+#     dest: '/etc/pacman.d/hooks/zz-needrestart.hook'
+#     mode: '644'
