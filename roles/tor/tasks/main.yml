@@ -11,6 +11,7 @@
       - torsocks
       - nyx
       - torbrowser-launcher
+      - ffmpeg4.4  # to play videos in tor browser
 
 - name: Add user to tor group
   ansible.builtin.include_role:
