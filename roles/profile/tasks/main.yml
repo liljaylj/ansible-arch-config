@@ -17,5 +17,6 @@
     - 30-pager.sh
     - 70-fzf.sh
     - 70-kube.sh
+    - 90-ja.sh
     - zo-import-env.sh
     - zz-cleanup.sh
