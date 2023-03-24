@@ -78,7 +78,7 @@ kube:
 
 apps:
   flatpak:
-    - app.resp.RESP
+    - com.redis.RedisInsight
 
 
 # TODO: ...create great vlan setup
