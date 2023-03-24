@@ -5,6 +5,7 @@ bootloader:
   timeout: 0
   timeout_style: menu
   kernel_params:
+    - 'amd_pstate=passive'
     - 'nowatchdog'
     - 'modprobe.blacklist=sp5100_tco'
     - 'nmi_watchdog=0'
