@@ -52,9 +52,9 @@
       - jdk-openjdk
       - jdk17-openjdk
 
-      # intellij idea
-      - intellij-idea-community-edition
-      - jre-jetbrains
+      # # intellij idea
+      # - intellij-idea-community-edition
+      # - jre-jetbrains
 
       # python
       - python
