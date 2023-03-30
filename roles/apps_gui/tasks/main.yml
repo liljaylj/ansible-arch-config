@@ -39,6 +39,7 @@
       - xorg-xeyes  # xeyes, detect xwayland windows
       - dragon-drop  # drag-and-drop from/to terminal
       - corectrl  # control power/performance profiles
+      - wev  # debug input events
 
       # multimedia
       - mpv  # multimedia player
