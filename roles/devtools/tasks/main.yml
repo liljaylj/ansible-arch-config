@@ -72,8 +72,11 @@
       - python-whatthepatch
 
       # lua
+      - lua
+      - luarocks
       - lua-language-server
       - stylua
+      - luacheck
 
       # bash
       - bash-language-server
