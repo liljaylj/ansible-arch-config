@@ -63,6 +63,7 @@
       - qt6-multimedia-ffmpeg
       - qt6-multimedia-gstreamer
       - guvcview-qt  # webcam
+      - kooha  # screen recording
 
       # social networks
       - telegram-desktop  # Telegram desktop client
