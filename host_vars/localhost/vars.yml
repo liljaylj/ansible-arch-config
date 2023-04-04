@@ -23,6 +23,8 @@ mkinitcpio:
     - usbhid
     - xhci_hcd
     - amdgpu
+  binaries:
+    - setfont
   compression: zstd
   modules_decompress: true
 
