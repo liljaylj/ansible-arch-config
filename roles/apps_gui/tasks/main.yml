@@ -62,6 +62,7 @@
       - qt6-multimedia
       - qt6-multimedia-ffmpeg
       - qt6-multimedia-gstreamer
+      - guvcview-qt  # webcam
 
       # social networks
       - telegram-desktop  # Telegram desktop client
