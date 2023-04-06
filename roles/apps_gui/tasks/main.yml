@@ -87,6 +87,7 @@
       # video
       - v4l2loopback-dkms
       - obs-studio
+      - obs-vaapi
 
       # separate role
       # - wireshark-qt  # TODO: add user to wireshark group
