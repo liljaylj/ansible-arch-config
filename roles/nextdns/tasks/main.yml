@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: nextdns
+    packages: nextdns-bin
 
 - name: Apply nextdns config
   become: true
