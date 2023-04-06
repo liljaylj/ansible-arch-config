@@ -47,6 +47,7 @@
       - imagemagick  # image processing
       - ffmpeg  # video processing
       - gstreamer
+      - gstreamer-vaapi  # hardware acceleration
       - gst-libav
       - gst-plugins-base
       - gst-plugins-bad
