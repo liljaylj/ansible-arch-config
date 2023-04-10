@@ -10,7 +10,6 @@
       - flatpak
       - xdg-desktop-portal
       - flatpak-xdg-utils
-      - flatseal
 
 - name: Add flathub remote
   become: true
