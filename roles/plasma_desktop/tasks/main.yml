@@ -59,6 +59,7 @@
       - skanpage
       - kdegraphics-thumbnailers
       - svgpart
+      - kio-zeroconf
       # - kio-extras
       # - kio-gdrive
       - krdc
