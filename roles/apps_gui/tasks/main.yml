@@ -44,6 +44,7 @@
       # multimedia
       - mpv  # multimedia player
       - mpv-mpris  # mpris plugin for mpv
+      - mpv-sponsorblock  # block sponsored messages from youtube videos
       - imagemagick  # image processing
       - ffmpeg  # video processing
       - gstreamer
