@@ -14,7 +14,6 @@
       - ttf-croscore
       - ttf-nerd-fonts-symbols-2048-em
       - ttf-nerd-fonts-symbols-2048-em-mono
-      - ttf-twemoji
       - ttf-joypixels
       - ttf-ms-fonts
       - ttf-carlito
@@ -25,11 +24,4 @@
   ansible.builtin.file:
     src: '/usr/share/fontconfig/conf.avail/10-nerd-font-symbols.conf'
     dest: '/etc/fonts/conf.d/10-nerd-font-symbols.conf'
-    state: link
-
-- name: Link twemoji config
-  become: true
-  ansible.builtin.file:
-    src: '/usr/share/fontconfig/conf.avail/75-twemoji.conf'
-    dest: '/etc/fonts/conf.d/75-twemoji.conf'
     state: link
