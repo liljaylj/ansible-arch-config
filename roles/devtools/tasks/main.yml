@@ -126,7 +126,9 @@
       - nightly
   ansible.builtin.shell:
     executable: '/bin/bash'
-    cmd: 'rustup install {{ rust_toolchains | join(" ") }} | grep unchanged || true'
+    cmd: |
+      set -Eeuo pipefail
+      rustup install {{ rust_toolchains | join(" ") }} | grep unchanged || true
   register: install_toolchains_result
   changed_when: '(install_toolchains_result.stdout_lines | length) != (rust_toolchains | length)'
 
