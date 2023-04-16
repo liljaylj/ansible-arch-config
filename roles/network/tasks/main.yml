@@ -1,0 +1,139 @@
+# vim: ft=yaml.ansible
+---
+
+# TODO: wireguard
+
+- name: Install network related packages
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - networkmanager
+      - wireless-regdb
+      # mDNS
+      - avahi
+      - nss-mdns
+      # Samba
+      - samba
+      - wsdd2
+      # IPSec
+      - networkmanager-l2tp
+      - strongswan
+
+- name: Create sambashare group
+  become: true
+  ansible.builtin.group:
+    name: sambashare
+    system: true
+
+- name: Add user to 'network' group
+  ansible.builtin.include_role:
+    name: user
+    tasks_from: user_add_group
+  vars:
+    new_groups:
+      # unprivileged user network management
+      - network
+      # Samba
+      - sambashare
+
+- name: Ensure config dirs exists
+  become: true
+  ansible.builtin.file:
+    path: '{{ item }}'
+    state: directory
+    mode: '755'
+  vars:
+    dirs:
+      - '/etc/systemd/resolved.conf.d'
+  loop: '{{ dirs }}'
+
+- name: Create usershares folder
+  become: true
+  ansible.builtin.file:
+    path: '/var/lib/samba/usershares'
+    state: directory
+    mode: '1770'
+    owner: root
+    group: sambashare
+
+- name: Apply config files
+  become: true
+  ansible.builtin.template:
+    src: 'network/{{ item.src }}.j2'
+    dest: '{{ item.dest }}/{{ item.src }}'
+    mode: '644'
+  vars:
+    configs:
+      - src: '50-org.freedesktop.NetworkManager.rules'
+        dest: '/etc/polkit-1/rules.d'
+      # systemd-resolved
+      - src: 'resolved.conf'
+        dest: '/etc/systemd/resolved.conf.d'
+      # mDNS
+      - src: 'nsswitch.conf'
+        dest: '/etc'
+      # Samba
+      - src: 'smb.conf'
+        dest: '/etc/samba'
+  loop: '{{ configs }}'
+
+- name: Create resolv.conf symlink
+  become: true
+  ansible.builtin.file:
+    force: true
+    src: '/run/systemd/resolve/stub-resolv.conf'
+    dest: '/etc/resolv.conf'
+    state: link
+
+- name: Enable services
+  become: true
+  ansible.builtin.systemd:
+    name: '{{ item }}'
+    daemon_reload: true
+    enabled: true
+  vars:
+    units:
+      # systemd-resolved
+      - 'systemd-resolved.service'
+      # mDNS
+      - 'avahi-daemon.service'
+      # Samba
+      - 'smb.service'
+      - 'nmb.service'
+      - 'wsdd2.service'
+  loop: '{{ units }}'
+
+- name: Set user's samba password
+  become: true
+  ansible.builtin.shell: |
+    set -e -o pipefail
+    pwdline="$(pdbedit -L -w | cut -d: -f1,4)"
+    echo "$pwdline"
+    ( echo '{{ user.password }}' && echo '{{ user.password }}' ) | \
+      if echo "$pwdline" | grep -q '{{ user.name }}'
+      then
+        smbpasswd -s '{{ user.name }}'
+      else
+        smbpasswd -s -a '{{ user.name }}'
+      fi
+  args:
+    executable: /bin/bash
+  register: smbpasswd_result
+  changed_when: '([user.name, user.password.encode("utf-16le") | hash("md4") | upper] | join(":")) !=
+    (smbpasswd_result.stdout_lines | first | default(""))'
+  no_log: true
+
+- name: Add firewalld rules
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: add_rule
+  vars:
+    services:
+      # mDNS
+      - mdns
+      # Samba
+      - samba
+      - samba-client
+      - netbios-ns
