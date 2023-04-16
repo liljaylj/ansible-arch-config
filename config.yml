@@ -20,12 +20,9 @@
     - bootloader
     - zram
     - zsh
-    - networkmanager
     - firewalld
-    - avahi
-    - samba
+    - network
     - vconsole
-    - nextdns
     # TODO: wireguard
     - realtime
     - profile
