@@ -9,6 +9,7 @@
     packages:
       # ui toolkits
       - tk  # gitk
+      - python-pyqt5
 
       # compatibility
       - wine-staging
