@@ -3,7 +3,7 @@
 
 - name: Install packages
   become: true
-  become_user: '{{ archconfig.user.name | default("archconfig") }}'
+  become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
     argv: '{{ (sync_argv | default(["paru", "--noconfirm", "--noprogressbar", "--needed", "--sync"]))
       + ([packages | mandatory] | flatten) }}'

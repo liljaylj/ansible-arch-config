@@ -143,7 +143,7 @@
 
 - name: Set default rust toolchain for archconfig user
   become: true
-  become_user: '{{ archconfig.user.name | default("archconfig") }}'
+  become_user: '{{ archconfig_user.name | default("archconfig") }}'
   vars:
     rust_default_toolchain: nightly
   ansible.builtin.command:
