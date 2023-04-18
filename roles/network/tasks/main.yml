@@ -38,13 +38,6 @@
       # Samba
       - sambashare
 
-- name: Set user home dir permissions to be able to share
-  become: true
-  ansible.builtin.file:
-    path: '{{ setup_user_result.home }}'
-    state: directory
-    mode: '751'
-
 - name: Ensure config dirs exists
   become: true
   ansible.builtin.file:

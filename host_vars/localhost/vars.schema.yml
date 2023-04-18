@@ -57,6 +57,9 @@ properties:
       home:
         description: 'User home directory location'
         type: string
+      home_mode:
+        description: 'User home directory permissions'
+        type: string
     required:
       - name
 

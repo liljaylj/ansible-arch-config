@@ -16,3 +16,11 @@
     system: false
   no_log: true
   register: setup_user_result
+
+- name: Set user home dir permissions
+  become: true
+  ansible.builtin.file:
+    path: '{{ setup_user_result.home }}'
+    state: directory
+    mode: '{{ user.home_mode }}'
+  when: user.home_mode is defined

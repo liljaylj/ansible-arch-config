@@ -54,6 +54,7 @@ user:
   name: zhanibek
   shell: /usr/bin/zsh
   password: '{{ vault.user_password }}'
+  home_mode: '751'
 
 swap:
   enabled: true
