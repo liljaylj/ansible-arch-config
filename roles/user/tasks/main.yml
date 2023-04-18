@@ -15,3 +15,4 @@
     home: '{{ user.home | default(omit) }}'
     system: false
   no_log: true
+  register: setup_user_result

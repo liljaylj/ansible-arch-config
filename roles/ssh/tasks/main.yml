@@ -49,14 +49,14 @@
 
 - name: Create user ssh dir
   ansible.builtin.file:
-    path: '{{ "~/.ssh" | expanduser }}'
+    path: '{{ [setup_user_result.home, ".ssh"] | path_join }}'
     state: directory
     mode: '700'
 
 - name: Copy public keys to ssh folder
   ansible.builtin.copy:
     src: 'files/{{ item.public }}'
-    dest: '{{ ["~/.ssh", item.public] | path_join | expanduser }}'
+    dest: '{{ [setup_user_result.home, ".ssh", item.public] | path_join }}'
     mode: '444'
   loop: '{{ ssh.key_files }}'
   when: ssh.key_files is defined
@@ -64,7 +64,7 @@
 - name: Copy private keys to ssh folder
   ansible.builtin.copy:
     src: 'files/{{ item.private }}'
-    dest: '{{ ["~/.ssh", item.private] | path_join | expanduser }}'
+    dest: '{{ [setup_user_result.home, ".ssh", item.private] | path_join }}'
     mode: '400'
   loop: '{{ ssh.key_files }}'
   when: ssh.key_files is defined
