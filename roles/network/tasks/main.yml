@@ -101,6 +101,7 @@
       # Samba
       - 'smb.service'
       - 'nmb.service'
+      - 'winbind.service'
   loop: '{{ units }}'
 
 - name: Set user's samba password
