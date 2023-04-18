@@ -69,6 +69,7 @@
       - devtools  # tools for package maintainers
       - namcap  # pacman package analyzer
       - pacutils  # helper tools for libalpm
+      - check-broken-packages-pacman-hook-git  # check dynamic library, python and systemd dependencies
 
 - name: Apply makepkg.conf
   become: true
