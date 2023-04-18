@@ -68,6 +68,7 @@
       - pkgfile  # packages metadata explorer
       - devtools  # tools for package maintainers
       - namcap  # pacman package analyzer
+      - pacutils  # helper tools for libalpm
 
 - name: Apply makepkg.conf
   become: true
