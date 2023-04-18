@@ -16,7 +16,6 @@
       - nss-mdns
       # Samba
       - samba
-      - wsdd2
       # IPSec
       - networkmanager-l2tp
       - strongswan
@@ -102,7 +101,6 @@
       # Samba
       - 'smb.service'
       - 'nmb.service'
-      - 'wsdd2.service'
   loop: '{{ units }}'
 
 - name: Set user's samba password
