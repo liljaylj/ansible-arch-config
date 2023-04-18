@@ -1,7 +1,5 @@
-Server = https://es-mirror.chaotic.cx/$repo/$arch
-Server = https://de-2-mirror.chaotic.cx/$repo/$arch
-Server = https://fr-3-mirror.chaotic.cx/$repo/$arch
-
-# CDN (delayed syncing)
-# By: Fosshost
+# Cloudflare R2 CDN (delayed syncing)
 Server = https://cdn-mirror.chaotic.cx/$repo/$arch
+
+# Automatic per-country routing of the mirrors below.
+Server = https://geo-mirror.chaotic.cx/$repo/$arch
