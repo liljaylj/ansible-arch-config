@@ -10,7 +10,7 @@
 
 - name: Generate rsa private key
   become: true
-  become_user: '{{ archconfig.user.name | default("archconfig") }}'
+  become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
     argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'genrsa', '-out', '/var/cache/pixelserv/ca.key',
            '2048']
@@ -18,7 +18,7 @@
 
 - name: Generate local certificate
   become: true
-  become_user: '{{ archconfig.user.name | default("archconfig") }}'
+  become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
     argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key',
            '-new', '-x509', '-days', '3650', '-sha256', '-extensions', 'v3_ca', '-out', '/var/cache/pixelserv/ca.crt',
