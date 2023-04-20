@@ -33,6 +33,7 @@
       - direnv  # shell extension that manages your env
       - vivid  # generate console colors
       - bat  # modern cat
+      - xplr  # cli file manager
       - dialog
       - s-tui  # stress testing
       - yt-dlp  # download youtube videos
