@@ -1,25 +1,24 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: Apply mirrorlist
+- name: Apply mirrorlists
   become: true
   ansible.builtin.template:
-    src: 'pacman/mirrorlist.j2'
-    dest: '/etc/pacman.d/mirrorlist'
+    src: 'pacman/{{ item }}.j2'
+    dest: '/etc/pacman.d/{{ item }}'
     mode: '644'
+  vars:
+    mirrorlists:
+      - mirrorlist
+      - chaotic-mirrorlist
+      - alhp-mirrorlist
+  loop: '{{ mirrorlists }}'
 
 - name: Import chaotic pacman key
   become: true
   community.general.pacman_key:
     id: 'A3873AB27021C5DD39E0501AFBA220DFC880C036'
     keyserver: 'keyserver.ubuntu.com'
-
-- name: Apply chaotic mirrorlist
-  become: true
-  ansible.builtin.template:
-    src: 'pacman/chaotic-mirrorlist.j2'
-    dest: '/etc/pacman.d/chaotic-mirrorlist'
-    mode: '644'
 
 - name: Ensure pacman conf.d dir exists
   become: true
@@ -52,6 +51,28 @@
     name:
       - chaotic-keyring
       - chaotic-mirrorlist
+
+- name: Install ALHP mirrorlist and keyring
+  become: true
+  community.general.pacman:
+    name:
+      - alhp-keyring
+      - alhp-mirrorlist
+
+- name: Add ALHP repos before default
+  become: true
+  ansible.builtin.blockinfile:
+    path: '/etc/pacman.conf'
+    block: |
+      [core-x86-64-v3]
+      Include = /etc/pacman.d/alhp-mirrorlist
+
+      [extra-x86-64-v3]
+      Include = /etc/pacman.d/alhp-mirrorlist
+
+      [community-x86-64-v3]
+      Include = /etc/pacman.d/alhp-mirrorlist
+    insertbefore: '\[core\]'
 
 - name: Install libalpm packages
   become: true
