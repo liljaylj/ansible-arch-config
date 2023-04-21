@@ -6,7 +6,9 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: openssh
+    packages:
+      - openssh
+      - sshfs
 
 - name: Apply ssh_config
   become: true
