@@ -60,6 +60,7 @@
       - kdegraphics-thumbnailers
       - svgpart
       - kio-zeroconf
+      - kio-admin
       # - kio-extras
       # - kio-gdrive
       - krdc
