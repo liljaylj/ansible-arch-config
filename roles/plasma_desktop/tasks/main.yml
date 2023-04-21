@@ -67,6 +67,7 @@
       - kdenetwork-filesharing
       # Games
       - kmines
+      - ksudoku
       - kmahjongg
       - kshisen
       # Discover
