@@ -2,8 +2,8 @@
 ---
 
 bootloader:
-  timeout: 0
-  timeout_style: menu
+  timeout: 1
+  timeout_style: hidden
   kernel_params:
     - 'amd_pstate=passive'
     - 'nowatchdog'
