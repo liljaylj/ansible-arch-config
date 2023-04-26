@@ -9,7 +9,6 @@
     packages:
       # rust
       - rustup
-      - rust-analyzer
       - cargo-watch  # watch and recompile cargo project on change
       - cargo-tarpaulin  # generate code coverage reports
       - cargo-audit  # scan for security vulnerabilities
@@ -129,10 +128,9 @@
     executable: '/bin/bash'
     cmd: |
       set -Eeuo pipefail
-      rustup install {{ rust_toolchains | join(" ") }} | grep unchanged || true
+      rustup install {{ rust_toolchains | join(' ') }} | grep unchanged || true
   register: install_toolchains_result
   changed_when: '(install_toolchains_result.stdout_lines | length) != (rust_toolchains | length)'
-
 
 - name: Set default rust toolchain
   vars:
@@ -141,6 +139,24 @@
     cmd: 'rustup default {{ rust_default_toolchain }}'
   register: install_result
   changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
+
+- name: Install rust components
+  vars:
+    rust_components:
+      - cargo
+      - clippy
+      - rust-analyzer
+      - rust-docs
+      - rust-src
+      - rust-std
+      - rustc
+      - rustfmt
+  ansible.builtin.shell:
+    cmd: |
+      set -Eeuo pipefail
+      rustup component add {{ rust_components | join(' ') }} 2>&1 | grep 'is up to date' || true
+  register: add_components_result
+  changed_when: '(add_components_result.stdout_lines | length) != (rust_components | length)'
 
 - name: Set default rust toolchain for archconfig user
   become: true
