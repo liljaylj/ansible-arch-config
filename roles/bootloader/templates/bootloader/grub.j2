@@ -4,6 +4,7 @@ GRUB_DEFAULT=saved
 GRUB_SAVEDEFAULT=true
 GRUB_TIMEOUT={{ bootloader.timeout | default(5) }}
 GRUB_TIMEOUT_STYLE={{ bootloader.timeout_style | default('menu') }}
+GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
 GRUB_DISTRIBUTOR="Arch"
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3{% if swap.enabled | default(true) %} zswap.enabled=0{% endif %}{% if power_management.ec_no_wakeup | default(false) %} acpi.ec_no_wakeup=1{% endif %}{% if bootloader.kernel_params is defined %} {{ [bootloader.kernel_params] | flatten | join(' ') }}{% endif %} quiet"
 GRUB_CMDLINE_LINUX=""

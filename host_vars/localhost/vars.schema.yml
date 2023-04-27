@@ -197,6 +197,10 @@ properties:
     description: 'Bootloader config'
     type: object
     properties:
+      grub_package:
+        description: 'GRUB package to use'
+        type: string
+        default: grub
       timeout:
         description: 'Bootloader timeout'
         type: integer
