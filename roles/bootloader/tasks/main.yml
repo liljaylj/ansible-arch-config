@@ -7,8 +7,8 @@
     tasks_from: install_pkg
   vars:
     packages:
+      - '{{ bootloader.grub_package | default("grub") }}'
       - efibootmgr
-      - grub
       - breeze-grub
 
 - name: Install grub efi application

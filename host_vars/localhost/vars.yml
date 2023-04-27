@@ -2,6 +2,7 @@
 ---
 
 bootloader:
+  grub_package: grub-silent
   timeout: 1
   timeout_style: hidden
   kernel_params:
@@ -9,6 +10,9 @@ bootloader:
     - 'nowatchdog'
     - 'modprobe.blacklist=sp5100_tco'
     - 'nmi_watchdog=0'
+    - 'vt.global_cursor_default=0'
+    - 'rd.systemd.show_status=false'
+    - 'rd.udev.log-priority=3'
 
 kernels:
   list:
