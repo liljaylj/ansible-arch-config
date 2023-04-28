@@ -1,5 +1,5 @@
 {% if power_management.disable_wakeup_triggers is defined %}
 {% for device in power_management.disable_wakeup_triggers %}
-ACTION=="add", ATTRS{idVendor}=="{{ device.vendor_id | lower }}", ATTRS{idProduct}=="{{ device.product_id | lower }}", ATTR{power/wakeup}="disabled"
+ACTION=="add|change", ATTRS{idVendor}=="{{ device.vendor_id | lower }}", ATTRS{idProduct}=="{{ device.product_id | lower }}", ATTR{power/wakeup}="disabled"
 {% endfor %}
 {% endif %}
