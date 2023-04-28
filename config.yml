@@ -19,6 +19,7 @@
     - mkinitcpio
     - bootloader
     - zram
+    - sysctl
     - zsh
     - firewalld
     - network
