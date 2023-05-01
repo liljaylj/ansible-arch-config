@@ -12,8 +12,8 @@
       - noto-fonts
       - ttf-liberation
       - ttf-croscore
-      - ttf-nerd-fonts-symbols-2048-em
-      - ttf-nerd-fonts-symbols-2048-em-mono
+      - ttf-nerd-fonts-symbols
+      - ttf-nerd-fonts-symbols-mono
       - ttf-joypixels
       - ttf-ms-fonts
       - ttf-carlito
