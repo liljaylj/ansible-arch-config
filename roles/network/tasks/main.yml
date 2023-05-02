@@ -78,20 +78,13 @@
         dest: '/etc/samba'
   loop: '{{ configs }}'
 
-- name: Create resolv.conf symlink
-  become: true
-  ansible.builtin.file:
-    force: true
-    src: '/run/systemd/resolve/stub-resolv.conf'
-    dest: '/etc/resolv.conf'
-    state: link
-
 - name: Enable services
   become: true
   ansible.builtin.systemd:
     name: '{{ item }}'
     daemon_reload: true
     enabled: true
+    state: started
   vars:
     units:
       # systemd-resolved
@@ -103,6 +96,14 @@
       - 'nmb.service'
       - 'winbind.service'
   loop: '{{ units }}'
+
+- name: Create resolv.conf symlink
+  become: true
+  ansible.builtin.file:
+    force: true
+    src: '/run/systemd/resolve/stub-resolv.conf'
+    dest: '/etc/resolv.conf'
+    state: link
 
 - name: Set user's samba password
   become: true
