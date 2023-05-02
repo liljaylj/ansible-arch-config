@@ -56,7 +56,6 @@
       - pv  # progress bar for commands
       - toilet
       - toilet-fonts
-      - fsrx  # flow state reading (aka bionic reading)
       - zap-bin  # AppImage package manager
       - ventoy-bin  # create multiboot live usb
       - ydotool  # systemd service (ydotoold)
