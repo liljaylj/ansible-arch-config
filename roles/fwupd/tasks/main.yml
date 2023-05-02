@@ -8,6 +8,17 @@
   vars:
     packages: fwupd
 
+- name: Override UEFI mount point
+  become: true
+  community.general.ini_file:
+    dest: '/etc/fwupd/uefi_capsule.conf'
+    section: 'uefi_capsule'
+    option: 'OverrideESPMountPoint'
+    value: '/boot'
+    mode: '644'
+  notify:
+    - Restart fwupd service
+
 - name: Enable lvfs remote
   become: true
   ansible.builtin.command:

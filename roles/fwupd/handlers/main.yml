@@ -1,0 +1,9 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Restart fwupd service
+  become: true
+  ansible.builtin.systemd:
+    name: 'fwupd'
+    daemon_reload: true
+    state: restarted
