@@ -1,8 +1,0 @@
-# vim: ft=yaml.ansible
----
-
-- name: Enable periodic trim
-  ansible.builtin.systemd:
-    name: fstrim.timer
-    enabled: true
-  when: (ssd | default(true)) is truthy

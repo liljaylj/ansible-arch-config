@@ -1,0 +1,17 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Enable periodic trim
+  become: true
+  ansible.builtin.systemd:
+    name: fstrim.timer
+    enabled: true
+  when: (disk.ssd | default(true)) is truthy
+
+# TODO: try IOReadBandwidthMax if disk will overheat
+- name: Enable scrub timer
+  become: true
+  ansible.builtin.systemd:
+    name: 'btrfs-scrub@{{ lookup("ansible.builtin.pipe", "systemd-escape " + item | quote) }}.timer'
+    enabled: true
+  loop: '{{ disk.scrub | default(["/"]) }}'

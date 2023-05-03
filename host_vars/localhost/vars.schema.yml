@@ -260,10 +260,21 @@ properties:
         type: integer
         default: 60
 
-  ssd:
-    description: 'SSD config'
-    type: boolean
-    default: true
+  disk:
+    description: 'Disk tweaks'
+    type: object
+    properties:
+      ssd:
+        description: 'SSD config'
+        type: boolean
+        default: true
+      scrub:
+        description: 'Btrfs scrub timer'
+        type: array
+        items:
+          type: string
+        default:
+          - '/'
 
   vconsole:
     description: 'Config for agetty vconsole'
