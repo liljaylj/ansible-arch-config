@@ -11,9 +11,8 @@
       - xf86-video-amdgpu
       - vulkan-radeon
       - lib32-vulkan-radeon
-      # TODO: uncomment when amdvlk updated to >= 2023.Q1.1
-      # - amdvlk
-      # - lib32-amdvlk
+      - amdvlk
+      - lib32-amdvlk
       - vulkan-icd-loader
       - lib32-vulkan-icd-loader
       - vulkan-mesa-layers
