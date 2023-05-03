@@ -146,6 +146,29 @@ properties:
         type: array
         items:
           type: string
+      modprobe:
+        description: 'Kernel modules to load'
+        type: array
+        items:
+          anyOf:
+            - type: object
+              properties:
+                name:
+                  description: 'Module name'
+                  type: string
+                params:
+                  description: 'Module parameters'
+                  type: string
+                state:
+                  description: 'Module state'
+                  type: string
+                  enum:
+                    - present
+                    - absent
+                  default: present
+              required:
+                - name
+            - type: string
     required:
       - list
 
