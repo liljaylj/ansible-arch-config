@@ -18,6 +18,11 @@ bootloader:
     # - 'loglevel=3'
     # - 'rd.udev.log-priority=3'
 
+disk:
+  ssd: true
+  scrub:
+    - '/'
+
 kernels:
   list:
     - linux-zen
