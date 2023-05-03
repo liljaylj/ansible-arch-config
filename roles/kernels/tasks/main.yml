@@ -77,3 +77,11 @@
     state: '{{ item.state | default("present") }}'
   loop: '{{ kernels.modprobe }}'
   when: kernels.modprobe is defined
+
+- name: Blacklist kernel modules
+  become: true
+  community.general.kernel_blacklist:
+    name: '{{ item }}'
+    state: present
+  loop: '{{ kernels.module_blacklist }}'
+  when: kernels.module_blacklist is defined

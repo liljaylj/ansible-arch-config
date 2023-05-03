@@ -22,6 +22,10 @@ kernels:
   headers: true
   extra_modules:
     - upd72020x-fw
+  module_blacklist:
+    # disable inadequately loud beep on lenovo thinkpads
+    - pcspkr
+    - snd_pcsp
 
 mkinitcpio:
   modules:
