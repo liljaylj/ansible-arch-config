@@ -85,3 +85,11 @@
     state: present
   loop: '{{ kernels.module_blacklist }}'
   when: kernels.module_blacklist is defined
+
+- name: Increase vm.max_map_count
+  become: true
+  ansible.posix.sysctl:
+    name: 'vm.max_map_count'
+    sysctl_file: '/etc/sysctl.d/50-increase-vm-max-map-count.conf'
+    sysctl_set: true
+    value: '2147483642'
