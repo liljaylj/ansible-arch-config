@@ -13,9 +13,7 @@
 
 - name: Set locale lang
   become: true
-  ansible.builtin.lineinfile:
-    regexp: '^[ #]*LANG='
-    line: "LANG={{ locales.lang | default(['en_US.UTF-8 UTF-8'] | first | trim | split | first) }}\n"
+  ansible.builtin.template:
+    src: 'locale/locale.conf.j2'
     dest: '/etc/locale.conf'
-    create: true
     mode: '644'
