@@ -169,6 +169,11 @@ properties:
               required:
                 - name
             - type: string
+      module_blacklist:
+        description: 'Kernel modules to blacklist'
+        type: array
+        items:
+          type: string
     required:
       - list
 
