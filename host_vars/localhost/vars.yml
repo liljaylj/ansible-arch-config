@@ -2,14 +2,17 @@
 ---
 
 bootloader:
-  # grub_package: grub-silent
+  # grub_package: grub-silent  # silent boot
   timeout: 1
   timeout_style: hidden
   kernel_params:
+    # use amd_pstate power management driver (passive)
     - 'amd_pstate=passive'
+    # disable watchdog
     - 'nowatchdog'
     - 'modprobe.blacklist=sp5100_tco'
     - 'nmi_watchdog=0'
+    # # silent boot
     # - 'vt.global_cursor_default=0'
     # - 'rd.systemd.show_status=false'
     # - 'loglevel=3'
@@ -21,6 +24,7 @@ kernels:
     - linux-lts
   headers: true
   extra_modules:
+    # extra firmware
     - upd72020x-fw
   module_blacklist:
     # disable inadequately loud beep on lenovo thinkpads
