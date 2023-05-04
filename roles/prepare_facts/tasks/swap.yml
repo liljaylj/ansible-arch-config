@@ -15,10 +15,10 @@
 
 - name: Get swap file resume offset
   become: true
-  ansible.builtin.command: 'btrfs inspect-internal map-swapfile -r {{ swap.swapfile | quote }}'
+  ansible.builtin.command: 'btrfs inspect-internal map-swapfile -r {{ swap.hibernation.path | quote }}'
   changed_when: false
   register: swap_resume_offset_result
-  when: swap.hibernation.type | default('file') == 'file'
+  when: swap.hibernation.path is defined and swap.hibernation.type | default('file') == 'file'
 
 - name: Define swap file resume offset fact
   ansible.builtin.set_fact:
