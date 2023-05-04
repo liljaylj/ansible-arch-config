@@ -15,7 +15,6 @@
     section: 'zram0'
     allow_no_value: true
     mode: '644'
-  when: swap.enabled | default(true)
 
 - name: Zram swap service
   become: true
@@ -23,12 +22,3 @@
     name: 'systemd-zram-setup@zram0.service'
     daemon_reload: true
     enabled: true
-  when: swap.enabled | default(true)
-
-- name: Set swappiness
-  become: true
-  ansible.posix.sysctl:
-    name: 'vm.swappiness'
-    sysctl_file: '/etc/sysctl.d/99-swappiness.conf'
-    sysctl_set: true
-    value: '{{ swap.swappiness | default("60") }}'

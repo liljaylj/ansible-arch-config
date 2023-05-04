@@ -1,0 +1,14 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Set swappiness
+  become: true
+  ansible.posix.sysctl:
+    name: 'vm.swappiness'
+    sysctl_file: '/etc/sysctl.d/99-swappiness.conf'
+    sysctl_set: true
+    value: '{{ swap.swappiness | default("60") }}'
+
+- name: Zram swap
+  ansible.builtin.include_tasks: zram.yml
+  when: swap.zram | default(true)
