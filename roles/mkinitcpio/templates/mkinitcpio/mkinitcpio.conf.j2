@@ -53,7 +53,7 @@ FILES=({{ mkinitcpio.files | default([]) | join(' ') }})
 {% set is_base = 'base' in hooks %}
 {% set udev_index = 'udev' in hooks and hooks.index('udev') %}
 {% if is_base and udev_index is integer %}
-{% set _ = hooks.insert(udev_index + 1, 'resume') %}
+{% do hooks.insert(udev_index + 1, 'resume') %}
 {% endif %}
 HOOKS=({{ hooks | join(' ') }})
 
