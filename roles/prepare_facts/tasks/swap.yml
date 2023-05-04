@@ -1,0 +1,26 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Get swap partition UUID
+  become: true
+  ansible.builtin.command: 'findmnt -no UUID -T {{ swap.hibernation.path | quote }}'
+  changed_when: false
+  register: swap_lsblk_result
+  when: swap.hibernation.path is defined
+
+- name: Define swap partition UUID fact
+  ansible.builtin.set_fact:
+    swap_partition_uuid: '{{ swap_lsblk_result.stdout | trim }}'
+  when: swap.hibernation.path is defined
+
+- name: Get swap file resume offset
+  become: true
+  ansible.builtin.command: 'btrfs inspect-internal map-swapfile -r {{ swap.swapfile | quote }}'
+  changed_when: false
+  register: swap_resume_offset_result
+  when: swap.hibernation.type | default('file') == 'file'
+
+- name: Define swap file resume offset fact
+  ansible.builtin.set_fact:
+    swap_resume_offset: '{{ swap_resume_offset_result.stdout | trim }}'
+  when: swap.hibernation.type | default('file') == 'file'

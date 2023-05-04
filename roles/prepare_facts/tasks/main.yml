@@ -1,0 +1,5 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Set swap facts
+  ansible.builtin.include_tasks: swap.yml
