@@ -19,7 +19,7 @@
     - needrestart
     - mkinitcpio
     - bootloader
-    - zram
+    - swap
     - zsh
     - firewalld
     - network
