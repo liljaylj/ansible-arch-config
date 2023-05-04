@@ -6,7 +6,20 @@ GRUB_TIMEOUT={{ bootloader.timeout | default(5) }}
 GRUB_TIMEOUT_STYLE={{ bootloader.timeout_style | default('menu') }}
 GRUB_RECORDFAIL_TIMEOUT=$GRUB_TIMEOUT
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="{% if swap.enabled | default(true) %} zswap.enabled=0{% endif %}{% if power_management.ec_no_wakeup | default(false) %} acpi.ec_no_wakeup=1{% endif %}{% if bootloader.kernel_params is defined %} {{ [bootloader.kernel_params] | flatten | join(' ') }}{% endif %} quiet splash sysrq_always_enabled=1"
+{% set params = bootloader.kernel_params | default([]) + ['quiet', 'splash', 'sysrq_always_enabled=1'] %}
+{% if swap.zram | default(true) %}
+{% do params.append('zswap.enabled=0') %}
+{% endif %}
+{% if power_management.ec_no_wakeup | default(false) %}
+{% do params.append('acpi.ec_no_wakeup=1') %}
+{% endif %}
+{% if swap_partition_uuid is defined %}
+{% do params.append('resume=UUID=' + swap_partition_uuid) %}
+{% endif %}
+{% if swap_resume_offset is defined %}
+{% do params.append('resume_offset=' + swap_resume_offset) %}
+{% endif %}
+GRUB_CMDLINE_LINUX_DEFAULT="{{ params | join(' ') }}"
 GRUB_CMDLINE_LINUX=""
 GRUB_DISABLE_OS_PROBER={{ bootloader.os_prober | default(false) | ternary('true', 'false') }}
 
