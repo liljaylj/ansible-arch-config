@@ -30,8 +30,6 @@ case "$yn" in
     ;;
 esac
 
-export ANSIBLE_NOCOWS=1
-
 # play
 case "$1" in
     ask)
@@ -43,6 +41,10 @@ case "$1" in
 esac
 
 shift 1
+
+# config
+export ANSIBLE_NOCOWS=1
+export ANSIBLE_JINJA2_EXTENSIONS='jinja2.ext.do'
 
 ansible-playbook -i ./inventory -c local config.yml "${vault_args[@]}" "$@"
 
