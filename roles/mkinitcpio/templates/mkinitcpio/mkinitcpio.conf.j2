@@ -4,19 +4,19 @@
 # run.  Advanced users may wish to specify all system modules
 # in this array.  For instance:
 #     MODULES=(piix ide_disk reiserfs)
-MODULES=({{ [mkinitcpio.modules | default('')] | flatten | join(' ') }})
+MODULES=({{ mkinitcpio.modules | default([]) | join(' ') }})
 
 # BINARIES
 # This setting includes any additional binaries a given user may
 # wish into the CPIO image.  This is run last, so it may be used to
 # override the actual binaries included by a given hook
 # BINARIES are dependency parsed, so you may safely ignore libraries
-BINARIES=({{ [mkinitcpio.binaries | default('')] | flatten | join(' ') }})
+BINARIES=({{ mkinitcpio.binaries | default([]) | join(' ') }})
 
 # FILES
 # This setting is similar to BINARIES above, however, files are added
 # as-is and are not parsed in any way.  This is useful for config files.
-FILES=({{ [mkinitcpio.files | default('')] | flatten | join(' ') }})
+FILES=({{ mkinitcpio.files | default([]) | join(' ') }})
 
 # HOOKS
 # This is the most important setting in this file.  The HOOKS control the
@@ -49,7 +49,13 @@ FILES=({{ [mkinitcpio.files | default('')] | flatten | join(' ') }})
 #
 ##   NOTE: If you have /usr on a separate partition, you MUST include the
 #    usr, fsck and shutdown hooks.
-HOOKS=({{ [mkinitcpio.hooks | default('base consolefont udev autodetect modconf kms block filesystems keyboard keymap fsck')] | flatten | join(' ') }})
+{% set hooks = mkinitcpio.hooks | default(['base', 'consolefont', 'udev', 'autodetect', 'modconf', 'kms', 'block', 'filesystems', 'keyboard', 'keymap', 'fsck']) %}
+{% set is_base = 'base' in hooks %}
+{% set udev_index = 'udev' in hooks and hooks.index('udev') %}
+{% if is_base and udev_index is integer %}
+{% set _ = hooks.insert(udev_index + 1, 'resume') %}
+{% endif %}
+HOOKS=({{ hooks | join(' ') }})
 
 # COMPRESSION
 # Use this to compress the initramfs image. By default, zstd compression
