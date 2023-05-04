@@ -248,17 +248,33 @@ properties:
           type: string
 
   swap:
-    description: 'Swap (zram) config'
+    description: 'Swap config'
     type: object
     properties:
-      enabled:
-        description: 'Enable swap'
+      zram:
+        description: 'Enable zram'
         type: boolean
         default: true
       swappiness:
         description: 'Swappiness value'
         type: integer
         default: 60
+      hibernation:
+        description: 'Hibernation config'
+        type: object
+        properties:
+          type:
+            description: 'Swap type'
+            type: string
+            enum:
+              - file
+              - partition
+            default: file
+          path:
+            description: 'Swap path'
+            type: string
+        required:
+          - path
 
   disk:
     description: 'Disk tweaks'
