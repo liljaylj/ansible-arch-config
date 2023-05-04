@@ -4,6 +4,7 @@
 - name: Config
   hosts: all
   roles:
+    - prepare_facts
     - archconfig_user
     - user
     - timedate
