@@ -75,8 +75,11 @@ user:
   home_mode: '751'
 
 swap:
-  enabled: true
+  zram: true
   swappiness: 10
+  hibernation:
+    type: file
+    path: '/swap/swapfile'
 
 vconsole:
   keymap: ru
