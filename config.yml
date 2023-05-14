@@ -28,6 +28,7 @@
     - realtime
     - profile
     - power_management
+    # - ddcutil  # NOTE: Powerdevil stops to manage brightness of internal monitor... >:-[
     - smartcard
     - ssh
     # - ly

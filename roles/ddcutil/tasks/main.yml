@@ -1,0 +1,41 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Install ddcutil
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - ddcutil
+      - i2c-tools
+      - read-edid
+
+- name: Add user to i2c and video groups
+  ansible.builtin.include_role:
+    name: user
+    tasks_from: user_add_group
+  vars:
+    new_groups:
+      - i2c
+      - video
+
+- name: Add udev rules
+  become: true
+  ansible.builtin.file:
+    force: true
+    src: '/usr/share/ddcutil/data/{{ item }}'
+    dest: '/etc/udev/rules.d/{{ item }}'
+    state: link
+  vars:
+    ddcutil_rules:
+      - 45-ddcutil-i2c.rules
+      - 45-ddcutil-usb.rules
+  loop: '{{ ddcutil_rules }}'
+
+- name: Add i2c_dev kernel module
+  become: true
+  community.general.modprobe:
+    name: 'i2c_dev'
+    persistent: 'present'
+    state: 'present'
