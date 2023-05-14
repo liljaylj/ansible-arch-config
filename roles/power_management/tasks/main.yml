@@ -1,22 +1,6 @@
 # vim: ft=yaml.ansible
 ---
 
-# - name: Install auto-cpufreq and thermald
-#   ansible.builtin.include_role:
-#     name: pacman
-#     tasks_from: install_pkg
-#   vars:
-#     packages:
-#       - auto-cpufreq
-#       - thermald
-
-# - name: Enable auto-cpufreq service
-#   become: true
-#   ansible.builtin.systemd:
-#     name: 'auto-cpufreq.service'
-#     daemon_reload: true
-#     enabled: true
-#     state: started
 
 - name: Create logind config dir
   become: true
