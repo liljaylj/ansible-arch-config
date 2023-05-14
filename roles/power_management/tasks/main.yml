@@ -1,6 +1,14 @@
 # vim: ft=yaml.ansible
 ---
 
+- name: Install power profiles daemon
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - power-profiles-daemon
+      - python-gobject
 
 - name: Create logind config dir
   become: true

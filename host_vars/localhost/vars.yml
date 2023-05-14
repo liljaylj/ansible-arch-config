@@ -6,8 +6,8 @@ bootloader:
   timeout: 1
   timeout_style: hidden
   kernel_params:
-    # use amd_pstate power management driver (passive)
-    - 'amd_pstate=passive'
+    # use amd_pstate power management driver
+    - 'amd_pstate=active'  # TODO: move to the power_management role
     # disable watchdog
     - 'nowatchdog'
     - 'modprobe.blacklist=sp5100_tco'
