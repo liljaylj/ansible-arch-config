@@ -44,7 +44,7 @@ CFLAGS="-march=native -mtune=generic -O2 -pipe -fno-plt -fexceptions \
 CXXFLAGS="$CFLAGS -Wp,-D_GLIBCXX_ASSERTIONS"
 LDFLAGS="-Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
 LTOFLAGS="-flto=auto"
-RUSTFLAGS="-C opt-level=2 -C target-cpu=native"
+RUSTFLAGS="-C opt-level=2 -C target-cpu=native -C linker=clang -C link-arg=-fuse-ld=lld"
 #-- Make Flags: change this for DistCC/SMP systems
 MAKEFLAGS="-j$(("$(nproc)"+1))"
 #-- Debugging flags
