@@ -27,6 +27,7 @@
       - fd  # modern find
       - jq  # json query processor
       - go-yq  # yaml query processor
+      - htmlq  # html query processor
       - jless  # json viewer like less
       - fzf  # fuzzy menu
       - zoxide  # jump to directory like z
