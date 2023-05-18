@@ -137,3 +137,18 @@
       - samba
       - samba-client
       - netbios-ns
+
+- name: Enable IP forwarding
+  become: true
+  ansible.posix.sysctl:
+    name: '{{ item }}'
+    sysctl_file: '/etc/sysctl.d/30-ipforward.conf'
+    sysctl_set: true
+    value: '1'
+  vars:
+    sysctls:
+      - 'net.ipv4.ip_forward'
+      - 'net.ipv6.conf.default.forwarding'
+      - 'net.ipv6.conf.all.forwarding'
+  loop: '{{ sysctls }}'
+  when: network.ip_forwarding | default(false)

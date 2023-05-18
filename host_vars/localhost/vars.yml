@@ -91,6 +91,7 @@ ssh:
       private: 'id_ed25519'
 
 network:
+  ip_forwarding: true
   nextdns_id: '{{ vault.nextdns_id }}'
 
 kube:
