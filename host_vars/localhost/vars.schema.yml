@@ -307,6 +307,10 @@ properties:
     description: 'Network config'
     type: object
     properties:
+      ip_forwarding:
+        description: 'Enable IP forwarding'
+        type: boolean
+        default: false
       nextdns_id:
         description: 'NextDNS ID'
         type: string
