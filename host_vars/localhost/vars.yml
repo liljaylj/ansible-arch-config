@@ -90,8 +90,8 @@ ssh:
     - public: 'id_ed25519.pub'
       private: 'id_ed25519'
 
-nextdns:
-  id: '{{ vault.nextdns_id }}'
+network:
+  nextdns_id: '{{ vault.nextdns_id }}'
 
 kube:
   krew:

@@ -303,15 +303,13 @@ properties:
         description: 'Agetty font'
         type: string
 
-  nextdns:
-    description: 'NextDNS config'
+  network:
+    description: 'Network config'
     type: object
     properties:
-      id:
+      nextdns_id:
         description: 'NextDNS ID'
         type: string
-    required:
-      - id
 
   xdg_base_dir:
     description: 'XDG Base Directory'
