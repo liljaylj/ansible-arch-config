@@ -82,6 +82,7 @@
       - pacman-contrib  # libalpm utils
       - pkgstats  # auto-submit and view archlinux package statistics
       - asp  # arch build sources management
+      - devtools-git-poc  # arch build sources management (git version)
       - expac  # query pacman database
       - downgrade  # ability to downgrade package(s)
       - reflector  # update archlinux mirrorlist
