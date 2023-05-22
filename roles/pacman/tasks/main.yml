@@ -81,7 +81,6 @@
       - base-devel  # basic tools to build arch linux packages
       - pacman-contrib  # libalpm utils
       - pkgstats  # auto-submit and view archlinux package statistics
-      - asp  # arch build sources management
       - expac  # query pacman database
       - downgrade  # ability to downgrade package(s)
       - reflector  # update archlinux mirrorlist
