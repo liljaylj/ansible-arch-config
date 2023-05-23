@@ -75,7 +75,7 @@
       - wireshark-cli
       - miniserve  # local http file server
       - rsync
-      # - rclone
+      - rclone
       # TODO: wireguard vlan with egress (zerotier, tailscale, teleport, netmaker, firezone, etc.)
 
       # 2fa
