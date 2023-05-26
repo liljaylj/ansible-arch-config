@@ -19,6 +19,7 @@
       - xorg-xwayland
       - wl-clipboard
       - wl-clipboard-x11
+      - wayclip
       - qt6-wayland
       - gtk-layer-shell
       - xdg-desktop-portal
