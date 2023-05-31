@@ -15,6 +15,9 @@
       # (un-)archiving tools
       - zip
       - unzip
+      - p7zip
+      - unrar
+      - unarchiver
 
       # utils/tools
       - moreutils
