@@ -50,6 +50,7 @@
       # java dev
       - jdk-openjdk
       - jdk17-openjdk
+      - jdtls
 
       # # intellij idea
       # - intellij-idea-community-edition
