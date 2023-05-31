@@ -37,6 +37,7 @@
       - qalculate-qt  # qt frontend for qalculate
       - enpass-bin  # password manager
       - zenity  # gui dialogs in scripts
+      - yad  # fork of zenity
       - xorg-xeyes  # xeyes, detect xwayland windows
       - dragon-drop  # drag-and-drop from/to terminal
       - corectrl  # control power/performance profiles

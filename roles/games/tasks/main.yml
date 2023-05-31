@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: Install steam runtime and related
+- name: Install steam, games and related software
   ansible.builtin.include_role:
     name: pacman
     tasks_from: install_pkg
@@ -23,6 +23,7 @@
       - glfw-wayland
       - pokerth
       - mrboom
+      - aur/protontricks
 
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
