@@ -49,7 +49,7 @@ FILES=({{ mkinitcpio.files | default([]) | join(' ') }})
 #
 ##   NOTE: If you have /usr on a separate partition, you MUST include the
 #    usr, fsck and shutdown hooks.
-{% set hooks = mkinitcpio.hooks | default(['base', 'consolefont', 'udev', 'autodetect', 'modconf', 'kms', 'block', 'filesystems', 'keyboard', 'keymap', 'fsck']) %}
+{% set hooks = mkinitcpio.hooks | default(['base', 'consolefont', 'udev', 'autodetect', 'numlock', 'modconf', 'kms', 'block', 'filesystems', 'keyboard', 'keymap', 'fsck']) %}
 {% set is_base = 'base' in hooks %}
 {% set udev_index = 'udev' in hooks and hooks.index('udev') %}
 {% if is_base and udev_index is integer %}

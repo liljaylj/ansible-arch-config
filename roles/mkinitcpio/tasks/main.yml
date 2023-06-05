@@ -1,6 +1,13 @@
 # vim: ft=yaml.ansible
 ---
 
+- name: Install mkinitcpio-numlock
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    packages: mkinitcpio-numlock
+
 - name: Apply mkinitcpio.conf
   become: true
   ansible.builtin.template:
