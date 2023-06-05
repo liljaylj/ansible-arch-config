@@ -35,8 +35,6 @@ kernels:
     # disable inadequately loud beep on lenovo thinkpads
     - pcspkr
     - snd_pcsp
-    # system freeze workaround?…
-    - thinkpad_acpi
 
 mkinitcpio:
   modules:
