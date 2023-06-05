@@ -17,6 +17,8 @@ bootloader:
     # - 'rd.systemd.show_status=false'
     # - 'loglevel=3'
     # - 'rd.udev.log-priority=3'
+    # system freeze workaround?…
+    - 'modprobe.blacklist=thinkpad_acpi'
 
 disk:
   ssd: true
