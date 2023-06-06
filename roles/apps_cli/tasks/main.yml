@@ -43,6 +43,7 @@
       - yt-dlp  # download youtube videos
       - upower  # power devices info
       - udisks2  # disk management
+      - ntfs-3g  # ntfs filesystem support
       - chezmoi  # dotfiles manager
       - dex  # execute desktop files and autostart apps
       - dust  # modern du
