@@ -24,6 +24,7 @@
       - pokerth
       - mrboom
       - aur/protontricks
+      - protonup-qt
 
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
