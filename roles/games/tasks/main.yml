@@ -12,8 +12,9 @@
       - sc-controller  # steam controller gui
       - game-devices-udev
       - gamemode
-      - gamescope
       - lib32-gamemode
+      - libstrangle
+      - gamescope
       - gzdoom
       - zandronum
       - doomseeker
