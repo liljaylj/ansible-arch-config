@@ -19,6 +19,8 @@
       # IPSec
       - networkmanager-l2tp
       - strongswan
+      # Logmein Hamachi
+      - logmein-hamachi  # TODO: /var/lib/logmein-hamachi/h2-engine-override.cfg (Ipc.User username)
 
 - name: Create sambashare group
   become: true
@@ -152,3 +154,17 @@
       - 'net.ipv6.conf.all.forwarding'
   loop: '{{ sysctls }}'
   when: network.ip_forwarding | default(false)
+
+- name: Create hamachi var dir
+  become: true
+  ansible.builtin.file:
+    path: '/var/lib/logmein-hamachi'
+    state: directory
+    mode: '755'
+
+- name: Allow current user to manage hamachi
+  become: true
+  ansible.builtin.template:
+    src: 'network/h2-engine-override.cfg.j2'
+    dest: '/var/lib/logmein-hamachi/h2-engine-override.cfg'
+    mode: '644'
