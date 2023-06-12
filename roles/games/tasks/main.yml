@@ -9,11 +9,14 @@
     packages:
       - steam
       - steam-native-runtime
+      - lutris
+      - aur/protontricks
+      - protonup-qt
       - sc-controller  # steam controller gui
       - game-devices-udev
       - gamemode
       - lib32-gamemode
-      - libstrangle
+      - libstrangle  # fps limiter
       - gamescope
       - mangohud
       - lib32-mangohud
@@ -26,8 +29,6 @@
       - glfw-wayland
       - pokerth
       - mrboom
-      - aur/protontricks
-      - protonup-qt
 
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
