@@ -8,6 +8,7 @@
   vars:
     packages:
       - docker
+      - docker-buildx
       - docker-compose
       - docker-scan
       - skopeo
