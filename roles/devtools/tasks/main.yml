@@ -119,6 +119,7 @@
       - pgcli
       - python-sshtunnel  # for pgcli ssh tunneling functionality
       - litecli
+      - redis  # for redis-cli
 
 - name: Install rust toolchains
   vars:
