@@ -49,7 +49,6 @@
       - dex  # execute desktop files and autostart apps
       - dust  # modern du
       - duf  # modern df
-      - ioping  # measure disk i/o latency
       - btop  # modern htop/top
       - brightnessctl  # backlight control
       - libqalculate  # cli qalculator
