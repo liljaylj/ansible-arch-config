@@ -105,6 +105,14 @@
       - vim-spell-en
       - vim-spell-ru
 
+      # kakoune
+      - kakoune
+      - kak-lsp
+      - aspell
+      - aspell-en
+      - aspell-ru
+      - editorconfig-core-c
+
       # filesystems
       - btrfs-progs
       - exfat-utils
