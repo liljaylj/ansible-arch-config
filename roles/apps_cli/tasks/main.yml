@@ -113,6 +113,9 @@
       - aspell-ru
       - editorconfig-core-c
 
+      # helix
+      - helix
+
       # filesystems
       - btrfs-progs
       - exfat-utils
