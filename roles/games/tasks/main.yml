@@ -16,7 +16,6 @@
       - game-devices-udev
       - gamemode
       - lib32-gamemode
-      - libstrangle  # fps limiter
       - gamescope
       - mangohud
       - lib32-mangohud
