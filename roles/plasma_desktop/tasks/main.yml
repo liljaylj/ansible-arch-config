@@ -1,13 +1,5 @@
 # vim: ft=yaml.ansible
 ---
-- name: Install git version of sddm
-  ansible.builtin.include_role:
-    name: pacman
-    tasks_from: install_pkg
-  vars:
-    packages:
-      - sddm-git  # TODO: use this, when upstream released and move it to task below
-
 - name: Install plasma-desktop
   ansible.builtin.include_role:
     name: pacman
@@ -29,7 +21,7 @@
       - libappindicator-gtk2
       - lib32-libappindicator-gtk3
       - lib32-libappindicator-gtk2
-      # - sddm
+      - sddm
       - breeze-grub  # TODO: set grub theme
       # KDE applications
       - konsole
