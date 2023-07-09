@@ -43,6 +43,7 @@
       - dragon-drop  # drag-and-drop from/to terminal
       - corectrl  # control power/performance profiles
       - wev  # debug input events
+      - klavaro  # touch typing tutor
 
       # multimedia
       - mpv  # multimedia player
