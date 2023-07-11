@@ -29,6 +29,7 @@
       - vscode-json-languageserver
       - typescript-language-server
       - eslint_d
+      - prettier
 
       # css
       - stylelint
