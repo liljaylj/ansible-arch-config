@@ -28,6 +28,7 @@
       - glfw-wayland
       - pokerth
       - mrboom
+      - puzzles  # simon tatham's puzzles collection
 
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
