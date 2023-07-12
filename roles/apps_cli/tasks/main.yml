@@ -65,6 +65,7 @@
       - zap-bin  # AppImage package manager
       - ventoy-bin  # create multiboot live usb
       - ydotool  # systemd service (ydotoold)
+      - toipe  # touch typing speed test
 
       # tex
       - tectonic
