@@ -28,6 +28,7 @@
       - glfw-wayland
       - pokerth
       - mrboom
+      - granatier
       - puzzles  # simon tatham's puzzles collection
 
       # dependencies
