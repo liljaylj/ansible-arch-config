@@ -119,6 +119,7 @@
 
       # filesystems
       - btrfs-progs
+      - compsize
       - exfat-utils
 
       # documentation
