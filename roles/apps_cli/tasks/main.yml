@@ -56,7 +56,7 @@
       - ponysay
       - pipe-rename  # rename your files using your favorite text editor
       - sad
-      - yj-bin
+      - yj
       - todotxt
       - b3sum
       - pv  # progress bar for commands
