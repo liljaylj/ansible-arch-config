@@ -30,6 +30,7 @@
       - typescript-language-server
       - eslint_d
       - prettier
+      - python-pkgbuild-language-server
 
       # css
       - stylelint
