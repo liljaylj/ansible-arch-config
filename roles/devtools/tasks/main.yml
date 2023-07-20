@@ -14,6 +14,7 @@
       - cargo-audit  # scan for security vulnerabilities
       - cargo-deny  # scan and lint dependencies
       - cargo-expand  # expand rust macros
+      - cargo-generate  # bootstrap projects from templates
       - sqlx-cli
       - clang
       - lld
