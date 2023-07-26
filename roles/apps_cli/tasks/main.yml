@@ -66,6 +66,7 @@
       - ventoy-bin  # create multiboot live usb
       - ydotool  # systemd service (ydotoold)
       - toipe  # touch typing speed test
+      - dhex  # hex editor
 
       # tex
       - tectonic
