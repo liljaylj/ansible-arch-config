@@ -23,6 +23,7 @@
       - lapce
       - poedit
       - gource
+      - imhex  # hex editor
 
       # office
       - libreoffice-fresh
