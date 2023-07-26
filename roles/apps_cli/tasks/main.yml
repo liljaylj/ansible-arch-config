@@ -67,6 +67,7 @@
       - ydotool  # systemd service (ydotoold)
       - toipe  # touch typing speed test
       - dhex  # hex editor
+      - vt-cli  # virus total cli
 
       # tex
       - tectonic
