@@ -54,7 +54,11 @@
       - svgpart
       - kio-zeroconf
       - kio-admin
-      # - kio-extras
+      - kio-extras
+      - qt5-imageformats
+      - kimageformats
+      - libappimage
+      - icoutils
       # - kio-gdrive
       - krdc
       - kdenetwork-filesharing
