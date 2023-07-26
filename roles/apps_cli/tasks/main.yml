@@ -68,6 +68,8 @@
       - toipe  # touch typing speed test
       - dhex  # hex editor
       - vt-cli  # virus total cli
+      - perl-image-exiftool  # read/write file metadata
+      - perl-archive-zip  # support zip-files in exiftool 👆
 
       # tex
       - tectonic
