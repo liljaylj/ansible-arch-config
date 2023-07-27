@@ -5,3 +5,4 @@
   ansible.builtin.command:
     cmd: 'convert {{ xdg.home.data }}/sway/bg.jpg -blur 0x50
       -virtual-pixel edge {{ xdg.home.data }}/sway/bg-blurred.jpg'
+  changed_when: true
