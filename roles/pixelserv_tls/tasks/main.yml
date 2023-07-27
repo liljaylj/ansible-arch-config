@@ -8,6 +8,15 @@
   vars:
     packages: pixelserv-tls
 
+- name: Create pixelserv-tls cache dir
+  become: true
+  ansible.builtin.file:
+    path: '/var/cache/pixelserv'
+    owner: 'nobody'
+    group: 'root'
+    mode: '755'
+    state: directory
+
 - name: Generate rsa private key
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'

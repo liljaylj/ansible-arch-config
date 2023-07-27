@@ -5,3 +5,12 @@
   become: true
   ansible.builtin.command:
     argv: ['trust', 'anchor', '/var/cache/pixelserv/ca.crt']
+  changed_when: true
+  notify:
+    - Extract compatibility trust certificates
+
+- name: Extract compatibility trust certificates
+  become: true
+  ansible.builtin.command:
+    argv: ['trust', 'extract-compat']
+  changed_when: true
