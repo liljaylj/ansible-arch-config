@@ -108,6 +108,9 @@ apps:
     - com.redis.RedisInsight
 
 
+pacman:
+  reflector: false
+
 # TODO: ...create great vlan setup
 # vlan
 # - zerotier-one

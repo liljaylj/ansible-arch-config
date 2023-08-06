@@ -110,8 +110,8 @@
   ansible.builtin.systemd:
     name: 'reflector.timer'
     daemon_reload: true
-    enabled: true
-    state: started
+    enabled: '{{ pacman.reflector | default(true) }}'
+    state: '{{ pacman.reflector | default(true) | ternary("started", "stopped") }}'
 
 - name: Apply paru.conf
   become: true
