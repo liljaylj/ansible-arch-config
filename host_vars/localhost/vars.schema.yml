@@ -494,6 +494,15 @@ properties:
         items:
           type: string
 
+  pacman:
+    description: 'Pacman config'
+    type: object
+    properties:
+      reflector:
+        description: 'Enable reflector timer'
+        type: boolean
+        default: true
+
 required:
   - user
   - timezone
