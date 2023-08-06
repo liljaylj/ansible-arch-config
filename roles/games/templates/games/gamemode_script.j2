@@ -1,0 +1,27 @@
+#!/bin/bash
+# vim: noet
+
+if [[ -n "$GAMEMODE_SCRIPT_DISABLE" ]]; then
+	exit
+fi
+
+case $1 in
+start)
+	echo always >/sys/kernel/mm/transparent_hugepage/enabled
+	echo advise >/sys/kernel/mm/transparent_hugepage/shmem_enabled
+	echo 0 >/proc/sys/vm/compaction_proactiveness
+	echo 0 >/sys/kernel/mm/transparent_hugepage/khugepaged/defrag
+	echo 1 >/proc/sys/vm/page_lock_unfairness
+	;;
+end)
+	echo "${2:-always}" >/sys/kernel/mm/transparent_hugepage/enabled
+	echo "${3:-never}" >/sys/kernel/mm/transparent_hugepage/shmem_enabled
+	echo "${4:-0}" >/proc/sys/vm/compaction_proactiveness
+	echo "${5:-1}" >/sys/kernel/mm/transparent_hugepage/khugepaged/defrag
+	echo "${6:-5}" >/proc/sys/vm/page_lock_unfairness
+	;;
+*)
+	echo 'Wrong argument. Specify "start" or "end".' >&2
+	exit 1
+	;;
+esac
