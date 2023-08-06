@@ -34,6 +34,22 @@
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
 
+- name: Copy gamemode script
+  become: true
+  ansible.builtin.template:
+    src: 'games/gamemode_script.j2'
+    dest: '/usr/bin/gamemode_script'
+    mode: '755'
+
+- name: Add gamemode_script to sudoers
+  become: true
+  community.general.sudoers:
+    name: '90-gamemode'
+    group: gamemode
+    nopassword: true
+    runas: 'ALL:ALL'
+    commands: /usr/bin/gamemode_script
+
 - name: Apply gamemode config
   become: true
   ansible.builtin.template:
