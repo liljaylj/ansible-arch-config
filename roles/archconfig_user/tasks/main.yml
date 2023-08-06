@@ -13,7 +13,7 @@
 - name: Add archconfig user to sudoers
   become: true
   community.general.sudoers:
-    name: archconfig
+    name: '50-archconfig'
     user: '{{ archconfig_user.name | default("archconfig") }}'
     nopassword: true
     runas: 'ALL:ALL'

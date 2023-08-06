@@ -4,7 +4,7 @@
 - name: Add wheel group to sudoers
   become: true
   community.general.sudoers:
-    name: wheel
+    name: '50-wheel'
     group: wheel
     nopassword: false
     runas: 'ALL:ALL'
@@ -17,5 +17,5 @@
     dest: '/etc/sudoers.d/{{ item }}'
     mode: '600'
   with_items:
-    - env_keep
-    - insults
+    - '10-env_keep'
+    - '10-insults'
