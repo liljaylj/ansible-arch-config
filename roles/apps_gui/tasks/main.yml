@@ -72,6 +72,7 @@
       - qt6-multimedia-gstreamer
       - guvcview-qt  # webcam
       - ungoogled-chromium
+      - gpu-screen-recorder-gtk-git
 
       # social networks
       - telegram-desktop  # Telegram desktop client
