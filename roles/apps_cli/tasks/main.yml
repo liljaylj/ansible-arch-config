@@ -70,6 +70,7 @@
       - vt-cli  # virus total cli
       - perl-image-exiftool  # read/write file metadata
       - perl-archive-zip  # support zip-files in exiftool 👆
+      - wavemon  # wifi scanner
 
       # tex
       - tectonic
