@@ -59,6 +59,7 @@
       - kimageformats
       - libappimage
       - icoutils
+      - kwordquiz
       # - kio-gdrive
       - krdc
       - kdenetwork-filesharing
