@@ -74,6 +74,7 @@
       - guvcview-qt  # webcam
       - ungoogled-chromium
       - gpu-screen-recorder-gtk-git
+      - capnet-assist  # captive portal assistant
 
       # social networks
       - telegram-desktop  # Telegram desktop client
