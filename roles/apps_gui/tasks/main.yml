@@ -73,8 +73,10 @@
       - qt6-multimedia-gstreamer
       - guvcview-qt  # webcam
       - ungoogled-chromium
+      - appmenu-gtk-module  # fix failed to load module in chromium
       - gpu-screen-recorder-gtk-git
       - capnet-assist  # captive portal assistant
+      - captive-browser-git  # chromium instance to log in to captive portals
 
       # social networks
       - telegram-desktop  # Telegram desktop client
