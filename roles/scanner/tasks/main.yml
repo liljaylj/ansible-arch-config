@@ -1,0 +1,19 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Install scanner support packages
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    packages:
+      - sane
+      - sane-airscan
+      - ipp-usb
+
+- name: Enable IPP over USB service
+  become: true
+  ansible.builtin.systemd:
+    name: 'ipp-usb.service'
+    daemon_reload: true
+    enabled: true
