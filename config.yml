@@ -58,9 +58,11 @@
     - firefox
     - games
     - printer
+    - scanner
     - virtualization
     - snapper  # should be last (do not create snapshots when ansible install packages)
 
 # TODO: use tags to split vsconsole only and gui only tasks. Eg. tor(cli) and torbrowser-launcher(gui)
 # TODO: podman, buildah, skopeo, ... instead of (or alongside) docker
 # TODO: install wireshark and add user to group wireshark
+# TODO: use tags or variables to distinguish between gui/cli

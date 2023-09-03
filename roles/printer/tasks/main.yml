@@ -23,7 +23,7 @@
       - python-pysmbc
       - python-reportlab
       - splix
-      - system-config-printer
+      - system-config-printer  # FIXME: uses gtk3 gui
 
 - name: Add user to groups for printing
   ansible.builtin.include_role:
