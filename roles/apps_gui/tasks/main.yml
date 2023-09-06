@@ -77,6 +77,7 @@
       - gpu-screen-recorder-gtk-git
       - capnet-assist  # captive portal assistant
       - captive-browser-git  # chromium instance to log in to captive portals
+      - metadata-cleaner  # exif data cleaner from images and documents
 
       # social networks
       - telegram-desktop  # Telegram desktop client
