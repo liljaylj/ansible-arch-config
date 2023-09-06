@@ -71,6 +71,7 @@
       - perl-image-exiftool  # read/write file metadata
       - perl-archive-zip  # support zip-files in exiftool 👆
       - wavemon  # wifi scanner
+      - mat2  # metadata cleaner
 
       # tex
       - tectonic
