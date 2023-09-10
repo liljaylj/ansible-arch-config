@@ -64,6 +64,7 @@
       # python
       - python
       - python-pip
+      - python-pipx
       - python-aiohttp  # needed for codestats-relay
       - pyright
       - python-lsp-server
