@@ -7,6 +7,11 @@
     tasks_from: install_pkg
   vars:
     packages:
+      - proto-bin  # programming language version manager
+
+      # utils
+      - nvchecker  # new version checker
+
       # rust
       - rustup
       - cargo-watch  # watch and recompile cargo project on change
