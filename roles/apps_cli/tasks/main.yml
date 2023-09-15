@@ -72,6 +72,7 @@
       - perl-archive-zip  # support zip-files in exiftool 👆
       - wavemon  # wifi scanner
       - mat2  # metadata cleaner
+      - zellij  # terminal multiplexer
 
       # tex
       - tectonic
