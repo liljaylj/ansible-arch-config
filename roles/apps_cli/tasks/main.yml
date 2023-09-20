@@ -127,6 +127,7 @@
 
       # filesystems
       - btrfs-progs
+      - udftools
       - compsize
       - exfat-utils
 
