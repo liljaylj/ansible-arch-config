@@ -10,12 +10,14 @@
       - openssh
       - sshfs
 
-- name: Apply ssh_config
+- name: Apply ssh config
   become: true
   ansible.builtin.template:
-    src: 'ssh/ssh_config.j2'
-    dest: '/etc/ssh/ssh_config'
+    src: 'ssh/{{ item }}.j2'
+    dest: '/etc/ssh/ssh_config.d/{{ item }}'
     mode: '644'
+  with_items:
+    - 30-global-config.conf
 
 - name: Apply profile.d for ssh-agent
   become: true
