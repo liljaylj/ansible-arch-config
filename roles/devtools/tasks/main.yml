@@ -29,7 +29,7 @@
       - go
 
       # nodejs
-      - nodejs
+      - nodejs-lts-hydrogen
       - npm
       - pnpm
       - nodejs-emmet-ls
