@@ -73,6 +73,7 @@
       - wavemon  # wifi scanner
       - mat2  # metadata cleaner
       - zellij  # terminal multiplexer
+      - lemonade-bin  # remote clipboard daemon
 
       # tex
       - tectonic
