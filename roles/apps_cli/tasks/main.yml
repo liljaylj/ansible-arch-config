@@ -130,7 +130,7 @@
       - btrfs-progs
       - udftools
       - compsize
-      - exfat-utils
+      - exfatprogs
 
       # documentation
       - man-db
