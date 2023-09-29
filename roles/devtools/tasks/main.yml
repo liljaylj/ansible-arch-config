@@ -122,6 +122,7 @@
       - lazygit
       - github-cli
       - glab
+      - gibo-bin  # gitignore boilerplate retriever
 
       # cloud cli
       - aws-cli-v2  # AWS cli
