@@ -10,6 +10,9 @@
       - ttf-fira-code
       - ttf-jetbrains-mono
       - noto-fonts
+      - noto-fonts-cjk
+      - noto-fonts-emoji
+      - noto-fonts-extra
       - ttf-liberation
       - ttf-croscore
       - ttf-nerd-fonts-symbols
