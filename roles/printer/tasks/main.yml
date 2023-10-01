@@ -7,7 +7,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - cups
       - cups-pdf
       - cups-pk-helper
@@ -30,7 +30,7 @@
     name: user
     tasks_from: user_add_group
   vars:
-    new_groups:
+    user_new_groups:
       - lp
       - sys
       - cups

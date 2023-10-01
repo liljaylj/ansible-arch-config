@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       # ui toolkits
       - tk  # gitk
       - python-pyqt5
@@ -115,5 +115,5 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ apps.gui | default([]) }}'
+    pacman_packages: '{{ apps.gui | default([]) }}'
   when: apps.gui is defined

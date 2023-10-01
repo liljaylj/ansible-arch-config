@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: tmux
+    pacman_packages: tmux
 
 - name: Apply tmux.conf
   become: true

@@ -6,11 +6,11 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: realtime-privileges
+    pacman_packages: realtime-privileges
 
 - name: Add user to realtime group
   ansible.builtin.include_role:
     name: user
     tasks_from: user_add_group
   vars:
-    new_groups: realtime
+    user_new_groups: realtime

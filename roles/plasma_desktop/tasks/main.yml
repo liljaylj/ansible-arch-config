@@ -5,7 +5,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - plasma-meta
       - plasma-wayland-session
       - xorg-xwayland
@@ -68,10 +68,10 @@
       - ksudoku
       - kmahjongg
       - kshisen
-      # Discover
-      - packagekit-qt5
-      # Plasma Vault dependency
-      - cryfs
+
+      - packagekit-qt5  # Discover dependency
+      - cryfs  # Plasma Vault dependency
+      - haruna  # mpv qt frontend
 
 # TODO: use this somehow
 - name: Set fact that graphical session is installed
@@ -121,5 +121,5 @@
     name: firewalld
     tasks_from: add_rule
   vars:
-    services:
+    firewalld_services:
       - kdeconnect

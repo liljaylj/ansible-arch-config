@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: kmscon
+    pacman_packages: kmscon
 
 - name: Disable agetty on tty2
   become: true

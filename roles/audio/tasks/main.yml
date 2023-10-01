@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - pipewire
       - wireplumber
       - pipewire-alsa
@@ -59,7 +59,7 @@
 #     name: pacman
 #     tasks_from: install_pkg
 #   vars:
-#     packages:
+#     pacman_packages:
 #       - audiorelay
 #   when: graphical_installed
 

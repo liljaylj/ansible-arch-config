@@ -5,7 +5,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - mesa
       - lib32-mesa
       - xf86-video-amdgpu

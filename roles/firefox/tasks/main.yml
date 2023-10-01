@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - firefox
       - firefox-i18n-en-us
       - firefox-i18n-kk

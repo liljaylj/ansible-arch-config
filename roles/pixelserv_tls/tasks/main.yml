@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: pixelserv-tls
+    pacman_packages: pixelserv-tls
 
 - name: Create pixelserv-tls cache dir
   become: true

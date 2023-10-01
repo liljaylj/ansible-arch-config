@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - iptables-nft
       - firewalld
       # firewalld optional dependencies
@@ -23,7 +23,7 @@
     name: user
     tasks_from: user_add_group
   vars:
-    new_groups: firewall
+    user_new_groups: firewall
 
 - name: Apply polkit rule
   become: true
