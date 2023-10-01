@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: fwupd
+    pacman_packages: fwupd
 
 - name: Enable lvfs remote
   become: true

@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: zsh
+    pacman_packages: zsh
 
 - name: Apply zshenv
   become: true

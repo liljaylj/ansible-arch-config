@@ -14,7 +14,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: terminus-font
+    pacman_packages: terminus-font
 
 - name: Set vconsole font
   ansible.builtin.lineinfile:
@@ -30,7 +30,7 @@
 #     name: pacman
 #     tasks_from: install_pkg
 #   vars:
-#     packages: gpm
+#     pacman_packages: gpm
 #
 # - name: Enable mouse support
 #   become: true

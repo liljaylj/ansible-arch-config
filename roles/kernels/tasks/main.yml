@@ -6,14 +6,14 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ kernels.list | default(["linux"]) }}'
+    pacman_packages: '{{ kernels.list | default(["linux"]) }}'
 
 - name: Install kernel headers
   ansible.builtin.include_role:
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ kernels.list | default(["linux"]) | product(["headers"]) | map("join", "-") }}'
+    pacman_packages: '{{ kernels.list | default(["linux"]) | product(["headers"]) | map("join", "-") }}'
   when: kernels.headers is defined and kernels.headers
 
 - name: Install firmware package
@@ -21,21 +21,21 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: linux-firmware
+    pacman_packages: linux-firmware
 
 - name: Install extra kernel packages (modules, etc)
   ansible.builtin.include_role:
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ [kernels.extra_modules] | default([]) | flatten }}'
+    pacman_packages: '{{ [kernels.extra_modules] | default([]) | flatten }}'
 
 - name: Install microcode
   ansible.builtin.include_role:
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: '{{ kernels.microcode }}'
+    pacman_packages: '{{ kernels.microcode }}'
   when: kernels.microcode is defined
 
 - name: Install kernel pacman hook
@@ -43,7 +43,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages: mkmm
+    pacman_packages: mkmm
 
 - name: Ensure that hook dir exists
   become: true

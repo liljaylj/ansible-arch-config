@@ -10,9 +10,9 @@
     immediate: true
     state: enabled
   vars:
-    _zones: '{{ zones | default(["home", "trusted"]) }}'
-  loop: '{{ _zones | product(services) | list }}'
-  when: services is defined
+    _zones: '{{ firewalld_zones | default(["home", "trusted"]) }}'
+  loop: '{{ _zones | product(firewalld_services) | list }}'
+  when: firewalld_services is defined
 
 - name: Add firewalld rules for ports
   become: true
@@ -23,6 +23,6 @@
     immediate: true
     state: enabled
   vars:
-    _zones: '{{ zones | default(["home", "trusted"]) }}'
-  loop: '{{ _zones | product(ports) | list }}'
-  when: ports is defined
+    _zones: '{{ firewalld_zones | default(["home", "trusted"]) }}'
+  loop: '{{ _zones | product(firewalld_ports) | list }}'
+  when: firewalld_ports is defined

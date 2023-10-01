@@ -6,7 +6,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - ddcutil
       - i2c-tools
       - read-edid

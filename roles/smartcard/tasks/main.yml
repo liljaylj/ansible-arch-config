@@ -8,7 +8,7 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    packages:
+    pacman_packages:
       - ccid
       - opensc
       - pcsc-tools
