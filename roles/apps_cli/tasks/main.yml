@@ -64,7 +64,7 @@
       - toilet-fonts
       - zap-bin  # AppImage package manager
       - ventoy-bin  # create multiboot live usb
-      - ydotool  # systemd service (ydotoold)
+      - ydotool  # systemd service (ydotoold)  # TODO: start/enable user service
       - toipe  # touch typing speed test
       - dhex  # hex editor
       - vt-cli  # virus total cli
@@ -74,6 +74,7 @@
       - mat2  # metadata cleaner
       - zellij  # terminal multiplexer
       - lemonade-bin  # remote clipboard daemon
+      - paperkey  # export gnupg keys to paper
 
       # tex
       - tectonic
