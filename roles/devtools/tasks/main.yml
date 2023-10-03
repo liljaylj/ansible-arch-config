@@ -11,6 +11,7 @@
 
       # utils
       - nvchecker  # new version checker
+      - tokei  # count line of code
 
       # rust
       - rustup
