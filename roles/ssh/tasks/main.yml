@@ -19,38 +19,6 @@
   with_items:
     - 30-global-config.conf
 
-- name: Apply profile.d for ssh-agent
-  become: true
-  ansible.builtin.template:
-    src: 'ssh/30-ssh-agent.sh.j2'
-    dest: '/etc/profile.d/30-ssh-agent.sh'
-    mode: '644'
-
-- name: SSH agent systemd service file
-  become: true
-  ansible.builtin.template:
-    src: 'ssh/{{ item }}.j2'
-    dest: '/etc/systemd/user/{{ item }}'
-    mode: '644'
-  with_items:
-    - ssh-agent.service
-    - ssh-agent-restart.service
-
-- name: Start ssh agent service
-  ansible.builtin.systemd:
-    name: 'ssh-agent'
-    daemon_reload: true
-    enabled: true
-    state: started
-    scope: user
-
-- name: Start ssh agent service
-  ansible.builtin.systemd:
-    name: 'ssh-agent-restart'
-    daemon_reload: true
-    enabled: true
-    scope: user
-
 - name: Create user ssh dir
   ansible.builtin.file:
     path: '{{ [setup_user_result.home, ".ssh"] | path_join }}'
