@@ -75,6 +75,7 @@
       - zellij  # terminal multiplexer
       - lemonade-bin  # remote clipboard daemon
       - paperkey  # export gnupg keys to paper
+      - rng-tools  # random generation tools
 
       # tex
       - tectonic
