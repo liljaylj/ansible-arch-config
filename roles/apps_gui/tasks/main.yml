@@ -87,10 +87,6 @@
       # torrent
       - qbittorrent
 
-      # drawing tablet
-      - xp-pen-tablet
-      - opentabletdriver
-
       # graphical programs
       - gimp
       - inkscape

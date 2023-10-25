@@ -1,0 +1,18 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Install drawing tablet drivers
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    pacman_packages:
+      - xp-pen-tablet
+      - opentabletdriver
+
+# - name: Enable opentabletdriver user service
+#   ansible.builtin.systemd:
+#     daemon_reload: true
+#     name: 'opentabletdriver.service'
+#     enabled: true
+#     scope: user
