@@ -50,6 +50,7 @@
       - kdebugsettings
       - keditbookmarks
       - kgpg
+      - flatpak-kcm
       - markdownpart
       - print-manager
       - skanlite
@@ -60,7 +61,7 @@
       - kio-admin
       - kio-extras
       - qt5-imageformats
-      - kimageformats
+      - kimageformats5
       - libappimage
       - icoutils
       - kwordquiz
