@@ -12,10 +12,9 @@
       - snap-pac
       - grub-btrfs
       - inotify-tools
-      - snap-pac-grub
       - snapper-rollback
 
-- name: Ensure snapshots folder
+- name: Ensure snapshots folder exists
   become: true
   ansible.builtin.file:
     path: '/.snapshots'
