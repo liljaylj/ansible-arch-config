@@ -37,6 +37,7 @@
 
       # utils/tools
       - qalculate-qt  # qt frontend for qalculate
+      - gnuplot  # plotting
       - enpass-bin  # password manager
       - zenity  # gui dialogs in scripts
       - yad  # fork of zenity
