@@ -157,6 +157,7 @@
       - git-credential-gopass
       - gopass-hibp
       - gopass-summon-provider
+      - 1password-cli
 
 - name: Install cli apps
   ansible.builtin.include_role:

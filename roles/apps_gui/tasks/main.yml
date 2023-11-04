@@ -101,6 +101,9 @@
       - obs-studio
       - obs-vaapi
 
+      # password store
+      - 1password
+
       # separate role
       # - wireshark-qt  # TODO: add user to wireshark group
       # TODO: dosbox, 86box
