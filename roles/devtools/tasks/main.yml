@@ -135,6 +135,9 @@
       - litecli
       - redis  # for redis-cli
 
+      # blog
+      - hugo
+
 - name: Install rust toolchains
   vars:
     rust_toolchains:
