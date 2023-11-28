@@ -47,6 +47,7 @@
       - wev  # debug input events
       - klavaro  # touch typing tutor
       - linssid  # wifi scanner
+      - alacritty  # terminal emulator
 
       # multimedia
       - mpv  # multimedia player
