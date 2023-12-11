@@ -38,7 +38,6 @@
       - typescript-language-server
       - eslint_d
       - prettier
-      - pkgbuild-language-server
 
       # css
       - stylelint
