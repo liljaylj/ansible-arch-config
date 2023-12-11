@@ -148,6 +148,7 @@
 
       # dependencies
       - xxd-standalone  # needed for ncalayer to work
+      - libpwquality  # optional for systemd -- password quality check
 
       # fingerprint
       - fprintd
