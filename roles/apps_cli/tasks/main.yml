@@ -37,6 +37,7 @@
       - direnv  # shell extension that manages your env
       - vivid  # generate console colors
       - bat  # modern cat
+      - glow  # cli markdown renderer
       - xplr  # cli file manager
       - dialog
       - s-tui  # stress testing
