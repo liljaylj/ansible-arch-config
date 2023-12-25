@@ -45,6 +45,7 @@
       - ktimer
       - okteta
       - kate
+      - kcolorchooser
       - kcalc
       - kdebugsettings
       - keditbookmarks
