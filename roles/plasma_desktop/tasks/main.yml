@@ -75,6 +75,8 @@
       - kmahjongg
       - kshisen
       - neochat  # matrix client
+      - ghostwriter  # markdown editor
+      - cmark  # optional for ghostwriter -- processing and rendering CommonMark
 
       - packagekit-qt5  # Discover dependency
       - cryfs  # Plasma Vault dependency
