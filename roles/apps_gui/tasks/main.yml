@@ -33,7 +33,6 @@
       - gimagereader-qt  # text recognition gui and scanner
       - obsidian
       - anki
-      - sleek  # todo.txt manager
 
       # utils/tools
       - qalculate-qt  # qt frontend for qalculate
