@@ -51,6 +51,7 @@
       - dust  # modern du
       - duf  # modern df
       - btop  # modern htop/top
+      - rocm-smi-lib  # btop gpu support
       - brightnessctl  # backlight control
       - libqalculate  # cli qalculator
       - cowsay
