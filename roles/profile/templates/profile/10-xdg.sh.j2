@@ -1,3 +1,6 @@
+# vim: ft=sh
+# shellcheck shell=sh
+
 {% for dir in xdg_base_dir.system.data | default(['/usr/share', '/usr/local/share']) %}
 append_envvar XDG_DATA_DIR '{{ dir }}'
 {% endfor %}
