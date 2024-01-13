@@ -1,0 +1,20 @@
+# vim: ft=sh
+# shellcheck shell=sh
+
+case "$TERM" in
+konsole | alacritty | kitty | fbterm | wezterm | *-256color)
+    unset TERM_LT_256_COLOR
+    ;;
+*)
+    export TERM_LT_256_COLOR=1
+    ;;
+esac
+
+case "$TERM" in
+konsole* | alacritty* | kitty* | fbterm | wezterm | xterm-256color)
+    unset TERM_NO_UNICODE
+    ;;
+dumb | linux)
+    export TERM_NO_UNICODE=1
+    ;;
+esac
