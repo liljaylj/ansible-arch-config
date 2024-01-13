@@ -38,6 +38,8 @@
       - typescript-language-server
       - eslint_d
       - prettier
+      - vue-language-server  # Vue 3
+      - nodejs-vls  # Vue 2
 
       # css
       - stylelint
