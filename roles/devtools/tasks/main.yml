@@ -132,6 +132,7 @@
 
       # database management tools
       - pgcli
+      - python-keyring  # for pgcli support for keyring (secret service)
       - python-sshtunnel  # for pgcli ssh tunneling functionality
       - litecli
       - redis  # for redis-cli
