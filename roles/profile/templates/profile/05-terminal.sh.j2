@@ -1,15 +1,17 @@
 # vim: ft=sh
 # shellcheck shell=sh
 
+# 256 color support
 case "$TERM" in
 konsole | alacritty | kitty | fbterm | wezterm | *-256color)
-    unset TERM_LT_256_COLOR
+    unset TERM_LT_256_COLORS
     ;;
 *)
-    export TERM_LT_256_COLOR=1
+    export TERM_LT_256_COLORS=1
     ;;
 esac
 
+# unicode font support
 case "$TERM" in
 konsole* | alacritty* | kitty* | fbterm | wezterm | xterm-256color)
     unset TERM_NO_UNICODE
@@ -17,4 +19,15 @@ konsole* | alacritty* | kitty* | fbterm | wezterm | xterm-256color)
 dumb | linux)
     export TERM_NO_UNICODE=1
     ;;
+esac
+
+# background transparency support
+case "$TERM" in
+    konsole*)
+        # we don't enable transparency for Alacritty, because we set `transparent_background_colors = true`
+        unset TERM_NO_TRANSPARENCY
+        ;;
+    *)
+        export TERM_NO_TRANSPARENCY=1
+        ;;
 esac
