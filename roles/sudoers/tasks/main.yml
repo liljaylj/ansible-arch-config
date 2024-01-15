@@ -19,3 +19,4 @@
   with_items:
     - '10-env_keep'
     - '10-insults'
+    - '70-pwfeedback'
