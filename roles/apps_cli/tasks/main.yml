@@ -129,6 +129,9 @@
       - aspell-ru
       - editorconfig-core-c
 
+      # document processors
+      - pandoc
+
       # helix
       - helix
 
