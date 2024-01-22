@@ -19,6 +19,7 @@ case "$yn" in
     sudo flatpak update
     echo
     echo 'UPDATE LVFS...'
+    sudo fwupdmgr refresh || true
     sudo fwupdmgr update
     ;;
 [Nn])
