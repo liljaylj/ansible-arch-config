@@ -5,11 +5,11 @@ bootloader:
   # grub_package: grub-silent  # silent boot
   timeout: 1
   timeout_style: hidden
-  kernel_params:
-    # disable watchdog
-    - 'nowatchdog'
-    - 'modprobe.blacklist=sp5100_tco'
-    - 'nmi_watchdog=0'
+  # kernel_params:
+    # # disable watchdog
+    # - 'nowatchdog'
+    # - 'modprobe.blacklist=sp5100_tco'
+    # - 'nmi_watchdog=0'
     # # sdma0 timeout workaround
     # - 'amdgpu.vm_update_mode=3'
     # # silent boot
