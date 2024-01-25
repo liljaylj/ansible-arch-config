@@ -84,6 +84,8 @@
       - tectonic
 
       # networking tools
+      - curl
+      - wget
       - nmap  # port scanner
       - net-tools  # netstat and friends
       - bind  # dns utils
