@@ -20,12 +20,16 @@
       - virt-install
       - vagrant
 
-- name: Apply libvirt profile.d
+- name: Apply virtualization profile.d
   become: true
   ansible.builtin.template:
-    src: 'virtualization/50-libvirt.sh.j2'
-    dest: '/etc/profile.d/50-libvirt.sh'
+    src: 'virtualization/{{ item }}.j2'
+    dest: '/etc/profile.d/{{ item }}'
     mode: '644'
+  with_items:
+    - 60-libvirt.sh
+    - 60-vagrant.sh
+
 
 - name: Add user to libvirt group
   ansible.builtin.include_role:
