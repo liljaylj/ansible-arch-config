@@ -28,4 +28,4 @@
     dest: '/etc/profile.d/{{ item | splitext | first }}'
     mode: '644'
   with_items:
-    - 60-firefox.sh.j2
+    - 80-firefox.sh.j2

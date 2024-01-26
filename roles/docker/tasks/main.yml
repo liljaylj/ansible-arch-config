@@ -22,7 +22,7 @@
     dest: '/etc/profile.d/{{ item }}'
     mode: '644'
   with_items:
-    - 50-docker.sh
+    - 60-docker.sh
 
 - name: Add user to docker group
   ansible.builtin.include_role:
