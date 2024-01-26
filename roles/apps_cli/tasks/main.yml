@@ -106,6 +106,7 @@
 
       # qmk
       - zsa-udev
+      - qmk
 
       # logitech pairing tool
       - ltunify
