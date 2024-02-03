@@ -12,6 +12,10 @@
       - python-passlib  # python crypt module is deprecated in Ansible
       - polkit
 
+      # system debugging
+      - acpica         # this two packages are needed for
+      - python-pyudev  # amd_s2idle.py script
+
       # (un-)archiving tools
       - zip
       - unzip
