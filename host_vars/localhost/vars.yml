@@ -51,7 +51,7 @@ power_management:
   suspend_key: suspend
   power_key: suspend
   power_key_long: poweroff
-  ec_no_wakeup: true
+  ec_no_wakeup: false
   disable_wakeup_triggers:
     # logitech unifying receiver
     - vendor_id: '046d'
