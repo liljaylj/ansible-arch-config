@@ -91,6 +91,9 @@
       - curl
       - wget
       - nmap  # port scanner
+      - openbsd-netcat  # network swiss army knife
+      - socat  # multipurpose network relay
+      - websocat  # websockets client (netcat/curl/socat)
       - net-tools  # netstat and friends
       - bind  # dns utils
       - inetutils  # network utils
