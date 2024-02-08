@@ -64,6 +64,7 @@
       - sad
       - yj
       - todotxt
+      - jira-cli
       - b3sum
       - pv  # progress bar for commands
       - toilet
