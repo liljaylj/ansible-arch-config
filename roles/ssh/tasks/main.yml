@@ -19,6 +19,15 @@
   with_items:
     - 30-global-config.conf
 
+- name: Apply profile.d
+  become: true
+  ansible.builtin.template:
+    src: 'profile/{{ item }}.j2'
+    dest: '/etc/profile.d/{{ item }}'
+    mode: '644'
+  with_items:
+    - 70-ssh-agent.sh
+
 - name: Create user ssh dir
   ansible.builtin.file:
     path: '{{ [setup_user_result.home, ".ssh"] | path_join }}'
