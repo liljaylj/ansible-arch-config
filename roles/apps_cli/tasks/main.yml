@@ -40,6 +40,7 @@
       - zoxide  # jump to directory like z
       - direnv  # shell extension that manages your env
       - vivid  # generate console colors
+      - atuin  # shell history manager with sync
       - bat  # modern cat
       - glow  # cli markdown renderer
       - xplr  # cli file manager
@@ -161,6 +162,8 @@
 
       # bash
       - bash-completion  # bash shell completions
+      - blesh  # bash line editor (readline replacement)
+      - bash-preexec
 
       # dependencies
       - xxd-standalone  # needed for ncalayer to work
