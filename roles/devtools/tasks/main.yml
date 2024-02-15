@@ -102,6 +102,7 @@
 
       # docker
       - dockerfile-language-server
+      - nodejs-compose-language-service
 
       # ansible
       - ansible-language-server
