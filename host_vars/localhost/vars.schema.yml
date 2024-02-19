@@ -502,6 +502,10 @@ properties:
         description: 'Enable reflector timer'
         type: boolean
         default: true
+      executable:
+        description: 'Use pacman executable/wrapper'
+        type: string
+        default: 'paru'
 
 required:
   - user

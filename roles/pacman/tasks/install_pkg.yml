@@ -5,8 +5,8 @@
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
-    argv: '{{ (sync_argv | default(["paru", "--noconfirm", "--noprogressbar", "--needed", "--sync"]))
-      + ([pacman_packages | mandatory] | flatten) }}'
+    argv: '{{ (sync_argv | default([pacman.executable | default("paru"), "--noconfirm", "--noprogressbar", "--needed",
+      "--sync"])) + ([pacman_packages | mandatory] | flatten) }}'
     strip_empty_ends: true
   vars:
     pacman_packages: []
