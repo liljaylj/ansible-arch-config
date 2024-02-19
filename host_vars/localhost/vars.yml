@@ -108,6 +108,7 @@ apps:
 
 pacman:
   reflector: false
+  executable: yay
 
 # TODO: ...create great vlan setup
 # vlan
