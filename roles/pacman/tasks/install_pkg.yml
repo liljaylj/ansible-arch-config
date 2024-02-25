@@ -1,14 +1,26 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: Install packages
+- name: List not installed packages
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
-    argv: '{{ (sync_argv | default([pacman.executable | default("paru"), "--noconfirm", "--noprogressbar", "--needed",
-      "--sync"])) + ([pacman_packages | mandatory] | flatten) }}'
+    argv: '{{ ([pacman.executable | default("paru"), "--query", "--quiet", "--"]) +
+      ([pacman_packages | mandatory] | flatten) }}'
     strip_empty_ends: true
-  vars:
-    pacman_packages: []
-  register: paru_result
-  changed_when: "'there is nothing to do' is not in (paru_result.stdout_lines | last)"
+  register: installed_packages_result
+  changed_when: false
+  failed_when: 'installed_packages_result.rc > 1'
+  when: '(pacman_packages | mandatory | length) > 1'
+
+- name: Install missing packages
+  become: true
+  become_user: '{{ archconfig_user.name | default("archconfig") }}'
+  ansible.builtin.command:
+    argv: '{{ [pacman.executable | default("paru"), "--sync", "--noconfirm", "--noprogressbar", "--needed", "--",
+      (pacman_packages | mandatory) | difference(installed_packages_result.stdout_lines)] | flatten }}'
+    strip_empty_ends: true
+  register: pacman_result
+  changed_when: "(pacman_result.stdout_lines | length) > 0 or
+    'there is nothing to do' is not in (pacman_result.stdout_lines | last)"
+  when: '((pacman_packages | mandatory) | difference(installed_packages_result.stdout_lines) | length) > 0'
