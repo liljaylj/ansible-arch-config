@@ -47,6 +47,7 @@ shift 1
 export ANSIBLE_NOCOWS=1
 export ANSIBLE_JINJA2_EXTENSIONS='jinja2.ext.do'
 
+# ansible-playbook -i ./inventory -c local test.yml "${vault_args[@]}" "$@"
 ansible-playbook -i ./inventory -c local config.yml "${vault_args[@]}" "$@"
 
 echo
