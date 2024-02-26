@@ -5,22 +5,26 @@
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
-    argv: '{{ ([pacman.executable | default("paru"), "--query", "--quiet", "--"]) +
-      ([pacman_packages | mandatory] | flatten) }}'
+    argv: |
+      {{ [pacman.executable | default('paru'), '--query', '--quiet', '--'] + ([pacman_packages | mandatory] | flatten |
+      map('regex_replace', '.*/(.*)$', '\1')) }}
     strip_empty_ends: true
   register: installed_packages_result
   changed_when: false
   failed_when: 'installed_packages_result.rc > 1'
-  when: '(pacman_packages | mandatory | length) > 1'
+  when: '([pacman_packages | mandatory] | flatten | length) > 0'
 
 - name: Install missing packages
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
+  vars:
+    pkgs_to_install: |
+      {{ installed_packages_result.stderr_lines | map('regex_replace', "error: package '(.*)' was not found", '\1') |
+      default([]) }}
   ansible.builtin.command:
     argv: '{{ [pacman.executable | default("paru"), "--sync", "--noconfirm", "--noprogressbar", "--needed", "--",
-      (pacman_packages | mandatory) | difference(installed_packages_result.stdout_lines)] | flatten }}'
+      pkgs_to_install] | flatten }}'
     strip_empty_ends: true
   register: pacman_result
-  changed_when: "(pacman_result.stdout_lines | length) > 0 or
-    'there is nothing to do' is not in (pacman_result.stdout_lines | last)"
-  when: '((pacman_packages | mandatory) | difference(installed_packages_result.stdout_lines) | length) > 0'
+  changed_when: "'there is nothing to do' is not in (pacman_result.stdout_lines | last)"
+  when: '(pkgs_to_install | length) > 0'
