@@ -109,6 +109,21 @@ apps:
 pacman:
   reflector: false
 
+dev_tools:
+  rust:
+    toolchains:
+      - stable
+      - nightly
+    components:
+      - cargo
+      - clippy
+      - rust-analyzer
+      - rust-docs
+      - rust-src
+      - rust-std
+      - rustc
+      - rustfmt
+
 # TODO: ...create great vlan setup
 # vlan
 # - zerotier-one
