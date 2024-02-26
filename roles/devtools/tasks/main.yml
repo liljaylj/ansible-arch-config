@@ -144,24 +144,28 @@
 
 - name: Install rust toolchains
   vars:
-    rust_toolchains:
+    toolchains:
       - stable
-      - nightly
   ansible.builtin.shell:
     executable: '/bin/bash'
     cmd: |
       set -Eeuo pipefail
-      rustup install {{ rust_toolchains | join(' ') }} | grep unchanged || true
+      rustup install {{ dev_tools.rust.toolchains | default(default_toolchains) | join(' ') }} | grep unchanged || true
   register: install_toolchains_result
-  changed_when: '(install_toolchains_result.stdout_lines | length) != (rust_toolchains | length)'
+  changed_when: '(install_toolchains_result.stdout_lines | length) !=
+    (dev_tools.rust.toolchains | default(default_toolchains) | length)'
 
 - name: Set default rust toolchain
   vars:
-    rust_default_toolchain: nightly
-  ansible.builtin.command:
-    cmd: 'rustup default {{ rust_default_toolchain }}'
-  register: install_result
-  changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
+    default_toolchain: stable
+  ansible.builtin.shell:
+    executable: '/bin/bash'
+    cmd: |
+      rustup default
+      rustup default {{ dev_tools.rust.toolchains | default([default_toolchain]) | first }}
+      rustup default
+  register: default_toolchain_result
+  changed_when: '(default_toolchain_result.stdout_lines | first) != (default_toolchain_result.stdout_lines | last)'
 
 - name: Install rust components
   vars:
@@ -177,19 +181,26 @@
   ansible.builtin.shell:
     cmd: |
       set -Eeuo pipefail
-      rustup component add {{ rust_components | join(' ') }} 2>&1 | grep 'is up to date' || true
+      rustup component add {{ dev_tools.rust.components | default(rust_components) | join(' ') }} 2>&1 | \
+        grep 'is up to date' || true
   register: add_components_result
-  changed_when: '(add_components_result.stdout_lines | length) != (rust_components | length)'
+  changed_when: '(add_components_result.stdout_lines | length) !=
+    (dev_tools.rust.components | default(rust_components) | length)'
 
 - name: Set default rust toolchain for archconfig user
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   vars:
-    rust_default_toolchain: nightly
-  ansible.builtin.command:
-    cmd: 'rustup default {{ rust_default_toolchain }}'
-  register: install_result
-  changed_when: '"unchanged" not in (install_result.stdout_lines | last)'
+    default_toolchain: nightly
+  ansible.builtin.shell:
+    executable: '/bin/bash'
+    cmd: |
+      rustup default
+      rustup default {{ default_toolchain }}
+      rustup default
+  register: archconfig_default_toolchain_result
+  changed_when: '(archconfig_default_toolchain_result.stdout_lines | first) !=
+    (archconfig_default_toolchain_result.stdout_lines | last)'
 
 - name: Set default java toolchain
   become: true

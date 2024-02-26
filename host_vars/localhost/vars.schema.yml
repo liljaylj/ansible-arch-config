@@ -65,10 +65,10 @@ properties:
 
   timezone:
     description: 'Timezone of the system'
+    type: string
     examples:
       - Asia/Almaty
       - UTC
-    type: string
 
   hostname:
     description: 'Host name of the current system'
@@ -506,6 +506,49 @@ properties:
         description: 'Use pacman executable/wrapper'
         type: string
         default: 'paru'
+
+  dev_tools:
+    descripion: 'Developer tools config'
+    type: object
+    properties:
+      rust:
+        descrition: 'Rust toolchain config'
+        type: object
+        properties:
+          toolchains:
+            description: 'Rustup toolchains (first in the list is default)'
+            type: array
+            items:
+              type: string
+              examples:
+                - stable
+                - nightly
+              default: stable
+            default:
+              - stable
+          components:
+            description: 'Rust components'
+            type: array
+            items:
+              type: string
+              examples:
+                - cargo
+                - clippy
+                - rust-analyzer
+                - rust-docs
+                - rust-src
+                - rust-std
+                - rustc
+                - rustfmt
+            default:
+              - cargo
+              - clippy
+              - rust-analyzer
+              - rust-docs
+              - rust-src
+              - rust-std
+              - rustc
+              - rustfmt
 
 required:
   - user
