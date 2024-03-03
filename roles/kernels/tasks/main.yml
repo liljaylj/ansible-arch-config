@@ -86,10 +86,26 @@
   loop: '{{ kernels.module_blacklist }}'
   when: kernels.module_blacklist is defined
 
-- name: Increase vm.max_map_count
+- name: Increase vm.max_map_count=2147483642
   become: true
   ansible.posix.sysctl:
     name: 'vm.max_map_count'
     sysctl_file: '/etc/sysctl.d/50-increase-vm-max-map-count.conf'
     sysctl_set: true
     value: '2147483642'
+
+- name: Increase fs.inotify.max_user_instances=8192
+  become: true
+  ansible.posix.sysctl:
+    name: 'fs.inotify.max_user_instances'
+    sysctl_file: '/etc/sysctl.d/60-increase-fs-inotify-max-user-instances.conf'
+    sysctl_set: true
+    value: '8192'
+
+- name: Increase fs.inotify.max_user_watches=524288
+  become: true
+  ansible.posix.sysctl:
+    name: 'fs.inotify.max_user_watches'
+    sysctl_file: '/etc/sysctl.d/50-increase-fs-inotify-max-user-watches.conf'
+    sysctl_set: true
+    value: '524288'
