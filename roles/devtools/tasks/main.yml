@@ -127,6 +127,7 @@
       - github-cli
       - glab
       - gibo-bin  # gitignore boilerplate retriever
+      - git-filter-repo  # quickly rewrite git repo history
 
       # cloud cli
       - aws-cli-v2  # AWS cli
