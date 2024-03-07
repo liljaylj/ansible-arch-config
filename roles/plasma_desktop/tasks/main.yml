@@ -7,7 +7,6 @@
   vars:
     pacman_packages:
       - plasma-meta
-      - plasma-wayland-session
       - xorg-xwayland
       - wl-clipboard
       - wl-clipboard-x11
@@ -62,7 +61,6 @@
       - kio-admin
       - kio-extras
       - qt5-imageformats
-      - kimageformats5
       - libappimage
       - icoutils
       - kwordquiz
