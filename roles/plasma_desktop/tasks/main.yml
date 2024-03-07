@@ -21,6 +21,7 @@
       - lib32-libappindicator-gtk3
       - lib32-libappindicator-gtk2
       - sddm
+      - breeze5
       - breeze-grub  # TODO: set grub theme
       # KDE applications
       - konsole
