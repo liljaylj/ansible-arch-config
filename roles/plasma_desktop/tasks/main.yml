@@ -8,6 +8,7 @@
     pacman_packages:
       - plasma-meta
       - xorg-xwayland
+      - xwaylandvideobridge
       - wl-clipboard
       - wl-clipboard-x11
       - wayclip
@@ -21,11 +22,12 @@
       - lib32-libappindicator-gtk3
       - lib32-libappindicator-gtk2
       - sddm
-      - breeze5
       - breeze-grub  # TODO: set grub theme
       # KDE applications
       - konsole
       - dolphin
+      - dolphin-plugins
+      - kde-inotify-survey
       - kdeconnect
       - gwenview
       - okular
@@ -61,8 +63,6 @@
       - kio-zeroconf
       - kio-admin
       - kio-extras
-      - qt5-imageformats
-      - libappimage
       - icoutils
       - kwordquiz
       # - kio-gdrive
@@ -76,8 +76,22 @@
       - neochat  # matrix client
       - ghostwriter  # markdown editor
       - cmark  # optional for ghostwriter -- processing and rendering CommonMark
+      - appmenu-gtk-module  # global menu in gtk2/3
+      - breeze5
+      - plasma5-integration
+      - kimageformats5
+      - kimageformats
+      - qt5-imageformats
+      - qt6-imageformats
+      - libappimage
+      - phonon-qt5
+      - phonon-qt6
+      - phonon-qt5-gstreamer
+      - phonon-qt5-vlc
+      - phonon-qt6-vlc
 
       - packagekit-qt5  # Discover dependency
+      - packagekit-qt6  # Discover dependency
       - cryfs  # Plasma Vault dependency
       - haruna  # mpv qt frontend
 
