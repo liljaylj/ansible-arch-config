@@ -95,6 +95,8 @@
       - cryfs  # Plasma Vault dependency
       - haruna  # mpv qt frontend
 
+      # - kwin-polonium
+
 # TODO: use this somehow
 - name: Set fact that graphical session is installed
   ansible.builtin.set_fact:
