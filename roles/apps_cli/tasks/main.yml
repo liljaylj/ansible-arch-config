@@ -116,6 +116,7 @@
       # qmk
       - zsa-udev
       - qmk
+      - kanata-bin  # not QMK; but software analog to QMK
 
       # logitech pairing tool
       - ltunify
