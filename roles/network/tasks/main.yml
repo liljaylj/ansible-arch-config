@@ -21,6 +21,8 @@
       - strongswan
       # Logmein Hamachi
       - logmein-hamachi  # TODO: /var/lib/logmein-hamachi/h2-engine-override.cfg (Ipc.User username)
+      # Network packet analyzer
+      - wireshark-cli
 
 - name: Create sambashare group
   become: true
@@ -38,6 +40,8 @@
       - network
       # Samba
       - sambashare
+      # Ability to analyze network packets
+      - wireshark
 
 - name: Ensure config dirs exists
   become: true

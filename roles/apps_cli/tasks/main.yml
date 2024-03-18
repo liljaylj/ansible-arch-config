@@ -103,7 +103,6 @@
       - traceroute
       - webtorrent-cli
       - nushell
-      - wireshark-cli
       - miniserve  # local http file server
       - rsync
       - rclone
