@@ -19,17 +19,16 @@
 
 - name: Generate rsa private key
   become: true
-  become_user: '{{ archconfig_user.name | default("archconfig") }}'
+  become_user: 'nobody'
   ansible.builtin.command:
-    argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'genrsa', '-out', '/var/cache/pixelserv/ca.key',
-           '2048']
+    argv: ['/usr/bin/openssl', 'genrsa', '-out', '/var/cache/pixelserv/ca.key', '2048']
     creates: '/var/cache/pixelserv/ca.key'
 
 - name: Generate local certificate
   become: true
-  become_user: '{{ archconfig_user.name | default("archconfig") }}'
+  become_user: 'nobody'
   ansible.builtin.command:
-    argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key',
+    argv: ['/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key',
            '-new', '-x509', '-days', '3650', '-sha256', '-extensions', 'v3_ca', '-config', '/etc/ssl/openssl.cnf',
            '-out', '/var/cache/pixelserv/ca.crt', '-subj', '/CN=Pixelserv CA']
     creates: '/var/cache/pixelserv/ca.crt'
