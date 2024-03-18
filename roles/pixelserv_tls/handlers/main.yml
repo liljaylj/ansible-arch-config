@@ -8,9 +8,16 @@
   changed_when: true
   notify:
     - Extract compatibility trust certificates
+    - Update ca trust
 
 - name: Extract compatibility trust certificates
   become: true
   ansible.builtin.command:
     argv: ['trust', 'extract-compat']
+  changed_when: true
+
+- name: Update ca trust
+  become: true
+  ansible.builtin.command:
+    argv: ['update-ca-trust']
   changed_when: true

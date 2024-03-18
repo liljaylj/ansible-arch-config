@@ -14,7 +14,7 @@
     path: '/var/cache/pixelserv'
     owner: 'nobody'
     group: 'root'
-    mode: '755'
+    mode: '750'
     state: directory
 
 - name: Generate rsa private key
@@ -30,8 +30,8 @@
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   ansible.builtin.command:
     argv: ['/usr/bin/sudo', '-u', 'nobody', '--', '/usr/bin/openssl', 'req', '-key', '/var/cache/pixelserv/ca.key',
-           '-new', '-x509', '-days', '3650', '-sha256', '-extensions', 'v3_ca', '-out', '/var/cache/pixelserv/ca.crt',
-           '-subj', '/CN=Pixelserv CA']
+           '-new', '-x509', '-days', '3650', '-sha256', '-extensions', 'v3_ca', '-config', '/etc/ssl/openssl.cnf',
+           '-out', '/var/cache/pixelserv/ca.crt', '-subj', '/CN=Pixelserv CA']
     creates: '/var/cache/pixelserv/ca.crt'
   notify:
     - Add trust anchor
