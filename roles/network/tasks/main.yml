@@ -141,6 +141,11 @@
     firewalld_services:
       # mDNS
       - mdns
+      # llmnr
+      - llmnr
+      - llmnr-client
+      - llmnr-tcp
+      - llmnr-udp
       # Samba
       - samba
       - samba-client
