@@ -11,6 +11,8 @@
     pacman_packages:
       - networkmanager
       - wireless-regdb
+      # systemd-resolved resolconf support
+      - systemd-resolvconf
       # mDNS
       - avahi
       - nss-mdns
