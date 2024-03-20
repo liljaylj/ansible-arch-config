@@ -107,6 +107,7 @@
       - rsync
       - rclone
       - ffsend-bin
+      - ngrep
       # TODO: wireguard vlan with egress (zerotier, tailscale, teleport, netmaker, firezone, etc.)
 
       # 2fa
