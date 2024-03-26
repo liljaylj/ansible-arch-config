@@ -80,7 +80,12 @@
       - metadata-cleaner  # exif data cleaner from images and documents
       - yelp  # get help in gnome apps
       - audacity
+
+      # network tools
       - wireshark-qt
+      - remmina
+      - freerdp
+      - libvncserver
 
       # social networks
       - telegram-desktop  # Telegram desktop client

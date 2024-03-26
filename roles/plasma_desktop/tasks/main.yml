@@ -67,6 +67,7 @@
       - kwordquiz
       # - kio-gdrive
       - krdc
+      - freerdp2
       - kdenetwork-filesharing
       # Games
       - kmines
