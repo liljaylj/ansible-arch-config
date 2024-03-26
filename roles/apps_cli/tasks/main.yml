@@ -99,6 +99,7 @@
       - websocat  # websockets client (netcat/curl/socat)
       - net-tools  # netstat and friends
       - bind  # dns utils
+      - dnslookup-bin  # nslookup with DoH, DoT support
       - inetutils  # network utils
       - traceroute
       - webtorrent-cli
