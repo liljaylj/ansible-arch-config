@@ -59,6 +59,7 @@
       - rocm-smi-lib  # btop gpu support
       - brightnessctl  # backlight control
       - libqalculate  # cli qalculator
+      - bc  # cli gnu calculator
       - cowsay
       - ponysay
       - pipe-rename  # rename your files using your favorite text editor
