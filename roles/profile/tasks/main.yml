@@ -9,6 +9,7 @@
     mode: '644'
   with_items:
     - 00-setup.sh
+    - 05-hostinfo.sh
     - 10-xdg.sh
     - 15-xdg-base-dir-override.sh
     - 20-path.sh

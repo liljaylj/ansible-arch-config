@@ -4,7 +4,7 @@
 - name: Define hostname
   become: true
   ansible.builtin.copy:
-    content: "{{ hostname }}\n"
+    content: "{{ hostname | mandatory }}\n"
     dest: '/etc/hostname'
     mode: '644'
 
