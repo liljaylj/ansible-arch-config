@@ -84,6 +84,7 @@
       # network tools
       - wireshark-qt
       - remmina
+      - anydesk  # remote desktop app
       - freerdp
       - libvncserver
 
