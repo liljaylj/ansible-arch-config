@@ -30,6 +30,8 @@
       - mrboom
       - granatier
       - puzzles  # simon tatham's puzzles collection
+      - crack-attack
+      - crack-attack-sounds
 
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
