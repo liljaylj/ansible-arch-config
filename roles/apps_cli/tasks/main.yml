@@ -87,6 +87,7 @@
       - gpg-tui  # gnupg terminal user interface
       - rng-tools  # random generation tools
       - audio-share-bin  # share pc's audio over network to android  # TODO: open 65530 tcp/udp ports
+      - evtest  # input device monitor/query
 
       # tex
       - tectonic
