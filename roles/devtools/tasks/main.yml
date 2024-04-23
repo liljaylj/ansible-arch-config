@@ -128,10 +128,6 @@
       - gibo-bin  # gitignore boilerplate retriever
       - git-filter-repo  # quickly rewrite git repo history
 
-      # cloud cli
-      - aws-cli-v2  # AWS cli
-      - doctl  # DigitalOcean cli
-
       # database management tools
       - pgcli
       - python-keyring  # for pgcli support for keyring (secret service)
