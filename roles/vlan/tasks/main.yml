@@ -1,0 +1,16 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Install ly display manager
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    pacman_packages: tailscale
+
+- name: Enable talescale daemon
+  become: true
+  ansible.builtin.systemd:
+    name: 'tailscaled'
+    daemon_reload: true
+    enabled: true

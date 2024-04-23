@@ -38,6 +38,7 @@
     - kube_tools
     - pixelserv_tls
     - apps_cli
+    - vlan
 
     # hardware
     - audio
