@@ -182,6 +182,9 @@
       # password store
       - 1password-cli
 
+      # themes
+      - tokyonight-extra  # tokyonight theme for bunch of applications
+
 - name: Install cli apps
   ansible.builtin.include_role:
     name: pacman
