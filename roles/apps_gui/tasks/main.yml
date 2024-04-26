@@ -19,7 +19,6 @@
       # gui dev tools
       - kcachegrind
       - visual-studio-code-bin
-      - lapce
       - poedit
       - gource
       - imhex  # hex editor
