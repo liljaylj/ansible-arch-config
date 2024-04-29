@@ -104,6 +104,10 @@ kube:
 apps:
   flatpak:
     - com.redis.RedisInsight
+    - com.obsproject.Studio
+    - com.obsproject.Studio.Plugin.BackgroundRemoval
+    - com.obsproject.Studio.Plugin.GStreamerVaapi
+    - com.obsproject.Studio.Plugin.OBSVkCapture
 
 
 pacman:
