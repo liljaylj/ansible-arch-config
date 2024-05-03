@@ -10,6 +10,8 @@
   vars:
     pacman_packages:
       - networkmanager
+      - iwd  # wpa_supplicant alternative
+      - pacrunner  # PAC proxy support
       - wireless-regdb
       # systemd-resolved resolconf support
       - systemd-resolvconf
@@ -23,7 +25,7 @@
       - strongswan
       # Logmein Hamachi
       - logmein-hamachi  # TODO: /var/lib/logmein-hamachi/h2-engine-override.cfg (Ipc.User username)
-      # Network packet analyzer
+      # network packet analyzer
       - wireshark-cli
 
 - name: Create sambashare group
@@ -73,8 +75,12 @@
     mode: '644'
   vars:
     configs:
+      # allow users in group `network` to contol NetworkManager
       - src: '50-org.freedesktop.NetworkManager.rules'
         dest: '/etc/polkit-1/rules.d'
+      # make NetworkManager to use iwd
+      - src: 'wifi_backend.conf'
+        dest: '/etc/NetworkManager/conf.d/'
       # systemd-resolved
       - src: 'resolved.conf'
         dest: '/etc/systemd/resolved.conf.d'
