@@ -29,6 +29,8 @@
       - wireshark-cli
       # local server (pixelserv and reverse proxy to traefik)
       - caddy
+      # reverse proxy to docker containered serices
+      - traefik
 
 - name: Create sambashare group
   become: true
@@ -49,16 +51,12 @@
       # Ability to analyze network packets
       - wireshark
 
-- name: Ensure config dirs exists
+- name: Add user traefik to docker group
   become: true
-  ansible.builtin.file:
-    path: '{{ item }}'
-    state: directory
-    mode: '755'
-  vars:
-    dirs:
-      - '/etc/systemd/resolved.conf.d'
-  loop: '{{ dirs }}'
+  ansible.builtin.user:
+    append: true
+    name: 'traefik'
+    groups: 'docker'
 
 - name: Create usershares folder
   become: true
@@ -85,7 +83,7 @@
         dest: '/etc/NetworkManager/conf.d/'
       # systemd-resolved
       - src: 'resolved.conf'
-        dest: '/etc/systemd/resolved.conf.d'
+        dest: '/etc/systemd/'
       # mDNS
       - src: 'nsswitch.conf'
         dest: '/etc'
@@ -98,6 +96,11 @@
       # caddy config
       - src: 'Caddyfile'
         dest: '/etc/caddy/'
+      # traefik config
+      - src: 'traefik.toml'
+        dest: '/etc/traefik/'
+      - src: 'dynamic-config.toml'
+        dest: '/etc/traefik/'
   loop: '{{ configs }}'
 
 - name: Enable services
@@ -119,6 +122,8 @@
       - 'winbind.service'
       # Caddy
       - 'caddy.service'
+      # Traefik
+      - 'traefik.service'
   loop: '{{ units }}'
 
 - name: Create resolv.conf symlink

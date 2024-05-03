@@ -1,0 +1,6 @@
+# vim: ft=toml
+#:schema https://json.schemastore.org/traefik-v2-file-provider.json
+
+[http.routers.dashboard]
+rule = "Host(`traefik.test`)"
+service = "api@internal"

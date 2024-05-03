@@ -18,5 +18,12 @@ https:// {
 	respond 200
 }
 
+*.test, *.*.test {
+	tls internal {
+		on_demand
+	}
+	reverse_proxy localhost:5413
+}
+
 # Import additional caddy config files in /etc/caddy/conf.d/
 import /etc/caddy/conf.d/*
