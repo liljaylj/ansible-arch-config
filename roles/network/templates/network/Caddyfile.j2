@@ -18,7 +18,8 @@ https:// {
 	respond 200
 }
 
-*.test, *.*.test {
+*.test, *.*.test,
+*.localhost, *.*.localhost {
 	tls internal {
 		on_demand
 	}
