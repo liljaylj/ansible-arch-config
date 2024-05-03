@@ -113,7 +113,7 @@
       - rclone
       - ffsend-bin
       - ngrep
-      # TODO: wireguard vlan with egress (zerotier, tailscale, teleport, netmaker, firezone, etc.)
+      # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
       - libfido2
