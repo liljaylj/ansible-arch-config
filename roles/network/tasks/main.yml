@@ -27,6 +27,8 @@
       - logmein-hamachi  # TODO: /var/lib/logmein-hamachi/h2-engine-override.cfg (Ipc.User username)
       # network packet analyzer
       - wireshark-cli
+      # local server (pixelserv and reverse proxy to traefik)
+      - caddy
 
 - name: Create sambashare group
   become: true
@@ -90,6 +92,12 @@
       # Samba
       - src: 'smb.conf'
         dest: '/etc/samba'
+      # install NetworkManager specific caddy service
+      - src: 'caddy.service'
+        dest: '/etc/systemd/system/'
+      # caddy config
+      - src: 'Caddyfile'
+        dest: '/etc/caddy/'
   loop: '{{ configs }}'
 
 - name: Enable services
@@ -109,6 +117,8 @@
       - 'smb.service'
       - 'nmb.service'
       - 'winbind.service'
+      # Caddy
+      - 'caddy.service'
   loop: '{{ units }}'
 
 - name: Create resolv.conf symlink
@@ -185,3 +195,9 @@
     src: 'network/h2-engine-override.cfg.j2'
     dest: '/var/lib/logmein-hamachi/h2-engine-override.cfg'
     mode: '644'
+
+- name: Trust caddy certificate
+  become: true
+  ansible.builtin.command: 'caddy trust --address=unix//run/caddy/admin.sock'
+  register: caddy_trust_result
+  changed_when: '"root certificate is already trusted by system" not in caddy_trust_result.stderr'

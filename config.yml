@@ -36,7 +36,7 @@
     - tmux
     - docker
     - kube_tools
-    - pixelserv_tls
+    # - pixelserv_tls
     - apps_cli
     - vlan
 

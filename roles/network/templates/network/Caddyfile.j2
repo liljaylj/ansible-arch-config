@@ -1,0 +1,22 @@
+# vim: noet
+#
+# The Caddyfile is an easy way to configure your Caddy web server.
+# https://caddyserver.com/docs/caddyfile
+#
+# Refer to the directive documentation for more options.
+# https://caddyserver.com/docs/caddyfile/directives
+#
+{
+	default_bind 127.0.0.1
+	admin unix//run/caddy/admin.sock
+}
+
+https:// {
+	tls internal {
+		on_demand
+	}
+	respond 200
+}
+
+# Import additional caddy config files in /etc/caddy/conf.d/
+import /etc/caddy/conf.d/*
