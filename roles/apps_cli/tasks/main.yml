@@ -174,7 +174,7 @@
       - man-pages
       - arch-wiki-docs
       - arch-wiki-lite
-      - tealdeer  # tldr
+      - tealdeer  # TODO: checkout official tldr client https://github.com/tldr-pages/tlrc
       - cheat-bin
 
       # bash
