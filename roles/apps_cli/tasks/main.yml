@@ -97,6 +97,7 @@
       # networking tools
       - curl
       - wget
+      - httpie
       - nmap  # port scanner
       - openbsd-netcat  # network swiss army knife
       - socat  # multipurpose network relay
