@@ -175,6 +175,7 @@
       - arch-wiki-docs
       - arch-wiki-lite
       - tealdeer  # tldr
+      - cheat-bin
 
       # bash
       - bash-completion  # bash shell completions
