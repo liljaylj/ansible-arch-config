@@ -90,6 +90,7 @@
       - evtest  # input device monitor/query
       - flite  # lightweight speech synthesis engine
       - mosh  # modern ssh
+      - graphviz
 
       # tex
       - tectonic
