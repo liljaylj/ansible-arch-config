@@ -102,9 +102,6 @@
       # android
       - scrcpy
 
-      # video
-      - v4l2loopback-dkms
-
       # password store
       - 1password
 
