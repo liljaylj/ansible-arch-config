@@ -31,6 +31,8 @@
       - caddy
       # reverse proxy to docker containered serices
       - traefik
+      # syncthing
+      - syncthing
 
 - name: Create sambashare group
   become: true
@@ -128,6 +130,14 @@
       # Traefik
       - 'traefik.service'
   loop: '{{ units }}'
+
+- name: Enable syncthing user service
+  ansible.builtin.systemd:
+    name: 'syncthing.service'
+    daemon_reload: true
+    enabled: true
+    state: started
+    scope: user
 
 - name: Create resolv.conf symlink
   become: true

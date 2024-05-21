@@ -96,6 +96,8 @@
       - cryfs  # Plasma Vault dependency
       - haruna  # mpv qt frontend
 
+      - syncthingtray-qt6  # FIXME: install only if syncthing is installed
+
       # - kwin-polonium
 
 # TODO: use this somehow
