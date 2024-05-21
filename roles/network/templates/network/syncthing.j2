@@ -1,0 +1,10 @@
+syncthing.test, syncthing.localhost {
+    tls internal {
+        on_demand
+    }
+    vars syncthing_host "localhost:8384"
+    reverse_proxy {
+        header_up Host {vars.syncthing_host}
+        to {vars.syncthing_host}
+    }
+}

@@ -101,6 +101,9 @@
       # caddy reverse proxy for cups web admin (localhost:631)
       - src: 'cups'
         dest: '/etc/caddy/conf.d/'
+      # caddy reverse proxy for syncthing web admin (localhost:8384)
+      - src: 'syncthing'
+        dest: '/etc/caddy/conf.d/'
       # traefik config
       - src: 'traefik.toml'
         dest: '/etc/traefik/'
