@@ -1,0 +1,10 @@
+cups.test, cups.localhost {
+    tls internal {
+        on_demand
+    }
+    vars cups_host "localhost:631"
+    reverse_proxy {
+        header_up Host {vars.cups_host}
+        to {vars.cups_host}
+    }
+}

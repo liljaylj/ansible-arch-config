@@ -96,6 +96,9 @@
       # caddy config
       - src: 'Caddyfile'
         dest: '/etc/caddy/'
+      # caddy reverse proxy for cups web admin (localhost:631)
+      - src: 'cups'
+        dest: '/etc/caddy/conf.d/'
       # traefik config
       - src: 'traefik.toml'
         dest: '/etc/traefik/'
