@@ -22,6 +22,7 @@
       - poedit
       - gource
       - imhex  # hex editor
+      - bruno-bin  # postman alternative
 
       # office
       - libreoffice-fresh
