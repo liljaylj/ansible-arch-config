@@ -38,9 +38,7 @@
       - jless  # json viewer like less
       - fzf  # fuzzy menu
       - zoxide  # jump to directory like z
-      - direnv  # shell extension that manages your env
       - vivid  # generate console colors
-      - atuin  # shell history manager with sync
       - bat  # modern cat
       - glow  # cli markdown renderer
       - xplr  # cli file manager
@@ -183,10 +181,13 @@
       - tealdeer  # TODO: checkout official tldr client https://github.com/tldr-pages/tlrc
       - cheat-bin
 
-      # bash
+      # shell tools
       - bash-completion  # bash shell completions
       - blesh  # bash line editor (readline replacement)
       - bash-preexec
+      - direnv  # shell extension that manages your env
+      - atuin  # shell history manager with sync
+      - starship  # shell prompt
 
       # dependencies
       - tinyxxd  # needed for ncalayer to work
