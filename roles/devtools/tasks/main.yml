@@ -64,9 +64,9 @@
       - jdk17-openjdk
       - jdtls
 
-      # # intellij idea
-      # - intellij-idea-community-edition
-      # - jre-jetbrains
+      # intellij idea
+      - intellij-idea-community-edition
+      - jre-jetbrains
 
       # python
       - python
