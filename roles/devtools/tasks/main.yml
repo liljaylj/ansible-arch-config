@@ -21,6 +21,7 @@
       - cargo-deny  # scan and lint dependencies
       - cargo-expand  # expand rust macros
       - cargo-generate  # bootstrap projects from templates
+      - cargo-modules  # visualize crate's module tree
       - sqlx-cli
       - clang
       - lld
