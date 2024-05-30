@@ -188,6 +188,7 @@
       - direnv  # shell extension that manages your env
       - atuin  # shell history manager with sync
       - starship  # shell prompt
+      - navi  # interactive cheatsheets
 
       # dependencies
       - tinyxxd  # needed for ncalayer to work
