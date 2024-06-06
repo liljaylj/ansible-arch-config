@@ -92,6 +92,7 @@
       - lua-language-server
       - stylua
       - luacheck
+      - busted  # lua unit testing
 
       # bash
       - bash-language-server
