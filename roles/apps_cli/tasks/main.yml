@@ -119,6 +119,7 @@
       - ffsend-bin
       - ngrep
       - dog  # dns client
+      - ookla-speedtest-bin
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
