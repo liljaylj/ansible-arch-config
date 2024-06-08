@@ -25,7 +25,7 @@ disk:
 
 kernels:
   list:
-    - linux-zen
+    - linux
     - linux-lts
   headers: true
   extra_modules:
