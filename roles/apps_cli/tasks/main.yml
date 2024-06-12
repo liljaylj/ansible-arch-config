@@ -89,6 +89,7 @@
       - flite  # lightweight speech synthesis engine
       - mosh  # modern ssh
       - graphviz
+      - chafa  # terminal image viewer (converts to ascii/unicode symbols)
 
       # video
       - v4l-utils
