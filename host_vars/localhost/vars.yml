@@ -88,9 +88,9 @@ vconsole:
   font: ter-p22n
 
 ssh:
-  key_files:
-    - public: 'id_ed25519.pub'
-      private: 'id_ed25519'
+  ssh_keys:
+    - name: 'id_ed25519.pub'
+      content: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGOzFHEhf9c5Z1t1AZm1fb3PQQlGsBXlhmUI/JB8ZXC+'
 
 network:
   ip_forwarding: true

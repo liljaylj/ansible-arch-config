@@ -447,18 +447,28 @@ properties:
     description: 'SSH config'
     type: object
     properties:
-      key_files:
-        description: 'SSH key files'
+      ssh_keys:
+        description: 'SSH keys'
         type: array
         items:
           type: object
           properties:
-            public:
-              description: 'Public key file'
+            type:
+              description: 'Type of the SSH key'
               type: string
-            private:
-              description: 'Private key file'
+              enum:
+                - public
+                - private
+              default: public
+            name:
+              description: 'SSH key file name'
               type: string
+            content:
+              description: 'SSH key file content'
+              type: string
+          required:
+            - name
+            - content
 
   kube:
     description: 'Kubernetes tools'

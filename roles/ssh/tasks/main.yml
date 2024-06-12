@@ -34,18 +34,12 @@
     state: directory
     mode: '700'
 
-- name: Copy public keys to ssh folder
+- name: Import SSH keys
   ansible.builtin.copy:
-    src: 'files/{{ item.public }}'
-    dest: '{{ [setup_user_result.home, ".ssh", item.public] | path_join }}'
-    mode: '444'
-  loop: '{{ ssh.key_files }}'
-  when: ssh.key_files is defined
-
-- name: Copy private keys to ssh folder
-  ansible.builtin.copy:
-    src: 'files/{{ item.private }}'
-    dest: '{{ [setup_user_result.home, ".ssh", item.private] | path_join }}'
-    mode: '400'
-  loop: '{{ ssh.key_files }}'
-  when: ssh.key_files is defined
+    content: "{{ item.content | mandatory }}\n"
+    dest: '{{ [setup_user_result.home, ".ssh", item.name | mandatory] | path_join }}'
+    mode: '{{ item.type | default("public") | ternary("444", "400") }}'
+  loop: '{{ ssh.ssh_keys }}'
+  loop_control:
+    label: '{{ item.name }}'
+  when: ssh.ssh_keys is defined
