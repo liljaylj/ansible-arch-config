@@ -1,0 +1,4 @@
+export AAC_USER_PASSWORD='op://Private/arch-t16/password'
+export AAC_NEXTDNS_ID='op://Home/NextDNS/id'
+
+direnv_load op run -- direnv dump
