@@ -2,8 +2,6 @@
 
 set -Eeuo pipefail
 
-: "${1:?provide argument to script - path to the file with vault password or \`ask\`}"
-
 read -rn1 -p 'Run system, flatpak and lvfs (firmware) update? [Y/n] ' yn
 
 if [[ -n "$yn" ]]; then
@@ -31,24 +29,12 @@ case "$yn" in
     ;;
 esac
 
-# play
-case "$1" in
-    ask)
-        vault_args=('--ask-vault-pass')
-    ;;
-    *)
-        vault_args=('--vault-pass-file' "$1")
-    ;;
-esac
-
-shift 1
-
 # config
 export ANSIBLE_NOCOWS=1
 export ANSIBLE_JINJA2_EXTENSIONS='jinja2.ext.do'
 
-# ansible-playbook -i ./inventory -c local test.yml "${vault_args[@]}" "$@"
-ansible-playbook -i ./inventory -c local config.yml "${vault_args[@]}" "$@"
+# ansible-playbook -i ./inventory -c local test.yml "$@"
+ansible-playbook -i ./inventory -c local config.yml "$@"
 
 echo
 echo 'NEED RESTART?..'

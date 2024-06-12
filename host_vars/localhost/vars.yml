@@ -1,6 +1,8 @@
 # yaml-language-server: $schema=./vars.schema.yml
 ---
 
+ansible_become_pass: '{{ lookup("ansible.builtin.env", "AAC_USER_PASSWORD") }}'
+
 bootloader:
   # grub_package: grub-silent  # silent boot
   timeout: 1
@@ -71,7 +73,7 @@ locales:
 user:
   name: zhanibek
   shell: /usr/bin/zsh
-  password: '{{ vault.user_password }}'
+  password: '{{ lookup("ansible.builtin.env", "AAC_USER_PASSWORD") }}'
   home_mode: '751'
 
 swap:
@@ -92,7 +94,7 @@ ssh:
 
 network:
   ip_forwarding: true
-  nextdns_id: '{{ vault.nextdns_id }}'
+  nextdns_id: '{{ lookup("ansible.builtin.env", "AAC_NEXTDNS_ID") }}'
 
 kube:
   krew:
