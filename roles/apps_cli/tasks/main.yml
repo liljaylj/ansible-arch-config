@@ -90,6 +90,7 @@
       - mosh  # modern ssh
       - graphviz
       - chafa  # terminal image viewer (converts to ascii/unicode symbols)
+      - gptfdisk  # gdisk util
 
       # video
       - v4l-utils
