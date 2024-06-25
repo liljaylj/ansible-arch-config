@@ -122,6 +122,7 @@
       - ngrep
       - dog  # dns client
       - ookla-speedtest-bin
+      - iperf3  # network bandwith measurement tool
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
