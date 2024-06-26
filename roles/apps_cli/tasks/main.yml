@@ -27,7 +27,6 @@
       - moreutils
       - dos2unix
       - ripgrep  # modern grep
-      - ripgrep-all  # add multiple searchable formats for rg
       - lsd  # modern ls
       - tree  # output tree structure of fs
       - ictree  # generate tree output from stdin
