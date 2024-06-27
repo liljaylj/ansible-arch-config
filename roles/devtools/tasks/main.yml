@@ -132,9 +132,6 @@
 
       # database management tools
       - pgcli
-      - dbeaver
-      - dbeaver-plugin-office  # export to xlsx
-      - dbeaver-plugin-svg-format  # export diagrams in svg format
       - python-keyring  # for pgcli support for keyring (secret service)
       - python-sshtunnel  # for pgcli ssh tunneling functionality
       - litecli
