@@ -58,6 +58,9 @@ power_management:
     # logitech unifying receiver
     - vendor_id: '046d'
       product_id: 'c52b'
+    # drop preonic keyboard
+    - vendor_id: '03a8'
+      product_id: 'a649'
 
 hostname: arch-t16
 
