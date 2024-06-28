@@ -1,0 +1,3 @@
+[connection]
+# Values are 0 (use default), 1 (ignore/don't touch), 2 (disable) or 3 (enable).
+wifi.powersave = {{ 0 if network.wifi_powersave is not defined else (network.wifi_powersave | ternary(3, 2)) }}

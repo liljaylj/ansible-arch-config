@@ -314,6 +314,9 @@ properties:
       nextdns_id:
         description: 'NextDNS ID'
         type: string
+      wifi_powersave:
+        description: 'Wi-Fi power save'
+        type: boolean
 
   xdg_base_dir:
     description: 'XDG Base Directory'

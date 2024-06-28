@@ -83,6 +83,9 @@
       # make NetworkManager to use iwd
       - src: 'wifi_backend.conf'
         dest: '/etc/NetworkManager/conf.d/'
+      # configure wifi powersave
+      - src: 'wifi_powersave.conf'
+        dest: '/etc/NetworkManager/conf.d/'
       # systemd-resolved
       - src: 'resolved.conf'
         dest: '/etc/systemd/'
