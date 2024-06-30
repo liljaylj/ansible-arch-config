@@ -112,6 +112,9 @@
         dest: '/etc/traefik/'
       - src: 'dynamic-config.toml'
         dest: '/etc/traefik/'
+      # fix missing Wi-Fi after resume from hibernate
+      - src: 'fix-ath11k-hibernate.service'
+        dest: '/etc/systemd/system/'
   loop: '{{ configs }}'
 
 - name: Enable services
@@ -136,6 +139,13 @@
       # Traefik
       - 'traefik.service'
   loop: '{{ units }}'
+
+- name: Enable fix missing Wi-Fi after resume from hibernate
+  become: true
+  ansible.builtin.systemd:
+    name: 'fix-ath11k-hibernate.service'
+    daemon_reload: true
+    enabled: true
 
 - name: Enable syncthing user service
   ansible.builtin.systemd:

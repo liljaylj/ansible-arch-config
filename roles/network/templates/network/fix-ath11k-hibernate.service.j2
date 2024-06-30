@@ -1,0 +1,14 @@
+# Workaround situation when Wi-Fi is lost after resume from hibernate
+[Unit]
+Description=Unload before and load after hibernation ath11k_pci module
+Before=hibernate.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/modprobe -r ath11k_pci
+ExecStop=/usr/bin/modprobe ath11k_pci
+
+[Install]
+WantedBy=hibernate.target
