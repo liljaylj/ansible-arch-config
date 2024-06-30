@@ -1,5 +1,16 @@
 {% if power_management.disable_wakeup_triggers is defined %}
 {% for device in power_management.disable_wakeup_triggers %}
-ACTION=="add|change", ATTRS{idVendor}=="{{ device.vendor_id | lower }}", ATTRS{idProduct}=="{{ device.product_id | lower }}", ATTR{power/wakeup}="disabled"
+{% if device.comment is defined %}
+# {{ device.comment }}
+{% endif %}
+ACTION=="add|change"{%
+if device.vendor_id is defined
+%}, ATTRS{idVendor}=="{{ device.vendor_id | lower }}"{% endif %}{%
+if device.product_id is defined
+%}, ATTRS{idProduct}=="{{ device.product_id | lower }}"{% endif %}{%
+if device.name is defined
+%}, ATTRS{name}=="{{ device.name }}"{% endif %}{%
+if device.description is defined
+%}, ATTRS{description}=="{{ device.description }}"{% endif %}, ATTR{power/wakeup}="disabled"
 {% endfor %}
 {% endif %}

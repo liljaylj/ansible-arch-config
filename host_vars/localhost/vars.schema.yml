@@ -436,15 +436,21 @@ properties:
         items:
           type: object
           properties:
+            comment:
+              description: 'Comment in rules file'
+              type: string
             vendor_id:
               description: 'Device vendor ID'
               type: string
             product_id:
               description: 'Device product ID'
               type: string
-          required:
-            - vendor_id
-            - product_id
+            name:
+              description: 'Device name'
+              type: string
+            description:
+              description: 'Device description'
+              type: string
 
   ssh:
     description: 'SSH config'
@@ -521,11 +527,11 @@ properties:
         default: 'paru'
 
   dev_tools:
-    descripion: 'Developer tools config'
+    description: 'Developer tools config'
     type: object
     properties:
       rust:
-        descrition: 'Rust toolchain config'
+        description: 'Rust toolchain config'
         type: object
         properties:
           toolchains:
