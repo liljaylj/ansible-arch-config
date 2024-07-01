@@ -113,6 +113,7 @@
       # sql
       - sqlfluff
       - sql-language-server
+      - pgformatter
 
       # tex
       - texlab
