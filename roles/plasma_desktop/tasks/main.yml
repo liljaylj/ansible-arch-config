@@ -98,6 +98,8 @@
 
       - syncthingtray-qt6  # FIXME: install only if syncthing is installed
 
+      - isoimagewriter
+
       # - kwin-polonium
 
 # TODO: use this somehow
