@@ -61,8 +61,8 @@
 
       # java dev
       - jdk-openjdk
-      - jdk8-openjdk
       - jdk17-openjdk
+      - jdk21-openjdk
       - jdtls
 
       # intellij idea
