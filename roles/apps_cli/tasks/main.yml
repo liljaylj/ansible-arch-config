@@ -141,7 +141,7 @@
       - android-tools
 
       # neovim
-      - neovim  # neovim
+      - neovim
       - bob  # neovim version manager
       - python-pynvim  # python 3 provider for neovim
       - neovim-drop-in  # drop-in replacement for vi/vim with neovim
@@ -155,6 +155,7 @@
       - tree-sitter-python
       - tree-sitter-query
       - tree-sitter-vimdoc
+      - lua51  # needed lazy.nvim luarocks support
 
       # kakoune
       - kakoune
