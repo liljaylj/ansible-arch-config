@@ -90,6 +90,7 @@
       - graphviz
       - chafa  # terminal image viewer (converts to ascii/unicode symbols)
       - gptfdisk  # gdisk util
+      - time  # monitor program's use of system resources
 
       # video
       - v4l-utils
