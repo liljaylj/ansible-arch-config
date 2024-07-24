@@ -26,6 +26,7 @@
       - clang
       - lld
       - lldb
+      - codelldb-bin  # lldb debug adapter
 
       # go
       - go
