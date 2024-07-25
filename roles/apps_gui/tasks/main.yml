@@ -98,6 +98,7 @@
       - inkscape
       - krita
       - pinta
+      - rnote  # graphical note taking app (for drawing tablets)
 
       # android
       - scrcpy
