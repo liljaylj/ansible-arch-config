@@ -92,6 +92,7 @@
       - gptfdisk  # gdisk util
       - time  # monitor program's use of system resources
       - python-j2cli  # jinja2 cli
+      - just  # tool save and run project-specific commands
 
       # video
       - v4l-utils
