@@ -91,6 +91,7 @@
       - chafa  # terminal image viewer (converts to ascii/unicode symbols)
       - gptfdisk  # gdisk util
       - time  # monitor program's use of system resources
+      - python-j2cli  # jinja2 cli
 
       # video
       - v4l-utils
