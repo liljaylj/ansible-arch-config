@@ -108,6 +108,7 @@
       - bash-language-server
       - shellcheck
       - shfmt
+      - amber-bash-bin
 
       # yaml
       - yaml-language-server
