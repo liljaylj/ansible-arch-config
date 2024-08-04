@@ -66,7 +66,6 @@
       - lib32-gst-plugins-base
       - lib32-gst-plugins-good
       - easyeffects  # audio effects for pipewire apps
-      - noisetorch  # noise suppression for microphone
       - qpwgraph  # pipewire gui patchbay
       - qt6-multimedia
       - qt6-multimedia-ffmpeg
