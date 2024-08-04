@@ -25,7 +25,7 @@
       - doomseeker
       - doomrunner
       - nudoku
-      - prismlauncher
+      - aur/prismlauncher
       - glfw-wayland
       - pokerth
       - mrboom
