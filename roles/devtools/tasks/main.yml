@@ -55,6 +55,7 @@
       # css
       - stylelint
       - stylelint-config-standard
+      - tailwindcss-language-server
 
       # web extensions
       - web-ext  # web extension developer tools
