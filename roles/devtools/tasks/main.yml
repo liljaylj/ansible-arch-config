@@ -30,6 +30,8 @@
       - tree-sitter-query
       - tree-sitter-vimdoc
       - lua51  # needed lazy.nvim luarocks support
+      # addons
+      - editorconfig-checker
 
       # rust
       - rustup
