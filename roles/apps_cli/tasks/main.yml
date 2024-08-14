@@ -144,23 +144,6 @@
       - android-udev
       - android-tools
 
-      # neovim
-      - neovim
-      - bob  # neovim version manager
-      - python-pynvim  # python 3 provider for neovim
-      - neovim-drop-in  # drop-in replacement for vi/vim with neovim
-      - nvimpager  # neovim based pager
-      - vim-spell-en
-      - vim-spell-ru
-      - tree-sitter-bash
-      - tree-sitter-c
-      - tree-sitter-lua
-      - tree-sitter-markdown
-      - tree-sitter-python
-      - tree-sitter-query
-      - tree-sitter-vimdoc
-      - lua51  # needed lazy.nvim luarocks support
-
       # kakoune
       - kakoune
       - kak-lsp
