@@ -49,6 +49,7 @@
       - klavaro  # touch typing tutor
       - linssid  # wifi scanner
       - alacritty  # terminal emulator
+      - rmlint-shredder  # gui for rmlint - utility to detect and remove duplicates
 
       # multimedia
       - mpv  # multimedia player

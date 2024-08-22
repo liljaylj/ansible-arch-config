@@ -93,6 +93,7 @@
       - time  # monitor program's use of system resources
       - python-j2cli  # jinja2 cli
       - just  # tool save and run project-specific commands
+      - rmlint  # detect and remove duplicates
 
       # video
       - v4l-utils
