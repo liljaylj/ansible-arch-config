@@ -317,6 +317,13 @@ properties:
       wifi_powersave:
         description: 'Wi-Fi power save'
         type: boolean
+      wifi_backend:
+        description: 'Wi-Fi backend for NetworkManager'
+        type: string
+        enum:
+          - 'wpa_supplicant'
+          - 'iwd'
+        default: 'wpa_supplicant'
 
   xdg_base_dir:
     description: 'XDG Base Directory'

@@ -10,7 +10,6 @@
   vars:
     pacman_packages:
       - networkmanager
-      - iwd  # wpa_supplicant alternative
       - pacrunner  # PAC proxy support
       - wireless-regdb
       # systemd-resolved resolconf support
@@ -33,6 +32,15 @@
       - traefik
       # syncthing
       - syncthing
+
+- name: Install iwd
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    pacman_packages:
+      - iwd  # wpa_supplicant alternative
+  when: '(network.wifi_backend | default("wpa_supplicant")) == "iwd"'
 
 - name: Create sambashare group
   become: true
@@ -80,7 +88,7 @@
       # allow users in group `network` to contol NetworkManager
       - src: '50-org.freedesktop.NetworkManager.rules'
         dest: '/etc/polkit-1/rules.d'
-      # make NetworkManager to use iwd
+      # configure wifi backend
       - src: 'wifi_backend.conf'
         dest: '/etc/NetworkManager/conf.d/'
       # configure wifi powersave

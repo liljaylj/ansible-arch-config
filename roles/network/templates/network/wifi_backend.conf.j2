@@ -1,2 +1,2 @@
 [device]
-wifi.backend=iwd
+wifi.backend={{ network.wifi_backend | default('wpa_supplicant') }}
