@@ -94,6 +94,7 @@
       - python-j2cli  # jinja2 cli
       - just  # tool save and run project-specific commands
       - rmlint  # detect and remove duplicates
+      - ansifilter  # remove or convert ANSI codes to another format
 
       # video
       - v4l-utils
