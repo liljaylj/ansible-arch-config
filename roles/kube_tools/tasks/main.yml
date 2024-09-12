@@ -8,7 +8,7 @@
   vars:
     pacman_packages:
       - kubectl
-      - krew-bin
+      - krew
       - kustomize
       - kubectl-convert-bin
 
