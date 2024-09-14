@@ -1,7 +1,11 @@
 # vim: ft=sh
 # shellcheck shell=sh
 
+# init
+FZF_DEFAULT_OPTS=''
 # select
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-i:toggle-out,tab:toggle-out,btab:toggle-in,ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'"
+FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-i:toggle-out,tab:toggle-out,btab:toggle-in,ctrl-a:select-all,ctrl-d:deselect-all,ctrl-t:toggle-all'"
 # jump
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-s:jump,alt-s:jump-accept'"
+FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --bind 'ctrl-s:jump,alt-s:jump-accept'"
+
+export FZF_DEFAULT_OPTS

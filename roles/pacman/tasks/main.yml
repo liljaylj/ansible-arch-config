@@ -98,6 +98,13 @@
     dest: '/etc/makepkg.conf'
     mode: '644'
 
+- name: Apply makepkg.conf.d
+  become: true
+  ansible.builtin.template:
+    src: 'pacman/rust.conf.j2'
+    dest: '/etc/makepkg.conf.d/rust.conf'
+    mode: '644'
+
 - name: Apply reflector config
   become: true
   ansible.builtin.template:
