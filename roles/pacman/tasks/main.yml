@@ -90,6 +90,8 @@
       - namcap  # pacman package analyzer
       - pacutils  # helper tools for libalpm
       - check-broken-packages-pacman-hook-git  # check dynamic library, python and systemd dependencies
+      - pacquery  # return package info in JSON
+      - paccat  # print file contents `cat/bat` from package
 
 - name: Apply makepkg.conf
   become: true
