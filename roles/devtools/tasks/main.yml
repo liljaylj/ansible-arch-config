@@ -215,6 +215,19 @@
   changed_when: '(add_components_result.stdout_lines | length) !=
     (dev_tools.rust.components | default(rust_components) | length)'
 
+- name: Update rust toolchain for archconfig user
+  become: true
+  become_user: '{{ archconfig_user.name | default("archconfig") }}'
+  vars:
+    default_toolchain: stable
+  ansible.builtin.shell:
+    executable: '/bin/bash'
+    cmd: |
+      set -Eeuo pipefail
+      rustup update {{ default_toolchain }} 2>&1 | grep 'is up to date' || true
+  register: archconfig_update_toolchain_result
+  changed_when: '(archconfig_update_toolchain_result.stdout_lines | length) > 0'
+
 - name: Set default rust toolchain for archconfig user
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
