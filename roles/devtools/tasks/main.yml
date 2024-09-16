@@ -219,7 +219,7 @@
   become: true
   become_user: '{{ archconfig_user.name | default("archconfig") }}'
   vars:
-    default_toolchain: nightly
+    default_toolchain: stable
   ansible.builtin.shell:
     executable: '/bin/bash'
     cmd: |
