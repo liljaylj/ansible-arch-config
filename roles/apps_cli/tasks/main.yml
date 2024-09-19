@@ -51,6 +51,7 @@
       - chezmoi  # dotfiles manager
       - dex  # execute desktop files and autostart apps
       - dust  # modern du
+      - diskonaut  # cli alternative of disksniffer
       - duf  # modern df
       - btop  # modern htop/top
       - rocm-smi-lib  # btop gpu support
