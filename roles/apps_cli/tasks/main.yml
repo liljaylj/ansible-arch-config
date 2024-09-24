@@ -27,6 +27,8 @@
       - moreutils
       - dos2unix
       - ripgrep  # modern grep
+      - sd
+      - sad
       - lsd  # modern ls
       - tree  # output tree structure of fs
       - ictree  # generate tree output from stdin
@@ -61,7 +63,6 @@
       - cowsay
       - ponysay
       - pipe-rename  # rename your files using your favorite text editor
-      - sad
       - yj
       - todotxt
       - jira-cli
