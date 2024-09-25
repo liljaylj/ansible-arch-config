@@ -27,7 +27,7 @@
       - moreutils
       - dos2unix
       - ripgrep  # modern grep
-      - sd
+      - sd  # modern sed
       - sad
       - lsd  # modern ls
       - tree  # output tree structure of fs

@@ -88,6 +88,8 @@
       - remmina
       - freerdp
       - libvncserver
+      - rustdesk-bin
+      - anydesk-bin
 
       # social networks
       - telegram-desktop  # Telegram desktop client
