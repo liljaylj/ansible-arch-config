@@ -120,7 +120,6 @@
       - inetutils  # network utils
       - traceroute
       - webtorrent-cli
-      - nushell
       - miniserve  # local http file server
       - rsync
       - rclone
@@ -184,6 +183,8 @@
       - atuin  # shell history manager with sync
       - starship  # shell prompt
       - navi  # interactive cheatsheets
+      - nushell
+      - sheldon  # shell plugin manager
 
       # dependencies
       - tinyxxd  # needed for ncalayer to work
