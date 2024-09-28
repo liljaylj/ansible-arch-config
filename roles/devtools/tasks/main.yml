@@ -57,7 +57,7 @@
       - go
 
       # nodejs
-      - nodejs-lts-hydrogen
+      - nodejs-lts-iron
       - npm
       - pnpm
       - vscode-json-languageserver
