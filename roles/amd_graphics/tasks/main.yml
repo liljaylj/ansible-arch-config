@@ -25,3 +25,10 @@
       - radeontop
       - libva-utils
       - vdpauinfo
+
+- name: By default use RADV drivers
+  become: true
+  ansible.builtin.template:
+    src: 'amd_graphics/30-amd.sh.j2'
+    dest: '/etc/profile.d/30-amd.sh'
+    mode: '644'
