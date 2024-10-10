@@ -89,6 +89,7 @@
       - libvncserver
       - rustdesk-bin
       - anydesk-bin
+      - lan-mouse  # synergy alternative
 
       # social networks
       - telegram-desktop  # Telegram desktop client
