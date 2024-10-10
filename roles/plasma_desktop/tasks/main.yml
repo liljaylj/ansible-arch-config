@@ -122,6 +122,13 @@
     dest: '/etc/sddm.conf.d/00-default.conf'
     mode: '644'
 
+- name: Apply SDDM user theme  conf
+  become: true
+  ansible.builtin.template:
+    src: 'plasma_desktop/theme.conf.user.j2'
+    dest: '/usr/share/sddm/themes/breeze/theme.conf.user'
+    mode: '644'
+
 - name: Rotate second monitor
   become: true
   ansible.builtin.template:
