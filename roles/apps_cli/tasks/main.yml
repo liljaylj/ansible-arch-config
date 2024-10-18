@@ -129,6 +129,7 @@
       - ookla-speedtest-bin
       - iperf3  # network bandwith measurement tool
       - whois
+      - lynx  # terminal browser
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
