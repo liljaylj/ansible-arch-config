@@ -55,6 +55,7 @@
       - dust  # modern du
       - diskonaut  # cli alternative of disksniffer
       - duf  # modern df
+      - htop
       - btop  # modern htop/top
       - rocm-smi-lib  # btop gpu support
       - brightnessctl  # backlight control
