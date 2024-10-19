@@ -25,16 +25,16 @@
     mode: '644'
   when: vconsole.font is defined
 
-# - name: Install general purpose mouse
-#   ansible.builtin.include_role:
-#     name: pacman
-#     tasks_from: install_pkg
-#   vars:
-#     pacman_packages: gpm
-#
-# - name: Enable mouse support
-#   become: true
-#   ansible.builtin.systemd:
-#     name: 'gpm.service'
-#     enabled: true
-#     state: started
+- name: Install general purpose mouse
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    pacman_packages: gpm
+
+- name: Enable mouse support
+  become: true
+  ansible.builtin.systemd:
+    name: 'gpm.service'
+    enabled: true
+    state: started
