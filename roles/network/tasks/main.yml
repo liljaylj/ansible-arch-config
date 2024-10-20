@@ -116,9 +116,9 @@
       - src: 'syncthing'
         dest: '/etc/caddy/conf.d/'
       # traefik config
-      - src: 'traefik.toml'
+      - src: 'traefik.yml'
         dest: '/etc/traefik/'
-      - src: 'dynamic-config.toml'
+      - src: 'dynamic-config.yml'
         dest: '/etc/traefik/'
       # fix missing Wi-Fi after resume from hibernate
       - src: 'fix-ath11k-hibernate.service'
