@@ -12,6 +12,7 @@
       # utils
       - nvchecker  # new version checker
       - tokei  # count line of code
+      - cloc  # count line of code
 
       # editing
       # neovim
