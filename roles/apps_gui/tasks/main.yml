@@ -75,7 +75,7 @@
       - qt6-multimedia-ffmpeg
       - qt6-multimedia-gstreamer
       - guvcview-qt  # webcam
-      - ungoogled-chromium
+      - ungoogled-chromium-bin
       - gpu-screen-recorder-gtk-git
       - capnet-assist  # captive portal assistant
       - metadata-cleaner  # exif data cleaner from images and documents
