@@ -27,7 +27,7 @@ disk:
 
 kernels:
   list:
-    - linux
+    - linux-cachyos
     - linux-lts
   headers: true
   extra_modules:

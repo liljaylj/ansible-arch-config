@@ -130,6 +130,7 @@ properties:
             - linux-zen
             - linux-hardened
             - linux-amd
+            - linux-cachyos
           default: linux
       microcode:
         description: 'CPU microcode'
