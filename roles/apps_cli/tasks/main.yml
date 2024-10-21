@@ -99,6 +99,7 @@
       - rmlint  # detect and remove duplicates
       - ansifilter  # remove or convert ANSI codes to another format
       - strace  # userspace tracer
+      - xdg-ninja  # detect dotfiles, which can be moved to xdg base dirs
 
       # video
       - v4l-utils
