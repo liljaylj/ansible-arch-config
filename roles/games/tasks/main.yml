@@ -10,6 +10,7 @@
       - steam
       - steam-native-runtime
       - lutris
+      - umu-launcher
       - aur/protontricks
       - python-steam
       - protonup-qt
