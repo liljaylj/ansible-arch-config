@@ -50,6 +50,7 @@
       - linssid  # wifi scanner
       - alacritty  # terminal emulator
       - rmlint-shredder  # gui for rmlint - utility to detect and remove duplicates
+      - waycheck  # check which wayland protocols are supported
 
       # multimedia
       - mpv  # multimedia player
