@@ -51,6 +51,7 @@
       - alacritty  # terminal emulator
       - rmlint-shredder  # gui for rmlint - utility to detect and remove duplicates
       - waycheck  # check which wayland protocols are supported
+      - deskflow-bin  # software kvm
 
       # multimedia
       - mpv  # multimedia player
