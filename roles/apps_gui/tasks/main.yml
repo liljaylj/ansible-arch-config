@@ -52,6 +52,7 @@
       - rmlint-shredder  # gui for rmlint - utility to detect and remove duplicates
       - waycheck  # check which wayland protocols are supported
       - deskflow-bin  # software kvm
+      - crow-translate  # gui for text translation
 
       # multimedia
       - mpv  # multimedia player
