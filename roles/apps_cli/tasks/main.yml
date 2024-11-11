@@ -100,6 +100,8 @@
       - ansifilter  # remove or convert ANSI codes to another format
       - strace  # userspace tracer
       - xdg-ninja  # detect dotfiles, which can be moved to xdg base dirs
+      - translate-shell  # google translate from shell
+      - rlwrap  # adds readline-style editing and history to programs
 
       # video
       - v4l-utils
