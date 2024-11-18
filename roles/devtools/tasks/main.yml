@@ -86,6 +86,7 @@
       # php
       - nodejs-intelephense
       - vscode-php-debug
+      - composer
 
       # java dev
       - jdk-openjdk
