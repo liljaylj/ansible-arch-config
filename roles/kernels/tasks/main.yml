@@ -59,6 +59,16 @@
     dest: '/etc/pacman.d/hooks/{{ item }}.hook'
     state: link
   with_items:
+    - 10-mkmm-pre
+    - 65-mkmm-post
+
+- name: Disable pacman hooks
+  become: true
+  ansible.builtin.file:
+    src: '/dev/null'
+    dest: '/etc/pacman.d/hooks/{{ item }}.hook'
+    state: link
+  with_items:
     - 10-mkmm-tmpfs-pre
     - 65-mkmm-tmpfs-post
 
