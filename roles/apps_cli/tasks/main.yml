@@ -180,6 +180,7 @@
       - arch-wiki-docs
       - arch-wiki-lite
       - tealdeer  # TODO: checkout official tldr client https://github.com/tldr-pages/tlrc
+      - halp  # automatically check options for help in cli programs
       - cheat-bin
 
       # shell tools
