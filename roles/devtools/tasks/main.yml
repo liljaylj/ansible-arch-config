@@ -40,14 +40,15 @@
       - cargo-generate  # bootstrap projects from templates
       - cargo-modules  # visualize crate's module tree
       - cargo-bloat  # find out what takes most of the space in your executable
-      - cargo-edit
+      - cargo-edit  # manage cargo dependencies
       - cargo-geiger  # detect unsafe Rust in code and dependencies
       - cargo-fuzz
       - cargo-flamegraph
       - cargo-depgraph
       - cargo-machete
       - cargo-public-api
-      - cargo-sweep
+      - cargo-sweep  # clean unused build files
+      - cargo-update  # update crates installed using `cargo install`
       - sqlx-cli
       - clang
       - lld
