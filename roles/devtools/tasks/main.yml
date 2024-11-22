@@ -30,6 +30,9 @@
       - tree-sitter-vimdoc
       - lua51  # needed lazy.nvim luarocks support
 
+      # markdown
+      - marksman
+
       # rust
       - rustup
       - cargo-watch  # watch and recompile cargo project on change
