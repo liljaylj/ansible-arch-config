@@ -123,6 +123,9 @@
       # fix missing Wi-Fi after resume from hibernate
       - src: 'fix-ath11k-hibernate.service'
         dest: '/etc/systemd/system/'
+      # set wireless regdom
+      - src: 'wireless-regdom'
+        dest: '/etc/conf.d'
   loop: '{{ configs }}'
 
 - name: Enable services
