@@ -49,7 +49,6 @@
       - klavaro  # touch typing tutor
       - linssid  # wifi scanner
       - alacritty  # terminal emulator
-      - rmlint-shredder  # gui for rmlint - utility to detect and remove duplicates
       - waycheck  # check which wayland protocols are supported
       - deskflow  # software kvm
       - crow-translate  # gui for text translation
