@@ -101,6 +101,7 @@
       - xdg-ninja  # detect dotfiles, which can be moved to xdg base dirs
       - translate-shell  # google translate from shell
       - rlwrap  # adds readline-style editing and history to programs
+      - systemctl-tui
 
       # video
       - v4l-utils
