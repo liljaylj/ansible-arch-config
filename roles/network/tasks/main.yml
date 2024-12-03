@@ -32,6 +32,11 @@
       - traefik
       # syncthing
       - syncthing
+      # geoip
+      - geoip
+      - geoip-database
+      - geoip-database-extra
+      - libmaxminddb
 
 - name: Install iwd
   ansible.builtin.include_role:
@@ -128,7 +133,7 @@
         dest: '/etc/conf.d'
   loop: '{{ configs }}'
 
-- name: Enable services
+- name: Enable services (now)
   become: true
   ansible.builtin.systemd:
     name: '{{ item }}'
