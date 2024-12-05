@@ -90,6 +90,7 @@
       - phonon-qt5-gstreamer
       - phonon-qt5-vlc
       - phonon-qt6-vlc
+      - optiimage  # image optimization
 
       - cryfs  # Plasma Vault dependency
       - haruna  # mpv qt frontend
