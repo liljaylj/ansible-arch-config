@@ -183,6 +183,9 @@
       - halp  # automatically check options for help in cli programs
       - cheat-bin
 
+      # internet
+      - tg-notify  # notification through Telegram Bot
+
       # shell tools
       - bash-completion  # bash shell completions
       - blesh  # bash line editor (readline replacement)
