@@ -91,6 +91,7 @@
       - phonon-qt5-vlc
       - phonon-qt6-vlc
       - optiimage  # image optimization
+      - francis  # pomodoro timer
 
       - cryfs  # Plasma Vault dependency
       - haruna  # mpv qt frontend
