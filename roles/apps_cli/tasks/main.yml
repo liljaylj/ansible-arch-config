@@ -102,6 +102,7 @@
       - translate-shell  # google translate from shell
       - rlwrap  # adds readline-style editing and history to programs
       - systemctl-tui
+      - gum  # ui for shell scripts
 
       # video
       - v4l-utils
