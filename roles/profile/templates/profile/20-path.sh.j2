@@ -1,6 +1,7 @@
 # vim: ft=sh
 # shellcheck shell=sh
 
+prepend_envvar PATH "$XDG_CONFIG_HOME/composer/vendor/bin"
 prepend_envvar PATH "$KREW_ROOT/bin"
 prepend_envvar PATH "$GOPATH/bin"
 prepend_envvar PATH "$CARGO_HOME/bin"
