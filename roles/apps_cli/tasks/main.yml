@@ -137,7 +137,7 @@
       - whois
       - lynx  # terminal browser
       - tractor  # onion router proxy
-      - rtorrent  # tui torrent client
+      - rqbit  # cli torrent client
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
