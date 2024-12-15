@@ -125,7 +125,8 @@
       - luarocks
       - lua-language-server
       - stylua
-      - luacheck
+      - luacheck  # lua linter
+      - selene  # new lua linter
       - busted  # lua unit testing
 
       # bash
