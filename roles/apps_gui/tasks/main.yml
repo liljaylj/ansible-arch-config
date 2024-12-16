@@ -94,6 +94,7 @@
       - anydesk-bin
       - lan-mouse  # synergy alternative
       - carburetor  # gui for tractor onion router proxy
+      - wifi-qr  # qr scan to connect or genearate to share wifi connection
 
       # social networks
       - telegram-desktop  # Telegram desktop client
