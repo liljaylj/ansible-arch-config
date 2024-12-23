@@ -1,0 +1,13 @@
+# vim: ft=yaml.ansible
+---
+
+- name: Set zone for interface
+  become: true
+  ansible.posix.firewalld:
+    zone: '{{ item.zone }}'
+    interface: '{{ item.interface }}'
+    permanent: true
+    immediate: true
+    state: enabled
+  loop: '{{ firewalld_binds }}'
+  when: firewalld_binds is defined
