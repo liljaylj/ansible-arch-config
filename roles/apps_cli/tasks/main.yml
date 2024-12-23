@@ -19,7 +19,7 @@
       # (un-)archiving tools
       - zip
       - unzip
-      - p7zip
+      - 7zip
       - unrar
       - unarchiver
 
