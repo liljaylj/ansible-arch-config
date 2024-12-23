@@ -14,3 +14,12 @@
     name: 'tailscaled'
     daemon_reload: true
     enabled: true
+
+- name: Add tailscale0 to trusted zone
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: set_zone
+  vars:
+    firewalld_binds:
+      - interface: tailscale0
+        zone: trusted
