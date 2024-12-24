@@ -216,6 +216,10 @@
       - samba
       - samba-client
       - netbios-ns
+    firewalld_zones:
+      - home
+      - trusted
+      - work
 
 - name: Enable IP forwarding
   become: true

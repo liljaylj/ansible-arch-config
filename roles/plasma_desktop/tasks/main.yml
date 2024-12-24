@@ -160,3 +160,7 @@
   vars:
     firewalld_services:
       - kdeconnect
+    firewalld_zones:
+      - home
+      - trusted
+      - work
