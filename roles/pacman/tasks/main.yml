@@ -136,3 +136,10 @@
     name: 'pkgfile-update.timer'
     enabled: true
     state: started
+
+- name: Enable cache cleaning timer
+  become: true
+  ansible.builtin.systemd:
+    name: 'paccache.timer'
+    enabled: true
+    state: started
