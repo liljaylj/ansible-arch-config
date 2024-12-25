@@ -138,6 +138,8 @@
       - lynx  # terminal browser
       - tractor  # onion router proxy
       - rqbit  # cli torrent client
+      - mtr  # ping + traceroute
+      - tcpdump
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
