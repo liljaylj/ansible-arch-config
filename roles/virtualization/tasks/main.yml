@@ -36,7 +36,9 @@
     name: user
     tasks_from: user_add_group
   vars:
-    user_new_groups: libvirt
+    user_new_groups:
+      - libvirt
+      - kvm
 
 - name: Add libvirt-qemu user ACL to home dir
   ansible.posix.acl:
