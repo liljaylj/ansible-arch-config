@@ -116,6 +116,13 @@
       # password store
       - 1password
 
+      # TODO: put in separate role (maybe separate gns3-server) + dependent roles (qemu/libvirt, docker, wireshark)
+      - gns3-server  # network simulator
+      - gns3-gui
+      - dynamips
+      - vpcs
+      - ubridge
+
       # separate role
       # - wireshark-qt  # TODO: add user to wireshark group
       # TODO: dosbox, 86box
