@@ -178,6 +178,9 @@
       - hugo
       - mdbook
 
+      # cloud provider cli tools
+      - aws-cli
+
 - name: Install rust toolchains
   vars:
     toolchains:
