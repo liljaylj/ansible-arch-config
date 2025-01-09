@@ -99,7 +99,6 @@
       - jdtls
 
       # intellij idea
-      - intellij-idea-community-edition
       - jre-jetbrains
       - rustrover
 
