@@ -7,7 +7,7 @@
     tasks_from: install_pkg
   vars:
     pacman_packages:
-      - proto-bin  # programming language version manager
+      # - proto-bin  # programming language version manager
 
       # utils
       - nvchecker  # new version checker
