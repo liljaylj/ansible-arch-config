@@ -53,6 +53,7 @@
       - chezmoi  # dotfiles manager
       - dex  # execute desktop files and autostart apps
       - dust  # modern du
+      - ncdu  # classic ncurses du
       - diskonaut  # cli alternative of disksniffer
       - duf  # modern df
       - htop
