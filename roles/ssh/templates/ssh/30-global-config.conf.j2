@@ -1,5 +1,6 @@
-AddKeysToAgent yes
-
 Host *
-  ServerAliveInterval 30
-  ServerAliveCountMax 3
+    AddKeysToAgent yes
+
+    TCPKeepAlive no
+    ServerAliveInterval 10
+    ServerAliveCountMax 3
