@@ -32,6 +32,7 @@
 
       # markdown
       - marksman
+      - mermaid-cli  # diagrams
 
       # rust
       - rustup
