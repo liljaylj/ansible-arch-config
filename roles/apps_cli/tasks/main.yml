@@ -83,7 +83,7 @@
       - wavemon  # wifi scanner
       - mat2  # metadata cleaner
       - zellij  # terminal multiplexer
-      - lemonade-bin  # remote clipboard daemon
+      - lemonade-bin  # remote clipboard daemon  # TODO: move/create to role; take service file from dotfiles
       - paperkey  # export gnupg keys to paper
       - gpg-tui  # gnupg terminal user interface
       - rng-tools  # random generation tools
