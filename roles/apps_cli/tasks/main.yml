@@ -47,7 +47,6 @@
       - s-tui  # stress testing
       - yt-dlp  # download youtube videos
       - upower  # power devices info
-      - cpupower  # power management for cpu
       - udisks2  # disk management
       - ntfs-3g  # ntfs filesystem support
       - chezmoi  # dotfiles manager
