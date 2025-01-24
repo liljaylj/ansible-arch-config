@@ -109,6 +109,7 @@
       - python-legacy-cgi  # for python plugins of Krita
       - pinta
       - rnote  # graphical note taking app (for drawing tablets)
+      - imv  # lightweight image viewer
 
       # android
       - scrcpy
