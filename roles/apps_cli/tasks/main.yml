@@ -103,6 +103,7 @@
       - rlwrap  # adds readline-style editing and history to programs
       - systemctl-tui
       - gum  # ui for shell scripts
+      - entr  # run command on file change
 
       # video
       - v4l-utils
