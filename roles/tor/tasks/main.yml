@@ -44,3 +44,11 @@
     line: '%include /etc/tor/torrc.d/*.conf'
     create: true
     mode: '644'
+
+- name: Start and enable tor service
+  become: true
+  ansible.builtin.systemd:
+    name: 'tor'
+    daemon_reload: true
+    enabled: true
+    state: started
