@@ -23,7 +23,7 @@
 - name: Ensure tor config dir
   become: true
   ansible.builtin.file:
-    path: '/etc/torrc.d'
+    path: '/etc/tor/torrc.d'
     state: directory
     mode: '755'
 
@@ -31,7 +31,7 @@
   become: true
   ansible.builtin.template:
     src: 'tor/{{ item }}.j2'
-    dest: '/etc/torrc.d/{{ item }}'
+    dest: '/etc/tor/torrc.d/{{ item }}'
     mode: '644'
   with_items:
     - control.conf
@@ -41,6 +41,6 @@
   become: true
   ansible.builtin.lineinfile:
     path: '/etc/tor/torrc'
-    line: '%include /etc/torrc.d/*.conf'
+    line: '%include /etc/tor/torrc.d/*.conf'
     create: true
     mode: '644'
