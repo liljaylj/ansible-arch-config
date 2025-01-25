@@ -104,6 +104,7 @@
       - systemctl-tui
       - gum  # ui for shell scripts
       - entr  # run command on file change
+      - gist
 
       # video
       - v4l-utils
