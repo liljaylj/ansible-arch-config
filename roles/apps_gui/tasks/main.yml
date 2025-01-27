@@ -51,6 +51,7 @@
       - alacritty  # terminal emulator
       - waycheck  # check which wayland protocols are supported
       - deskflow  # software kvm
+      - lan-mouse  # synergy alternative
       - crow-translate  # gui for text translation
       - gearlever  # install/update appimages
 
@@ -92,7 +93,6 @@
       - libvncserver
       - rustdesk-bin
       - anydesk-bin
-      - lan-mouse  # synergy alternative
       - carburetor  # gui for tractor onion router proxy
       - wifi-qr  # qr scan to connect or genearate to share wifi connection
 
