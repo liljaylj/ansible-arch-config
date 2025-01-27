@@ -162,5 +162,5 @@
       - kdeconnect
     firewalld_zones:
       - home
-      - trusted
+      - internal
       - work

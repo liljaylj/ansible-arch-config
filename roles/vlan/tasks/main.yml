@@ -1,7 +1,7 @@
 # vim: ft=yaml.ansible
 ---
 
-- name: Install ly display manager
+- name: Install tailscale
   ansible.builtin.include_role:
     name: pacman
     tasks_from: install_pkg
@@ -22,4 +22,4 @@
   vars:
     firewalld_binds:
       - interface: tailscale0
-        zone: trusted
+        zone: internal
