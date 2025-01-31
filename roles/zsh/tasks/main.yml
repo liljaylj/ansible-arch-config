@@ -6,7 +6,9 @@
     name: pacman
     tasks_from: install_pkg
   vars:
-    pacman_packages: zsh
+    pacman_packages:
+      - zsh
+      - zsh-doc  # use `info zsh ...`
 
 - name: Apply zshenv
   become: true
