@@ -101,6 +101,7 @@
 
       # torrent
       - qbittorrent
+      - rqbit-desktop
 
       # graphical programs
       - gimp
