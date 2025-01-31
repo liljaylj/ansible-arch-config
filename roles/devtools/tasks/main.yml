@@ -180,6 +180,7 @@
 
       # cloud provider cli tools
       - aws-cli-v2
+      - aws-vault
 
 - name: Install rust toolchains
   vars:
