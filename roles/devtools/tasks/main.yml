@@ -179,7 +179,7 @@
       - mdbook
 
       # cloud provider cli tools
-      - aws-cli
+      - aws-cli-v2
 
 - name: Install rust toolchains
   vars:
