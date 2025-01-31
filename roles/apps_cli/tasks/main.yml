@@ -103,6 +103,7 @@
       - systemctl-tui
       - gum  # ui for shell scripts
       - entr  # run command on file change
+      - ollama  # TODO: after testing, if it is good, then move this to it's own role for AI tools
 
       # video
       - v4l-utils
