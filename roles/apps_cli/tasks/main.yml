@@ -103,7 +103,7 @@
       - systemctl-tui
       - gum  # ui for shell scripts
       - entr  # run command on file change
-      - ollama  # TODO: after testing, if it is good, then move this to it's own role for AI tools
+      - ollama  # TODO: after testing, if it is good, then move this to it's own role for AI tools, lmstudio
 
       # video
       - v4l-utils
@@ -117,6 +117,7 @@
       - curl
       - wget
       - httpie
+      - curlie
       - nmap  # port scanner
       - openbsd-netcat  # network swiss army knife
       - socat  # multipurpose network relay
