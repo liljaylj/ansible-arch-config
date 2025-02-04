@@ -63,7 +63,7 @@
       - go
 
       # nodejs
-      - nodejs-lts-iron
+      - nodejs-lts-jod
       - npm
       - pnpm
       - vscode-json-languageserver
