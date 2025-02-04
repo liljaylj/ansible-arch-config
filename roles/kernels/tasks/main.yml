@@ -23,6 +23,13 @@
   vars:
     pacman_packages: linux-firmware
 
+- name: Install optional dependencies
+  ansible.builtin.include_role:
+    name: pacman
+    tasks_from: install_pkg
+  vars:
+    pacman_packages: scx-scheds  # sched-ext schedulers in kernel 6.12+
+
 - name: Install extra kernel packages (modules, etc)
   ansible.builtin.include_role:
     name: pacman
