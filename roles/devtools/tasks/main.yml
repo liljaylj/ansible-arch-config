@@ -116,6 +116,7 @@
       - python-rope
       - yapf
       - python-whatthepatch
+      - bpython  # interpreter
 
       # lua
       - lua
