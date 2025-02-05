@@ -106,6 +106,7 @@
       - ollama  # TODO: after testing, if it is good, then move this to it's own role for AI tools, lmstudio
       - stdoutisatty  # make programs think that theirs stdout is tty
       - lesspipe
+      - lolcat  # rainbow stdout
 
       # video
       - v4l-utils
