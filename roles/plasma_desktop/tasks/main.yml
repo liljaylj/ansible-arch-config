@@ -93,6 +93,7 @@
       - optiimage  # image optimization
       - francis  # pomodoro timer
       - arianna  # ebook reader
+      - kalm  # breathing techniques helper
 
       - cryfs  # Plasma Vault dependency
       - haruna  # mpv qt frontend
