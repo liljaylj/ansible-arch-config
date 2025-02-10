@@ -157,7 +157,6 @@
       - git-delta  # modern diff
       - difftastic  # syntactic diff
       - git-extras
-      - gitflow-avh
       - cocogitto  # lint conventional commits
       - lazygit
       - github-cli
