@@ -53,6 +53,7 @@
       - cargo-public-api
       - cargo-sweep  # clean unused build files
       - cargo-update  # update crates installed using `cargo install`
+      - cargo-outdated
       - sqlx-cli
       - clang
       - lld
