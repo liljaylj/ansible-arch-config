@@ -8,7 +8,6 @@
     pacman_packages:
       - plasma-meta
       - xorg-xwayland
-      - xwaylandvideobridge
       - wl-clipboard
       - wl-clipboard-x11
       - wayclip
