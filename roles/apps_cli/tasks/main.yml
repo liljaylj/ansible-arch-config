@@ -107,6 +107,7 @@
       - stdoutisatty  # make programs think that theirs stdout is tty
       - lesspipe
       - lolcat  # rainbow stdout
+      - libfaketime
 
       # video
       - v4l-utils
