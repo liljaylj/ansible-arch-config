@@ -166,6 +166,7 @@
 
       # document processors
       - pandoc
+      - presenterm  # markdown based presentations in terminal
 
       # helix
       - helix
