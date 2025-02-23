@@ -164,14 +164,6 @@
       - android-udev
       - android-tools
 
-      # kakoune
-      - kakoune
-      - kak-lsp
-      - aspell
-      - aspell-en
-      - aspell-ru
-      - editorconfig-core-c
-
       # document processors
       - pandoc
 
@@ -218,6 +210,9 @@
       # dependencies
       - tinyxxd  # needed for ncalayer to work
       - libpwquality  # optional for systemd -- password quality check
+      - aspell
+      - aspell-en
+      - aspell-ru
 
       # fingerprint
       - fprintd
