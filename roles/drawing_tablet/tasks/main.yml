@@ -7,8 +7,7 @@
     tasks_from: install_pkg
   vars:
     pacman_packages:
-      # - xp-pen-tablet  # since v4 does not support Deco 01 V2 anymore
-      - xppenlinux-v3
+      - xp-pen-tablet
       - opentabletdriver
 
 # - name: Enable opentabletdriver user service
