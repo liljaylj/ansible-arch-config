@@ -54,6 +54,7 @@
       - lan-mouse  # synergy alternative
       - crow-translate  # gui for text translation
       - gearlever  # install/update appimages
+      - solaar  # manage Logitech keyboards, mice, and trackpads
 
       # multimedia
       - mpv  # multimedia player
