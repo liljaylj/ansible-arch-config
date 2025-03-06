@@ -109,6 +109,7 @@
       - lesspipe
       - lolcat  # rainbow stdout
       - libfaketime
+      - lurk  # prettier strace
 
       # video
       - v4l-utils
