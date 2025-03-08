@@ -118,6 +118,7 @@
       - yapf
       - python-whatthepatch
       - bpython  # interpreter
+      - python-uv  # python package manager
 
       # lua
       - lua
