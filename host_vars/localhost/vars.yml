@@ -126,8 +126,6 @@ apps:
     - com.obsproject.Studio.Plugin.OBSVkCapture
     - com.obsproject.Studio.Plugin.DroidCam
     - com.usebruno.Bruno
-    - io.github.nokse22.asciidraw
-
 
 pacman:
   reflector: false
