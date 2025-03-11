@@ -113,6 +113,9 @@
       - python-uv  # python package manager
       - python-ruff  # python linter (lsp)
 
+      # system
+      - systemd-language-server
+
       # lua
       - lua
       - luarocks
