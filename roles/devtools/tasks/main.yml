@@ -109,6 +109,7 @@
       - python-aiohttp  # needed for codestats-relay
       - pyright  # static analyzer (lsp)
       - bpython  # interpreter
+      - python-jedi  # autocompletion
       - python-uv  # python package manager
       - python-ruff  # python linter (lsp)
 
