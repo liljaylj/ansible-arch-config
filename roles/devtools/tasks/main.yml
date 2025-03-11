@@ -107,9 +107,10 @@
       - python-pipx
       - python-virtualenv
       - python-aiohttp  # needed for codestats-relay
-      - pyright
+      - pyright  # static analyzer (lsp)
       - bpython  # interpreter
       - python-uv  # python package manager
+      - python-ruff  # python linter (lsp)
 
       # lua
       - lua
