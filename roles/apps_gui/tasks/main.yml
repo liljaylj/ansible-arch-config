@@ -112,6 +112,7 @@
       - pinta
       - rnote  # graphical note taking app (for drawing tablets)
       - imv  # lightweight image viewer
+      - pdfarranger  # split, merge, rotate, etc. pdf files
 
       # android
       - scrcpy
