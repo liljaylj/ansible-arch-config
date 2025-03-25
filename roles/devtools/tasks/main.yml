@@ -167,6 +167,7 @@
       - python-sshtunnel  # for pgcli ssh tunneling functionality
       - litecli
       - valkey  # for redis-cli
+      - postgrestools-bin  # postgresql language server
 
       # blog
       - hugo
