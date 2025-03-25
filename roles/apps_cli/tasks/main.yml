@@ -169,6 +169,7 @@
       # document processors
       - pandoc
       - presenterm  # markdown based presentations in terminal
+      - python-weasyprint  # export to pdf
       - img2pdf
 
       # helix
