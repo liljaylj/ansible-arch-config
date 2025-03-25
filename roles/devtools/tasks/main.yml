@@ -159,7 +159,6 @@
       - lazygit
       - github-cli
       - glab
-      - gibo-bin  # gitignore boilerplate retriever
       - git-filter-repo  # quickly rewrite git repo history
 
       # database management tools
