@@ -177,6 +177,8 @@
       - aws-cli-v2
       - aws-vault
 
+      - reuse  # manage licenses in project
+
 - name: Install rust toolchains
   vars:
     toolchains:
