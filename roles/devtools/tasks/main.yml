@@ -66,6 +66,7 @@
       # nodejs
       - nodejs-lts-jod
       - npm
+      - npm-check-updates
       - pnpm
       - vscode-json-languageserver
       - typescript-language-server
