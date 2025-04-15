@@ -17,6 +17,8 @@
       # mDNS
       - avahi
       - nss-mdns
+      # local DNS
+      - dnsdock-bin
       # Samba
       - samba
       # IPSec
@@ -144,6 +146,8 @@
     units:
       # systemd-resolved
       - 'systemd-resolved.service'
+      # dnsdock
+      - 'dnsdock.service'
       # mDNS
       - 'avahi-daemon.service'
       # Samba
