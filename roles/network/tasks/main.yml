@@ -18,6 +18,7 @@
       - avahi
       - nss-mdns
       # local DNS
+      - smartdns
       - dnsdock-bin
       # Samba
       - samba
@@ -104,6 +105,9 @@
       # systemd-resolved
       - src: 'resolved.conf'
         dest: '/etc/systemd/'
+      # smartdns
+      - src: 'smartdns.conf'
+        dest: '/etc/smartdns/'
       # mDNS
       - src: 'nsswitch.conf'
         dest: '/etc'
@@ -146,6 +150,8 @@
     units:
       # systemd-resolved
       - 'systemd-resolved.service'
+      # smartdns
+      - 'smartdns.service'
       # dnsdock
       - 'dnsdock.service'
       # mDNS

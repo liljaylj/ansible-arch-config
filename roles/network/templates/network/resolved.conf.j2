@@ -37,16 +37,12 @@
 #StaleRetentionSec=0
 
 [Resolve]
-{% if network.nextdns_id is defined %}
-DNS=45.90.28.0#{{ hostname }}-{{ network.nextdns_id }}.dns.nextdns.io
-DNS=2a07:a8c0::#{{ hostname }}-{{ network.nextdns_id }}.dns.nextdns.io
-DNS=45.90.30.0#{{ hostname }}-{{ network.nextdns_id }}.dns.nextdns.io
-DNS=2a07:a8c1::#{{ hostname }}-{{ network.nextdns_id }}.dns.nextdns.io
+DNS=127.0.0.2#smartdns
 FallbackDNS=1.1.1.2#cloudflare-dns.com 1.0.0.2#cloudflare-dns.com
-FallbackDNS=9.9.9.9#dns.quad9.net
-FallbackDNS=8.8.8.8#dns.google
-DNSOverTLS=yes
+FallbackDNS=9.9.9.9#dns.quad9.net 149.112.112.112#dns.quad9.net
+FallbackDNS=8.8.8.8#dns.google 8.8.4.4#dns.google
+DNSOverTLS=opportunistic
 Domains=~.
-{% endif %}
 MulticastDNS=no
 ReadEtcHosts=yes
+Cache=no
