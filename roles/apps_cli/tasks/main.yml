@@ -144,7 +144,6 @@
       - iperf3  # network bandwith measurement tool
       - whois
       - lynx  # terminal browser
-      - tractor  # onion router proxy
       - rqbit  # cli torrent client
       - mtr  # ping + traceroute
       - tcpdump

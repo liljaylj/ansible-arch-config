@@ -94,7 +94,6 @@
       - libvncserver
       - rustdesk-bin
       - anydesk-bin
-      - carburetor  # gui for tractor onion router proxy
       - wifi-qr  # qr scan to connect or genearate to share wifi connection
 
       # social networks
