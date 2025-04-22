@@ -18,7 +18,6 @@
       - virt-manager
       - virt-viewer
       - virt-install
-      - vagrant
 
 - name: Apply virtualization profile.d
   become: true
@@ -28,8 +27,6 @@
     mode: '644'
   with_items:
     - 60-libvirt.sh
-    - 60-vagrant.sh
-
 
 - name: Add user to libvirt group
   ansible.builtin.include_role:
