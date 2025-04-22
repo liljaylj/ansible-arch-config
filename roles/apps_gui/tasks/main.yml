@@ -46,7 +46,6 @@
       - dragon-drop  # drag-and-drop from/to terminal
       - corectrl  # control power/performance profiles
       - wev  # debug input events
-      - klavaro  # touch typing tutor
       - linssid  # wifi scanner
       - alacritty  # terminal emulator
       - waycheck  # check which wayland protocols are supported
