@@ -134,7 +134,6 @@ dev_tools:
   rust:
     toolchains:
       - stable
-      - nightly
     components:
       - cargo
       - clippy

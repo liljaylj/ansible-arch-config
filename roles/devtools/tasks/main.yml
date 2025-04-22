@@ -188,10 +188,10 @@
     executable: '/bin/bash'
     cmd: |
       set -Eeuo pipefail
-      rustup install {{ dev_tools.rust.toolchains | default(default_toolchains) | join(' ') }} | grep unchanged || true
+      rustup install {{ dev_tools.rust.toolchains | default(toolchains) | join(' ') }} | grep unchanged || true
   register: install_toolchains_result
   changed_when: '(install_toolchains_result.stdout_lines | length) !=
-    (dev_tools.rust.toolchains | default(default_toolchains) | length)'
+    (dev_tools.rust.toolchains | default(toolchains) | length)'
 
 - name: Set default rust toolchain
   vars:
