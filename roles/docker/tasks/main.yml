@@ -12,6 +12,7 @@
       - docker-compose
       - skopeo
       - dive
+      - ducker
       - lazydocker
 
 - name: Apply profile.d
