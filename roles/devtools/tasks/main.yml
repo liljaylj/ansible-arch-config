@@ -59,6 +59,7 @@
       - lld
       - lldb
       - gdb
+      - bacon
 
       # go
       - go
