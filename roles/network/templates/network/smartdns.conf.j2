@@ -226,12 +226,15 @@ log-level info
 # server 8.8.8.8 -blacklist-ip -check-edns -group g1 -group g2
 # server tls://dns.google:853
 # server https://dns.google/dns-query
+{% if network.nextdns_id is defined %}
 server https://dns.nextdns.io/{{ network.nextdns_id }}/{{ hostname }}-smartdns
+{% else %}
 server 1.1.1.2 1.0.0.2
 server 9.9.9.9 149.112.112.112
 server 8.8.8.8 8.8.4.4
+{% endif %}
 # dnsdock
-server 127.0.0.3
+server 127.0.0.3 -group docker -exclude-default-group
 
 # remote tcp dns server list
 # server-tcp [IP]:[PORT] [-blacklist-ip] [-whitelist-ip] [-group [group] ...] [-exclude-default-group]
@@ -278,6 +281,7 @@ server 127.0.0.3
 # nameserer group, set the domain name to use the appropriate server group.
 # nameserver /www.example.com/office, Set the domain name to use the appropriate server group.
 # nameserver /www.example.com/-, ignore this domain
+nameserver /test/docker
 
 # expand ptr record from address record
 # expand-ptr-from-address yes
@@ -367,7 +371,7 @@ server 127.0.0.3
 #   -delete: delete domain rule
 #   -no-ip-alias: ignore ip alias
 #   -no-cache: ignore cache
-domain-rules /*.test/ -no-cache
+domain-rules /*.test/ -no-cache -n docker
 
 # collection of domains
 # the domain-set can be used with /domain/ for address, nameserver, ipset, etc.
