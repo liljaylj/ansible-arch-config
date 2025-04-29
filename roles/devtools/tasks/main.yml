@@ -60,6 +60,7 @@
       - lldb
       - gdb
       - bacon
+      - evcxr_repl  # rust repl
 
       # go
       - go
