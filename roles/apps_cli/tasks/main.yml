@@ -110,6 +110,7 @@
       - lolcat  # rainbow stdout
       - libfaketime
       - lurk  # prettier strace
+      - pastel  # color maipulate, convert, etc.
 
       # video
       - v4l-utils
