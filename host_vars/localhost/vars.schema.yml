@@ -312,6 +312,10 @@ properties:
         description: 'Enable IP forwarding'
         type: boolean
         default: false
+      ipv6_privacy_extensions:
+        description: 'Enable IPv6 privacy extensions'
+        type: boolean
+        default: true
       nextdns_id:
         description: 'NextDNS ID'
         type: string

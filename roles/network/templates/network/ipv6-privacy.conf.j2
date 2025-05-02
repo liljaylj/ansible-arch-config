@@ -1,0 +1,4 @@
+[connection]
+{% if network.ipv6_privacy_extensions | default(true) %}
+ipv6.ip6-privacy = 2
+{% endif %}

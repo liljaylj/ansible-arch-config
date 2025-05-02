@@ -102,6 +102,9 @@
       # configure wifi powersave
       - src: 'wifi_powersave.conf'
         dest: '/etc/NetworkManager/conf.d/'
+      # IPv6 privacy extensions
+      - src: 'ipv6-privacy.conf'
+        dest: '/etc/NetworkManager/conf.d/'
       # systemd-resolved
       - src: 'resolved.conf'
         dest: '/etc/systemd/'
@@ -245,6 +248,20 @@
       - 'net.ipv6.conf.all.forwarding'
   loop: '{{ sysctls }}'
   when: network.ip_forwarding | default(false)
+
+- name: Enable IPv6 Privacy Extensions
+  become: true
+  ansible.posix.sysctl:
+    name: '{{ item }}'
+    sysctl_file: '/etc/sysctl.d/30-ipv6-privacy-extensions.conf'
+    sysctl_set: true
+    value: '2'
+  vars:
+    sysctls:
+      - 'net.ipv6.conf.all.use_tempaddr'
+      - 'net.ipv6.conf.default.use_tempaddr'
+  loop: '{{ sysctls }}'
+  when: network.ipv6_privacy_extensions | default(true)
 
 - name: Create hamachi var dir
   become: true

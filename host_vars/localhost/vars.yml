@@ -106,6 +106,7 @@ ssh:
 
 network:
   ip_forwarding: true
+  ipv6_privacy_extensions: true
   nextdns_id: '{{ lookup("ansible.builtin.env", "AAC_NEXTDNS_ID") }}'
   wifi_powersave: false
   wifi_backend: 'wpa_supplicant'
