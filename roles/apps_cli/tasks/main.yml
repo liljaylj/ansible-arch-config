@@ -111,6 +111,7 @@
       - libfaketime
       - lurk  # prettier strace
       - pastel  # color maipulate, convert, etc.
+      - jc  # parse various commands output and convert it to json
 
       # video
       - v4l-utils
