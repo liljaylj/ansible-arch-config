@@ -45,6 +45,21 @@ mkinitcpio:
     - amdgpu
   binaries:
     - setfont
+  hooks:
+    - base
+    - udev
+    - autodetect
+    - microcode
+    - modconf
+    - kms
+    - numlock
+    - keyboard
+    - keymap
+    - consolefont
+    - block
+    - plymouth
+    - filesystems
+    - fsck
   compression: zstd
   modules_decompress: true
 

@@ -10,6 +10,7 @@
       - '{{ bootloader.grub_package | default("grub") }}'
       - efibootmgr
       - breeze-grub
+      - plymouth
 
 - name: Install grub efi application
   become: true
