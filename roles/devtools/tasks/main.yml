@@ -180,9 +180,6 @@
       - aws-cli-v2
       - aws-vault
 
-      # justfile
-      - just-lsp
-
       - reuse  # manage licenses in project
 
 - name: Install rust toolchains

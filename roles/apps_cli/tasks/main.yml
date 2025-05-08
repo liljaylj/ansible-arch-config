@@ -95,7 +95,6 @@
       - gptfdisk  # gdisk util
       - time  # monitor program's use of system resources
       - python-j2cli  # jinja2 cli
-      - just  # tool save and run project-specific commands
       - ansifilter  # remove or convert ANSI codes to another format
       - strace  # userspace tracer
       - xdg-ninja  # detect dotfiles, which can be moved to xdg base dirs
