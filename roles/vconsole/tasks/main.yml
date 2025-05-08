@@ -2,6 +2,7 @@
 ---
 
 - name: Set vconsole keyboard layout
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[ #]*KEYMAP='
     line: 'KEYMAP={{ vconsole.keymap | default("us") }}'
@@ -17,6 +18,7 @@
     pacman_packages: terminus-font
 
 - name: Set vconsole font
+  become: true
   ansible.builtin.lineinfile:
     regexp: '^[ #]*FONT='
     line: 'FONT={{ vconsole.font }}'
