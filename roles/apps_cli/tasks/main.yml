@@ -43,6 +43,7 @@
       - bat  # modern cat
       - glow  # cli markdown renderer
       - xplr  # cli file manager
+      - yazi  # cli file manager
       - dialog
       - s-tui  # stress testing
       - yt-dlp  # download youtube videos
