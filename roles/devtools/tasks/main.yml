@@ -94,6 +94,9 @@
       - vscode-php-debug
       - composer
 
+      # html
+      - emmet-language-server
+
       # java dev
       - jdk-openjdk
       - jdk17-openjdk
