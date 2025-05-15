@@ -13,6 +13,8 @@
       - nvchecker  # new version checker
       - tokei  # count line of code
       - cloc  # count line of code
+      - kondo  # clean project dirs
+      - kondo-ui
 
       # editing
       # neovim
