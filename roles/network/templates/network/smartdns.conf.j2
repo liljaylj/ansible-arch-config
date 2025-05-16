@@ -227,6 +227,7 @@ log-level info
 # server tls://dns.google:853
 # server https://dns.google/dns-query
 {% if network.nextdns_id is defined %}
+server 1.1.1.2 1.0.0.2 -bootstrap-dns
 server https://dns.nextdns.io/{{ network.nextdns_id }}/{{ hostname }}-smartdns
 {% else %}
 server 1.1.1.2 1.0.0.2
