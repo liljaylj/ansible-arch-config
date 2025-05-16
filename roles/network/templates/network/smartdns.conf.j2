@@ -227,8 +227,8 @@ log-level info
 # server tls://dns.google:853
 # server https://dns.google/dns-query
 {% if network.nextdns_id is defined %}
-server 1.1.1.2 1.0.0.2 -bootstrap-dns
-server https://dns.nextdns.io/{{ network.nextdns_id }}/{{ hostname }}-smartdns
+server-tls {{ hostname }}-smartdns-{{ network.nextdns_id }}.dns.nextdns.io -host-ip 45.90.28.0
+server-tls {{ hostname }}-smartdns-{{ network.nextdns_id }}.dns.nextdns.io -host-ip 45.90.30.0
 {% else %}
 server 1.1.1.2 1.0.0.2
 server 9.9.9.9 149.112.112.112
