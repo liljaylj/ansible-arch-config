@@ -112,6 +112,7 @@
       - lurk  # prettier strace
       - pastel  # color maipulate, convert, etc.
       - jc  # parse various commands output and convert it to json
+      - dateutils
 
       # video
       - v4l-utils
