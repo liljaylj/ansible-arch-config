@@ -150,6 +150,7 @@
       - rqbit  # cli torrent client
       - mtr  # ping + traceroute
       - tcpdump
+      - monolith  # download web pages as single file
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
 
       # 2fa
