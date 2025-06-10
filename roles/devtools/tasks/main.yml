@@ -74,7 +74,6 @@
       - eslint_d
       - prettier
       - vue-language-server  # Vue 3
-      - nodejs-vls  # Vue 2
       - eslint-language-server
 
       # css
