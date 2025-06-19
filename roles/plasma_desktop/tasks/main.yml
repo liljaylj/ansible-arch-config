@@ -26,6 +26,7 @@
       - konsole
       - dolphin
       - dolphin-plugins
+      - ffmpegthumbs  # video thumbnails in dolphin
       - kde-inotify-survey
       - kdeconnect
       - gwenview
@@ -96,7 +97,6 @@
       - kalm  # breathing techniques helper
 
       - cryfs  # Plasma Vault dependency
-      - haruna  # mpv qt frontend
 
       - syncthingtray-qt6  # FIXME: install only if syncthing is installed
 
