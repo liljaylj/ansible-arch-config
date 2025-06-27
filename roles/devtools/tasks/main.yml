@@ -102,8 +102,8 @@
       # - jdtls
 
       # intellij idea
-      - jre-jetbrains
-      - rustrover
+      # - jre-jetbrains
+      # - rustrover
 
       # python
       - python
