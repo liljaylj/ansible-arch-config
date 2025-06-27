@@ -99,7 +99,7 @@
       - jdk-openjdk
       - jdk17-openjdk
       - jdk21-openjdk
-      - jdtls
+      # - jdtls
 
       # intellij idea
       - jre-jetbrains
