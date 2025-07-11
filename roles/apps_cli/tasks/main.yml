@@ -112,6 +112,7 @@
       - pastel  # color maipulate, convert, etc.
       - jc  # parse various commands output and convert it to json
       - dateutils
+      - geoclue
 
       # video
       - v4l-utils
