@@ -7,10 +7,12 @@
   vars:
     pacman_packages:
       - plasma-meta
+      - packagekit-qt6
       - xorg-xwayland
       - wl-clipboard
       - wl-clipboard-x11
       - wayclip
+      - kwayland-integration
       - qt6-wayland
       - gtk-layer-shell
       - xdg-desktop-portal
@@ -95,6 +97,7 @@
       - arianna  # ebook reader
       - kalm  # breathing techniques helper
       - picmi  # japanese crosswords
+      - kaccounts-providers
 
       - cryfs  # Plasma Vault dependency
 
