@@ -87,11 +87,10 @@
       - qt5-imageformats
       - qt6-imageformats
       - libappimage
-      - phonon-qt5
       - phonon-qt6
-      - phonon-qt5-gstreamer
-      - phonon-qt5-vlc
       - phonon-qt6-vlc
+      - vlc-plugin-ffmpeg
+      - vlc-plugin-gstreamer
       - optiimage  # image optimization
       - francis  # pomodoro timer
       - arianna  # ebook reader
