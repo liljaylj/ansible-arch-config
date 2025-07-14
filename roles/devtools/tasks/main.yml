@@ -119,6 +119,7 @@
 
       # system
       - systemd-language-server
+      - termux-language-server
 
       # lua
       - lua
