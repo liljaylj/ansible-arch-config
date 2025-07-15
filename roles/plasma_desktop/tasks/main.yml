@@ -7,7 +7,6 @@
   vars:
     pacman_packages:
       - plasma-meta
-      - packagekit-qt6
       - xorg-xwayland
       - wl-clipboard
       - wl-clipboard-x11
