@@ -50,7 +50,6 @@
       - waycheck  # check which wayland protocols are supported
       - deskflow  # software kvm
       - lan-mouse  # synergy alternative
-      - crow-translate  # gui for text translation
       - gearlever  # install/update appimages
       - solaar  # manage Logitech keyboards, mice, and trackpads
 
