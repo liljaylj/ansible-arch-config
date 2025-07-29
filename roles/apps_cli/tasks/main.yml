@@ -28,6 +28,7 @@
       - dos2unix
       - ripgrep  # modern grep
       - sig  # grep streaming data
+      - piep  # sed, awk, etc. with python syntax
       - sd  # modern sed
       - sad
       - lsd  # modern ls
