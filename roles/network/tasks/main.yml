@@ -215,7 +215,7 @@
     (smbpasswd_result.stdout_lines | first | default(""))'
   no_log: true
 
-- name: Add firewalld rules
+- name: Add firewalld rules for LAN discovery services
   ansible.builtin.include_role:
     name: firewalld
     tasks_from: add_rule
@@ -232,12 +232,21 @@
       - samba
       - samba-client
       - netbios-ns
+    firewalld_zones:
+      - home
+      - internal
+      - work
+
+- name: Add firewalld rules for home, internal zones only
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: add_rule
+  vars:
     firewalld_ports:
       - '4455/tcp'  # obs-studio websocket
     firewalld_zones:
       - home
       - internal
-      - work
 
 - name: Enable IP forwarding
   become: true
