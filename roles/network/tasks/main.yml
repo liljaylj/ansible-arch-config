@@ -129,6 +129,9 @@
       # caddy reverse proxy for syncthing web admin (localhost:8384)
       - src: 'syncthing'
         dest: '/etc/caddy/conf.d/'
+      # Sunshine reverse proxy for Sunshine admin panel (localhost:47990)
+      - src: 'sunshine'
+        dest: '/etc/caddy/conf.d/'
       # traefik config
       - src: 'traefik.yml'
         dest: '/etc/traefik/'

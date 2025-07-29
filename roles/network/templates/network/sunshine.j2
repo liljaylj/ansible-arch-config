@@ -1,0 +1,13 @@
+sunshine.localhost {
+    tls internal {
+        on_demand
+    }
+    vars sunshine_host "localhost:47990"
+    reverse_proxy {
+        header_up Host {vars.sunshine_host}
+        to {vars.sunshine_host}
+        transport http {
+            tls_insecure_skip_verify
+        }
+    }
+}

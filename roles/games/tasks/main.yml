@@ -41,6 +41,7 @@
       - libretro-shaders
       - retroarch-assets-ozone
       - libretro-core-info
+      - sunshine  # game streaming service
 
       # dependencies
       - libxcrypt-compat  # nplusplus (Steam) dependency
@@ -84,3 +85,16 @@
   vars:
     firewalld_services:
       - steam-streaming
+
+- name: Firewall rules for sunshine streaming
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: add_rule
+  vars:
+    firewalld_ports:
+      - '47984/tcp'
+      - '47989/tcp'
+      - '48010/tcp'
+      - '47998-48000/udp'
+      - '48002/udp'
+      - '48010/udp'
