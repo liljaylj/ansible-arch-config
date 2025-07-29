@@ -28,6 +28,7 @@
       - tree-sitter-query
       - tree-sitter-vimdoc
       - lua51  # needed lazy.nvim luarocks support
+      - neovim-symlinks
 
       # markdown
       - marksman
