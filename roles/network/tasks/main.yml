@@ -232,6 +232,8 @@
       - samba
       - samba-client
       - netbios-ns
+    firewalld_ports:
+      - '4455/tcp'  # obs-studio websocket
     firewalld_zones:
       - home
       - internal
