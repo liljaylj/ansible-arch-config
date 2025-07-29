@@ -27,6 +27,7 @@
       - moreutils
       - dos2unix
       - ripgrep  # modern grep
+      - sig  # grep streaming data
       - sd  # modern sed
       - sad
       - lsd  # modern ls
