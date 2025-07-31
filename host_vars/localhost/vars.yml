@@ -142,6 +142,7 @@ apps:
     - com.obsproject.Studio.Plugin.OBSVkCapture
     - com.obsproject.Studio.Plugin.DroidCam
     - com.usebruno.Bruno
+    - me.iepure.devtoolbox
 
 pacman:
   reflector: false
