@@ -92,6 +92,7 @@
       - rustdesk-bin
       - anydesk-bin
       - wifi-qr  # qr scan to connect or genearate to share wifi connection
+      - winbox  # mikrotik RouterOS configurator
 
       # social networks
       - telegram-desktop  # Telegram desktop client

@@ -242,6 +242,8 @@
     name: firewalld
     tasks_from: add_rule
   vars:
+    firewalld_services:
+      - mndp  # mikrotik neighbor discovery
     firewalld_ports:
       - '4455/tcp'  # obs-studio websocket
     firewalld_zones:
