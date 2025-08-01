@@ -246,6 +246,8 @@
       - mndp  # mikrotik neighbor discovery
     firewalld_ports:
       - '4455/tcp'  # obs-studio websocket
+    firewalld_source_ports:
+      - '20561/udp'  # mikrotik mac-telnet
     firewalld_zones:
       - home
       - internal
