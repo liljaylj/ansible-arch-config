@@ -26,3 +26,16 @@
     _zones: '{{ firewalld_zones | default(["home", "internal"]) }}'
   loop: '{{ _zones | product(firewalld_ports) | list }}'
   when: firewalld_ports is defined
+
+- name: Add firewalld rules for source_ports
+  become: true
+  ansible.posix.firewalld:
+    zone: '{{ item.0 }}'
+    source_port: '{{ item.1 }}'
+    permanent: true
+    immediate: true
+    state: enabled
+  vars:
+    _zones: '{{ firewalld_zones | default(["home", "internal"]) }}'
+  loop: '{{ _zones | product(firewalld_source_ports) | list }}'
+  when: firewalld_source_ports is defined
