@@ -240,3 +240,11 @@
   vars:
     pacman_packages: '{{ apps.cli | default([]) }}'
   when: apps.cli is defined
+
+- name: Enable loading v4l2loopback kernel module
+  become: true
+  community.general.modprobe:
+    name: v4l2loopback
+    params: 'exclusive_caps=1 card_label="Loopback_webcam"'
+    persistent: present
+    state: present
