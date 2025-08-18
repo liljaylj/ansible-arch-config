@@ -236,6 +236,8 @@
       - samba
       - samba-client
       - netbios-ns
+      # Syncthing
+      - syncthing
     firewalld_zones:
       - home
       - internal
