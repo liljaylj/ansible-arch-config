@@ -241,6 +241,12 @@
       # STUN
       - stun
       - stuns
+    firewalld_ports:
+      # Tailscale direct connection
+      - '41641/udp'
+    firewalld_source_ports:
+      # Tailscale direct connection
+      - '41641/udp'
     firewalld_zones:
       - home
       - internal
