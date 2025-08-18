@@ -40,6 +40,8 @@
       - geoip-database
       - geoip-database-extra
       - libmaxminddb
+      # Tailscale
+      - tailscale
 
 - name: Install iwd
   ansible.builtin.include_role:
@@ -170,6 +172,8 @@
       - 'caddy.service'
       # Traefik
       - 'traefik.service'
+      # Tailscale
+      - 'tailscaled.service'
   loop: '{{ units }}'
 
 - name: Enable fix missing Wi-Fi after resume from hibernate
@@ -243,11 +247,14 @@
     tasks_from: add_rule
   vars:
     firewalld_services:
-      - mndp  # mikrotik neighbor discovery
+      # mikrotik neighbor discovery
+      - mndp
     firewalld_ports:
-      - '4455/tcp'  # obs-studio websocket
+      # obs-studio websocket
+      - '4455/tcp'
     firewalld_source_ports:
-      - '20561/udp'  # mikrotik mac-telnet
+      # mikrotik mac-telnet
+      - '20561/udp'
     firewalld_zones:
       - home
       - internal
@@ -280,6 +287,15 @@
       - 'net.ipv6.conf.default.use_tempaddr'
   loop: '{{ sysctls }}'
   when: network.ipv6_privacy_extensions | default(true)
+
+- name: Add tailscale0 to trusted zone
+  ansible.builtin.include_role:
+    name: firewalld
+    tasks_from: set_zone
+  vars:
+    firewalld_binds:
+      - interface: tailscale0
+        zone: internal
 
 - name: Create hamachi var dir
   become: true
