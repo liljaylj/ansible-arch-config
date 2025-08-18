@@ -238,6 +238,9 @@
       - netbios-ns
       # Syncthing
       - syncthing
+      # STUN
+      - stun
+      - stuns
     firewalld_zones:
       - home
       - internal
