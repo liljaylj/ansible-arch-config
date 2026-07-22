@@ -143,6 +143,7 @@ apps:
     - com.obsproject.Studio.Plugin.DroidCam
     - com.usebruno.Bruno
     - me.iepure.devtoolbox
+    - org.freedesktop.Bustle
 
 pacman:
   reflector: false

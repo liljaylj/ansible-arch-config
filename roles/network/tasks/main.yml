@@ -107,9 +107,15 @@
       # IPv6 privacy extensions
       - src: 'ipv6-privacy.conf'
         dest: '/etc/NetworkManager/conf.d/'
+      # disable dns + resolved integration
+      - src: 'dns.conf'
+        dest: '/etc/NetworkManager/conf.d/'
       # systemd-resolved
       - src: 'resolved.conf'
         dest: '/etc/systemd/'
+      # systemd-resolved: disable mdns after pacredir enables it
+      - src: '03-mdns-disable.conf'
+        dest: '/etc/systemd/resolved.conf.d/'
       # smartdns
       - src: 'smartdns.conf'
         dest: '/etc/smartdns/'

@@ -7,10 +7,10 @@
   vars:
     pacman_packages:
       - plasma-meta
+      - plasma-keyboard
       - xorg-xwayland
       - wl-clipboard
       - wl-clipboard-x11
-      - wayclip
       - kwayland-integration
       - qt6-wayland
       - gtk-layer-shell
@@ -91,6 +91,7 @@
       - vlc-plugin-ffmpeg
       - vlc-plugin-gstreamer
       - optiimage  # image optimization
+      - libwebp-utils  # optiimage dependency
       - francis  # pomodoro timer
       - arianna  # ebook reader
       - kalm  # breathing techniques helper

@@ -8,7 +8,6 @@
   vars:
     pacman_packages:
       - steam
-      - steam-native-runtime
       - lutris
       - umu-launcher
       - aur/protontricks
@@ -30,7 +29,6 @@
       - nudoku
       - aur/prismlauncher
       - glfw-wayland
-      - pokerth
       - mrboom
       - granatier
       - puzzles  # simon tatham's puzzles collection

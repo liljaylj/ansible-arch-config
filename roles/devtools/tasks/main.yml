@@ -61,6 +61,7 @@
       - gdb
       - bacon
       - evcxr_repl  # rust repl
+      - bugstalker  # rust debugger
 
       # go
       - go
@@ -117,10 +118,10 @@
       - python-jedi  # autocompletion
       - python-uv  # python package manager
       - python-ruff  # python linter (lsp)
+      - ty  # python lsp
 
       # system
       - systemd-language-server
-      - termux-language-server
 
       # lua
       - lua
@@ -135,7 +136,6 @@
       - bash-language-server
       - shellcheck
       - shfmt
-      - amber-bash-bin
 
       # yaml
       - yaml-language-server

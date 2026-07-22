@@ -9,6 +9,7 @@
     pacman_packages:
       - iptables-nft
       - firewalld
+      - firewall-config
       # firewalld optional dependencies
       - libnotify
 

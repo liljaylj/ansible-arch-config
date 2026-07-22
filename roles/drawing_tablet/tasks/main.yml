@@ -8,7 +8,7 @@
   vars:
     pacman_packages:
       - xp-pen-tablet
-      - opentabletdriver
+      # - opentabletdriver  # conflicts with in-kernel driver
 
 # - name: Enable opentabletdriver user service
 #   ansible.builtin.systemd:

@@ -79,7 +79,6 @@
       - ydotool  # systemd service (ydotoold)  # TODO: start/enable user service
       - toipe  # touch typing speed test
       - dhex  # hex editor
-      - vt-cli  # virus total cli
       - perl-image-exiftool  # read/write file metadata
       - perl-archive-zip  # support zip-files in exiftool 👆
       - wavemon  # wifi scanner
@@ -106,6 +105,8 @@
       - gum  # ui for shell scripts
       - entr  # run command on file change
       - ollama  # TODO: after testing, if it is good, then move this to it's own role for AI tools, lmstudio
+      - onnxruntime-cpu  # needed for firefox ai functionality
+      - onnxruntime-opt-rocm  # amdgpu + avx2 + 24Gb disk space
       - stdoutisatty  # make programs think that theirs stdout is tty
       - lesspipe
       - lolcat  # rainbow stdout
@@ -115,6 +116,10 @@
       - jc  # parse various commands output and convert it to json
       - dateutils
       - geoclue
+      - tinyxxd  # colorful hexdump - needed for ncalayer to work
+      - hexyl  # modern hexdump
+      - age
+      - sops
 
       # video
       - v4l-utils
@@ -155,6 +160,7 @@
       - monolith  # download web pages as single file
       # TODO: wireguard vlan with egress (openziti, tailscale, zerotier, teleport, netmaker, firezone, etc.)
       - netinstall  # mikrotik RouterOS install tool
+      - mscp  # scp with multiple connections
 
       # 2fa
       - libfido2
@@ -219,7 +225,6 @@
       - zsh-vi-mode
 
       # dependencies
-      - tinyxxd  # needed for ncalayer to work
       - libpwquality  # optional for systemd -- password quality check
       - aspell
       - aspell-en
@@ -233,6 +238,8 @@
 
       # themes
       - tokyonight-extra  # tokyonight theme for bunch of applications
+
+      - nsz  # nsz to nsp - nintendo switch package archiver
 
 - name: Install cli apps
   ansible.builtin.include_role:
